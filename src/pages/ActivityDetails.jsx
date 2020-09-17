@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { activityService } from '../services/activityService.js'
+import {saveActivity} from "../store/actions/activityActions"
+import { connect } from 'react-redux'
 // import {ChatRoom} from '../cmps/ChatRoom.jsx'
 
-export class ActivityDetails extends Component {
+export class _ActivityDetails extends Component {
 
 
     state = {
-        activity: null
+        activity: null,
+        user: {
+            _id: 'u102',
+            fullName: 'Kuki Levana',
+            imgUrl:'https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg'
+        }
     }
 
     componentDidMount() {
@@ -23,10 +29,16 @@ export class ActivityDetails extends Component {
             })
     }
 
+    purchaseActivity(activity, user){
+        console.log(user);
+        console.log(activity);
+        activity.participants.push(user);
+        this.props.saveActivity(activity);
+    }
+
 
     render() {
-        const { activity } = this.state;
-        console.log(activity);
+        const { activity, user } = this.state;
         if (!activity) return <h1>Loading...</h1>
         return (
             <div className="main-details-card">
@@ -43,11 +55,11 @@ export class ActivityDetails extends Component {
                     <div className="right-payment-area flex column sa">
                         <div className="payment-det">
                             <h4>Price: ${activity.price}</h4>
-                            <button>Buy this ITEM!</button>
+                            <button onClick={()=>this.purchaseActivity(activity,user)}>Buy this ITEM!</button>
                         </div>
                         <div className="attendings">
                             <h3>Attending</h3>
-                            {activity.participants.map((participant, idx) => <img key={idx} src={participant.imgUrl} />)}
+                            {activity.participants.map((participant, idx) => <img className="attending-img"key={idx} src={participant.imgUrl} />)}
                         </div>
                     </div>
                 </div>
@@ -58,6 +70,13 @@ export class ActivityDetails extends Component {
                             {activity.tags.map((tag, idx) => <li key={idx}>{tag}</li>)}
                         </div>
                         <div className="tac">⭐⭐⭐⭐⭐</div>
+                        {/* <div className="rev-det">Reviews
+                        {activity.reviews.map((review, idx)=> {
+                        <ul key={idx}>
+                            <li>{review}</li>
+                        </ul>})
+    }
+                        </div> */}
                     </div>
                     <div className="fitchers-info flex column">
                         <div className="box-area">CHAT AREA</div>
@@ -68,3 +87,16 @@ export class ActivityDetails extends Component {
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        activities: state.activityReducer.activities,
+        // user: state.userReducer.loggedinUser;
+    }
+}
+const mapDispatchToProps = {
+    saveActivity
+}
+
+export const ActivityDetails = connect(mapStateToProps, mapDispatchToProps)(_ActivityDetails)
