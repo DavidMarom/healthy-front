@@ -1,306 +1,508 @@
 {
-    "activity": [
-      {
-        "_id": "ev101",
-        "title": "Sunset Yoga at Gordon Beach",
-        "description": "Yoga prectice is one of the best ways to practice specially when its accurse on one of the spots in the world! we are looking for motivated people who want to enjoy ",
-        "createdBy": {
-          "_id": "u101",
-          "fullName": "Jenny Tieck",
-          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
-        },
-        "startsAt": 12122212134,
-        "location": {
-          "lat": 32.0827,
-          "lng": 34.7674,
-          "address": "Gordon Beach, Tel-Aviv"
-        },
-        "tags": [
-          "dificult",
-          "sport",
-          "telAviv",
-          "sunset",
-          "sea",
-          "yoga"
-        ],
-        "imgUrls": [
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240208/sprint%204/activitiesEv/sport/il_1140xN.733497179_4p4m_josols.jpg",
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240459/sprint%204/activitiesEv/sport/sunsetyoga1_uqcvuy.jpg",
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240032/sprint%204/activitiesEv/sport/Yoga-sunset_ub6brz.jpg"
-        ],
-        "maxCapacity": 50,
-        "price": 20,
-        "participants": [
-          {
-            "_id": "u104",
-            "fullName": "Nim Srivas",
-            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327786/sprint%204/users/44_nrrdly.jpg"
-          },
-          {
-            "_id": "u103",
-            "fullName": "Dillen aplaus",
-            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg"
-          },
-          {
-            "_id": "u102",
-            "fullName": "Kuki Levana",
-            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
-          },
-          {
-            "_id": "u106",
-            "fullName": "Debora faringham",
-            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
-          },
-          {
-            "_id": "u106",
-            "fullName": "Debora faringham",
-            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
-          }
-        ],
-        "reviews": [
-          {
-            "id": "r101",
-            "txt": "a great place to dine..",
-            "rate": 4,
-            "by": {
-              "_id": "u102",
-              "fullName": "user1",
-              "imgUrl": "/img/img1.jpg"
-            }
-          },
-          {
-            "id": "madeId",
-            "txt": "a great place to dine..",
-            "rate": 4,
-            "by": {
-              "_id": "u102",
-              "fullName": "user1",
-              "imgUrl": "/img/img3.jpg"
-            }
-          }
-        ],
-        "msgs": [
-          {
-            "id": "msg101",
-            "txt": "whats up?",
-            "isRead": true,
-            "activity": {
-              "_id": "ev101",
-              "title": "Sunset Yoga at Gordon Beach",
-              "price": 20
-            },
-            "by": {
-              "_id": "u105",
-              "fullName": "Bob",
-              "imgUrl": "http://some-img"
-            }
-          }
-        ]
+  "activity": [
+    {
+      "_id": "ev103",
+      "title": "Mindfulness Seminar",
+      "description": "Join us and learn the secrets of Mindfulness. Acquire behavioral tools that will help you overcome obstecles and everyday challenges!",
+      "createdBy": {
+        "_id": "u106",
+        "fullName": "Shein Roen",
+        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
       },
-      {
-        "_id": "ev102",
-        "title": "Sunset Yoga at Gordon Beach",
-        "description": "Yoga prectice is one of the best weys to practice specially when its accurse on one of the spots in the world! we are looking for motivated people who want to enjoy ",
-        "createdBy": {
+      "startsAt": 12122212134,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Changing locaions in Tel Aviv"
+      },
+      "tags": [
+        "dificult",
+        "sport",
+        "telAviv",
+        "sunset",
+        "sea",
+        "yoga"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379823/sprint%204/activitiesEv/well-bieng/mindfulness/AdobeStock_193169430_a0gqf8.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379690/sprint%204/activitiesEv/well-bieng/mindfulness/Lifestyle_Program_San_Francisco_qvxvsp.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600378937/sprint%204/activitiesEv/well-bieng/mindfulness/2367993-46_bisejp.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379291/sprint%204/activitiesEv/well-bieng/mindfulness/bigstock-Zen-yoga-woman-doing-meditatio-86028956_fzayj8.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379594/sprint%204/activitiesEv/well-bieng/mindfulness/groupmeditating_hmfbjd.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379803/sprint%204/activitiesEv/well-bieng/mindfulness/p276m2099454-rev-1000px-wide_vt4dtc.jpg"
+      ],
+      "maxCapacity": 10,
+      "price": 100,
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Nim Srivas",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327786/sprint%204/users/44_nrrdly.jpg"
+        },
+        {
+          "_id": "u103",
+          "fullName": "Dillen aplaus",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg"
+        },
+        {
           "_id": "u102",
-          "fullName": "Jenny Tieck",
-          "imgUrl": ""
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
         },
-        "startsAt": 12122212134,
-        "location": {
-          "lat": 32.0827,
-          "lng": 34.7674,
-          "address": "Gordon Beach, Tel-Aviv"
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
         },
-        "tags": [
-          "dificult",
-          "sport",
-          "telAviv",
-          "sunset",
-          "sea",
-          "yoga"
-        ],
-        "imgUrls": [
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240208/sprint%204/activitiesEv/sport/il_1140xN.733497179_4p4m_josols.jpg",
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240459/sprint%204/activitiesEv/sport/sunsetyoga1_uqcvuy.jpg",
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240032/sprint%204/activitiesEv/sport/Yoga-sunset_ub6brz.jpg"
-        ],
-        "maxCapacity": 50,
-        "price": 20,
-        "participants": [
-          {
-            "_id": "u104",
-            "fullName": "Nimi Shemo",
-            "imgUrl": "http://some-img"
-          },
-          {
-            "_id": "u103",
-            "fullName": "Kuki Levana",
-            "imgUrl": "http://some-img"
-          },
-          {
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "Such a great class! Very recommended!!!",
+          "rate": 5,
+          "by": {
             "_id": "u102",
-            "fullName": "Kuki Levana",
-            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+            "fullName": "user1",
+            "imgUrl": "/img/img1.jpg"
           }
-        ],
-        "reviews": [
-          {
-            "id": "r101",
-            "txt": "a great place to dine..",
-            "rate": 4,
-            "by": {
-              "_id": "u102",
-              "fullName": "user1",
-              "imgUrl": "/img/img1.jpg"
-            }
+        },
+        {
+          "id": "madeId",
+          "txt": "Great food! Not a beginner friendly class",
+          "rate": 3,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img3.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
           },
-          {
-            "id": "madeId",
-            "txt": "a great place to dine..",
-            "rate": 4,
-            "by": {
-              "_id": "u102",
-              "fullName": "user1",
-              "imgUrl": "/img/img3.jpg"
-            }
+          "by": {
+            "_id": "u105",
+            "fullName": "Bob",
+            "imgUrl": "http://some-img"
           }
-        ],
-        "msgs": [
-          {
-            "id": "msg101",
-            "txt": "whats up?",
-            "isRead": true,
-            "activity": {
-              "_id": "ev101",
-              "title": "Sunset Yoga at Gordon Beach",
-              "price": 20
-            },
-            "by": {
-              "_id": "u105",
-              "fullName": "Bob",
-              "imgUrl": "http://some-img"
-            }
-          }
-        ]
+        }
+      ]
+    },
+    {
+      "_id": "ev101",
+      "title": "Sunset Yoga at Gordon Beach",
+      "description": "Yoga is one of the best ways to exercise your body and soul especially while doing it at one of the most beautiful spots in the world! We're looking for motivated people who like to enjoy a relaxed workout!",
+      "createdBy": {
+        "_id": "ו109",
+        "fullName": "Jenny Tieck",
+        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
       },
-      {
-        "_id": "ev107",
-        "title": "Sunset Yoga at Gordon Beach",
-        "description": "Yoga prectice is one of the best weys to practice specially when its accurse on one of the spots in the world! we are looking for motivated people who want to enjoy ",
-        "createdBy": {
+      "startsAt": 12122212134,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Gordon Beach, Tel-Aviv"
+      },
+      "tags": [
+        "dificult",
+        "sport",
+        "telAviv",
+        "sunset",
+        "sea",
+        "yoga"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240208/sprint%204/activitiesEv/sport/il_1140xN.733497179_4p4m_josols.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240459/sprint%204/activitiesEv/sport/sunsetyoga1_uqcvuy.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240032/sprint%204/activitiesEv/sport/Yoga-sunset_ub6brz.jpg"
+      ],
+      "maxCapacity": 50,
+      "price": 20,
+      "participants": [
+        {
+          "_id": "u102",
+          "fullName": "Nim Srivas",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327786/sprint%204/users/44_nrrdly.jpg"
+        },
+        {
           "_id": "u101",
-          "fullName": "Jenny Tieck",
-          "imgUrl": ""
+          "fullName": "Dillen aplaus",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg"
         },
-        "startsAt": 12122212134,
-        "location": {
-          "lat": 32.0827,
-          "lng": 34.7674,
-          "address": "Gordon Beach, Tel-Aviv"
+        {
+          "_id": "u105",
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
         },
-        "tags": [
-          "dificult",
-          "sport",
-          "telAviv",
-          "sunset",
-          "sea",
-          "yoga"
-        ],
-        "imgUrls": [
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240032/sprint%204/activitiesEv/sport/Yoga-sunset_ub6brz.jpg",
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240208/sprint%204/activitiesEv/sport/il_1140xN.733497179_4p4m_josols.jpg",
-          "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240459/sprint%204/activitiesEv/sport/sunsetyoga1_uqcvuy.jpg"
-        ],
-        "maxCapacity": 50,
-        "price": 20,
-        "participants": [
-          {
-            "_id": "u104",
-            "fullName": "Nimi Shemo",
-            "imgUrl": "http://some-img"
-          },
-          {
-            "_id": "u103",
-            "fullName": "Kuki Levana",
-            "imgUrl": "http://some-img"
-          },
-          {
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        },
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
             "_id": "u102",
-            "fullName": "Kuki Levana",
-            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+            "fullName": "user1",
+            "imgUrl": "/img/img1.jpg"
           }
-        ],
-        "reviews": [
-          {
-            "id": "r101",
-            "txt": "a great place to dine..",
-            "rate": 4,
-            "by": {
-              "_id": "u102",
-              "fullName": "user1",
-              "imgUrl": "/img/img1.jpg"
-            }
-          },
-          {
-            "id": "madeId",
-            "txt": "a great place to dine..",
-            "rate": 4,
-            "by": {
-              "_id": "u102",
-              "fullName": "user1",
-              "imgUrl": "/img/img3.jpg"
-            }
-          }
-        ],
-        "msgs": [
-          {
-            "id": "msg101",
-            "txt": "whats up?",
-            "isRead": true,
-            "activity": {
-              "_id": "ev101",
-              "title": "Sunset Yoga at Gordon Beach",
-              "price": 20
-            },
-            "by": {
-              "_id": "u105",
-              "fullName": "Bob",
-              "imgUrl": "http://some-img"
-            }
-          }
-        ]
-      }
-    ],
-    "orders": [
-      {
-        "_id": "o1225",
-        "cretatedAt": 9898989,
-        "buyer": "mini-user",
-        "totalPrice": 20,
-        "activity": {
-          "_id": "v140",
-          "title": "Sunset Yoga at Gordon Beach",
-          "createdBy": "Batata Ksbia",
-          "rate": 5
         },
-        "status": "pending"
-      }
-    ],
-    "user": [
-      {
+        {
+          "id": "madeId",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img3.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
+          },
+          "by": {
+            "_id": "u105",
+            "fullName": "Bob",
+            "imgUrl": "http://some-img"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "ev104",
+      "title": "Healthy cooking class",
+      "description": "Who said healthy food can't be delicious? Join us and learn how to cook food that's good for your body & soul. Everyone is welcome, you don't need to be an experienced cook",
+      "createdBy": {
+        "_id": "u110",
+        "fullName": "Rex June",
+        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
+      },
+      "startsAt": 12122212134,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Bishulim Culinary School, Tel Aviv"
+      },
+      "tags": [
+        "dificult",
+        "sport",
+        "telAviv",
+        "sunset",
+        "sea",
+        "yoga"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600376997/sprint%204/activitiesEv/nutriotion/cooking%20class/8821549_1539383238244_xc03ik.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600377090/sprint%204/activitiesEv/nutriotion/cooking%20class/118558564_168493041472602_8392429406673755764_n.jpg_nwcyy8.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600377245/sprint%204/activitiesEv/nutriotion/cooking%20class/01-This-Is-the-Most-Popular-Diet-In-America-Right-Now-Per-a-New-Study_489299392-casanisa-1024x683_vbjhnd.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600377410/sprint%204/activitiesEv/nutriotion/cooking%20class/CR-Health-Inlinehero-food-for-energy-0720_ibxhqi.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600377300/sprint%204/activitiesEv/nutriotion/cooking%20class/e58e6784-ed7e-4aad-aa4f-822b8ae4bee4_tg4nbj.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600377697/sprint%204/activitiesEv/nutriotion/cooking%20class/1578988778782_ahcfen.jpg"
+      ],
+      "maxCapacity": 20,
+      "price": 200,
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Nim Srivas",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327786/sprint%204/users/44_nrrdly.jpg"
+        },
+        {
+          "_id": "u103",
+          "fullName": "Dillen aplaus",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg"
+        },
+        {
+          "_id": "u102",
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+        },
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        },
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "Such a great class! Very recommended!!!",
+          "rate": 5,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img1.jpg"
+          }
+        },
+        {
+          "id": "madeId",
+          "txt": "Great food! Not a beginner friendly class",
+          "rate": 3,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img3.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
+          },
+          "by": {
+            "_id": "u105",
+            "fullName": "Bob",
+            "imgUrl": "http://some-img"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "ev102",
+      "title": "Sunset Yoga at Gordon Beach",
+      "description": "Yoga prectice is one of the best weys to practice specially when its accurse on one of the spots in the world! we are looking for motivated people who want to enjoy ",
+      "createdBy": {
+        "_id": "u111",
+        "fullName": "Jenny Tieck",
+        "imgUrl": ""
+      },
+      "startsAt": 12122212134,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Gordon Beach, Tel-Aviv"
+      },
+      "tags": [
+        "dificult",
+        "sport",
+        "telAviv",
+        "sunset",
+        "sea",
+        "yoga"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240208/sprint%204/activitiesEv/sport/il_1140xN.733497179_4p4m_josols.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240459/sprint%204/activitiesEv/sport/sunsetyoga1_uqcvuy.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240032/sprint%204/activitiesEv/sport/Yoga-sunset_ub6brz.jpg"
+      ],
+      "maxCapacity": 50,
+      "price": 20,
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Nimi Shemo",
+          "imgUrl": "http://some-img"
+        },
+        {
+          "_id": "u103",
+          "fullName": "Kuki Levana",
+          "imgUrl": "http://some-img"
+        },
+        {
+          "_id": "u102",
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img1.jpg"
+          }
+        },
+        {
+          "id": "madeId",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img3.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
+          },
+          "by": {
+            "_id": "u105",
+            "fullName": "Bob",
+            "imgUrl": "http://some-img"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "ev107",
+      "title": "Sunset Yoga at Gordon Beach",
+      "description": "Yoga prectice is one of the best weys to practice specially when its accurse on one of the spots in the world! we are looking for motivated people who want to enjoy ",
+      "createdBy": {
         "_id": "u101",
         "fullName": "Jenny Tieck",
-        "userName": "Jenny",
-        "password": "secret",
-        "email": "jenny12@gmail.com",
-        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg",
-        "income": 320,
-        "prefs": [
-          "sport",
-          "yoga",
-          "wellBieng"
-        ]
-      }
-    ]
-  }
+        "imgUrl": ""
+      },
+      "startsAt": 12122212134,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Gordon Beach, Tel-Aviv"
+      },
+      "tags": [
+        "dificult",
+        "sport",
+        "telAviv",
+        "sunset",
+        "sea",
+        "yoga"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240032/sprint%204/activitiesEv/sport/Yoga-sunset_ub6brz.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240208/sprint%204/activitiesEv/sport/il_1140xN.733497179_4p4m_josols.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600240459/sprint%204/activitiesEv/sport/sunsetyoga1_uqcvuy.jpg"
+      ],
+      "maxCapacity": 50,
+      "price": 20,
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Nimi Shemo",
+          "imgUrl": "http://some-img"
+        },
+        {
+          "_id": "u103",
+          "fullName": "Kuki Levana",
+          "imgUrl": "http://some-img"
+        },
+        {
+          "_id": "u102",
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img1.jpg"
+          }
+        },
+        {
+          "id": "madeId",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user1",
+            "imgUrl": "/img/img3.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
+          },
+          "by": {
+            "_id": "u105",
+            "fullName": "Bob",
+            "imgUrl": "http://some-img"
+          }
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "_id": "o1225",
+      "cretatedAt": 9898989,
+      "buyer": "mini-user",
+      "totalPrice": 20,
+      "activity": {
+        "_id": "v140",
+        "title": "Sunset Yoga at Gordon Beach",
+        "createdBy": "Batata Ksbia",
+        "rate": 5
+      },
+      "status": "pending"
+    }
+  ],
+  "user": [
+    {
+      "_id": "u101",
+      "fullName": "Jenny Tieck",
+      "userName": "Jenny",
+      "password": "secret",
+      "email": "jenny12@gmail.com",
+      "facebook": "https://www.facebook.com/chen.edri.3",
+      "twitter": "",
+      "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg",
+      "income": 320,
+      "prefs": [
+        "sport",
+        "yoga",
+        "wellBieng"
+      ]
+    }
+  ]
+}
