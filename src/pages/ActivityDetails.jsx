@@ -76,7 +76,7 @@ export class _ActivityDetails extends Component {
                 </div>
                 <div className="lower-info-area flex">
                     <div className="flex column sa prefs">
-                        <h2 className="border-bottom">properties</h2>
+                        <h2 className="border-bottom:">properties</h2>
                         <div className="flex sa wrap">
                             {activity.tags.map((tag, idx) => <li key={idx}>{tag}</li>)}
                         </div>

@@ -1,0 +1,32 @@
+
+.main-user-container{
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    @include for-normal-layout {
+        grid-template-columns: 
+            minmax(20px, 1fr)
+            minmax(auto, $narrow-breakpoint)
+            minmax(20px, 1fr);
+    }
+}
+
+.prodile-header{
+    height: 400px;
+    max-width: fit-content;
+    text-align: center;
+}
+
+.profile-pic{
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 50%;
+}
+
+.user-activity-preview{
+    height: 150px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333333;
+    margin-bottom: 1rem;
+    & img{ width: 200px;}
+}
