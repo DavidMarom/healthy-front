@@ -6,6 +6,6 @@ export function Header(props) {
    
     return <header>
         <NavLink to="/">Home</NavLink>|
-        <NavLink to="/activity">MAINPAGE</NavLink>|
+        <NavLink to="/activity">Explore</NavLink>|
     </header>
 }

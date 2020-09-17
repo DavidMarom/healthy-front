@@ -55,7 +55,6 @@ class _ActivityEdit extends Component {
         const { activity } = this.state;
         console.log('activity', activity);
         if (!Object.keys(activity).length) return <h1>Loading...</h1>
-        //    var imgArr=JSON.parse(activity.imgUrls)
         var imgArr = activity.imgUrls;
         console.log('imgarr-', imgArr);
         return (
@@ -87,6 +86,7 @@ class _ActivityEdit extends Component {
                 </section> */}
 
 
+                 {/* multiple */}
                 <input type="file" onChange={this.uploadFile} />
                 <button disabled={this.state.isUploading} >Save</button>
 
