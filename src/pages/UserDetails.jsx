@@ -21,13 +21,16 @@ export class _UserDetails extends Component {
             income: 329,
             prefs: ['bascketball', 'intermediat diet', 'mediterian diet', 'samba']
         },
+        activities:this.props.activitiess,
         createdAct:{},
         particiipant:{}
     }
 
     componentDidMount() {
         this.props.loadActivities(this.state.currUser._id)
+        // this.uploadCreatedEvents();
     }
+
 
     render() {
         let activities = this.props.activities;
