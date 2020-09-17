@@ -59,20 +59,50 @@ export class _ActivityDetails extends Component {
         </div>
 
         <div className="event-main-container">
+          {/* LEFT SIDE */}
           <div className="event-left-side">
             <div className="event-creator-container">
               <div>
                 <h2>{activity.createdBy.fullName}</h2>
+                <h4>
+                  <div className="l-grey">{activity.createdBy.title}</div>
+                </h4>
               </div>
 
               <div>
                 <img className="creator-img" src={activity.createdBy.imgUrl} />
               </div>
             </div>
-          </div>
-          <div className="event-right-side"></div>
-        </div>
+            <div className="divider"></div>
 
+            <div>
+              <i className="far fa-calendar-alt"></i>
+              <p>{activity.startsAt}</p>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="event-right-side">
+            <div className="event-buy">
+              <div className="just-row">
+                <div className="moneyback">
+                  <i className="fas fa-money-bill-wave"></i>
+                  <p>Money back guarentied</p>
+                </div>
+
+                <div className="green-star">★</div>
+              </div>
+
+              <button
+                className="buy-btn"
+                onClick={() => this.purchaseActivity(activity, user, creator)}
+              >
+                Sign me up!
+              </button>
+            </div>
+          </div>
+          {/* END OF RIGHT SIDE */}
+        </div>
         <div className="main-info-container flex sb">
           <div className="main-info-card flex column">
             <h3 className="det-name f28 fw6">{activity.createdBy.fullName}</h3>

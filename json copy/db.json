@@ -7,6 +7,7 @@
         "createdBy": {
           "_id": "u101",
           "fullName": "Jenny Tieck",
+          "title": "Personal trainer",
           "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
         },
         "startsAt": 12122212134,
@@ -291,6 +292,7 @@
       {
         "_id": "u101",
         "fullName": "Jenny Tieck",
+        "title": "Personal trainer",
         "userName": "Jenny",
         "password": "secret",
         "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg",
