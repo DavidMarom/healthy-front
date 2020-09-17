@@ -6,7 +6,7 @@ import { userService } from '../services/userService.js'
 import { connect } from 'react-redux'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {UserActivityList} from '../cmps/user/UserActivityList'
+import { UserActivityList } from '../cmps/user/UserActivityList'
 
 
 export class _UserDetails extends Component {
@@ -15,11 +15,14 @@ export class _UserDetails extends Component {
             _id: 'u106',
             fullName: 'Marckus Smtart',
             userName: 'Markus',
+            email: 'mar.k@gmail.com',
             imgUrl: 'https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327859/sprint%204/users/80_uimgpd.jpg',
             password: 'e43asl',
             income: 329,
             prefs: ['bascketball', 'intermediat diet', 'mediterian diet', 'samba']
         },
+        createdAct:{},
+        particiipant:{}
     }
 
     componentDidMount() {
@@ -34,12 +37,18 @@ export class _UserDetails extends Component {
         if (!currUser) return <div>loading..</div>
         return (
             <div className="main-container">
-                <div className="prodile-header">
-                    <img className="profile-pic" src={currUser.imgUrl} />
-                    <h3>{currUser.fullName}</h3>
+                <div className="flex">
+                    <div className="prodile-header">
+                        <img className="profile-pic" src={currUser.imgUrl} />
+                        <h3>{currUser.fullName}</h3>
+                    </div>
+                    <div className="persinal-info flex column">
+                        <h4>{currUser.email}</h4>
+                        <h4>Income: ${currUser.income}</h4>
+                    </div>
                 </div>
                 <div className="main-info-container">
-                    <UserActivityList activities={activities}/>
+                    <UserActivityList activities={activities} />
                 </div>
             </div>
         )
