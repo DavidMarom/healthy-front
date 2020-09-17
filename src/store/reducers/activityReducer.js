@@ -13,7 +13,7 @@ export function activityReducer(state = initialState, action) {
             case 'EDIT_ACTIVITY':
                 return {
                     ...state,
-                    activities: state.activity.map(activity => {
+                    activities: state.activities.map(activity => {
                         if (action.activity._id === activity._id) return action.activity
                         return activity;
                     })
