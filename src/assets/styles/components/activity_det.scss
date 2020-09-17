@@ -47,10 +47,9 @@
 
 .main-info-container{
     background-color: $clr1;
-
+    z-index: 0;
     &hr{
         border:3px solid black;
-        z-index: 2;
         color:black;
     }
 }
@@ -63,7 +62,6 @@
 
 .right-payment-area{
     color:#4c4c4c;
-    
     flex-grow: 3;
     margin-left: 1rem;
     
@@ -75,10 +73,10 @@
     }
 }
 .payment-det{
-    background-color: $clr1;
+    background-color: #fff;
     min-height: rem(270px);
     border:1px solid #4c4c4c;
-    border-radius: 8px;
+    border-radius: 8px; 
     box-shadow: 2px;
     display: flex;
     flex-direction: column;

@@ -1,39 +1,32 @@
-.sugg-container-wrap{
-    margin-right:10%;
-    margin-left:10%;
-
+.sugg-container-wrap {
+    margin-right: 10%;
+    margin-left: 10%;
     margin-top: 20px;
-
 }
 
-.card-row{
+.card-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
 
-.card{
-    width:270px;
+.card {
+    width: 270px;
     height: 300px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
     margin-top: 15px;
 }
 
 .card:not(:first-of-type) {
-    margin-left:15px;
+    margin-left: 15px;
 }
 
-
-.card-img{
+.card-img {
     background-color: aquamarine;
     width: 270px;
     height: 180px;
     border-radius: 10px;
     overflow: hidden;
-
 }
