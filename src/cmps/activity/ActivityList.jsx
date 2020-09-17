@@ -4,9 +4,9 @@ import { Card } from '../Card.jsx'
 
 export function ActivityList({ activities , onRemove}) {
     return (
-        <div className="activity-list flex wrap">
+        <div className="activity-list flex">
             {
-                activities.map(activity => <Card activity={activity} key={activity._id} />)
+                activities.map(activity => <ActivityPreview activity={activity} key={activity._id} onRemove={onRemove} />)
             }
 
         </div>
