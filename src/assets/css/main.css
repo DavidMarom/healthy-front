@@ -1,8 +1,6 @@
 @import "jumbo.css";
 @import "suggested.css";
-
-
-
+@import "event.css";
 * {
     box-sizing: border-box;
 }
@@ -20,20 +18,18 @@ button {
     cursor: pointer;
 }
 
-
-
-
 /* helpers */
 
 /* flex */
 
-.flex{
-    display:flex;
+.flex {
+    display: flex;
 }
 
-.wrap{
+.wrap {
     flex-wrap: wrap;
 }
+
 .space-between {
     justify-content: space-between;
 }
@@ -46,17 +42,14 @@ button {
     justify-content: space-evenly;
 }
 
-
 .align-center {
     align-items: center;
 }
 
 /* list */
+
 .clean-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-
-
-

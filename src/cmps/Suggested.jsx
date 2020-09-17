@@ -26,6 +26,9 @@ class _Suggested extends Component {
           {activities.map((activity) => (
             <Card activity={activity} key={activity._id} />
           ))}
+          
+
+          
         </div>
       </section>
     );
