@@ -47,7 +47,6 @@
 
 .main-info-container{
     background-color: $clr1;
-    margin-bottom:1rem;
 
     &hr{
         border:3px solid black;
@@ -72,7 +71,7 @@
         padding: 20px;
         border-radius: 12px;
         font-size: 22px;
-        background-color: $clr2;
+        background-color: $clr3;
     }
 }
 .payment-det{
@@ -94,14 +93,15 @@
     background-color: $clr1;
     margin-bottom: rem(50px);
 }
+
 .prefs{
     flex-grow: 5;
-    background-color: $clr4;
+    border-bottom:1px solid black;
     color: #323232;
 }
 
 .fitchers-info{
-    background-color: $clr6;
+    background-color: $clr1;
     flex-grow: 3;
     margin-left: 1rem;
 
