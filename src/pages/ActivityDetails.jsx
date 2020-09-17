@@ -67,6 +67,7 @@ export class _ActivityDetails extends Component {
                 <h2>{activity.createdBy.fullName}</h2>
               </div>
 
+<<<<<<< HEAD
               <div>
                 <img
                   className="creator-img"
@@ -116,6 +117,42 @@ export class _ActivityDetails extends Component {
             </div>
             <div className="tac">⭐⭐⭐⭐⭐</div>
             {/* <div className="rev-det">Reviews
+=======
+    render() {
+        const { activity, user, creator } = this.state;
+        if (!activity) return <h1>Loading...</h1>
+        return (
+            <div className="main-details-card">
+                <h2 className="f20 title">{activity.title}</h2>
+                <div className="image-gallery">
+                    {activity.imgUrls.map((img, idx) => <img className={`img${idx}`} key={idx} src={img} />)}
+                </div>
+                <div className="main-info-container flex sb">
+                    <div className="main-info-card flex column">
+                        <h3 className="det-name f28 fw6">{activity.createdBy.fullName}</h3>
+                        <h5>{activity.location.address}</h5>
+                        <p className="fs18 fw4 clr6">{activity.description}</p>
+                    </div>
+                    <div className="right-payment-area flex column sa">
+                        <div className="payment-det">
+                            <h4>Price: ${activity.price}</h4>
+                            <button onClick={()=>this.purchaseActivity(activity,user, creator)}>Buy this ITEM!</button>
+                        </div>
+                        <div className="attendings">
+                            <h3>Attending</h3>
+                            {activity.participants.map((participant, idx) => <img className="attending-img"key={idx} src={participant.imgUrl} />)}
+                        </div>
+                    </div>
+                </div>
+                <div className="lower-info-area flex">
+                    <div className="flex column sa prefs">
+                        <h2 className="border-bottom:">properties</h2>
+                        <div className="flex sa wrap">
+                            {activity.tags.map((tag, idx) => <li key={idx}>{tag}</li>)}
+                        </div>
+                        <div className="tac">⭐⭐⭐⭐⭐</div>
+                        {/* <div className="rev-det">Reviews
+>>>>>>> 5ca0dbc7c8df7150d61f01143f7d56e4ed698b23
                         {activity.reviews.map((review, idx)=> {
                         <ul key={idx}>
                             <li>{review}</li>
