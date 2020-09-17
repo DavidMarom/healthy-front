@@ -1,0 +1,76 @@
+// Font Sizes
+.fs12 { font-size: rem(12px); }
+.fs14 { font-size: rem(14px); }
+.fs18 { font-size: rem(18px); }
+.fs20 { font-size: rem(20px); }
+.fs24 { font-size: rem(24px); }
+.fs28 { font-size: rem(28px); }
+.fs30 { font-size: rem(30px); }
+
+//font weights
+.fw4{
+    font-weight:400;
+}
+
+.fw6{
+    font-weight: 600;
+}
+//colors:
+.clr1{color: $clr1;}
+.clr2{color: $clr2;}
+.clr3{color: $clr3;}
+.clr4{color: $clr4;}
+.clr5{color: $clr5;}
+.clr6{color: $clr6;}
+
+
+// flex helpers
+
+.flex {
+
+    display: flex;
+
+    > *.full {
+        flex: 1;
+    }
+    &.column {
+        flex-direction: column;
+    }
+    &.justify-center {
+        justify-content: center;
+    }
+    &.align-center {
+        align-items: center;
+    }
+    &.sb{
+        justify-content: space-between;
+    }
+    &.sa{
+        justify-content: space-around;
+    }
+    &.wrap{
+        flex-wrap: wrap;
+    }
+}
+
+li{
+    list-style: none outside none;
+}
+
+
+.tac{
+    text-align: center;
+}
+
+
+// Media helpers
+
+.square-ratio {
+    @include aspect-ratio(1, 1);
+}
+.video-ratio {
+    @include aspect-ratio(16, 9);
+}
+.portrait-ratio {
+    @include aspect-ratio(9, 16);
+}
