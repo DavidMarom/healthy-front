@@ -9,7 +9,6 @@ export function activityReducer(state = initialState, action) {
                 ...state,
                 activities: action.activities
             }
-
             case 'EDIT_ACTIVITY':
                 return {
                     ...state,
