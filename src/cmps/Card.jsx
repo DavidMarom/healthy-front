@@ -1,14 +1,20 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 export function Card(props) {
+  const activity=props.activity;
+  console.log(activity);
   return (
-    <section>
+    <section><Link to ={`activity/${activity._id}`}>
       <div className="card">
         <div className="card-img">
-          <p>image</p>
+          <img src={activity.imgUrls[0]} />
         </div>
-        <div className="card-text">Card 01</div>
+        <div className="card-text">{activity.title}
+        </div>
+        
       </div>
+      </Link>
     </section>
   );
 }
