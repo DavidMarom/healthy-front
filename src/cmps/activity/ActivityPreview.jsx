@@ -4,7 +4,7 @@ import { activityService } from '../../services/activityService'
 
 export function ActivityPreview({activity, onRemove}) {
     return (
-        <div className="activity-preview">
+        <div className="activity-preview card">
         <img src ={activity.imgUrls[0]} alt=""/>
         <h4>{activity.title}</h4>
         <li>{activity.startsAt}</li>
