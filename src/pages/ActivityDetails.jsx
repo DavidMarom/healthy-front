@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { activityService } from '../services/activityService.js'
 import {saveActivity} from "../store/actions/activityActions"
+import {updateUser} from "../store/actions/userActions"
+import {userService} from '../services/userService.js'
 import { connect } from 'react-redux'
 // import {ChatRoom} from '../cmps/ChatRoom.jsx'
 
@@ -10,35 +12,44 @@ export class _ActivityDetails extends Component {
     state = {
         activity: null,
         user: {
-            _id: 'u102',
-            fullName: 'Kuki Levana',
-            imgUrl:'https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg'
-        }
+            _id: 'u106',
+            fullName: 'Debora faringham',
+            imgUrl:'https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg'
+        },
+        creator:''
     }
 
     componentDidMount() {
-        this.loadActivity();
+        this.loadActivity()
     }
 
-    loadActivity() {
+    loadActivity =() => {
         console.log(this.props.match.params.activityId);
         const activityId = this.props.match.params.activityId;
         activityService.getById(activityId)
             .then(activity => {
-                this.setState({ activity })
+                this.setState({ activity }, ()=> this.loadCreator(activity.createdBy._id))
             })
     }
 
-    purchaseActivity(activity, user){
-        console.log(user);
-        console.log(activity);
+    loadCreator = (id) =>{
+        userService.getById(id)
+        .then(creator=>{
+            console.log('creator',creator);
+            this.setState({creator})
+        })
+    }
+
+    purchaseActivity(activity, user, creator){
+        creator.income += activity.price;
+        this.props.updateUser(creator);
         activity.participants.push(user);
         this.props.saveActivity(activity);
     }
 
 
     render() {
-        const { activity, user } = this.state;
+        const { activity, user, creator } = this.state;
         if (!activity) return <h1>Loading...</h1>
         return (
             <div className="main-details-card">
@@ -55,7 +66,7 @@ export class _ActivityDetails extends Component {
                     <div className="right-payment-area flex column sa">
                         <div className="payment-det">
                             <h4>Price: ${activity.price}</h4>
-                            <button onClick={()=>this.purchaseActivity(activity,user)}>Buy this ITEM!</button>
+                            <button onClick={()=>this.purchaseActivity(activity,user, creator)}>Buy this ITEM!</button>
                         </div>
                         <div className="attendings">
                             <h3>Attending</h3>
@@ -96,7 +107,8 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    saveActivity
+    saveActivity,
+    updateUser
 }
 
 export const ActivityDetails = connect(mapStateToProps, mapDispatchToProps)(_ActivityDetails)
