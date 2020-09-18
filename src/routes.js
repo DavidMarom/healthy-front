@@ -2,7 +2,9 @@ import { ActivityApp } from './pages/ActivityApp.jsx'
 import { ActivityDetails } from './pages/ActivityDetails.jsx'
 import { ActivityEdit } from './pages/ActivityEdit.jsx'
 import { HomeApp } from './pages/HomeApp.jsx'
-import { UserDetails} from './pages/UserDetails.jsx'
+import { UserDetails} from './pages/user/UserDetails.jsx'
+import { Login } from './pages/user/Login.jsx'
+import { SignUp} from './pages/user/SignUp.jsx'
 // import { About } from './pages/About.jsx'
 // import { Login } from './pages/Login.jsx'
 // import { Dashboard } from './pages/Dashboard.jsx'
@@ -30,6 +32,14 @@ export default [
     {
         path: '/user',
         component: UserDetails
+    },
+    {
+        path: '/login',
+        component: Login
+    },
+    {
+        path: '/signUp',
+        component: SignUp
     },
     {
         path: '/',
