@@ -10,9 +10,6 @@ class _ActivityApp extends Component {
 
     state = {
         filterBy: '',
-        searchBy: {
-            title: ''
-        }
     }
 
     componentDidMount() {

@@ -1,6 +1,10 @@
 const initialState = {
     activities: [],
-    searchBy: null
+    searchBy:{
+        title:''
+    }
+        
+    
 }
 
 export function activityReducer(state = initialState, action) {

@@ -7,7 +7,7 @@ export function ActivityPreview({ activity }) {
         <div className="activity-preview card">
             <Link to={`activity/${activity._id}`}>
                 <div className="card-img">
-                    <img src={activity.imgUrls[0]} />
+                    <img className="img-fit" src={activity.imgUrls[0]} />
                 </div>
                 <h4>{activity.title}</h4>
                 <li>{activity.startsAt}</li>

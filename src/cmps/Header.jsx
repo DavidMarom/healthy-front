@@ -9,6 +9,7 @@ export class Header extends Component {
 
     state = {
         isHomePage: false
+
     }
 
     unsubscribeHome;
@@ -32,17 +33,23 @@ export class Header extends Component {
     render() {
         const { isHomePage } = this.state
         return <header className="main-header">
-            <div className="logo">
-                <NavLink to="/">Home</NavLink>
+            <div className="left-end">
+                <div className="logo">
+                    <NavLink to="/">Logo</NavLink>
+                </div>
+                <div>
+                    <NavLink to="/activity">Explore</NavLink>
+                </div>
             </div>
-            <div>
-                <NavLink to="/activity">Explore</NavLink>
-            </div>
-            {!isHomePage && <SearchBox />}
 
-            <div>
-                <NavLink to={`/user`}>UserProfile</NavLink>
+            {!isHomePage && <SearchBox cssClass={'header-search'} />}
+
+            <div className="right-end">
+                <div>
+                    <NavLink to={`/user`}>UserProfile</NavLink>
+                </div>
             </div>
+
         </header>
     }
 }

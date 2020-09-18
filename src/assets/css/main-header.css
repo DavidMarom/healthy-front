@@ -1,0 +1,42 @@
+.main-header {
+    height: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #DCDCDC;
+}
+
+.header-search {
+    width: 28%;
+    height: 47px;
+    background-color: #ffffff;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #DCDCDC;
+}
+
+.header-search .search-btn {
+    height: 30px;
+    width: 40px;
+}
+
+.right-end {
+    display: flex;
+    align-items: center;
+}
+
+.right-end :last-child {
+    margin: 10px;
+}
+
+.left-end {
+    display: flex;
+    align-items: center;
+}
+
+.left-end :last-child {
+    margin: 10px;
+}
