@@ -30,7 +30,6 @@ export function UserSchedule({ activities }) {
          <li>20-22</li>
          <li>22-24</li>
        </ul>
-       <ul>{activities</ul>
      </div>
     )
 }
