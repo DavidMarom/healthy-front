@@ -58,15 +58,37 @@
     width: rem(100px);
   }
 }
-.schedule {
-  height: rem(500px);
-  width: rem(400px);
-  border: 1px solid black;
+
+
+.timetable {
+  border:1px solid #333333;
+  margin: 0;
   padding: 0;
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: 60px repeat(7, 40px);
+  grid-template-rows: repeat(12, 30px);
 }
-.hour {
+
+.titleWrapper {
   font-weight: 600;
-  &li{
-      padding-bottom: 5px;
-  }
+  background-color: $clr3;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-column: 1 / 9;
+  grid-gap: 4px;
+  grid-template-columns: 60px repeat(7, 40px);
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+  justify-items: center;
+}
+
+.timeWrapper {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-row: 2 / 14;
+  grid-gap: 4px;
+  grid-template-rows: repeat(12, 30px);
 }

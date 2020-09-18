@@ -1,11 +1,13 @@
+import { getByTitle } from '@testing-library/react'
 import React from 'react'
 
 
-export function UserSchedule({ user }) {
+export function UserSchedule({ activities }) {
+
     return (
-     <div className="schedule">
-       <ul className="flex sb p0">
-         <li>HOURS</li>
+     <div class="timetable fs14">
+       <ul className="titleWrapper">
+         <li>Time</li>
          <li>MON</li>
          <li>TUE</li>
          <li>WED</li>
@@ -14,19 +16,19 @@ export function UserSchedule({ user }) {
          <li>SAT</li>
          <li>SUN</li>
        </ul>
-       <ul className="p0 tal hour">
-         <li>1-3</li>
-         <li>3-5</li>
-         <li>5-7</li>
-         <li>7-9</li>
-         <li>9-11</li>
-         <li>11-13</li>
-         <li>13-15</li>
-         <li>15-17</li>
-         <li>17-19</li>
-         <li>19-21</li>
-         <li>21-23</li>
-         <li>23-1</li>
+       <ul className="timeWrapper">
+         <li>0-2</li>
+         <li>2-4</li>
+         <li>4-6</li>
+         <li>6-8</li>
+         <li>8-10</li>
+         <li>10-12</li>
+         <li>12-14</li>
+         <li>14-16</li>
+         <li>16-18</li>
+         <li>18-20</li>
+         <li>20-22</li>
+         <li>22-24</li>
        </ul>
      </div>
     )
