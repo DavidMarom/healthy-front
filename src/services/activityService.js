@@ -5,9 +5,10 @@ export const activityService = {
   getById,
   remove,
   getEmpty,
-  // update,
+  update,
   // add
-  save
+  save,
+  addRate
 
 }
 
@@ -49,6 +50,15 @@ async function save(activity) {
     return httpService.post(`activity`, activity)
   }
 }
+
+
+function addRate(event, rate) {
+  
+  // event.rate.push(rate)
+  // return HttpService.put(`${baseUrl}/${activity._id}`, event)
+
+}
+
 
 function getEmpty() {
   return {

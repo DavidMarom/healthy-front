@@ -50,9 +50,12 @@ export class _ActivityDetails extends Component {
     this.props.saveActivity(activity);
   }
 
-  aaa = (value) => {
+  onRate = (activity,value) => {
     console.log(value);
-  };
+    activityService.addRate(activity,value)
+
+
+};
 
   render() {
     const { value, setHover, labels, hover } = this.state;
@@ -121,7 +124,7 @@ export class _ActivityDetails extends Component {
                   name="simple-controlled"
                   value={value}
                   onChange={(event, newValue) => {
-                    this.aaa(newValue);
+                    this.onRate(activity,newValue);
                   }}
                 />
               </Box>
