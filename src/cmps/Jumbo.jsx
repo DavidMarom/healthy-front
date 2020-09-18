@@ -1,16 +1,12 @@
 import React, { Component } from "react";
+import { SearchBox } from '../cmps/activity/SearchBox.jsx'
 
 
 export function Jumbo(props) {
   return (
     <section>
       <div className="jumbo">
-        <div className="main-search">
-          <div></div>
-          <div className="search-btn">
-            <i className="fas fa-search"></i>
-          </div>
-        </div>
+      <SearchBox />
           <div className="v-space"></div>
           <div className="slogan">
               <h2>Live Healthy</h2>
@@ -22,3 +18,11 @@ export function Jumbo(props) {
     </section>
   );
 }
+
+{/* <div className="main-search">
+<div className="search-btn">
+  <i className="fas fa-search"></i>
+</div>
+</div> */}
+
+
