@@ -6,7 +6,7 @@ export function Jumbo(props) {
   return (
     <section>
       <div className="jumbo">
-        <SearchBox cssClass={'jumbo-search'} />
+        <SearchBox cssClass={'jumbo-search'}/>
         <div className="v-space"></div>
         <div className="slogan">
           <h2>Live Healthy</h2>
@@ -18,3 +18,9 @@ export function Jumbo(props) {
     </section>
   );
 }
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 0b94e9f25bf02f481b9361472bb00741a0565e70

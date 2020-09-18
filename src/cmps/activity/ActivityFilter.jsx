@@ -22,10 +22,6 @@ export class ActivityFilter extends Component {
         return (
             <form onSubmit={(ev) => ev.preventDefault()}>
              
-           
-
-
-
             </form>
         )
     }

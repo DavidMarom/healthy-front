@@ -113,7 +113,7 @@
         "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
       },
       "dayInWeek": 1,
-      "hour":8,
+      "hour": 8,
       "location": {
         "lat": 32.0827,
         "lng": 34.7674,
@@ -211,7 +211,7 @@
         "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
       },
       "dayInWeek": 3,
-      "hour":18,
+      "hour": 18,
       "location": {
         "lat": 32.0827,
         "lng": 34.7674,
@@ -312,7 +312,7 @@
         "imgUrl": ""
       },
       "dayInWeek": 3,
-      "hour":10,
+      "hour": 10,
       "location": {
         "lat": 32.0827,
         "lng": 34.7674,
@@ -399,8 +399,8 @@
         "fullName": "Jenny Tieck",
         "imgUrl": ""
       },
-      "dayInWeek":5,
-      "hour":18,
+      "dayInWeek": 5,
+      "hour": 18,
       "location": {
         "lat": 32.0827,
         "lng": 34.7674,
@@ -436,6 +436,11 @@
           "_id": "u102",
           "fullName": "Kuki Levana",
           "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+        },
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
         }
       ],
       "reviews": [
@@ -505,7 +510,7 @@
       "facebook": "https://www.facebook.com/chen.edri.3",
       "twitter": "",
       "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg",
-      "income": 320,
+      "income": 340,
       "prefs": [
         "sport",
         "yoga",
