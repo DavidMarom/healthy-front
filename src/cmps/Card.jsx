@@ -7,9 +7,10 @@ export function Card(props) {
     <section><Link to ={`activity/${activity._id}`}>
       <div className="card">
         <div className="card-img">
-          <img className="img-fit" src={activity.imgUrls[0]} />
+          <img className="img-fit" src={activity.imgUrls[0]} alt="" />
         </div>
         <div className="card-text">{activity.title}
+    {activity.subtitle}
         </div>
         
       </div>

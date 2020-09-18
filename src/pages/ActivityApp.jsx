@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { loadActivities, removeActivity, setFilterBy } from "../store/actions/activityActions"
 import { ActivityFilter } from '../cmps/activity/ActivityFilter';
 import { ActivityList } from '../cmps/activity/ActivityList';

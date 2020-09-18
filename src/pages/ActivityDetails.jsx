@@ -63,7 +63,6 @@ export class _ActivityDetails extends Component {
             <img className={`img${idx} gallery__img`} key={idx} src={img} />
           ))}
         </div>
-
         <div className="event-main-container">
           {/* LEFT SIDE */}
           <div className="event-left-side">
@@ -140,14 +139,14 @@ export class _ActivityDetails extends Component {
                 />
               ))}
             </div>
-            <img src={require('../assets/img/map.jpg')} />
+            <img src={require("../assets/img/map.jpg")} />
           </div>
           {/* END OF RIGHT SIDE */}
         </div>
-        <div className="divider d-hi"></div>
-
 
       </div>
+
+      
     );
   }
 }
