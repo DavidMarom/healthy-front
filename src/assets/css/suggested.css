@@ -24,9 +24,15 @@
 }
 
 .card-img {
-    background-color: aquamarine;
+    background-color: rgb(179, 179, 179);
     width: 270px;
     height: 180px;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.img-fit {
+    object-fit: cover;
+    height: 100%;
+    width: 100%; 
 }

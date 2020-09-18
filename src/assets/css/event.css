@@ -53,6 +53,7 @@
 }
 
 .green-star {
+    display: inline;
     color: #42c054;
 }
 
@@ -74,14 +75,38 @@ p {
     background-color: #dddddd;
 }
 
+.d-hi {
+    margin-top: 70px;
+}
+
 .buy-btn {
     background-color: #43c155;
     border-radius: 10px;
     border: 1px solid #31933e;
     color: #ffffff;
-    height: 50px ;
-    width:90%;
-    margin-right:auto ;
-    margin-left:auto ;
+    height: 50px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
     font-size: x-large;
-    font-family: 'Varela Round', sans-serif;}
+    font-family: 'Varela Round', sans-serif;
+}
+
+.center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.text-box {
+    margin-top: 30px;
+}
+
+.marg-right {
+    margin-right: 10px;
+    display: inline;
+}
+
+.in-line {
+    display: inline;
+}

@@ -1,24 +1,32 @@
+.main-details-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 24.5rem auto;
 
-.main-details-card{
-    display: flex;
-    flex-direction: column;
-    margin: 1rem 10rem auto;
+  .image-gallery {
+    margin: 2rem 0 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+    grid-auto-flow: dense;
+    border-radius: 10px;
+    overflow: hidden;
 
-    .image-gallery{
-        margin: 0 0 2rem 0;
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
-        grid-gap: 10px; 
-        grid-auto-flow: dense;
-        
-    img:first-child{
-            // grid-area: myArea;
-            height: 573px;
-            grid-row-start: 1;
-            grid-row-end: 3;
-            grid-column-start: 1;
-            grid-column-end: 3;
-        }
+    img:first-child {
+      // grid-area: myArea;
+      height: 555px;
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    .gallery__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     // img:not(:first-child){
     // }
 
@@ -35,94 +43,93 @@
     //     grid-column-start: 3;
     //     grid-column-end: 5;
     // }
-    }
+  }
 
-    .det-name{
-        padding-top: 1rem;
-        color: #323232;
-        font-family: "Varela Round";
-        border-bottom:1px solid black;
-    }
-}
-
-.main-info-container{
-    background-color: $clr1;
-    z-index: 0;
-    &hr{
-        border:3px solid black;
-        color:black;
-    }
-}
-
-.main-info-card{
-    flex-grow:4;
-    min-height: rem(500px);
-    
-}
-
-.right-payment-area{
-    color:#4c4c4c;
-    flex-grow: 3;
-    margin-left: 1rem;
-    
-    &.right-payment-area button{
-        padding: 20px;
-        border-radius: 12px;
-        font-size: 22px;
-        background-color: $clr3;
-    }
-}
-.payment-det{
-    background-color: #fff;
-    min-height: rem(270px);
-    border:1px solid #4c4c4c;
-    border-radius: 8px; 
-    box-shadow: 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-}
-
-
-.lower-info-area{
-    flex-grow: 2;
-    min-height: rem(300px);
-    background-color: $clr1;
-    margin-bottom: rem(50px);
-}
-
-.prefs{
-    flex-grow: 5;
-    border-bottom:1px solid black;
+  .det-name {
+    padding-top: 1rem;
     color: #323232;
+    font-family: "Varela Round";
+    border-bottom: 1px solid black;
+  }
 }
 
-.fitchers-info{
-    background-color: $clr1;
-    flex-grow: 3;
-    margin-left: 1rem;
-
-    & >*{
-        background-color: orange;
-        height: 250px;
-        width:250px;
-        margin: 10px auto;
-        text-align: center;
-    }
+.main-info-container {
+  background-color: $clr1;
+  z-index: 0;
+  &hr {
+    border: 3px solid black;
+    color: black;
+  }
 }
 
-.attendings{
-    border-top:1px solid #4c4c4c;
-    border-bottom:1px solid #4c4c4c;
-    min-height:rem(150px);
-    background-color: $clr1;
-    border-radius: 5px;
+.main-info-card {
+  flex-grow: 4;
+  min-height: rem(500px);
 }
 
-.attending-img{
-    max-width: 40px;
-    max-height: 40px;
-    border-radius: 50px;
-    padding-right: 4px;
+.right-payment-area {
+  color: #4c4c4c;
+  flex-grow: 3;
+  margin-left: 1rem;
+
+  &.right-payment-area button {
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 22px;
+    background-color: $clr3;
+  }
+}
+.payment-det {
+  background-color: #fff;
+  min-height: rem(270px);
+  border: 1px solid #4c4c4c;
+  border-radius: 8px;
+  box-shadow: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.lower-info-area {
+  flex-grow: 2;
+  min-height: rem(300px);
+  background-color: $clr1;
+  margin-bottom: rem(50px);
+}
+
+.prefs {
+  flex-grow: 5;
+  border-bottom: 1px solid black;
+  color: #323232;
+}
+
+.fitchers-info {
+  background-color: $clr1;
+  flex-grow: 3;
+  margin-left: 1rem;
+
+  & > * {
+    background-color: orange;
+    height: 250px;
+    width: 250px;
+    margin: 10px auto;
+    text-align: center;
+  }
+}
+
+.attendings {
+  margin-top: 35px;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  min-height: rem(150px);
+  background-color: #ffffff;
+  padding-top: 20px;
+}
+
+.attending-img {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50px;
+  padding-right: 4px;
 }

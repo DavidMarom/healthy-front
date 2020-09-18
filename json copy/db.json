@@ -3,10 +3,12 @@
     {
       "_id": "ev103",
       "title": "Mindfulness Seminar",
+      "subtitle": "A 20 people group seminar taking place once a week",
       "description": "Join us and learn the secrets of Mindfulness. Acquire behavioral tools that will help you overcome obstecles and everyday challenges!",
       "createdBy": {
         "_id": "u106",
         "fullName": "Shein Roen",
+        "title": "personal trainer",
         "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
       },
       "dayInWeek": 2,
@@ -29,8 +31,7 @@
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379690/sprint%204/activitiesEv/well-bieng/mindfulness/Lifestyle_Program_San_Francisco_qvxvsp.jpg",
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600378937/sprint%204/activitiesEv/well-bieng/mindfulness/2367993-46_bisejp.jpg",
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379291/sprint%204/activitiesEv/well-bieng/mindfulness/bigstock-Zen-yoga-woman-doing-meditatio-86028956_fzayj8.jpg",
-        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379594/sprint%204/activitiesEv/well-bieng/mindfulness/groupmeditating_hmfbjd.jpg",
-        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379803/sprint%204/activitiesEv/well-bieng/mindfulness/p276m2099454-rev-1000px-wide_vt4dtc.jpg"
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379594/sprint%204/activitiesEv/well-bieng/mindfulness/groupmeditating_hmfbjd.jpg"
       ],
       "maxCapacity": 10,
       "price": 100,
@@ -497,6 +498,7 @@
       "_id": "u101",
       "fullName": "Jenny Tieck",
       "userName": "Jenny",
+      "title": "personal trainer",
       "password": "secret",
       "email": "jenny12@gmail.com",
       "facebook": "https://www.facebook.com/chen.edri.3",
