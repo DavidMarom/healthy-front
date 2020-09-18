@@ -46,6 +46,8 @@ export class Header extends Component {
 
             <div className="right-end">
                 <div>
+                    <NavLink to={`/login`}>Login</NavLink>
+                    <NavLink to={`/signUp`}>SignUp</NavLink>
                     <NavLink to={`/user`}>UserProfile</NavLink>
                 </div>
             </div>

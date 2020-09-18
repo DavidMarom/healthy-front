@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { activityService } from "../services/activityService.js";
 import { saveActivity } from "../store/actions/activityActions";
-import { updateUser } from "../store/actions/userActions";
+import { updateUser, loadUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 // import {ChatRoom} from '../cmps/ChatRoom.jsx'
@@ -103,9 +103,8 @@ export class _ActivityDetails extends Component {
               ))}
             </div>
             <div className="divider d-hi"></div>
-<p>Rate</p>
+            <p>Rate</p>
             <div className="tac">⭐⭐⭐⭐⭐</div>
-
           </div>
 
           {/* RIGHT SIDE */}
@@ -147,7 +146,7 @@ export class _ActivityDetails extends Component {
         </div>
         <div className="divider d-hi"></div>
 
-        
+
       </div>
     );
   }
@@ -156,7 +155,7 @@ export class _ActivityDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     activities: state.activityReducer.activities,
-    // user: state.userReducer.loggedinUser;
+    user: state.userReducer.loggedInUser
   };
 };
 const mapDispatchToProps = {

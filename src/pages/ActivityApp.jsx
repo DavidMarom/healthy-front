@@ -44,7 +44,6 @@ class _ActivityApp extends Component {
         return searchedActivities
     }
 
-
     render() {
         const activities = this.getActivitiesForDisplay();
         if (!activities) return <div>Loading....</div>
