@@ -4,33 +4,37 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setSearchBy } from '../../store/actions/activityActions'
 
+
 export class _SearchBox extends Component {
     state = {
-        title: ''
+        searchBy: {
+            title: ''
+        },
+    }
+   
+    componentDidMount() {
+     const searchBy = new URLSearchParams(this.props.location.search).get('searchBy') || ''
+     this.setState({ searchBy:{title:searchBy} }, () => this.props.setSearchBy(this.state.searchBy))
     }
 
     handleChange = ({ target }) => {
         const field = target.name
         const value = target.value
-        this.setState({ [field]: value }, () => {
-            this.props.setSearchBy(this.state)
-            console.log(this.state);
+        this.setState({ searchBy: { ...this.state.searchBy, [field]: value } }, () => {
+            this.props.setSearchBy(this.state.searchBy)
         })
     }
 
     onClickSearchButton = () => {
-        this.props.history.push('/activity')
+        const searchBy=this.state.searchBy.title
+        this.props.history.push(`/activity?searchBy=${searchBy}`)
     }
-
 
     render() {
         const cssClass = this.props.cssClass
-        const isStateTitleEmpty = this.state.title == ''
-        let value;
-        value=isStateTitleEmpty? this.props.searchBy.title : this.state.title
         return (
             <div className={cssClass}>
-                <input className="search-input" name="title" type="text" value={value} onChange={this.handleChange} />
+                <input className="search-input" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} />
                 <div className="search-btn" onClick={this.onClickSearchButton}>
                     <i className="fas fa-search"></i>
                 </div>
@@ -38,7 +42,6 @@ export class _SearchBox extends Component {
         )
     }
 }
-
 
 const mapStateToProps = state => {
     return {

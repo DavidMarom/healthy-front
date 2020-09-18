@@ -11,7 +11,7 @@ export function ActivityPreview({ activity }) {
                 </div>
                 <h4>{activity.title}</h4>
                 <li>{activity.startsAt}</li>
-                <p>{activity.description}</p>
+                <p>{activity.subtitle}</p>
                 <li>{activity.location.address}</li>
                 <h5>{activity.createdBy.fullName}</h5>
                 <li>${activity.price}</li>

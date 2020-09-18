@@ -1,10 +1,13 @@
 import React, { Component } from "react"
+import { connect } from 'react-redux'
+
 import { Jumbo } from "../cmps/Jumbo"
 import { Suggested } from "../cmps/Suggested"
 import eventBus from '../services/event-bus-service.js'
+import { setSearchBy } from '../store/actions/activityActions.js'
 
-export class HomeApp extends Component {
-  state = {};
+export class _HomeApp extends Component {
+
 
   componentDidMount() {
     eventBus.emit('homePage')
@@ -25,3 +28,15 @@ export class HomeApp extends Component {
     );
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+      searchBy: state.activityReducer.searchBy
+  }
+}
+
+const mapDispatchToProps = {
+  setSearchBy
+}
+export const HomeApp = connect(mapStateToProps, mapDispatchToProps)(_HomeApp)

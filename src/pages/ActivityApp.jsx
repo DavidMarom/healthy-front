@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { loadActivities, removeActivity, setFilterBy } from "../store/actions/activityActions"
+import { loadActivities, removeActivity} from "../store/actions/activityActions"
 import { ActivityFilter } from '../cmps/activity/ActivityFilter';
 import { ActivityList } from '../cmps/activity/ActivityList';
 
@@ -14,7 +13,6 @@ class _ActivityApp extends Component {
 
     componentDidMount() {
         this.props.loadActivities(this.state.filterBy);
-        console.log(this.props);
     }
 
     componentDidUpdate(prevProps) {
@@ -23,9 +21,7 @@ class _ActivityApp extends Component {
         if (prevProps.searchBy.title !== this.props.searchBy.title) this.props.loadActivities(this.state.filterBy)
     }
 
-    onDelete = () => {
-    }
-
+  
     onSetFilter = (filterBy = {}) => {
         this.setState({ filterBy }, () => this.props.loadActivities(this.state.filterBy));
     }

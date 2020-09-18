@@ -54,3 +54,12 @@ button {
     margin: 0;
     padding: 0;
 }
+
+.img-edit{
+    width: 200px;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:8px;
+}
