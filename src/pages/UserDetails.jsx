@@ -76,7 +76,7 @@ export class _UserDetails extends Component {
                             <h4>Preferences</h4>
                             <ul>{currUser.prefs.map((pref, idx) => <li className="tal" key={idx}>{pref}</li>)}</ul>
                             <div className="calender">
-                                <UserSchedule user={currUser}/>
+                                <UserSchedule activities={partOfEvents}/>
                         </div>
                         </div>
                     </div>
