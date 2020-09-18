@@ -1,32 +1,72 @@
-
-.main-user-container{
-    display: grid;
-    grid-template-columns: 20px 1fr 20px;
-    @include for-normal-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
-    }
+.main-user-container {
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  @include for-normal-layout {
+    grid-template-columns:
+      minmax(20px, 1fr)
+      minmax(auto, $narrow-breakpoint)
+      minmax(20px, 1fr);
+  }
 }
 
-.prodile-header{
-    height: 400px;
-    max-width: fit-content;
-    text-align: center;
+.mt50 {
+  margin-top: rem(50px);
+  padding-top: rem(20px);
+  border-top: 1px solid #2222;
 }
 
-.profile-pic{
-    max-width: 300px;
-    max-height: 300px;
-    border-radius: 50%;
+.persinal-info {
+  // height: rem(400px);
+  // padding-left: rem(50px);
+  // padding-top: rem(80px);
+  justify-items: center;
+}
+.profile-pic {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 50%;
 }
 
-.user-activity-preview{
-    height: 150px;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #333333;
-    margin-bottom: 1rem;
-    & img{ width: 200px;}
+.dashbord-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 70px 70px 70px 70px;
+  -moz-border-radius: 70px 70px 70px 70px;
+  -webkit-border-radius: 70px 70px 70px 70px;
+  border: 8px solid #000000;
+  background-color: #71c468;
+  text-align: center;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  color: $clr1;
+}
+
+.main-info-container {
+  margin-bottom: rem(50px);
+}
+
+.user-activity-preview {
+  height: fit-content;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333333;
+  margin-bottom: 0.4rem;
+  & img {
+    width: rem(100px);
+  }
+}
+.schedule {
+  height: rem(500px);
+  width: rem(400px);
+  border: 1px solid black;
+  padding: 0;
+}
+.hour {
+  font-weight: 600;
+  &li{
+      padding-bottom: 5px;
+  }
 }

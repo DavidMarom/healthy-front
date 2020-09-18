@@ -6,9 +6,10 @@ export function UserActivityPreview({activity, onRemove}) {
     return (
         <div className="user-activity-preview flex">
         <img src ={activity.imgUrls[0]} alt=""/>
-        <h4>{activity.title}</h4>
-        <li>{activity.location.address}</li>
-        <button onClick={()=> onRemove(activity._id)}>Delete</button>
+        <div className="flex column">
+        <h4 className="fs18">{activity.title}</h4>
+        <li className="fs14">{activity.location.address}</li>
+        </div>
         <Link to ={`activity/${activity._id}`}>Details</Link>
         </div>
     )

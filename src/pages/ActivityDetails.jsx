@@ -16,7 +16,7 @@ export class _ActivityDetails extends Component {
         "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
     },
     creator: "",
-  };
+  }
 
   componentDidMount() {
     this.loadActivity();
@@ -28,16 +28,16 @@ export class _ActivityDetails extends Component {
     activityService.getById(activityId).then((activity) => {
       this.setState({ activity }, () =>
         this.loadCreator(activity.createdBy._id)
-      );
-    });
-  };
+      )
+    })
+  }
 
   loadCreator = (id) => {
     userService.getById(id).then((creator) => {
       console.log("creator", creator);
       this.setState({ creator });
-    });
-  };
+    })
+  }
 
   purchaseActivity(activity, user, creator) {
     creator.income += activity.price;
@@ -59,20 +59,50 @@ export class _ActivityDetails extends Component {
         </div>
 
         <div className="event-main-container">
+          {/* LEFT SIDE */}
           <div className="event-left-side">
             <div className="event-creator-container">
               <div>
                 <h2>{activity.createdBy.fullName}</h2>
+                <h4>
+                  <div className="l-grey">{activity.createdBy.title}</div>
+                </h4>
               </div>
 
               <div>
                 <img className="creator-img" src={activity.createdBy.imgUrl} />
               </div>
             </div>
-          </div>
-          <div className="event-right-side"></div>
-        </div>
+            <div className="divider"></div>
 
+            <div>
+              <i className="far fa-calendar-alt"></i>
+              <p>{activity.startsAt}</p>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="event-right-side">
+            <div className="event-buy">
+              <div className="just-row">
+                <div className="moneyback">
+                  <i className="fas fa-money-bill-wave"></i>
+                  <p>Money back guarentied</p>
+                </div>
+
+                <div className="green-star">★</div>
+              </div>
+
+              <button
+                className="buy-btn"
+                onClick={() => this.purchaseActivity(activity, user, creator)}
+              >
+                Sign me up!
+              </button>
+            </div>
+          </div>
+          {/* END OF RIGHT SIDE */}
+        </div>
         <div className="main-info-container flex sb">
           <div className="main-info-card flex column">
             <h3 className="det-name f28 fw6">{activity.createdBy.fullName}</h3>
@@ -116,29 +146,26 @@ export class _ActivityDetails extends Component {
                         </ul>})
     }
                         </div> */}
-          </div>
-          <div className="fitchers-info flex column">
-            <div className="box-area">CHAT AREA</div>
-            <div>MAP AREA</div>
-          </div>
-        </div>
-      </div>
-    );
+                  </div>
+                  <div className="fitchers-info flex column">
+                    <div className="box-area">CHAT AREA</div>
+                    <div>MAP AREA</div>
+                  </div>
+                </div>
+              </div>
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    activities: state.activityReducer.activities,
+                activities: state.activityReducer.activities,
     // user: state.userReducer.loggedinUser;
-  };
-};
+  }
+}
 const mapDispatchToProps = {
-  saveActivity,
-  updateUser,
-};
+                saveActivity,
+              updateUser,
+}
 
-export const ActivityDetails = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(_ActivityDetails);
+export const ActivityDetails = connect(mapStateToProps,mapDispatchToProps)(_ActivityDetails);
