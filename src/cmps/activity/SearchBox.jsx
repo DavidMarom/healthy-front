@@ -25,7 +25,7 @@ export class _SearchBox extends Component {
 
     render() {
         const cssClass = this.props.cssClass
-        const isStateTitleEmpty = this.state.title == ''
+        const isStateTitleEmpty = this.state.title === ''
         let value;
         value=isStateTitleEmpty? this.props.searchBy.title : this.state.title
         return (

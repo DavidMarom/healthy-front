@@ -17,19 +17,18 @@ class _Suggested extends Component {
     const { activities } = this.props;
     if (!activities) return <div>Loading....</div>;
 
+    const arr = activities.slice(0, 5);
     return (
       <section>
         <h3>Suggested for you:</h3>
         <p>Find lectures, trainers and suppliers around you</p>
 
         <div className="card-row">
-          {activities.map((activity) => (
+          {arr.map((activity) => (
             <Card activity={activity} key={activity._id} />
           ))}
-          
-
-          
         </div>
+        <div className="divider"></div>
       </section>
     );
   }

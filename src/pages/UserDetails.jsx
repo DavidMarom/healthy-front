@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { activityService } from '../services/activityService.js'
+// import { activityService } from '../services/activityService.js'
 import { loadActivities } from "../store/actions/activityActions"
 import { connect } from 'react-redux'
 import { UserActivityList } from '../cmps/user/UserActivityList'

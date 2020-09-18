@@ -1,65 +1,55 @@
-import { NavLink, withRouter } from 'react-router-dom'
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { SearchBox } from './activity/SearchBox.jsx'
-import eventBus from '../services/event-bus-service.js'
-
+import { NavLink, withRouter } from "react-router-dom";
+import React, { Component } from "react";
+import { SearchBox } from "./activity/SearchBox.jsx";
+import eventBus from "../services/event-bus-service.js";
 
 export class Header extends Component {
+  state = {
+    isHomePage: false,
+  };
 
-    state = {
-        isHomePage: false
+  unsubscribeHome;
+  unsubscribeOutOfHome;
 
-    }
+  componentDidMount() {
+    this.unsubscribeHome = eventBus.on("homePage", () => {
+      this.setState({ isHomePage: true }, console.log("im home"));
+    });
 
-    unsubscribeHome;
-    unsubscribeOutOfHome;
+    this.unsubscribeOutOfHome = eventBus.on("out of homePage", () => {
+      this.setState({ isHomePage: false }, console.log("out of homePage"));
+    });
+  }
 
-    componentDidMount() {
-        this.unsubscribeHome = eventBus.on('homePage', () => {
-            this.setState({ isHomePage: true }, console.log('im home'))
-        })
+  componentWillUnmount() {
+    this.unsubscribeHome();
+    this.unsubscribeOutOfHome();
+  }
 
-        this.unsubscribeOutOfHome = eventBus.on('out of homePage', () => {
-            this.setState({ isHomePage: false }, console.log('out of homePage'))
-        })
-    }
+  render() {
+    const { isHomePage } = this.state;
+    return (
+      <header className="main-header">
+        <div className="left-end">
+          <div className="logo">
+            <NavLink to="/">Logo</NavLink>
+          </div>
+          <div>
+            <NavLink to="/activity">Explore</NavLink>
+          </div>
+        </div>
 
-    componentWillUnmount() {
-        this.unsubscribeHome()
-        this.unsubscribeOutOfHome()
-    }
+        {!isHomePage && <SearchBox cssClass={"header-search"} />}
 
-    render() {
-        const { isHomePage } = this.state
-        return <header className="main-header">
-            <div className="left-end">
-                <div className="logo">
-                    <NavLink to="/">Logo</NavLink>
-                </div>
-                <div>
-                    <NavLink to="/activity">Explore</NavLink>
-                </div>
-            </div>
-
-            {!isHomePage && <SearchBox cssClass={'header-search'} />}
-
-            <div className="right-end">
-                <div>
-                    <NavLink to={`/user`}>UserProfile</NavLink>
-                </div>
-            </div>
-
-        </header>
-    }
+        <div className="right-end">
+          <div>
+            <NavLink to={`/user`}>UserProfile</NavLink>
+          </div>
+        </div>
+      </header>
+    );
+  }
 }
-
-
-
-
-
-
-
 
 // export function Header(props) {
 
