@@ -1,5 +1,6 @@
 const initialState = {
-    activities: []
+    activities: [],
+    searchBy: null
 }
 
 export function activityReducer(state = initialState, action) {
@@ -9,22 +10,29 @@ export function activityReducer(state = initialState, action) {
                 ...state,
                 activities: action.activities
             }
-            case 'EDIT_ACTIVITY':
-                return {
-                    ...state,
-                    activities: state.activities.map(activity => {
-                        if (action._activity._id === activity._id) return action._activity
-                        return activity;
-                    })
-                }
-            case 'ADD_ACTIVITY':
-                return {
-                    ...state, activities: [...state.activity, action.activity]
-                }
-            case 'REMOVE_ACTIVITY':
-                return { ...state, activities: state.activitys.filter(activity => activity._id !== action.activityId) }
-            default:
-                return state
-        }
+        case 'EDIT_ACTIVITY':
+            return {
+                ...state,
+                activities: state.activities.map(activity => {
+                    if (action._activity._id === activity._id) return action._activity
+                    return activity;
+                })
+            }
+        case 'ADD_ACTIVITY':
+            return {
+                ...state, activities: [...state.activity, action.activity]
+            }
+        case 'REMOVE_ACTIVITY':
+            return { ...state, activities: state.activitys.filter(activity => activity._id !== action.activityId) }
+
+        case 'SET_SEARCH':
+            return {
+                ...state,
+                searchBy: action.searchBy
+            }
+        default:
+            return state
     }
+
+}
 

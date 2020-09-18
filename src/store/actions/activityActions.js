@@ -9,6 +9,8 @@ export function loadActivities(filterBy={}) {
 }
 
 
+
+
 export function removeActivity(activityId) {
     return async dispatch => {
         await activityService.remove(activityId)
@@ -24,6 +26,10 @@ export function saveActivity(activity) {
       };
 }
 
-export function setFilterBy(filterBy) {
-  
+export function setSearchBy(searchBy) {
+  return dispatch => {
+      Promise.resolve().then(() => {
+          dispatch({ type: 'SET_SEARCH', searchBy })
+      })
+  }
 }

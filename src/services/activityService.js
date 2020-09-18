@@ -18,6 +18,7 @@ function query(filterBy = {}) {
   // }
   // var queryStr = `?name=${filterBy.name}&type=${filterBy.type}`;
   // return httpService.get(`activity/${queryStr}`);
+  
   return httpService.get(`activity`);
 }
 
