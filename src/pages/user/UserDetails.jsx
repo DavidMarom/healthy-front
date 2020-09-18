@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD:src/pages/user/UserDetails.jsx
-import { activityService } from '../../services/activityService.js'
 import { loadActivities } from "../../store/actions/activityActions"
-=======
-// import { activityService } from '../services/activityService.js'
-import { loadActivities } from "../store/actions/activityActions"
->>>>>>> 7c278da0a6ab4da065e8750e32b9a5893d52fe5b:src/pages/UserDetails.jsx
 import { connect } from 'react-redux'
 import { UserActivityList } from '../../cmps/user/UserActivityList'
 import { UserSchedule} from '../../cmps/user/UserSchedule'
