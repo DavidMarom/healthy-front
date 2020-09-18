@@ -52,6 +52,12 @@ export class _ActivityDetails extends Component {
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
+        <div className="in-line">
+          <div className="green-star">★</div>
+          <p>(4.93) </p>
+          <p className="f20 title l-grey">{activity.subtitle}</p>
+        </div>
+
         <div className="image-gallery">
           {activity.imgUrls.map((img, idx) => (
             <img className={`img${idx} gallery__img`} key={idx} src={img} />
@@ -76,13 +82,30 @@ export class _ActivityDetails extends Component {
             <div className="divider"></div>
 
             <div>
-              <i className="far fa-calendar-alt"></i>
-              <p>{activity.startsAt}</p>
+              <div className="marg-right">
+                <i className="far fa-calendar-alt fa-lg"></i>
+              </div>
+              <p>
+                {activity.dayInWeek} - {activity.hour}:00
+              </p>
               <h5>{activity.location.address}</h5>
             </div>
             <div className="text-box">
               <p>{activity.description}</p>
             </div>
+
+            <div className="divider d-hi"></div>
+
+            <div className="just-row">
+              <h2>Properties</h2>
+              {activity.tags.map((tag, idx) => (
+                <li key={idx}>{tag}</li>
+              ))}
+            </div>
+            <div className="divider d-hi"></div>
+<p>Rate</p>
+            <div className="tac">⭐⭐⭐⭐⭐</div>
+
           </div>
 
           {/* RIGHT SIDE */}
@@ -118,39 +141,13 @@ export class _ActivityDetails extends Component {
                 />
               ))}
             </div>
-
+            <img src={require('../assets/img/map.jpg')} />
           </div>
           {/* END OF RIGHT SIDE */}
         </div>
-        <div className="main-info-container flex sb">
-          
-          <div className="right-payment-area flex column sa">
-            
-            
-          </div>
-        </div>
-        <div className="lower-info-area flex">
-          <div className="flex column sa prefs">
-            <h2 className="border-bottom">properties</h2>
-            <div className="flex sa wrap">
-              {activity.tags.map((tag, idx) => (
-                <li key={idx}>{tag}</li>
-              ))}
-            </div>
-            <div className="tac">⭐⭐⭐⭐⭐</div>
-            {/* <div className="rev-det">Reviews
-                        {activity.reviews.map((review, idx)=> {
-                        <ul key={idx}>
-                            <li>{review}</li>
-                        </ul>})
-    }
-                        </div> */}
-          </div>
-          <div className="fitchers-info flex column">
-            <div className="box-area">CHAT AREA</div>
-            <div>MAP AREA</div>
-          </div>
-        </div>
+        <div className="divider d-hi"></div>
+
+        
       </div>
     );
   }

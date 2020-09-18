@@ -3,6 +3,7 @@
     {
       "_id": "ev103",
       "title": "Mindfulness Seminar",
+      "subtitle": "A 20 people group seminar taking place once a week",
       "description": "Join us and learn the secrets of Mindfulness. Acquire behavioral tools that will help you overcome obstecles and everyday challenges!",
       "createdBy": {
         "_id": "u106",
