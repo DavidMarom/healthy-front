@@ -92,3 +92,17 @@
   grid-gap: 4px;
   grid-template-rows: repeat(12, 30px);
 }
+
+.main-info-table{
+   margin: 0;
+  padding: 0;
+  display: grid;
+  grid-row: 2 / 14;
+  grid-gap: 4px;
+  grid-template-rows: repeat(12, 30px);
+}
+
+.yellow{
+  background-color: rgba(214, 214, 59, 0.712);
+  
+}
