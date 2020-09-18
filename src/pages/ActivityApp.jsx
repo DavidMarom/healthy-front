@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+<<<<<<< HEAD
 import { loadActivities, removeActivity} from "../store/actions/activityActions"
+=======
+// import { Link } from 'react-router-dom'
+import { loadActivities, removeActivity, setFilterBy } from "../store/actions/activityActions"
+>>>>>>> 0b94e9f25bf02f481b9361472bb00741a0565e70
 import { ActivityFilter } from '../cmps/activity/ActivityFilter';
 import { ActivityList } from '../cmps/activity/ActivityList';
 
@@ -39,7 +44,6 @@ class _ActivityApp extends Component {
         const searchedActivities = activities.filter(activity => activity.title.toLowerCase().includes(searchBy.title.toLowerCase()))
         return searchedActivities
     }
-
 
     render() {
         const activities = this.getActivitiesForDisplay();

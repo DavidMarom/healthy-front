@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { activityService } from '../../services/activityService'
+// import { activityService } from '../../services/activityService'
 
 export function ActivityPreview({ activity }) {
     return (
         <div className="activity-preview card">
             <Link to={`activity/${activity._id}`}>
                 <div className="card-img">
-                    <img className="img-fit" src={activity.imgUrls[0]} />
+                    <img className="img-fit" src={activity.imgUrls[0]} alt="" />
                 </div>
                 <h4>{activity.title}</h4>
                 <li>{activity.startsAt}</li>

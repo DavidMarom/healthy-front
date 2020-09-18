@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import { NavLink, withRouter } from 'react-router-dom'
 import React, { Component } from 'react'
 
 import { SearchBox } from './activity/SearchBox.jsx'
 import eventBus from '../services/event-bus-service.js'
 
+=======
+import { NavLink, withRouter } from "react-router-dom";
+import React, { Component } from "react";
+import { SearchBox } from "./activity/SearchBox.jsx";
+import eventBus from "../services/event-bus-service.js";
+>>>>>>> 0b94e9f25bf02f481b9361472bb00741a0565e70
 
 export class Header extends Component {
 
@@ -45,6 +52,8 @@ export class Header extends Component {
 
             <div className="right-end">
                 <div>
+                    <NavLink to={`/login`}>Login</NavLink>
+                    <NavLink to={`/signUp`}>SignUp</NavLink>
                     <NavLink to={`/user`}>UserProfile</NavLink>
                 </div>
             </div>
@@ -52,4 +61,7 @@ export class Header extends Component {
         </header>
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0b94e9f25bf02f481b9361472bb00741a0565e70

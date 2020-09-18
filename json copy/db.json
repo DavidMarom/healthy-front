@@ -35,6 +35,7 @@
       ],
       "maxCapacity": 10,
       "price": 100,
+      "rate" :0,
       "participants": [
         {
           "_id": "u104",

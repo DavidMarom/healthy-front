@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { activityService } from "../services/activityService.js";
 import { saveActivity } from "../store/actions/activityActions";
-import { updateUser } from "../store/actions/userActions";
+import { updateUser, loadUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 // import {ChatRoom} from '../cmps/ChatRoom.jsx'
+import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
+import ThreeDRotation from "@material-ui/icons/ThreeDRotation";
+
+import Rating from "@material-ui/lab/Rating";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 export class _ActivityDetails extends Component {
   state = {
@@ -15,7 +21,7 @@ export class _ActivityDetails extends Component {
       imgUrl:
         "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
     },
-    creator: "",
+    creator: ""
   };
 
   componentDidMount() {
@@ -23,7 +29,6 @@ export class _ActivityDetails extends Component {
   }
 
   loadActivity = () => {
-    console.log(this.props.match.params.activityId);
     const activityId = this.props.match.params.activityId;
     activityService.getById(activityId).then((activity) => {
       this.setState({ activity }, () =>
@@ -34,7 +39,6 @@ export class _ActivityDetails extends Component {
 
   loadCreator = (id) => {
     userService.getById(id).then((creator) => {
-      console.log("creator", creator);
       this.setState({ creator });
     });
   };
@@ -46,8 +50,14 @@ export class _ActivityDetails extends Component {
     this.props.saveActivity(activity);
   }
 
+  aaa = (value) => {
+    console.log(value);
+  };
+
   render() {
+    const { value, setHover, labels, hover } = this.state;
     const { activity, user, creator } = this.state;
+
     if (!activity) return <h1>Loading...</h1>;
     return (
       <div className="main-details-card">
@@ -63,7 +73,6 @@ export class _ActivityDetails extends Component {
             <img className={`img${idx} gallery__img`} key={idx} src={img} />
           ))}
         </div>
-
         <div className="event-main-container">
           {/* LEFT SIDE */}
           <div className="event-left-side">
@@ -103,9 +112,20 @@ export class _ActivityDetails extends Component {
               ))}
             </div>
             <div className="divider d-hi"></div>
-<p>Rate</p>
-            <div className="tac">⭐⭐⭐⭐⭐</div>
+            <p>Rate</p>
 
+            <div>
+              <Box component="fieldset" mb={3} borderColor="transparent">
+                <Typography component="legend"></Typography>
+                <Rating
+                  name="simple-controlled"
+                  value={value}
+                  onChange={(event, newValue) => {
+                    this.aaa(newValue);
+                  }}
+                />
+              </Box>
+            </div>
           </div>
 
           {/* RIGHT SIDE */}
@@ -141,13 +161,10 @@ export class _ActivityDetails extends Component {
                 />
               ))}
             </div>
-            <img src={require('../assets/img/map.jpg')} />
+            <img src={require("../assets/img/map.jpg")} />
           </div>
           {/* END OF RIGHT SIDE */}
         </div>
-        <div className="divider d-hi"></div>
-
-        
       </div>
     );
   }
@@ -156,7 +173,7 @@ export class _ActivityDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     activities: state.activityReducer.activities,
-    // user: state.userReducer.loggedinUser;
+    user: state.userReducer.loggedInUser
   };
 };
 const mapDispatchToProps = {
