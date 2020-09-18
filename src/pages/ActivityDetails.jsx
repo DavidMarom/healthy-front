@@ -16,7 +16,7 @@ export class _ActivityDetails extends Component {
         "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
     },
     creator: "",
-  }
+  };
 
   componentDidMount() {
     this.loadActivity();
@@ -28,16 +28,16 @@ export class _ActivityDetails extends Component {
     activityService.getById(activityId).then((activity) => {
       this.setState({ activity }, () =>
         this.loadCreator(activity.createdBy._id)
-      )
-    })
-  }
+      );
+    });
+  };
 
   loadCreator = (id) => {
     userService.getById(id).then((creator) => {
       console.log("creator", creator);
       this.setState({ creator });
-    })
-  }
+    });
+  };
 
   purchaseActivity(activity, user, creator) {
     creator.income += activity.price;
@@ -54,7 +54,7 @@ export class _ActivityDetails extends Component {
         <h2 className="f20 title">{activity.title}</h2>
         <div className="image-gallery">
           {activity.imgUrls.map((img, idx) => (
-            <img className={`img${idx}`} key={idx} src={img} />
+            <img className={`img${idx} gallery__img`} key={idx} src={img} />
           ))}
         </div>
 
@@ -78,6 +78,10 @@ export class _ActivityDetails extends Component {
             <div>
               <i className="far fa-calendar-alt"></i>
               <p>{activity.startsAt}</p>
+              <h5>{activity.location.address}</h5>
+            </div>
+            <div className="text-box">
+              <p>{activity.description}</p>
             </div>
           </div>
 
@@ -92,6 +96,9 @@ export class _ActivityDetails extends Component {
 
                 <div className="green-star">★</div>
               </div>
+              <div className="center">
+                <h2>Price: ${activity.price}</h2>
+              </div>
 
               <button
                 className="buy-btn"
@@ -100,24 +107,7 @@ export class _ActivityDetails extends Component {
                 Sign me up!
               </button>
             </div>
-          </div>
-          {/* END OF RIGHT SIDE */}
-        </div>
-        <div className="main-info-container flex sb">
-          <div className="main-info-card flex column">
-            <h3 className="det-name f28 fw6">{activity.createdBy.fullName}</h3>
-            <h5>{activity.location.address}</h5>
-            <p className="fs18 fw4 clr6">{activity.description}</p>
-          </div>
-          <div className="right-payment-area flex column sa">
-            <div className="payment-det">
-              <h4>Price: ${activity.price}</h4>
-              <button
-                onClick={() => this.purchaseActivity(activity, user, creator)}
-              >
-                Buy this ITEM!
-              </button>
-            </div>
+
             <div className="attendings">
               <h3>Attending</h3>
               {activity.participants.map((participant, idx) => (
@@ -128,6 +118,15 @@ export class _ActivityDetails extends Component {
                 />
               ))}
             </div>
+
+          </div>
+          {/* END OF RIGHT SIDE */}
+        </div>
+        <div className="main-info-container flex sb">
+          
+          <div className="right-payment-area flex column sa">
+            
+            
           </div>
         </div>
         <div className="lower-info-area flex">
@@ -146,26 +145,29 @@ export class _ActivityDetails extends Component {
                         </ul>})
     }
                         </div> */}
-                  </div>
-                  <div className="fitchers-info flex column">
-                    <div className="box-area">CHAT AREA</div>
-                    <div>MAP AREA</div>
-                  </div>
-                </div>
-              </div>
-    )
+          </div>
+          <div className="fitchers-info flex column">
+            <div className="box-area">CHAT AREA</div>
+            <div>MAP AREA</div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-                activities: state.activityReducer.activities,
+    activities: state.activityReducer.activities,
     // user: state.userReducer.loggedinUser;
-  }
-}
+  };
+};
 const mapDispatchToProps = {
-                saveActivity,
-              updateUser,
-}
+  saveActivity,
+  updateUser,
+};
 
-export const ActivityDetails = connect(mapStateToProps,mapDispatchToProps)(_ActivityDetails);
+export const ActivityDetails = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_ActivityDetails);

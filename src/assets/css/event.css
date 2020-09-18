@@ -85,3 +85,13 @@ p {
     margin-left:auto ;
     font-size: x-large;
     font-family: 'Varela Round', sans-serif;}
+
+    .center{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .text-box{
+        margin-top:30px;
+    }
