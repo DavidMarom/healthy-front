@@ -19,7 +19,7 @@ function query(filterBy = {}) {
   // }
   // var queryStr = `?name=${filterBy.name}&type=${filterBy.type}`;
   // return httpService.get(`activity/${queryStr}`);
-  
+
   return httpService.get(`activity`);
 }
 
@@ -52,11 +52,11 @@ async function save(activity) {
 }
 
 
-function addRate(event, rate) {
-  
-  // event.rate.push(rate)
-  // return HttpService.put(`${baseUrl}/${activity._id}`, event)
-
+function addRate(activity, rate) {
+  if (rate != null) {
+    activity.rate.push(rate)
+    return httpService.put(`activity/${activity._id}`, activity)
+  }
 }
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { activityService } from "../services/activityService.js";
 import { saveActivity } from "../store/actions/activityActions";
-import { updateUser, loadUser } from "../store/actions/userActions";
+import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 // import {ChatRoom} from '../cmps/ChatRoom.jsx'
@@ -21,19 +21,29 @@ export class _ActivityDetails extends Component {
       imgUrl:
         "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
     },
-    creator: ""
+    creator: "",
+    avgRate: null,
   };
 
   componentDidMount() {
     this.loadActivity();
   }
 
+  calcAvgRate = () => {
+    let tempSum = 0;
+    const arr = this.state.activity.rate;
+    arr.map((rateValue) => (tempSum += rateValue));
+    const tempAvg = tempSum / arr.length;
+    this.setState({ avgRate: tempAvg });
+  };
+
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
     activityService.getById(activityId).then((activity) => {
-      this.setState({ activity }, () =>
-        this.loadCreator(activity.createdBy._id)
-      );
+      this.setState({ activity }, () => {
+        this.loadCreator(activity.createdBy._id);
+        this.calcAvgRate();
+      });
     });
   };
 
@@ -50,24 +60,24 @@ export class _ActivityDetails extends Component {
     this.props.saveActivity(activity);
   }
 
-  onRate = (activity,value) => {
+  onRate = (activity, value) => {
     console.log(value);
-    activityService.addRate(activity,value)
-
-
-};
+    activityService.addRate(activity, value);
+  };
 
   render() {
     const { value, setHover, labels, hover } = this.state;
     const { activity, user, creator } = this.state;
-
     if (!activity) return <h1>Loading...</h1>;
+
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
           <div className="green-star">★</div>
-          <p>(4.93) </p>
+          <p>({(Math.round(this.state.avgRate * 100) / 100).toFixed(2)}) </p>
+          
+
           <p className="f20 title l-grey">{activity.subtitle}</p>
         </div>
 
@@ -124,7 +134,7 @@ export class _ActivityDetails extends Component {
                   name="simple-controlled"
                   value={value}
                   onChange={(event, newValue) => {
-                    this.onRate(activity,newValue);
+                    this.onRate(activity, newValue);
                   }}
                 />
               </Box>
@@ -139,7 +149,7 @@ export class _ActivityDetails extends Component {
                   <i className="fas fa-money-bill-wave"></i>
                   <p>Money back guarentied</p>
                 </div>
-
+                {(Math.round(this.state.avgRate * 100) / 100).toFixed(2)}
                 <div className="green-star">★</div>
               </div>
               <div className="center">
@@ -176,7 +186,7 @@ export class _ActivityDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     activities: state.activityReducer.activities,
-    user: state.userReducer.loggedInUser
+    user: state.userReducer.loggedInUser,
   };
 };
 const mapDispatchToProps = {
