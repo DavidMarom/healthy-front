@@ -3,33 +3,53 @@ import React from 'react'
 
 
 export function UserSchedule({ activities }) {
+  console.log(activities);
 
-    return (
-     <div class="timetable fs14">
-       <ul className="titleWrapper">
-         <li>Time</li>
-         <li>MON</li>
-         <li>TUE</li>
-         <li>WED</li>
-         <li>THU</li>
-         <li>FRI</li>
-         <li>SAT</li>
-         <li>SUN</li>
-       </ul>
-       <ul className="timeWrapper">
-         <li>0-2</li>
-         <li>2-4</li>
-         <li>4-6</li>
-         <li>6-8</li>
-         <li>8-10</li>
-         <li>10-12</li>
-         <li>12-14</li>
-         <li>14-16</li>
-         <li>16-18</li>
-         <li>18-20</li>
-         <li>20-22</li>
-         <li>22-24</li>
-       </ul>
-     </div>
-    )
+  let table = []
+  for (var i = 0; i < 7; i++) {
+    table.push([]);
+    for (var j = 0; j < 11; j++) {
+      table[i].push('')
+    }
+  }
+  console.log('table1-', table);
+  if (activities) {
+    activities.forEach(activity => {
+      console.log('1-', activity.dayInWeek);
+      var hour = (activity.hour > 12) ? (activity.hour / 2) - 1 : activity.hour - 1;
+      console.log('h-', hour);
+      console.log('2-', activity.hour);
+      table[activity.dayInWeek - 1][hour] = activity.title;
+    })
+  }
+  console.log('table2-', table);
+  return (
+    <table className="timetable fs14">
+      <tr className="titleWrapper">
+        <th>Time</th>
+        <th>MON</th>
+        <th>TUE</th>
+        <th>WED</th>
+        <th>THU</th>
+        <th>FRI</th>
+        <th>SAT</th>
+        <th>SUN</th>
+      </tr>
+      <ul className="timeWrapper">
+        <td>0-2</td>
+        <td>2-4</td>
+        <td>4-6</td>
+        <td>6-8</td>
+        <td>8-10</td>
+        <td>10-12</td>
+        <td>12-14</td>
+        <td>14-16</td>
+        <td>16-18</td>
+        <td>18-20</td>
+        <td>20-22</td>
+        <td>22-24</td>
+      </ul>
+      {table.map(arr => <tr class="main-info-table">{arr.map(title => <td className={(title)?"yellow":"whtie"}>{title.charAt(0) || ''}</td>)}</tr>)}
+    </table>
+  )
 }
