@@ -1,10 +1,14 @@
 .main-header {
     height: 80px;
+    background-color: #ffffff;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #DCDCDC;
+    /* border-bottom: 1px solid #f4f4f4; */
+    filter: drop-shadow(0px 0px 10px #f0f0f0);
+    /* margin-bottom: 30px; */
+
 }
 
 .header-search {

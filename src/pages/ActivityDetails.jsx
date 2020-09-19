@@ -1,20 +1,27 @@
 import React, { Component } from "react";
 import { activityService } from "../services/activityService.js";
 import { saveActivity } from "../store/actions/activityActions";
-import { updateUser, loadUser } from "../store/actions/userActions";
+import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 // import {ChatRoom} from '../cmps/ChatRoom.jsx'
 // import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
 // import ThreeDRotation from "@material-ui/icons/ThreeDRotation";
+=======
+import MapContainer from "../cmps/MapContainer";
+
+>>>>>>> 7616c52cce95f86664c07b3ff96845a2396feeb9
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
+
 export class _ActivityDetails extends Component {
   state = {
     activity: null,
+<<<<<<< HEAD
     // user: {
     //   _id: "u106",
     //   fullName: "Debora faringham",
@@ -22,18 +29,38 @@ export class _ActivityDetails extends Component {
     //     "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
     // },
     creator: ""
+=======
+    user: {
+      _id: "u106",
+      fullName: "Debora faringham",
+      imgUrl:
+        "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
+    },
+    creator: "",
+    avgRate: null,
+    rateType : "simple-controlled"
+>>>>>>> 7616c52cce95f86664c07b3ff96845a2396feeb9
   };
 
   componentDidMount() {
     this.loadActivity();
   }
 
+  calcAvgRate = () => {
+    let tempSum = 0;
+    const arr = this.state.activity.rate;
+    arr.map((rateValue) => (tempSum += rateValue));
+    const tempAvg = tempSum / arr.length;
+    this.setState({ avgRate: tempAvg });
+  };
+
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
     activityService.getById(activityId).then((activity) => {
-      this.setState({ activity }, () =>
-        this.loadCreator(activity.createdBy._id)
-      );
+      this.setState({ activity }, () => {
+        this.loadCreator(activity.createdBy._id);
+        this.calcAvgRate();
+      });
     });
   };
 
@@ -50,11 +77,13 @@ export class _ActivityDetails extends Component {
     this.props.saveActivity(activity);
   }
 
-  aaa = (value) => {
-    console.log(value);
+  onRate = (activity, value) => {
+    activityService.addRate(activity, value);
+    this.setState({rateType : "read-only"})
   };
 
   render() {
+<<<<<<< HEAD
     const { value, setHover, labels, hover } = this.state;
     const { activity,  creator } = this.state;
     console.log(activity);
@@ -62,12 +91,20 @@ export class _ActivityDetails extends Component {
     
     if (!activity) return <h1>Loading...</h1>;
     // activity.imgUrls.map(img=>console.log(img))
+=======
+    const { value } = this.state;
+    const { activity, user, creator } = this.state;
+    if (!activity) return <h1>Loading...</h1>;
+
+>>>>>>> 7616c52cce95f86664c07b3ff96845a2396feeb9
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
           <div className="green-star">★</div>
-          <p>(4.93) </p>
+          <p>({(Math.round(this.state.avgRate * 100) / 100).toFixed(2)}) </p>
+          
+
           <p className="f20 title l-grey">{activity.subtitle}</p>
         </div>
 
@@ -115,19 +152,21 @@ export class _ActivityDetails extends Component {
               ))}
             </div>
             <div className="divider d-hi"></div>
+            
+            <div className=".col-center-middle">
             <p>Rate</p>
 
-            <div>
               <Box component="fieldset" mb={3} borderColor="transparent">
                 <Typography component="legend"></Typography>
                 <Rating
-                  name="simple-controlled"
+                  name={this.state.rateType}
                   value={value}
                   onChange={(event, newValue) => {
-                    this.aaa(newValue);
+                    this.onRate(activity, newValue);
                   }}
                 />
               </Box>
+
             </div>
           </div>
 
@@ -139,7 +178,7 @@ export class _ActivityDetails extends Component {
                   <i className="fas fa-money-bill-wave"></i>
                   <p>Money back guarentied</p>
                 </div>
-
+                {(Math.round(this.state.avgRate * 100) / 100).toFixed(2)}
                 <div className="green-star">★</div>
               </div>
               <div className="center">
@@ -164,10 +203,13 @@ export class _ActivityDetails extends Component {
                 />
               ))}
             </div>
-            <img src={require("../assets/img/map.jpg")} />
+            <MapContainer pos={activity.location} />
           </div>
           {/* END OF RIGHT SIDE */}
+
+
         </div>
+        
       </div>
     );
   }
@@ -176,7 +218,7 @@ export class _ActivityDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     activities: state.activityReducer.activities,
-    user: state.userReducer.loggedInUser
+    user: state.userReducer.loggedInUser,
   };
 };
 const mapDispatchToProps = {
@@ -188,3 +230,5 @@ export const ActivityDetails = connect(
   mapStateToProps,
   mapDispatchToProps
 )(_ActivityDetails);
+
+// AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk
