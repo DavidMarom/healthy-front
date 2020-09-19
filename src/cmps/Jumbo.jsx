@@ -18,6 +18,3 @@ export function Jumbo(props) {
     </section>
   );
 }
-
-
-

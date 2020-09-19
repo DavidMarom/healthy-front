@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 import React, { Component } from 'react'
 
 import { SearchBox } from './activity/SearchBox.jsx'
