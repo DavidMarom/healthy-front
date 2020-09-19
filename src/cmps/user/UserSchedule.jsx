@@ -27,13 +27,13 @@ export function UserSchedule({ activities }) {
     <table className="timetable fs14">
       <tr className="titleWrapper">
         <th>Time</th>
+        <th>SUN</th>
         <th>MON</th>
         <th>TUE</th>
         <th>WED</th>
-        <th>THU</th>
+        <th>THE</th>
         <th>FRI</th>
         <th>SAT</th>
-        <th>SUN</th>
       </tr>
       <ul className="timeWrapper">
         <td>0-2</td>

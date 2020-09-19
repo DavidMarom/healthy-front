@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActivityPreview } from './ActivityPreview'
-import { Card } from '../Card.jsx'
+// import { Card } from '../Card.jsx'
 
 export function ActivityList({ activities , onRemove}) {
     return (
@@ -14,4 +14,4 @@ export function ActivityList({ activities , onRemove}) {
 }
 
 
-{/* <ActivityPreview activity={activity} key={activity._id} onRemove={onRemove} */}
+/* <ActivityPreview activity={activity} key={activity._id} onRemove={onRemove} */

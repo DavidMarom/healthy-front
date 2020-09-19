@@ -8,6 +8,7 @@ export const userService = {
     getById,
     remove,
     update,
+    findIdxToMark
 }
 
 function getUsers() {
@@ -31,7 +32,9 @@ async function login(userCred) {
     return _handleLogin(user)
 }
 async function signup(userCred) {
-    const user = await httpService.post('auth/signup', userCred)
+    // const user = await httpService.post('auth/signup', userCred)
+    const user = await httpService.post(`user`, userCred)
+    console.log(user);
     return _handleLogin(user)
 }
 async function logout() {
@@ -42,4 +45,8 @@ async function logout() {
 function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
+}
+
+function findIdxToMark(suggestions, object){
+    return suggestions.findIndex(suggest=> suggest.name === object.name);
 }

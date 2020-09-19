@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
-import React, { Component } from "react";
+import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react'
 
-import { SearchBox } from "./activity/SearchBox.jsx";
-import eventBus from "../services/event-bus-service.js";
+import { SearchBox } from './activity/SearchBox.jsx'
+import eventBus from '../services/event-bus-service.js'
+
 
 export class Header extends Component {
   state = {
