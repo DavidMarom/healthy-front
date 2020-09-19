@@ -49,7 +49,7 @@ export function UserSchedule({ activities }) {
         <td>20-22</td>
         <td>22-24</td>
       </ul>
-      {table.map(arr => <tr class="main-info-table">{arr.map(title => <td className={(title)?"yellow":"whtie"}>{title.charAt(0) || ''}</td>)}</tr>)}
+      {table.map(arr => <tr className="main-info-table">{arr.map(title => <td className={(title)?"yellow":"whtie"}>{title.charAt(0) || ''}</td>)}</tr>)}
     </table>
   )
 }

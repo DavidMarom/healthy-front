@@ -130,7 +130,7 @@ class _SignUp extends Component {
                 <h2>{this.state.msg}</h2>
                 {loggedInUser && (
                     <div>
-                        <h2>Welcome: {loggedInUser.username} </h2>
+                        <h2>Welcome: {loggedInUser.userName} </h2>
                         <button onClick={this.props.logout}>Logout</button>
                     </div>
                 )}

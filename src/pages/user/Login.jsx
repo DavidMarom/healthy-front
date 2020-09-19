@@ -6,7 +6,6 @@ import {
   removeUser,
   login,
   logout,
-  signup
 } from '../../store/actions/userActions';
 
 class _Login extends Component {
@@ -69,37 +68,8 @@ class _Login extends Component {
     this.props.removeUser(userId);
   };
   render() {
-    let signupSection = (
-      <form onSubmit={this.doSignup}>
-        <input
-          type="text"
-          name="email"
-          value={this.state.signupCred.email}
-          onChange={this.signupHandleChange}
-          placeholder="Email"
-        />
-        <br />
-        <input
-          name="password"
-          type="password"
-          value={this.state.signupCred.password}
-          onChange={this.signupHandleChange}
-          placeholder="Password"
-        />
-        <br />
-        <input
-          type="text"
-          name="username"
-          value={this.state.signupCred.username}
-          onChange={this.signupHandleChange}
-          placeholder="Username"
-        />
-        <br />
-        <button>Signup</button>
-      </form>
-    );
     let loginSection = (
-      <form onSubmit={this.doLogin}>
+      <form className= "main-container" onSubmit={this.doLogin}>
         <input
           type="text"
           name="email"
@@ -122,30 +92,22 @@ class _Login extends Component {
 
     const { loggedInUser } = this.props;
     return (
-      <div className="test">
+      <div className="main-container">
         <h1>
-          This is a testing page for working with the Production Ready Server
+         Login
         </h1>
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
-            <h2>Welcome: {loggedInUser.username} </h2>
+            <h2>Welcome: {loggedInUser.userName} </h2>
             <button onClick={this.props.logout}>Logout</button>
           </div>
         )}
         {!loggedInUser && loginSection}
-        {!loggedInUser && signupSection}
-        {/* <h2>Login</h2>
-        <form>div</form>
-
-        <h2>Signup</h2>
-        <form></form> */}
-
         <hr />
         <button onClick={this.props.loadUsers}>Get All Users</button>
         {this.props.isLoading && 'Loading...'}
         {this.props.users && <ul>
-
           {this.props.users.map(user => (
             <li key={user._id}>
               <pre>{JSON.stringify(user, null, 2)}</pre>
@@ -174,7 +136,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   login,
   logout,
-  signup,
   removeUser,
   loadUsers
 };
