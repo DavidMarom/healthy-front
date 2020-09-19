@@ -5,9 +5,10 @@ export const activityService = {
   getById,
   remove,
   getEmpty,
-  // update,
+  update,
   // add
-  save
+  save,
+  addRate
 
 }
 
@@ -18,7 +19,7 @@ function query(filterBy = {}) {
   // }
   // var queryStr = `?name=${filterBy.name}&type=${filterBy.type}`;
   // return httpService.get(`activity/${queryStr}`);
-  
+
   return httpService.get(`activity`);
 }
 
@@ -49,6 +50,15 @@ async function save(activity) {
     return httpService.post(`activity`, activity)
   }
 }
+
+
+function addRate(activity, rate) {
+  if (rate != null) {
+    activity.rate.push(rate)
+    return httpService.put(`activity/${activity._id}`, activity)
+  }
+}
+
 
 function getEmpty() {
   return {
