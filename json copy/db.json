@@ -879,6 +879,235 @@
           }
         }
       ]
+    },
+    {
+      "_id": "ev108",
+      "title": "Yarkon Running Group",
+      "subtitle": "Various Running Groups at different difficulty levels",
+      "description": "Who dosen't like to be outdoors amd breath fresh air? Join us and learn how to run in a beatuiful enviroment- Yarkon Park!",
+      "createdBy": {
+        "_id": "u106",
+        "fullName": "Debora faringham",
+        "title": "Mindfullnes instractor",
+        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+      },
+      "dayInWeek": 1,
+      "hour": 19,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Yrakon Park, Tel Aviv"
+      },
+      "tags": [
+        "TelAviv",
+        "Running",
+        "YarkonPark",
+        "Exercise",
+        "Workout",
+        "HealthyLifestyle"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600539391/sprint%204/activitiesEv/sport/Running%20Group/Spring-Training-2--1920_slf4ik.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600539473/sprint%204/activitiesEv/sport/Running%20Group/18-3_f1r7mh.png",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600539582/sprint%204/activitiesEv/sport/Running%20Group/Group_running_lz0yaf.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600539644/sprint%204/activitiesEv/sport/Running%20Group/runners-the-group-e1424994670303_wj8zlp.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600539661/sprint%204/activitiesEv/sport/Running%20Group/multi-ethnic-joggers-running-944241968-5ad0b4243128340036e0e366_d5pjcn.webp",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600539699/sprint%204/activitiesEv/sport/Running%20Group/shutterstock_222152206_efuxvc.jpg"
+      ],
+      "maxCapacity": 40,
+      "price": 20,
+      "rate": [
+        5,
+        3,
+        4,
+        5
+      ],
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Nim Srivas",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327786/sprint%204/users/44_nrrdly.jpg"
+        },
+        {
+          "_id": "u103",
+          "fullName": "Dillen aplaus",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg"
+        },
+        {
+          "_id": "u102",
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+        },
+        {
+          "_id": "u105",
+          "fullName": "Vadim Patrov",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600433507/sprint%204/users/79_mb6iml.jpg"
+        },
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        },
+        {
+          "_id": "d5tNi2t",
+          "fullName": "chen edri",
+          "email": "chenedri22@gmail.com",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600528830/sprint%204/users/34631420_1990981030921135_3515731319357177856_o.jpg_kasvfh.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "Such a great class! Very recommended!!!",
+          "rate": 5,
+          "by": {
+            "_id": "u102",
+            "fullName": "Kuki Levana",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+          }
+        },
+        {
+          "id": "madeId",
+          "txt": "Great food! Not a beginner friendly class",
+          "rate": 3,
+          "by": {
+            "_id": "u101",
+            "fullName": "Jenny Tieck",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
+          },
+          "by": {
+            "_id": "u105",
+            "fullName": "Vadim Patrov",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600433507/sprint%204/users/79_mb6iml.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "ev110",
+      "title": "Vegan Nutrition- Making healthy decisions",
+      "subtitle": "Learning the fundements of a vegan diet",
+      "description": "A vegan lifestyle can often be unbalanced, Come and learn how to live a healthy and balanced life based on a vegan nutrition!",
+      "createdBy": {
+        "_id": "u106",
+        "fullName": "Debora faringham",
+        "title": "Mindfullnes instractor",
+        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+      },
+      "dayInWeek": 5,
+      "hour": 17,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Ramat HaSharon"
+      },
+      "tags": [
+        "RamatHaSharon",
+        "Vegan",
+        "AnimalFree",
+        "Nutrition",
+        "WellBeing",
+        "HealthyLifestyle"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600543534/sprint%204/activitiesEv/nutriotion/Vegan%20Nutrition/c700x420_qetqkg.webp",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600542945/sprint%204/activitiesEv/nutriotion/Vegan%20Nutrition/Why-are-more-people-eating-vegan-and-vegetarian-food_wrbm_large_k2beaa.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600542901/sprint%204/activitiesEv/nutriotion/Vegan%20Nutrition/image-placeholder-title_zjxoh4.webp",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600541640/sprint%204/activitiesEv/nutriotion/Vegan%20Nutrition/sugat_3_ounbiw.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600541362/sprint%204/activitiesEv/nutriotion/Vegan%20Nutrition/plant-based-diet_737_553_c1_txopjh.jpg"
+      ],
+      "maxCapacity": 40,
+      "price": 20,
+      "rate": [
+        5,
+        3,
+        4,
+        5
+      ],
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Nim Srivas",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327786/sprint%204/users/44_nrrdly.jpg"
+        },
+        {
+          "_id": "u103",
+          "fullName": "Dillen aplaus",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg"
+        },
+        {
+          "_id": "u102",
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+        },
+        {
+          "_id": "u105",
+          "fullName": "Vadim Patrov",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600433507/sprint%204/users/79_mb6iml.jpg"
+        },
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        },
+        {
+          "_id": "d5tNi2t",
+          "fullName": "chen edri",
+          "email": "chenedri22@gmail.com",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600528830/sprint%204/users/34631420_1990981030921135_3515731319357177856_o.jpg_kasvfh.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "Such a great class! Very recommended!!!",
+          "rate": 5,
+          "by": {
+            "_id": "u102",
+            "fullName": "Kuki Levana",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+          }
+        },
+        {
+          "id": "madeId",
+          "txt": "Great food! Not a beginner friendly class",
+          "rate": 3,
+          "by": {
+            "_id": "u101",
+            "fullName": "Jenny Tieck",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
+          },
+          "by": {
+            "_id": "u105",
+            "fullName": "Vadim Patrov",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600433507/sprint%204/users/79_mb6iml.jpg"
+          }
+        }
+      ]
     }
   ],
   "orders": [

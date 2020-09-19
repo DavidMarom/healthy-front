@@ -14,7 +14,7 @@ import Typography from "@material-ui/core/Typography";
 export class _ActivityDetails extends Component {
   state = {
     activity: null,
-    user:null,
+    user: userService.guestMode(),
     creator: "",
     avgRate: null,
     rateType: "simple-controlled",
@@ -23,9 +23,11 @@ export class _ActivityDetails extends Component {
   componentDidMount() {
     let userBeforeChange = this.props.user;
     // before we have backend! 
-    let user = {_id: userBeforeChange._id , fullName: userBeforeChange.fullName , imgUrl:userBeforeChange.imgUrl }
-    console.log('after-',user);
-    this.setState({ user });
+    if (userBeforeChange) {
+      let user = { _id: userBeforeChange._id, fullName: userBeforeChange.fullName, imgUrl: userBeforeChange.imgUrl }
+      console.log('after-', user);
+      this.setState({ user });
+    }
     this.loadActivity();
   }
 
@@ -54,7 +56,8 @@ export class _ActivityDetails extends Component {
   };
 
   purchaseActivity(activity, user, creator) {
-    console.log('activity, user, creator',activity, user, creator);
+    if (user.id === 'guest') return
+    console.log('activity, user, creator', activity, user, creator);
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);
@@ -156,13 +159,11 @@ export class _ActivityDetails extends Component {
               <div className="center">
                 <h2>Price: ${activity.price}</h2>
               </div>
-
-              <button
-                className="buy-btn"
-                onClick={() => this.purchaseActivity(activity, user, creator)}
-              >
-                Sign me up!
-              </button>
+              {(user._id === 'guest') ?
+                (<button className="sign-btn"
+                  onClick={() => this.props.history.push('/signUp')}>Join Us NOW!</button>) :
+                ( <button className="buy-btn"
+                  onClick={() => this.purchaseActivity(activity, user, creator)}>Sign me up!</button>)}
             </div>
 
             <div className="attendings">
@@ -176,7 +177,7 @@ export class _ActivityDetails extends Component {
               ))}
             </div>
             <div className="map-container">
-            <SimpleMap center={activity.location}/>
+              <SimpleMap center={activity.location} />
 
               {/* <MapContainer pos={activity.location} /> */}
             </div>
@@ -184,7 +185,7 @@ export class _ActivityDetails extends Component {
           {/* END OF RIGHT SIDE */}
 
         </div>
-      </div>
+      </div >
     );
   }
 }
