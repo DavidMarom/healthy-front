@@ -5,6 +5,7 @@ import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 import MapContainer from "../cmps/MapContainer";
+import SimpleMap from "../cmps/map2";
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
@@ -175,10 +176,13 @@ export class _ActivityDetails extends Component {
               ))}
             </div>
             <div className="map-container">
-              <MapContainer pos={activity.location} />
+            <SimpleMap center={activity.location}/>
+
+              {/* <MapContainer pos={activity.location} /> */}
             </div>
           </div>
           {/* END OF RIGHT SIDE */}
+
         </div>
       </div>
     );
