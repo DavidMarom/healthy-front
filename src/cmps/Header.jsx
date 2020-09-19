@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 import React, { Component } from 'react'
 
 import { SearchBox } from './activity/SearchBox.jsx'
 import eventBus from '../services/event-bus-service.js'
 
-=======
-import { NavLink, withRouter } from "react-router-dom";
-import React, { Component } from "react";
-import { SearchBox } from "./activity/SearchBox.jsx";
-import eventBus from "../services/event-bus-service.js";
->>>>>>> 0b94e9f25bf02f481b9361472bb00741a0565e70
 
 export class Header extends Component {
 
@@ -61,7 +54,3 @@ export class Header extends Component {
         </header>
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 0b94e9f25bf02f481b9361472bb00741a0565e70

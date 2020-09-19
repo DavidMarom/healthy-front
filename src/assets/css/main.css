@@ -2,6 +2,7 @@
 @import "suggested.css";
 @import "event.css";
 @import "main-header.css";
+@import "form-edit.css";
 * {
     box-sizing: border-box;
 }
