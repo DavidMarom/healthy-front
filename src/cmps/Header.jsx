@@ -14,11 +14,11 @@ export class Header extends Component {
 
   componentDidMount() {
     this.unsubscribeHome = eventBus.on("homePage", () => {
-      this.setState({ isHomePage: true }, console.log("im home"));
+      this.setState({ isHomePage: true });
     });
 
     this.unsubscribeOutOfHome = eventBus.on("out of homePage", () => {
-      this.setState({ isHomePage: false }, console.log("out of homePage"));
+      this.setState({ isHomePage: false });
     });
   }
 
@@ -36,7 +36,7 @@ export class Header extends Component {
             <div className="logo">
               <NavLink to="/">
                 <div className="logo-img">
-                  <img src={require("../assets/img/logo.jpg")} />
+                  <img src={require("../assets/img/logo.jpg")} alt="" />
                 </div>
               </NavLink>
             </div>
@@ -54,7 +54,7 @@ export class Header extends Component {
               <NavLink className="nav-override-color" to={`/signUp`}>SignUp</NavLink>
             </div>
             <div>
-              <NavLink className="nav-override-color" to={`/user`}><i class="far fa-2x fa-user-circle"></i></NavLink>
+              <NavLink className="nav-override-color" to={`/user`}><i className="far fa-2x fa-user-circle"></i></NavLink>
             </div>
           </div>
         </header>

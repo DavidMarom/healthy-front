@@ -4,7 +4,6 @@ import { saveActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
-import MapContainer from "../cmps/MapContainer";
 import SimpleMap from "../cmps/map2";
 
 import Rating from "@material-ui/lab/Rating";
@@ -205,4 +204,3 @@ export const ActivityDetails = connect(
   mapDispatchToProps
 )(_ActivityDetails);
 
-// AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk

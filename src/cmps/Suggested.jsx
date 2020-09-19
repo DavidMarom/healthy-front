@@ -25,10 +25,9 @@ class _Suggested extends Component {
 
         <div className="card-row">
           {arr.map((activity) => (
-            <Card activity={activity} key={activity._id} />
+            <Card activity={activity} rate={activity.rate} key={activity._id} />
           ))}
         </div>
-        <div className="divider"></div>
       </section>
     );
   }
@@ -49,11 +48,3 @@ export const Suggested = connect(
   mapDispatchToProps
 )(_Suggested);
 
-// return (
-//   <section>
-//     {activities.map((aaa) => console.log(aaa.imgUrls[0]))}
-//     <div className="sugg-container">
-//       <Card img={'./aaa.jpg'} />
-//     </div>
-//   </section>
-// );
