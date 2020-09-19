@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import { MarkunreadSharp } from "@material-ui/icons";
 
 const mapStyles = {
   width: "370px",
@@ -27,7 +28,7 @@ export class MapContainer extends Component {
           initialCenter={pos}
         />
 
-        <Marker name={'Current location'} url={'https://s3-us-west-2.amazonaws.com/s.cdpn.io/134893/pin-red.svg'} position={pos} />
+       
       </div>
     );
   }
