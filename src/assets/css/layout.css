@@ -1,7 +1,23 @@
-.col-center-middle{
-    width:100%;
+.col-center-middle {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
+}
+
+.in-line {
+    display: inline;
+}
+
+.center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.just-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
