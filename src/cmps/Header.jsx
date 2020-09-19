@@ -1,9 +1,8 @@
-import { NavLink} from 'react-router-dom'
-import React, { Component } from 'react'
+import { NavLink } from "react-router-dom";
+import React, { Component } from "react";
 
-import { SearchBox } from './activity/SearchBox.jsx'
-import eventBus from '../services/event-bus-service.js'
-
+import { SearchBox } from "./activity/SearchBox.jsx";
+import eventBus from "../services/event-bus-service.js";
 
 export class Header extends Component {
   state = {
@@ -31,26 +30,35 @@ export class Header extends Component {
   render() {
     const { isHomePage } = this.state;
     return (
-      <header className="main-header">
-        <div className="left-end">
-          <div className="logo">
-            <NavLink to="/">Logo</NavLink>
+      <div className="main-header-wrapper">
+        <header className="main-header">
+          <div className="left-end">
+            <div className="logo">
+              <NavLink to="/">
+                <div className="logo-img">
+                  <img src={require("../assets/img/logo.jpg")} />
+                </div>
+              </NavLink>
+            </div>
+            <div>
+              <NavLink className="nav-override-color" to="/activity">Explore</NavLink>
+            </div>
           </div>
-          <div>
-            <NavLink to="/activity">Explore</NavLink>
-          </div>
-        </div>
 
-        {!isHomePage && <SearchBox cssClass={"header-search"} />}
+          {!isHomePage && <SearchBox cssClass={"header-search"} />}
 
-        <div className="right-end">
-          <div>
-            <NavLink to={`/login`}>Login</NavLink>
-            <NavLink to={`/signUp`}>SignUp</NavLink>
-            <NavLink to={`/user`}>UserProfile</NavLink>
+          <div className="right-end">
+
+            <div>
+              <NavLink className="nav-override-color" to={`/login`}>Login</NavLink>
+              <NavLink className="nav-override-color" to={`/signUp`}>SignUp</NavLink>
+            </div>
+            <div>
+              <NavLink className="nav-override-color" to={`/user`}><i class="far fa-2x fa-user-circle"></i></NavLink>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
     );
   }
 }

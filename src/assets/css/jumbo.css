@@ -61,7 +61,7 @@
     align-items: center;
     background-color: #62cb66;
     height: 50px;
-    width: 50px;
+    min-width: 50px;
     border-radius: 50px;
     margin: 10px;
     color: #ffffff;

@@ -11,7 +11,12 @@
         "title": "Mindfullnes instractor",
         "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
       },
+<<<<<<< HEAD
+      "avgRate":4,
+      "dayInWeek": 7,
+=======
       "dayInWeek": 2,
+>>>>>>> 5221927e87dddc6fa1be56ac157d60cfc75015bf
       "hour": 14,
       "location": {
         "lat": 32.0827,
@@ -19,12 +24,8 @@
         "address": "Changing locaions in Tel Aviv"
       },
       "tags": [
-        "dificult",
-        "sport",
-        "telAviv",
-        "sunset",
-        "sea",
-        "yoga"
+        "telAviv"
+  
       ],
       "imgUrls": [
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600379823/sprint%204/activitiesEv/well-bieng/mindfulness/AdobeStock_193169430_a0gqf8.jpg",
@@ -135,7 +136,7 @@
       },
       "tags": [
         "dificult",
-        "sport",
+        "sports",
         "ironman",
         "mental",
         "run",
@@ -245,12 +246,8 @@
         "address": "Bishulim Culinary School, Tel Aviv"
       },
       "tags": [
-        "dificult",
-        "sport",
-        "telAviv",
-        "sunset",
-        "sea",
-        "yoga"
+        "nutrition"
+       
       ],
       "imgUrls": [
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600376997/sprint%204/activitiesEv/nutriotion/cooking%20class/8821549_1539383238244_xc03ik.jpg",
@@ -355,7 +352,7 @@
       },
       "tags": [
         "dificult",
-        "sport",
+        "sports",
         "telAviv",
         "sunset",
         "sea",
@@ -451,12 +448,21 @@
         "address": "Myoga,HATAAS street, Kfar Saba"
       },
       "tags": [
+<<<<<<< HEAD
+        "dificult",
+        "sports",
+        "telAviv",
+        "sunset",
+        "sea",
+        "yoga"
+=======
         "sport",
         "Feldenkrais",
         "Intense",
         "KfarSaba",
         "Strength",
         "Relaxing"
+>>>>>>> 5221927e87dddc6fa1be56ac157d60cfc75015bf
       ],
       "imgUrls": [
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600506830/sprint%204/activitiesEv/sport/Feldenkrais/5d109f4579990581e6b0402d_RutyBar-cover_tis6f7.jpg",
@@ -1137,7 +1143,7 @@
       "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg",
       "income": 320,
       "prefs": [
-        "sport",
+        "sports",
         "yoga",
         "wellBeing"
       ]
@@ -1153,7 +1159,7 @@
       "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg",
       "income": 0,
       "prefs": [
-        "sport",
+        "sports",
         "yoga",
         "wellBeing"
       ]
@@ -1169,7 +1175,7 @@
       "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg",
       "income": 40,
       "prefs": [
-        "sport",
+        "sports",
         "meditarian diet",
         "jogging"
       ]
@@ -1248,7 +1254,7 @@
       "title": "Admin",
       "fullName": "admin",
       "prefs": [
-        "sport",
+        "sports",
         "yoga",
         "jogging",
         "cardio"
