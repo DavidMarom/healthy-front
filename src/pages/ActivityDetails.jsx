@@ -4,14 +4,8 @@ import { saveActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
-<<<<<<< HEAD
-// import {ChatRoom} from '../cmps/ChatRoom.jsx'
-// import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
-// import ThreeDRotation from "@material-ui/icons/ThreeDRotation";
-=======
 import MapContainer from "../cmps/MapContainer";
 
->>>>>>> 7616c52cce95f86664c07b3ff96845a2396feeb9
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
@@ -21,7 +15,6 @@ import Typography from "@material-ui/core/Typography";
 export class _ActivityDetails extends Component {
   state = {
     activity: null,
-<<<<<<< HEAD
     // user: {
     //   _id: "u106",
     //   fullName: "Debora faringham",
@@ -29,17 +22,6 @@ export class _ActivityDetails extends Component {
     //     "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
     // },
     creator: ""
-=======
-    user: {
-      _id: "u106",
-      fullName: "Debora faringham",
-      imgUrl:
-        "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
-    },
-    creator: "",
-    avgRate: null,
-    rateType : "simple-controlled"
->>>>>>> 7616c52cce95f86664c07b3ff96845a2396feeb9
   };
 
   componentDidMount() {
@@ -83,20 +65,10 @@ export class _ActivityDetails extends Component {
   };
 
   render() {
-<<<<<<< HEAD
-    const { value, setHover, labels, hover } = this.state;
-    const { activity,  creator } = this.state;
-    console.log(activity);
-    const { user} = this.props
-    
-    if (!activity) return <h1>Loading...</h1>;
-    // activity.imgUrls.map(img=>console.log(img))
-=======
     const { value } = this.state;
     const { activity, user, creator } = this.state;
     if (!activity) return <h1>Loading...</h1>;
 
->>>>>>> 7616c52cce95f86664c07b3ff96845a2396feeb9
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
