@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export function ActivityPreview({ activity }) {
     return (
-        <div className="activity-preview card">
+        <div className="activity-preview cardnew">
             <Link to={`activity/${activity._id}`}>
                 <div className="card-img">
                     <img className="img-fit" src={activity.imgUrls[0]} alt="" />

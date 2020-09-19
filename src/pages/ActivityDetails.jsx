@@ -14,22 +14,17 @@ import Typography from "@material-ui/core/Typography";
 export class _ActivityDetails extends Component {
   state = {
     activity: null,
-    user: {
-      _id: "u106",
-      fullName: "Debora faringham",
-      imgUrl:
-        "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
-    },
+    user:null,
     creator: "",
     avgRate: null,
     rateType: "simple-controlled",
-
-    user: null,
-    creator: ""
   };
 
   componentDidMount() {
-    const user = this.props.user;
+    let userBeforeChange = this.props.user;
+    // before we have backend! 
+    let user = {_id: userBeforeChange._id , fullName: userBeforeChange.fullName , imgUrl:userBeforeChange.imgUrl }
+    console.log('after-',user);
     this.setState({ user });
     this.loadActivity();
   }
@@ -59,6 +54,7 @@ export class _ActivityDetails extends Component {
   };
 
   purchaseActivity(activity, user, creator) {
+    console.log('activity, user, creator',activity, user, creator);
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);

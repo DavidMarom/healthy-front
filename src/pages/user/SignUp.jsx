@@ -62,11 +62,11 @@ class _SignUp extends Component {
     doSignup = async ev => {
         ev.preventDefault();
         console.log('inside', this.state.signupCred);
-        const { email, password, userName, fullName, prefs } = this.state.signupCred;
-        if (!email || !password || !userName || !fullName || !prefs) {
+        const { email, password, userName, fullName, prefs, imgUrl } = this.state.signupCred;
+        if (!email || !password || !userName || !fullName || !prefs || !imgUrl) {
             return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { email, password, userName, fullName, prefs };
+        const signupCreds = { email, password, userName, fullName, prefs, imgUrl };
         this.props.signup(signupCreds);
         this.setState({ signupCred: { email: '', password: '', userName: '', fullName: '', prefs: [] } });
     };

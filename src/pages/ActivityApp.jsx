@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadActivities, removeActivity} from "../store/actions/activityActions"
+import { loadActivities, removeActivity } from "../store/actions/activityActions"
 import { ActivityFilter } from '../cmps/activity/ActivityFilter';
 import { ActivityList } from '../cmps/activity/ActivityList';
 
@@ -8,7 +8,7 @@ import { ActivityList } from '../cmps/activity/ActivityList';
 class _ActivityApp extends Component {
 
     state = {
-        filterBy: '',
+        filterBy: ''
     }
 
     componentDidMount() {
@@ -21,32 +21,61 @@ class _ActivityApp extends Component {
         if (prevProps.searchBy.title !== this.props.searchBy.title) this.props.loadActivities(this.state.filterBy)
     }
 
-  
+
     onSetFilter = (filterBy = {}) => {
         this.setState({ filterBy }, () => this.props.loadActivities(this.state.filterBy));
     }
+
+    dummySetFilter = (filterBy) => {
+        console.log(filterBy);
+        this.setState({ filterBy }, () => console.log(this.state.filterBy))
+    }
+
 
     onRemove = (_id) => {
         this.props.removeActivity(_id)
     }
 
     getActivitiesForDisplay = () => {
+        const { filterBy } = this.state
         const activities = this.props.activities
         const searchBy = this.props.searchBy
-        if (!searchBy) {
-            return activities
+        let filteredActivities;
+        if (filterBy === 'Tel Aviv') {
+            filteredActivities = activities.filter(activity => activity.tags.includes('telAviv'))
         }
-        const searchedActivities = activities.filter(activity => activity.title.toLowerCase().includes(searchBy.title.toLowerCase()))
-        return searchedActivities
+        if (filterBy === 'Sports') {
+            filteredActivities = activities.filter(activity => activity.tags.includes('sports'))
+        }
+        if (filterBy === 'Yoga') {
+            filteredActivities = activities.filter(activity => activity.tags.includes('yoga'))
+        }
+        if (filterBy === 'Nutrition') {
+            filteredActivities = activities.filter(activity => activity.tags.includes('nutrition'))
+        }
+        if (filterBy === 'Highest Rated') {
+            filteredActivities = activities.filter(activity => activity.avgRate>=4)
+        }
+        if (filterBy === '') {
+            filteredActivities = activities
+        }
+        if (!searchBy) {
+            return filteredActivities
+        }
+        else {
+            const filteredAndSearched = filteredActivities.filter(activity => activity.title.toLowerCase().includes(searchBy.title.toLowerCase()))
+            return filteredAndSearched
+        }
     }
 
     render() {
         const activities = this.getActivitiesForDisplay();
         if (!activities) return <div>Loading....</div>
         return (
-            <div className="activity-app">
+
+            <div className="activity-app main-container">
                 <div className="filter">
-                <ActivityFilter onSetFilter={this.onSetFilter} />
+                    <ActivityFilter dummySetFilter={this.dummySetFilter} />
                 </div>
                 <ActivityList activities={activities} onRemove={this.onRemove} />
             </div>
