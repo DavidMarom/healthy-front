@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import { MarkunreadSharp } from "@material-ui/icons";
 
 const mapStyles = {
   width: "370px",
@@ -19,12 +20,16 @@ export class MapContainer extends Component {
     const { pos } = this.props;
     if (!pos) return <h1>Loading...</h1>;
     return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        initialCenter={pos}
-      />
+      <div>
+        <Map
+          google={this.props.google}
+          zoom={14}
+          style={mapStyles}
+          initialCenter={pos}
+        />
+
+       
+      </div>
     );
   }
 }
