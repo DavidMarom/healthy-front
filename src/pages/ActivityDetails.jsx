@@ -5,8 +5,8 @@ import { updateUser, loadUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 // import {ChatRoom} from '../cmps/ChatRoom.jsx'
-import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
-import ThreeDRotation from "@material-ui/icons/ThreeDRotation";
+// import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
+// import ThreeDRotation from "@material-ui/icons/ThreeDRotation";
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
@@ -15,12 +15,12 @@ import Typography from "@material-ui/core/Typography";
 export class _ActivityDetails extends Component {
   state = {
     activity: null,
-    user: {
-      _id: "u106",
-      fullName: "Debora faringham",
-      imgUrl:
-        "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
-    },
+    // user: {
+    //   _id: "u106",
+    //   fullName: "Debora faringham",
+    //   imgUrl:
+    //     "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
+    // },
     creator: ""
   };
 
@@ -56,9 +56,12 @@ export class _ActivityDetails extends Component {
 
   render() {
     const { value, setHover, labels, hover } = this.state;
-    const { activity, user, creator } = this.state;
-
+    const { activity,  creator } = this.state;
+    console.log(activity);
+    const { user} = this.props
+    
     if (!activity) return <h1>Loading...</h1>;
+    // activity.imgUrls.map(img=>console.log(img))
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
@@ -70,7 +73,7 @@ export class _ActivityDetails extends Component {
 
         <div className="image-gallery">
           {activity.imgUrls.map((img, idx) => (
-            <img className={`img${idx} gallery__img`} key={idx} src={img} />
+            <img className={`img${idx} gallery__img`} key={idx} src={img} alt="image of" />
           ))}
         </div>
         <div className="event-main-container">

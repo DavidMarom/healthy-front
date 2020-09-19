@@ -18,9 +18,6 @@ export function Jumbo(props) {
     </section>
   );
 }
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 0b94e9f25bf02f481b9361472bb00741a0565e70
