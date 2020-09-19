@@ -11,7 +11,7 @@
         "title": "Mindfullnes instractor",
         "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
       },
-      "dayInWeek": 7,
+      "dayInWeek": 2,
       "hour": 14,
       "location": {
         "lat": 32.0827,
@@ -67,6 +67,12 @@
           "_id": "u106",
           "fullName": "Debora faringham",
           "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        },
+        {
+          "_id": "d5tNi2t",
+          "fullName": "chen edri",
+          "email": "chenedri22@gmail.com",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600528830/sprint%204/users/34631420_1990981030921135_3515731319357177856_o.jpg_kasvfh.jpg"
         }
       ],
       "reviews": [
@@ -372,7 +378,7 @@
         {
           "_id": "u104",
           "fullName": "Miki Shemo",
-          "title":"Pastry Chef",
+          "title": "Pastry Chef",
           "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600526473/sprint%204/users/miki_ol8fuj.png"
         },
         {
@@ -427,7 +433,7 @@
       ]
     },
     {
-      "_id": "ev106",
+      "_id": "ev104",
       "title": "Feldenkrais class",
       "subtitle": "Practicing the Feldenkrais Method",
       "description": "Come and join us for an hour long class which will make you feel more connected to your body then ever! An intense and strengthening workout that will leave you wanting more.",
@@ -536,7 +542,7 @@
       ]
     },
     {
-      "_id": "ev107",
+      "_id": "ev105",
       "title": "Juice Cleanse challenge",
       "subtitle": "Learning the Juice Cleanse basics",
       "description": "Ever felt the need to reset your body? To give it a break from processed food? Come and learn how to do a juice cleanse the right way!",
@@ -643,6 +649,121 @@
           }
         }
       ]
+    },
+    {
+      "_id": "ev106",
+      "title": "Intermittent Fasting",
+      "subtitle": "Learning the fundaments of intermittent fasting",
+      "description": "Intermittent Fasting is one of the best weight loss methods known today! Join us and learn how to do it the right way.",
+      "createdBy": {
+        "_id": "u106",
+        "fullName": "Debora faringham",
+        "title": "Mindfullnes instractor",
+        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+      },
+      "dayInWeek": 1,
+      "hour": 18,
+      "location": {
+        "lat": 32.0827,
+        "lng": 34.7674,
+        "address": "Tel Mond"
+      },
+      "tags": [
+        "WeightLoss",
+        "Nutrition",
+        "Diet",
+        "IntermittentFasting",
+        "Food",
+        "Health"
+      ],
+      "imgUrls": [
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600534704/sprint%204/activitiesEv/nutriotion/Intermittent%20Fasting/intermittent-fasting_skkwzx.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600534459/sprint%204/activitiesEv/nutriotion/Intermittent%20Fasting/2feec1_2220373941cb440689a9326f1a803cf5_mv2_epkiau.webp",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600534604/sprint%204/activitiesEv/nutriotion/Intermittent%20Fasting/intermittent-fasting-results-feature_cfusrw.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600534642/sprint%204/activitiesEv/nutriotion/Intermittent%20Fasting/intermittent-fasting_dtc9lr.webp",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600534339/sprint%204/activitiesEv/nutriotion/Intermittent%20Fasting/32d5adf13a122403_3-MONTHS-IF-B_A_iajp67.jpg",
+        "https://res.cloudinary.com/dygtul5wx/image/upload/v1600534774/sprint%204/activitiesEv/nutriotion/Intermittent%20Fasting/5ad0b0bb146e7128008b47dc_hpibf1.jpg"
+      ],
+      "maxCapacity": 20,
+      "price": 300,
+      "rate": [
+        5,
+        3,
+        4,
+        5
+      ],
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Nim Srivas",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327786/sprint%204/users/44_nrrdly.jpg"
+        },
+        {
+          "_id": "u103",
+          "fullName": "Dillen aplaus",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327821/sprint%204/users/3_vpljke.jpg"
+        },
+        {
+          "_id": "u102",
+          "fullName": "Kuki Levana",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+        },
+        {
+          "_id": "u105",
+          "fullName": "Vadim Patrov",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600433507/sprint%204/users/79_mb6iml.jpg"
+        },
+        {
+          "_id": "u106",
+          "fullName": "Debora faringham",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
+        },
+        {
+          "_id": "d5tNi2t",
+          "fullName": "chen edri",
+          "email": "chenedri22@gmail.com",
+          "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600528830/sprint%204/users/34631420_1990981030921135_3515731319357177856_o.jpg_kasvfh.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r101",
+          "txt": "Such a great class! Very recommended!!!",
+          "rate": 5,
+          "by": {
+            "_id": "u102",
+            "fullName": "Kuki Levana",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
+          }
+        },
+        {
+          "id": "madeId",
+          "txt": "Great food! Not a beginner friendly class",
+          "rate": 3,
+          "by": {
+            "_id": "u101",
+            "fullName": "Jenny Tieck",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327755/sprint%204/users/68_styiv0.jpg"
+          }
+        }
+      ],
+      "msgs": [
+        {
+          "id": "msg101",
+          "txt": "whats up?",
+          "isRead": true,
+          "activity": {
+            "_id": "ev101",
+            "title": "Sunset Yoga at Gordon Beach",
+            "price": 20
+          },
+          "by": {
+            "_id": "u105",
+            "fullName": "Vadim Patrov",
+            "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600433507/sprint%204/users/79_mb6iml.jpg"
+          }
+        }
+      ]
     }
   ],
   "orders": [
@@ -674,7 +795,7 @@
       "prefs": [
         "sport",
         "yoga",
-        "wellBieng"
+        "wellBeing"
       ]
     },
     {
@@ -690,7 +811,7 @@
       "prefs": [
         "sport",
         "yoga",
-        "wellBieng"
+        "wellBeing"
       ]
     },
     {
@@ -752,7 +873,7 @@
       "facebook": "https://www.facebook.com/chen.edri.3",
       "twitter": "",
       "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
-      "income": 100,
+      "income": 600,
       "prefs": [
         "tennis",
         "pilates",
@@ -791,17 +912,18 @@
       "_id": "EKgFbQJ"
     },
     {
+      "_id": "d5tNi2t",
       "email": "chenedri22@gmail.com",
       "password": "123",
       "userName": "chen",
       "fullName": "chen edri",
+      "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600528830/sprint%204/users/34631420_1990981030921135_3515731319357177856_o.jpg_kasvfh.jpg",
       "prefs": [
         "sport",
         "nutrition",
         "diet",
         "mindfullness"
-      ],
-      "_id": "d5tNi2t"
+      ]
     }
   ]
 }
