@@ -110,3 +110,7 @@ p {
 .in-line {
     display: inline;
 }
+
+.map-container{
+    height:300px;
+}
