@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { userService } from '../../services/userService.js';
+import {uploadImg} from '../../services/imgUploadService.js';
 import { signup } from '../../store/actions/userActions.js';
 
 class _SignUp extends Component {
@@ -12,18 +13,40 @@ class _SignUp extends Component {
             password: '',
             userName: '',
             fullName: '',
-            prefs: []
-        }
+            prefs: [],
+            imgUrl:''
+        },
+        suggestion: [{ name: 'sport', isMarked: false }, { name: 'yoga', isMarked: false }, { name: 'cardio', isMarked: false },
+        { name: 'pilates', isMarked: false }, { name: 'mindfullness', isMarked: false }, { name: 'meditation', isMarked: false },
+        { name: 'well-being', isMarked: false }, { name: 'nutrition', isMarked: false }, { name: 'diet', isMarked: false }, 
+        { name: 'pshychology', isMarked: false }]
     };
 
-    addToPrefs =(pref)=>{
+        onUpdateImg = async(ev) =>{
+        const img = await uploadImg(ev)
+        console.log(img);
+        let signupCred = this.state.signupCred;
+        signupCred.imgUrl = img.secure_url;
+        this.setState({signupCred},()=>console.log(this.state.signupCred))
+    }
+
+    addToPrefs = (pref) => {
+        // pushing item to the array inside the big object
         let prefs = (this.state.prefs || []);
-        prefs.push(pref)
-        this.setState(prevState=>({
-                 signupCred:{
-                    ...prevState.signupCred,
-                 prefs:[...this.state.signupCred.prefs, pref]}
-        }), ()=> console.log(this.state.signupCred))
+        prefs.push(pref.name)
+        this.setState(prevState => ({
+            signupCred: {
+                ...prevState.signupCred,
+                prefs: [...this.state.signupCred.prefs, pref.name]
+            }
+        }), () => console.log(this.state.signupCred))
+        //changig the second item in the object suggestions
+        let suggestion = this.state.suggestion
+        var idx = userService.findIdxToMark(suggestion, pref)
+        console.log('idx-', idx);
+        pref.isMarked = !pref.isMarked;
+        suggestion.splice(idx, 1, pref)
+        this.setState({ suggestion }, console.log(suggestion))
     }
 
     signupHandleChange = ev => {
@@ -38,20 +61,20 @@ class _SignUp extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
-        console.log('inside',this.state.signupCred);
+        console.log('inside', this.state.signupCred);
         const { email, password, userName, fullName, prefs } = this.state.signupCred;
         if (!email || !password || !userName || !fullName || !prefs) {
             return this.setState({ msg: 'All inputs are required!' });
         }
         const signupCreds = { email, password, userName, fullName, prefs };
         this.props.signup(signupCreds);
-        this.setState({ signupCred: { email: '', password: '', userName: '', fullName: '', prefs:[] } });
+        this.setState({ signupCred: { email: '', password: '', userName: '', fullName: '', prefs: [] } });
     };
 
 
     render() {
         let signupSection = (
-            <form onSubmit={this.doSignup}>
+            <form className="" onSubmit={this.doSignup}>
                 <input
                     type="text"
                     name="email"
@@ -76,7 +99,6 @@ class _SignUp extends Component {
                     placeholder="full name"
                 />
                 <br />
-                <br />
                 <input
                     type="text"
                     name="userName"
@@ -85,19 +107,15 @@ class _SignUp extends Component {
                     placeholder="Username"
                 />
                 <br />
-                <section>
-                <h2>Please choose are your interests?</h2>
-                    <ul>
-                        <li onClick={()=>this.addToPrefs('sport')}>Sport</li>
-                        <li onClick={()=>this.addToPrefs('yoga')}>Yoga</li>
-                        <li onClick={()=>this.addToPrefs('jogging')}name="pilatis">pilatis</li>
-                        <li onClick={()=>this.addToPrefs('cardio')}name="cardio">cardio</li>
-                        <li onClick={()=>this.addToPrefs('meditation')}name="Meditation">Meditation</li>
-                        <li onClick={()=>this.addToPrefs('nutrition')}name="Nutrition">Nutrition</li>
-                        <li onClick={()=>this.addToPrefs('diet')}name="Diet">Diets</li>
-                        <li onClick={()=>this.addToPrefs('mindfullness')}name="mindfullness">mindfullness</li>
-                        <li onClick={()=>this.addToPrefs('well-bieng')} name="well-bieng<">well-bieng</li>
-                    </ul>
+                <label>Upload Image
+                    <input onChange={(ev)=> this.onUpdateImg(ev)} type="file"/>
+                </label>
+                <h2 className="tac">Please choose are your interests?</h2>
+                <section className="suggestions fs20 ">
+                    {(this.state.suggestion) ? (this.state.suggestion.map((suggest, idx) => (
+                        <div key={idx}
+                            className={`${this.state.suggestion[idx].isMarked ? "marked " : "unmarked "}`}
+                            onClick={this.pinCard} onClick={() => this.addToPrefs(suggest)}>{suggest.name}</div>))) : ''}
                 </section>
                 <button>Signup</button>
             </form>
@@ -105,7 +123,7 @@ class _SignUp extends Component {
 
         const { loggedInUser } = this.props;
         return (
-            <div className="test">
+            <div className="main-container tac">
                 <h1>
                     SignUp Here!
                 </h1>
@@ -131,7 +149,8 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = {
-    signup
+    signup,
+    uploadImg
 };
 
 export const SignUp = connect(mapStateToProps, mapDispatchToProps)(_SignUp);

@@ -8,6 +8,7 @@ export const userService = {
     getById,
     remove,
     update,
+    findIdxToMark
 }
 
 function getUsers() {
@@ -44,4 +45,8 @@ async function logout() {
 function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
+}
+
+function findIdxToMark(suggestions, object){
+    return suggestions.findIndex(suggest=> suggest.name === object.name);
 }
