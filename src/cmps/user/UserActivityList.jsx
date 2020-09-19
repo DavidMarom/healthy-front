@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, Link } from 'react'
 import { UserActivityPreview } from './UserActivityPreview'
 
 
@@ -9,7 +9,7 @@ export function UserActivityList({ activities , user}) {
             {
                 activities.map(activity => <UserActivityPreview activity={activity} key={activity._id} user={user} />)
             }
-
+            <Link to={`/user/${user._id}`}>For More Details</Link>
         </div>
     )
 }

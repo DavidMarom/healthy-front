@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { UserActivityList } from '../../cmps/user/UserActivityList'
 import { UserSchedule } from '../../cmps/user/UserSchedule'
 import { userService } from "../../services/userService.js";
+
 export class _UserDetails extends Component {
     state = {
         currUser: null,
@@ -39,7 +40,7 @@ export class _UserDetails extends Component {
         if (!Object.keys(activities).length) activities = null;
         const { currUser } = this.state;
         if (!currUser) return <div>loading..</div>
-        let EventsCreatedByUser = this.uploadCreatedEvents(activities, currUser);
+        let eventsCreatedByUser = this.uploadCreatedEvents(activities, currUser);
         let partOfEvents = this.uploadPartOfEvents(activities, currUser);
         return (
             <div className="main-container">
@@ -54,7 +55,7 @@ export class _UserDetails extends Component {
                             <h4>{currUser.email}</h4>
                             <div className="main-info-container">
                                 <h3>Events Im going to:</h3>
-                                <UserActivityList activities={EventsCreatedByUser} user={null} />
+                                {(eventsCreatedByUser)? <UserActivityList activities={eventsCreatedByUser} user={null}/>:''}
                             </div>
                             <div className="main-info-container">
                                 <h3>Events I organize:</h3>
