@@ -4,13 +4,17 @@ import { saveActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
-// import {ChatRoom} from '../cmps/ChatRoom.jsx'
-import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
-import ThreeDRotation from "@material-ui/icons/ThreeDRotation";
+
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+
+// export default GoogleApiWrapper({
+//   apiKey: 'AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk'
+// })(MapContainer);
+
 
 export class _ActivityDetails extends Component {
   state = {
@@ -23,6 +27,7 @@ export class _ActivityDetails extends Component {
     },
     creator: "",
     avgRate: null,
+    rateType : "simple-controlled"
   };
 
   componentDidMount() {
@@ -63,6 +68,7 @@ export class _ActivityDetails extends Component {
   onRate = (activity, value) => {
     console.log(value);
     activityService.addRate(activity, value);
+    this.setState({rateType : "read-only"})
   };
 
   render() {
@@ -125,19 +131,21 @@ export class _ActivityDetails extends Component {
               ))}
             </div>
             <div className="divider d-hi"></div>
+            
+            <div className=".col-center-middle">
             <p>Rate</p>
 
-            <div>
               <Box component="fieldset" mb={3} borderColor="transparent">
                 <Typography component="legend"></Typography>
                 <Rating
-                  name="simple-controlled"
+                  name={this.state.rateType}
                   value={value}
                   onChange={(event, newValue) => {
                     this.onRate(activity, newValue);
                   }}
                 />
               </Box>
+
             </div>
           </div>
 
@@ -177,6 +185,17 @@ export class _ActivityDetails extends Component {
             <img src={require("../assets/img/map.jpg")} />
           </div>
           {/* END OF RIGHT SIDE */}
+
+
+          {/* <Map
+          google={this.props.google}
+          zoom={8}
+          style={mapStyles}
+          initialCenter={{ lat: 47.444, lng: -122.176}}
+        />
+ */}
+
+
         </div>
       </div>
     );
@@ -198,3 +217,5 @@ export const ActivityDetails = connect(
   mapStateToProps,
   mapDispatchToProps
 )(_ActivityDetails);
+
+// AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk
