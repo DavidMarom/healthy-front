@@ -4,16 +4,12 @@ import { saveActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
+import MapContainer from "../cmps/MapContainer";
 
-import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-
-// export default GoogleApiWrapper({
-//   apiKey: 'AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk'
-// })(MapContainer);
 
 
 export class _ActivityDetails extends Component {
@@ -66,13 +62,12 @@ export class _ActivityDetails extends Component {
   }
 
   onRate = (activity, value) => {
-    console.log(value);
     activityService.addRate(activity, value);
     this.setState({rateType : "read-only"})
   };
 
   render() {
-    const { value, setHover, labels, hover } = this.state;
+    const { value } = this.state;
     const { activity, user, creator } = this.state;
     if (!activity) return <h1>Loading...</h1>;
 
@@ -182,21 +177,13 @@ export class _ActivityDetails extends Component {
                 />
               ))}
             </div>
-            <img src={require("../assets/img/map.jpg")} />
+            <MapContainer pos={activity.location} />
           </div>
           {/* END OF RIGHT SIDE */}
 
 
-          {/* <Map
-          google={this.props.google}
-          zoom={8}
-          style={mapStyles}
-          initialCenter={{ lat: 47.444, lng: -122.176}}
-        />
- */}
-
-
         </div>
+        
       </div>
     );
   }

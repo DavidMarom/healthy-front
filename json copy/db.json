@@ -14,9 +14,9 @@
       "dayInWeek": 2,
       "hour": 14,
       "location": {
-        "lat": 32.0827,
-        "lng": 34.7674,
-        "address": "Changing locaions in Tel Aviv"
+        "address": "Changing locaions in Tel Aviv",
+        "lat": 32.0853,
+        "lng": 34.7818
       },
       "tags": [
         "dificult",
@@ -60,7 +60,9 @@
         1,
         1,
         3,
-        1
+        1,
+        4,
+        2
       ],
       "participants": [
         {
