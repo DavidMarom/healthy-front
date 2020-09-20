@@ -16,11 +16,11 @@ export class _Header extends Component {
 
   componentDidMount() {
     this.unsubscribeHome = eventBus.on("homePage", () => {
-      this.setState({ isHomePage: true }, console.log("im home"));
+      this.setState({ isHomePage: true });
     });
 
     this.unsubscribeOutOfHome = eventBus.on("out of homePage", () => {
-      this.setState({ isHomePage: false }, console.log("out of homePage"));
+      this.setState({ isHomePage: false });
     });
   }
 
@@ -39,7 +39,7 @@ export class _Header extends Component {
             <div className="logo">
               <NavLink to="/">
                 <div className="logo-img">
-                  <img src={require("../assets/img/logo.jpg")} />
+                  <img src={require("../assets/img/logo.jpg")} alt="" />
                 </div>
               </NavLink>
             </div>
