@@ -21,9 +21,18 @@ export class _ActivityDetails extends Component {
 
   componentDidMount() {
     let userBeforeChange = this.props.user;
-    // before we have backend! 
+    // before we have backend!
     if (userBeforeChange) {
+<<<<<<< HEAD
+      let user = {
+        _id: userBeforeChange._id,
+        fullName: userBeforeChange.fullName,
+        imgUrl: userBeforeChange.imgUrl,
+      };
+      console.log("after-", user);
+=======
       let user = { _id: userBeforeChange._id, fullName: userBeforeChange.fullName, imgUrl: userBeforeChange.imgUrl }
+>>>>>>> 7ae242e641ee0c1879f63fd4d0d026fd9ae2d6e1
       this.setState({ user });
     }
     this.loadActivity();
@@ -54,11 +63,53 @@ export class _ActivityDetails extends Component {
   };
 
   purchaseActivity(activity, user, creator) {
+<<<<<<< HEAD
+    if (user.id === "guest") return;
+    console.log("activity, user, creator", activity, user, creator);
+=======
     if (user.id === 'guest') return
+>>>>>>> 7ae242e641ee0c1879f63fd4d0d026fd9ae2d6e1
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);
     this.props.saveActivity(activity);
+  }
+
+  renderDay(value) {
+    let res = "";
+    switch (value) {
+      case 1:
+        res = "Sunday";
+        break;
+
+      case 2:
+        res = "Monday";
+        break;
+
+      case 3:
+        res = "Tuesday";
+        break;
+
+      case 4:
+        res = "wednesday";
+        break;
+
+      case 5:
+        res = "Thursday";
+        break;
+
+      case 6:
+        res = "Friday";
+        break;
+
+      case 7:
+        res = "Saturday";
+        break;
+
+      default:
+        break;
+    }
+    return res;
   }
 
   onRate = (activity, value) => {
@@ -85,7 +136,12 @@ export class _ActivityDetails extends Component {
 
         <div className="image-gallery">
           {activity.imgUrls.map((img, idx) => (
-            <img className={`img${idx} gallery__img`} key={idx} src={img} alt="image of" />
+            <img
+              className={`img${idx} gallery__img`}
+              key={idx}
+              src={img}
+              alt="image of"
+            />
           ))}
         </div>
         <div className="event-main-container">
@@ -110,7 +166,7 @@ export class _ActivityDetails extends Component {
                 <i className="far fa-calendar-alt fa-lg"></i>
               </div>
               <p>
-                {activity.dayInWeek} - {activity.hour}:00
+                {this.renderDay(activity.dayInWeek)} - {activity.hour}:00
               </p>
               <h5>{activity.location.address}</h5>
             </div>
@@ -158,11 +214,21 @@ export class _ActivityDetails extends Component {
               <div className="center">
                 <h2>Price: ${activity.price}</h2>
               </div>
-              {(user._id === 'guest') ?
-                (<button className="sign-btn"
-                  onClick={() => this.props.history.push('/signUp')}>Join Us NOW!</button>) :
-                ( <button className="buy-btn"
-                  onClick={() => this.purchaseActivity(activity, user, creator)}>Sign me up!</button>)}
+              {user._id === "guest" ? (
+                <button
+                  className="sign-btn"
+                  onClick={() => this.props.history.push("/signUp")}
+                >
+                  Join Us NOW!
+                </button>
+              ) : (
+                <button
+                  className="buy-btn"
+                  onClick={() => this.purchaseActivity(activity, user, creator)}
+                >
+                  Sign me up!
+                </button>
+              )}
             </div>
 
             <div className="attendings">
@@ -178,13 +244,11 @@ export class _ActivityDetails extends Component {
             <div className="map-container">
               <SimpleMap center={activity.location} />
 
-              {/* <MapContainer pos={activity.location} /> */}
             </div>
           </div>
           {/* END OF RIGHT SIDE */}
-
         </div>
-      </div >
+      </div>
     );
   }
 }
@@ -204,4 +268,3 @@ export const ActivityDetails = connect(
   mapStateToProps,
   mapDispatchToProps
 )(_ActivityDetails);
-
