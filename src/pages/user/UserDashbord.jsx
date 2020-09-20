@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { BarChart} from '../../cmps/user/BarChart.jsx'
-import { PieChart} from '../../cmps/user/PieChart.jsx'
+import { BarChart } from '../../cmps/user/BarChart.jsx'
+import { PieChart } from '../../cmps/user/PieChart.jsx'
 
 import { userService } from '../../services/userService.js';
 
@@ -24,16 +24,18 @@ class _UserDashbord extends Component {
     render() {
         const { currUser } = this.state;
         return <div className="main-container">
-            <div className="flex mt50 sb">
-                <div className="flex column">
+            <div className="flex mt50 sb column">
+                <div className="flex dashbord-info fs24 column">
                     <h3>{currUser.fullName}</h3>
                     <h3>Total Sales: ${currUser.income}</h3>
                 </div>
-                <div className= "bar">
-                    <BarChart user={currUser}/>
-                </div>
-                <div>
-                    <PieChart user={currUser}/>
+                <div className="flex no-wrap align-center">
+                    <div className="bar m10">
+                        <BarChart user={currUser} />
+                    </div>
+                    <div>
+                        <PieChart user={currUser} />
+                    </div>
                 </div>
             </div>
         </div>

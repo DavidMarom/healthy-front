@@ -1,8 +1,12 @@
+import { func } from "prop-types";
+
 export const chartService = {
   getMembers,
   getTitles,
   findMaxCapacity,
-  getIncomeFromEvent
+  getIncomeFromEvent,
+  getIncome,
+  getRandomColor
 }
 
 function getTitles(activities){
@@ -24,3 +28,18 @@ function findMaxCapacity(activities){
     })
     return max;
 }
+
+function getIncome(incomeFromEvent){
+    return incomeFromEvent.reduce(function(acc,val){
+        return acc+val;
+    },0)
+}    
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }

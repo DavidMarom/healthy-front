@@ -51,6 +51,9 @@
     &.wrap{
         flex-wrap: wrap;
     }
+    &.no-wrap{
+        flex-wrap: nowrap;
+    }
 }
 
 li{
@@ -72,6 +75,10 @@ li{
 
 .p0{
     padding: 0;
+}
+
+.m10{
+    margin: rem(10px) auto;
 }
 
 .cursor-pointer{

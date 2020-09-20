@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import { loadActivities } from '../../store/actions/activityActions.js';
-import { chartService} from '../../services/chartService.js';
+import { chartService } from '../../services/chartService.js';
 import { activityService } from '../../services/activityService.js';
 
 
@@ -30,7 +30,7 @@ class _BarChart extends Component {
         return chartService.getMembers(eventsCreatedByUser)
     }
 
-    onFindMaxCapacity = (eventsCreatedByUser) =>{
+    onFindMaxCapacity = (eventsCreatedByUser) => {
         return chartService.findMaxCapacity(eventsCreatedByUser)
     }
 
@@ -44,7 +44,7 @@ class _BarChart extends Component {
         //bild the bar variables:
         let titles = this.onGetTitles(eventsCreatedByUser)
         let memebersNum = this.onGetMembers(eventsCreatedByUser)
-        const maxCapacity= this.onFindMaxCapacity(eventsCreatedByUser);
+        const maxCapacity = this.onFindMaxCapacity(eventsCreatedByUser);
 
         // start bild the bar
 
@@ -56,8 +56,8 @@ class _BarChart extends Component {
                     backgroundColor: 'rgb(149, 191, 143)',
                     borderColor: 'rgb(153,209,123)',
                     borderWidth: 1,
-                    hoverBackgroundColor:'rgb(180, 121, 120)',
-                    hoverBorderColor:  'rgb(177, 174, 145)',
+                    hoverBackgroundColor: 'rgb(180, 121, 120)',
+                    hoverBorderColor: 'rgb(177, 174, 145)',
                     data: memebersNum
                 }
             ]
@@ -66,6 +66,7 @@ class _BarChart extends Component {
 
         return (
             <div>
+                <h3 className="tac">Number of Participants Per Event</h3>
                 <Bar className="bar"
                     data={data}
                     width={300}
@@ -77,10 +78,10 @@ class _BarChart extends Component {
                             }],
                             yAxes: [{
                                 ticks: {
-                                    beginAtZero:true,
+                                    beginAtZero: true,
                                     min: 0,
-                                    max: maxCapacity    
-                                }, 
+                                    max: maxCapacity
+                                },
                                 stacked: true
                             }]
                         }
