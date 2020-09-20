@@ -1,7 +1,7 @@
 .form-edit {
     display: flex;
     flex-direction: column;
-    /* width: 50% */
+  
 }
 .edit-block{
     width: 100%;
@@ -10,7 +10,7 @@
 .edit-details {
     display: flex;
     flex-direction: column;
-    width: 50%
+    width: 60%;
 }
 
 .price-input {
@@ -47,6 +47,19 @@
 
 .edit-description{
     margin: 20px 0px;  
+}
+
+.edit-imgs{
+    margin-left: 40px;
+}
+
+.img-edit{
+    width: 200px;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:8px;
 }
 
 
