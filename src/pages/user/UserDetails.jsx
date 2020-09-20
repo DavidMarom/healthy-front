@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import { loadActivities } from "../../store/actions/activityActions"
 import { connect } from 'react-redux'
 import { UserActivityList } from '../../cmps/user/UserActivityList'
@@ -53,12 +54,13 @@ export class _UserDetails extends Component {
                             {/* <p>Location: {currUser.location.address}</p> */}
                             <p>Bio:{currUser.bio}</p>
                             <h4>{currUser.email}</h4>
+                            <Link to='/activity/add'>Add A New Event</Link>
                             <div className="main-info-container">
-                                <h3>Events Im going to:</h3>
+                                <h3>Events I organize:</h3>
                                 {(eventsCreatedByUser)? <UserActivityList activities={eventsCreatedByUser} user={currUser}/>:''}
                             </div>
                             <div className="main-info-container">
-                                <h3>Events I organize:</h3>
+                                <h3>Events Im going to:</h3>
                                {(partOfEvents)? <UserActivityList activities={partOfEvents} user={currUser} />: ''}
                             </div>
                         </div>

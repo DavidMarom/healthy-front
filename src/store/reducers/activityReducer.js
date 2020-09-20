@@ -24,7 +24,8 @@ export function activityReducer(state = initialState, action) {
             }
         case 'ADD_ACTIVITY':
             return {
-                ...state, activities: [...state.activity, action.activity]
+                ...state,
+                 activities: state.activities.push(action.activity)
             }
         case 'REMOVE_ACTIVITY':
             return { ...state, activities: state.activitys.filter(activity => activity._id !== action.activityId) }

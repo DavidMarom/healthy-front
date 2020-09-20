@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TextField, Select, MenuItem, Button } from '@material-ui/core';
+import { TextField, Select, MenuItem } from '@material-ui/core';
 
 
 import { activityService } from '../services/activityService.js'
@@ -15,12 +15,16 @@ class _ActivityEdit extends Component {
         activity: {},
         isEdit: true,
         isUploading: false,
+        currUser: null,
         days: [{ 1: 'Sunday' }, { 2: 'Monday' }, { 3: 'Tuesday' }, { 4: 'Wednesday' }, { 5: 'Thursday' }, { 6: 'Friday' }, { 7: 'Saturday' }],
         hours: [{ 6: '6' }, { 6: '8' }, { 8: '8' }, { 9: '9' }, { 10: '10' }, { 11: '11' }, { 12: '12' }, { 13: '13' }, { 14: '14' }, { 15: '15' }, { 16: '16' }, { 17: '17' }, { 18: '18' }, { 19: '19' }, { 20: '20' }, { 21: '21' }, { 22: '22' }]
     }
 
     componentDidMount() {
         this.loadActivity()
+        const currUser = this.props.user;
+        this.setState({ currUser }, () => console.log(this.state.currUser))
+
     }
 
     loadActivity() {
@@ -38,16 +42,31 @@ class _ActivityEdit extends Component {
 
     onSaveActivity = async (ev) => {
         ev.preventDefault();
-        const activity = this.state.activity
+        let activity = this.state.activity
+        const { createdBy } = activity
+        if (!createdBy) {
+            const { _id } = this.state.currUser
+            const { fullName } = this.state.currUser
+            const { imgUrl } = this.state.currUser
+            activity = {
+                ...activity,
+                createdBy: {
+                    _id,
+                    fullName,
+                    imgUrl
+                }
+            }
+        }
         await this.props.saveActivity(activity);
-        this.props.history.push('/activity');
+        this.props.history.push('/user');
     }
 
-    handleSchedule = () => { }
-
     handleInput = ({ target }) => {
+        const field = target.name
+        let value = target.value
+        if (target.type === 'number') value = +target.value
         this.setState(
-            { activity: { ...this.state.activity, [target.name]: target.value } }
+            { activity: { ...this.state.activity, [field]: value } }
         )
     }
 
@@ -117,14 +136,14 @@ class _ActivityEdit extends Component {
                             <section className="price-capacity-block flex">
                                 <div className="edit-price flex column">
                                     <label htmlFor="price">Price</label>
-                                    <TextField className="price-input" type="text" value={activity.price} variant="outlined" size="small"
+                                    <TextField className="price-input" type="number" value={activity.price} variant="outlined" size="small"
                                         name="price"
                                         onChange={this.handleInput}
                                     />
                                 </div>
                                 <div className="edit-capacity flex column">
                                     <label htmlFor="price">Max Capacity</label>
-                                    <TextField className="capacity-input" type="text" value={activity.maxCapacity} variant="outlined" size="small"
+                                    <TextField className="capacity-input" type="number" value={activity.maxCapacity} variant="outlined" size="small"
                                         name="capacity"
                                         onChange={this.handleInput}
                                     />
@@ -176,6 +195,7 @@ class _ActivityEdit extends Component {
 const mapStateToProps = (state) => {
     return {
         activities: state.activityReducer.activities,
+        user: state.userReducer.loggedInUser
     }
 }
 

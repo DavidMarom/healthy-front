@@ -23,16 +23,7 @@ export class _ActivityDetails extends Component {
     let userBeforeChange = this.props.user;
     // before we have backend!
     if (userBeforeChange) {
-<<<<<<< HEAD
-      let user = {
-        _id: userBeforeChange._id,
-        fullName: userBeforeChange.fullName,
-        imgUrl: userBeforeChange.imgUrl,
-      };
-      console.log("after-", user);
-=======
       let user = { _id: userBeforeChange._id, fullName: userBeforeChange.fullName, imgUrl: userBeforeChange.imgUrl }
->>>>>>> 7ae242e641ee0c1879f63fd4d0d026fd9ae2d6e1
       this.setState({ user });
     }
     this.loadActivity();
@@ -63,12 +54,7 @@ export class _ActivityDetails extends Component {
   };
 
   purchaseActivity(activity, user, creator) {
-<<<<<<< HEAD
-    if (user.id === "guest") return;
-    console.log("activity, user, creator", activity, user, creator);
-=======
     if (user.id === 'guest') return
->>>>>>> 7ae242e641ee0c1879f63fd4d0d026fd9ae2d6e1
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);

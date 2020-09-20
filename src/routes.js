@@ -18,10 +18,10 @@ export default [
         component: ActivityApp
     },
 
-    {
-        path: '/activity/:activityId/',
-        component: ActivityDetails,
-    },
+    // {
+    //     path: '/activity/:activityId/',
+    //     component: ActivityDetails,
+    // },
 
     {
         path: '/activity/edit/:activityId/',
@@ -30,6 +30,10 @@ export default [
     {
         path: '/activity/add',
         component: ActivityEdit,
+    },
+    {
+        path: '/activity/:activityId/',
+        component: ActivityDetails,
     },
     {
         path: '/user/:userId',

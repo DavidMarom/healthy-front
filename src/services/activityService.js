@@ -59,15 +59,20 @@ function addRate(activity, rate) {
   }
 }
 
-
 function getEmpty() {
   return {
-    imgUrl: "",
     title: "",
     createdAt: "",
     description: "",
-    address: "",
-    price: ""
+    location:{
+      address: ""
+    },
+    imgUrls:[],
+    participants:[],
+    tags:[],
+    rate:[],
+    reviews:[],
+    msgs:[]
   }
 }
 
