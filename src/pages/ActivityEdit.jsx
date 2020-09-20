@@ -51,14 +51,13 @@ class _ActivityEdit extends Component {
         )
     }
 
-    // todo: change to imgUrls array
     uploadFile = async (ev) => {
+        const currImgUrls = this.state.activity.imgUrls
         this.setState({ isUploading: true })
-        const imgObj = await uploadImg(ev)
+        const recivedImgUrls = await uploadImg(ev)
         this.setState({ isUploading: false })
-
-        this.setState({ activity: { ...this.state.activity, imgUrls: imgObj.url } })
-
+        const imgUrls = [...currImgUrls, ...recivedImgUrls]
+        this.setState({ activity: { ...this.state.activity, imgUrls: imgUrls } })
     }
 
 
@@ -70,70 +69,78 @@ class _ActivityEdit extends Component {
         return (
 
             <section className="main-container">
-                {/* <div>{activity.imgUrls.map((img, idx) => <img className={`img-edit img-${idx}`} key={idx} src={img} />)}</div> */}
                 <h2>Edit Activity</h2>
                 <form className="form-edit" onSubmit={this.onSaveActivity} >
-                    <div className="edit-title flex column">
-                        <label htmlFor="title">Title</label>
-                        <TextField label="Required" margin="normal" type="text" value={activity.title} variant="outlined" size="small"
-                            multiline
-                            name="title"
-                            onChange={this.handleInput}
-                        />
-                    </div>
-
-                    <div className="edit-subtitle flex column">
-                        <label htmlFor="subtitle">Short Description</label>
-                        <TextField margin="normal" type="text" value={activity.subtitle} variant="outlined" size="small"
-                            multiline
-                            name="subtitle"
-                            onChange={this.handleInput}
-                        />
-                    </div>
-
-                    <div className="day-time-block flex">
-                        <div className="edit-day flex">
-                            <label htmlFor="dayInWeek">Day:</label>
-                            <Select className="day-select" value={activity.dayInWeek} onChange={this.handleInput} name="dayInWeek" label="Required">
-                                {days.map((day, idx) => <MenuItem key={idx} value={parseInt(Object.keys(day))}>{Object.values(day)}</MenuItem>)}
-                            </Select>
-                        </div>
-                        <div className="edit-hour flex">
-                            <label htmlFor="hour">Hour:</label>
-                            <Select className="hour-select" value={activity.hour} onChange={this.handleInput} name="hour" label="Required">
-                                {hours.map((hour, idx) => <MenuItem key={idx} value={parseInt(Object.keys(hour))}>{Object.values(hour)}</MenuItem>)}
-                            </Select>
-                        </div>
-                    </div>
-
-                    <section className="price-capacity-block flex">
-                        <div className="edit-price flex column">
-                            <label htmlFor="price">Price</label>
-                            <TextField className="price-input" type="text" value={activity.price} variant="outlined" size="small"
-                                name="price"
+                    <section className="edit-block flex">
+                    <section className="edit-details">
+                        <div className="edit-title flex column">
+                            <label htmlFor="title">Title</label>
+                            <TextField label="Required" margin="normal" type="text" value={activity.title} variant="outlined" size="small"
+                                multiline
+                                name="title"
                                 onChange={this.handleInput}
                             />
                         </div>
-                        <div className="edit-capacity flex column">
-                            <label htmlFor="price">Max Capacity</label>
-                            <TextField className="capacity-input" type="text" value={activity.maxCapacity} variant="outlined" size="small"
-                                name="capacity"
+
+                        <div className="edit-subtitle flex column">
+                            <label htmlFor="subtitle">Short Description</label>
+                            <TextField margin="normal" type="text" value={activity.subtitle} variant="outlined" size="small"
+                                multiline
+                                name="subtitle"
+                                onChange={this.handleInput}
+                            />
+                        </div>
+
+                        <div className="day-time-block flex">
+                            <div className="edit-day flex">
+                                <label htmlFor="dayInWeek">Day:</label>
+                                <Select className="day-select" value={activity.dayInWeek} onChange={this.handleInput} name="dayInWeek" label="Required">
+                                    {days.map((day, idx) => <MenuItem key={idx} value={parseInt(Object.keys(day))}>{Object.values(day)}</MenuItem>)}
+                                </Select>
+                            </div>
+                            <div className="edit-hour flex">
+                                <label htmlFor="hour">Hour:</label>
+                                <Select className="hour-select" value={activity.hour} onChange={this.handleInput} name="hour" label="Required">
+                                    {hours.map((hour, idx) => <MenuItem key={idx} value={parseInt(Object.keys(hour))}>{Object.values(hour)}</MenuItem>)}
+                                </Select>
+                            </div>
+                        </div>
+
+                        <section className="price-capacity-block flex">
+                            <div className="edit-price flex column">
+                                <label htmlFor="price">Price</label>
+                                <TextField className="price-input" type="text" value={activity.price} variant="outlined" size="small"
+                                    name="price"
+                                    onChange={this.handleInput}
+                                />
+                            </div>
+                            <div className="edit-capacity flex column">
+                                <label htmlFor="price">Max Capacity</label>
+                                <TextField className="capacity-input" type="text" value={activity.maxCapacity} variant="outlined" size="small"
+                                    name="capacity"
+                                    onChange={this.handleInput}
+                                />
+                            </div>
+                        </section>
+
+                        <div className="edit-description flex column">
+                            <label htmlFor="description" >Detailed Description</label>
+                            <TextField name="description" value={activity.description} size="small" multiline
+                                variant="outlined" multiline margin="normal"
                                 onChange={this.handleInput}
                             />
                         </div>
                     </section>
 
-                    <div className="edit-description flex column">
-                        <label htmlFor="description" >Detailed Description</label>
-                        <TextField name="description" value={activity.description} size="small" multiline
-                            variant="outlined" multiline margin="normal"
-                            onChange={this.handleInput}
-                        />
-                    </div>
+                    <section className="edit-img">
+                        <h3>Images</h3>
+                        <div className="img-gallery-edit flex wrap">{activity.imgUrls.map((img, idx) => <img className={`img-edit img-${idx}`} key={idx} src={img} />)}</div>
+                        <input type="file" multiple onChange={this.uploadFile} />
+                    </section>
 
-                    {/* multiple */}
-                    <input type="file" onChange={this.uploadFile} />
-                    {/* <Button variant="contained" color="primary"  disabled={this.state.isUploading}>Save</Button> */}
+
+                    </section>
+                   
                     <button className="save-btn" disabled={this.state.isUploading} >Save</button>
 
                 </form>

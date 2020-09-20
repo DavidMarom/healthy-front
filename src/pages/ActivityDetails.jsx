@@ -21,9 +21,14 @@ export class _ActivityDetails extends Component {
 
   componentDidMount() {
     let userBeforeChange = this.props.user;
-    // before we have backend! 
+    // before we have backend!
     if (userBeforeChange) {
-      let user = { _id: userBeforeChange._id, fullName: userBeforeChange.fullName, imgUrl: userBeforeChange.imgUrl }
+      let user = {
+        _id: userBeforeChange._id,
+        fullName: userBeforeChange.fullName,
+        imgUrl: userBeforeChange.imgUrl,
+      };
+      console.log("after-", user);
       this.setState({ user });
     }
     this.loadActivity();
@@ -61,6 +66,43 @@ export class _ActivityDetails extends Component {
     this.props.saveActivity(activity);
   }
 
+  renderDay(value) {
+    let res = "";
+    switch (value) {
+      case 1:
+        res = "Sunday";
+        break;
+
+      case 2:
+        res = "Monday";
+        break;
+
+      case 3:
+        res = "Tuesday";
+        break;
+
+      case 4:
+        res = "wednesday";
+        break;
+
+      case 5:
+        res = "Thursday";
+        break;
+
+      case 6:
+        res = "Friday";
+        break;
+
+      case 7:
+        res = "Saturday";
+        break;
+
+      default:
+        break;
+    }
+    return res;
+  }
+
   onRate = (activity, value) => {
     activityService.addRate(activity, value);
     this.setState({ rateType: "read-only" });
@@ -84,7 +126,12 @@ export class _ActivityDetails extends Component {
 
         <div className="image-gallery">
           {activity.imgUrls.map((img, idx) => (
-            <img className={`img${idx} gallery__img`} key={idx} src={img} alt="image of" />
+            <img
+              className={`img${idx} gallery__img`}
+              key={idx}
+              src={img}
+              alt="image of"
+            />
           ))}
         </div>
         <div className="event-main-container">
@@ -109,7 +156,7 @@ export class _ActivityDetails extends Component {
                 <i className="far fa-calendar-alt fa-lg"></i>
               </div>
               <p>
-                {activity.dayInWeek} - {activity.hour}:00
+                {this.renderDay(activity.dayInWeek)} - {activity.hour}:00
               </p>
               <h5>{activity.location.address}</h5>
             </div>
@@ -159,10 +206,15 @@ export class _ActivityDetails extends Component {
               </div>
               {(user._id === 'guest') ?
                 (<button className="buy-btn"
-                  onClick={() => this.props.history.push('/signUp')}>Join Us NOW!</button>) : ''}
-                  {(activity.participants.length < activity.maxCapacity)?( <button className="buy-btn"
-                  onClick={() => this.purchaseActivity(activity, user, creator)}>Sign me up!</button>):
-                  ( <button className="sold-out-btn">SOLD OUT!</button>)}
+                  onClick={() => this.props.history.push('/signUp')}>
+                  Join Us NOW!
+                </button>) : ''}
+              {(activity.participants.length < activity.maxCapacity) ?
+                (<button className="buy-btn"
+                  onClick={() => this.purchaseActivity(activity, user, creator)}>
+                  Sign me up!
+                </button>) :
+                (<button className="sold-out-btn">SOLD OUT!</button>)}
             </div>
             <div className="attendings">
               <h3>Attending</h3>
@@ -177,13 +229,11 @@ export class _ActivityDetails extends Component {
             <div className="map-container">
               <SimpleMap center={activity.location} />
 
-              {/* <MapContainer pos={activity.location} /> */}
             </div>
           </div>
           {/* END OF RIGHT SIDE */}
-
         </div>
-      </div >
+      </div>
     );
   }
 }
@@ -203,4 +253,3 @@ export const ActivityDetails = connect(
   mapStateToProps,
   mapDispatchToProps
 )(_ActivityDetails);
-
