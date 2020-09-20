@@ -35,7 +35,7 @@ export class Card extends Component {
                 {` (`}{activity.rate.length}{`)`}
               </div>
               <div>
-                {activity.title}
+                {activity.title}{` - `}
                 {activity.subtitle}
               </div>
               <div className="bold">
