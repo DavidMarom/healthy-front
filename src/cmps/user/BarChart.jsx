@@ -1,75 +1,108 @@
-// import React, { Component } from 'react'
-// import { connect } from 'react-redux'
-// import { Bar } from 'react-chartjs-2';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Bar } from 'react-chartjs-2';
+import { loadActivities } from '../../store/actions/activityActions.js';
+import { chartService} from '../../services/chartService.js';
+import { activityService } from '../../services/activityService.js';
 
 
-// class _MyBarChart extends Component {
+class _BarChart extends Component {
 
-//     getToysCategoryData = () => {
-//         const { toys } = this.props;
-//         let categoriesPrices = toys.reduce(function (acc, val) {
-//             if (!acc[val.category]) acc[val.category] = 0;
-//             acc[val.category] += val.price;
-//             return acc;
-//         }, {});
-//         return categoriesPrices;
-//     }
+    state = {
+        activities: null
+    }
 
-//     getToysData = () => {
-//         let { toys } = this.props;
-//         let categories = toys.reduce(function (acc, val) {
-//             if (!acc[val.category]) acc[val.category] = 0;
-//             acc[val.category]++;
-//             return acc;
-//         }, {});
-//         return categories;
-//     }
+    componentDidMount() {
+        const { user } = this.props;
+        this.props.loadActivities(user._id)
+    }
 
-//     render() {
-//         const { toys } = this.props;
-//         const categories = this.getToysData();
-//         const categoriesPrices = this.getToysCategoryData();
-//         let prices = Object.values(categoriesPrices);
-//         let cat = Object.values(categories);
-//         let priceAvg = [];
-//         prices.forEach((price, idx)=> priceAvg.push(price/ cat[idx]))
-//         if (!Object.keys(categories).length) return <div>loading</div>
+    onUploadCreatedEvents = (activities, currUser) => {
+        let act = activityService.uploadCreatedEvents(activities, currUser)
+        return act;
+    }
 
-//         const data = {
-//             labels: Object.keys(categories),
-//             datasets: [
-//                 {
-//                     label: 'CATEGORY WITH PRICES',
-//                     backgroundColor: 'rgba(295,149,88,0.2)',
-//                     borderColor: 'rgba(255,99,14,1)',
-//                     borderWidth: 1,
-//                     hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-//                     hoverBorderColor: 'rgba(255,99,132,1)',
-//                     data: priceAvg
-//                 }
-//             ]
-//         };
-//         return (
-//             <div>
-//                 <Bar
-//                     data={data}
-//                     options={{
-//                         maintainAspectRatio: false
-//                     }}
-//                 />
-//             </div>
-//         )
-//     }
-// }
+    onGetTitles = (eventsCreatedByUser) => {
+        return chartService.getTitles(eventsCreatedByUser)
+    }
+
+    onGetMembers = (eventsCreatedByUser) => {
+        return chartService.getMembers(eventsCreatedByUser)
+    }
+
+    onFindMaxCapacity = (eventsCreatedByUser) =>{
+        return chartService.findMaxCapacity(eventsCreatedByUser)
+    }
 
 
-// const mapStateToProps = state => {
-//     return {
-//         toys: state.toyReducer.toys,
-//     }
-// }
+    render() {
+        const { user } = this.props;
+        const { activities } = this.props;
+        if (!user) return <div>loading</div>
+        let eventsCreatedByUser = this.onUploadCreatedEvents(activities, user);
 
-// export const MyBarChart = connect(mapStateToProps)(_MyBarChart)
+        //bild the bar variables:
+        let titles = this.onGetTitles(eventsCreatedByUser)
+        let memebersNum = this.onGetMembers(eventsCreatedByUser)
+        const maxCapacity= this.onFindMaxCapacity(eventsCreatedByUser);
+
+        // start bild the bar
+
+        const data = {
+            labels: titles,
+            datasets: [
+                {
+                    label: 'Participants Per Event',
+                    backgroundColor: 'rgb(149, 191, 143)',
+                    borderColor: 'rgb(153,209,123)',
+                    borderWidth: 1,
+                    hoverBackgroundColor:'rgb(180, 121, 120)',
+                    hoverBorderColor:  'rgb(177, 174, 145)',
+                    data: memebersNum
+                }
+            ]
+        };
+
+
+        return (
+            <div>
+                <Bar className="bar"
+                    data={data}
+                    width={300}
+                    height={300}
+                    options={{
+                        scales: {
+                            xAxes: [{
+                                stacked: true
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true,
+                                    min: 0,
+                                    max: maxCapacity    
+                                }, 
+                                stacked: true
+                            }]
+                        }
+                        // maintainAspectRatio: false
+                    }}
+                />
+            </div>
+        )
+    }
+}
+
+
+const mapStateToProps = state => {
+    return {
+        activities: state.activityReducer.activities
+    }
+}
+const mapDispatchToProps = {
+    loadActivities
+}
+
+export const BarChart = connect(mapStateToProps, mapDispatchToProps)(_BarChart)
 
 
 

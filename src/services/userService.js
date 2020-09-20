@@ -33,15 +33,16 @@ function guestMode(){
         fullName:'guest',
         email:'guest@guest',
         userName:'guest',
-        imgUrl:'https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600549811/sprint%204/users/guest-user_z4inbq.jpg',
+        imgUrl:'https://res.cloudinary.com/dygtul5wx/image/upload/v1600549811/sprint%204/users/guest-user_z4inbq.jpg',
         prefs:['none']
     }
 }
 
 async function login(userCred) {
     // const user = await httpService.post('auth/login', userCred)
-    const user = await httpService.get(`user/d5tNi2t`)
-    return _handleLogin(user)
+    const user = await httpService.get(`user?password=${userCred.password}`)
+    //remember to clear [0] once we have a bakcend
+    return _handleLogin(user[0])
 }
 async function signup(userCred) {
     // const user = await httpService.post('auth/signup', userCred)

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { UserActivityList } from '../../cmps/user/UserActivityList'
 import { UserSchedule } from '../../cmps/user/UserSchedule'
 import { userService } from "../../services/userService.js";
+import { activityService } from '../../services/activityService.js';
 
 export class _UserDetails extends Component {
     state = {
@@ -13,24 +14,27 @@ export class _UserDetails extends Component {
     }
 
     componentDidMount() {
-        const currUser = this.props.user;
+        const currUser = (this.props.user)? this.props.user: userService.guestMode();
         this.setState({ currUser }, () => this.props.loadActivities(this.state.currUser._id))
     }
 
-    uploadCreatedEvents = (activities, currUser) => {
-        if (!activities) return null;
-        return activities.filter(activity => activity.createdBy._id === currUser._id)
+    onUploadCreatedEvents = (activities, currUser) => {
+        let act = activityService.uploadCreatedEvents(activities, currUser)
+        return act; 
+        // if (!activities) return null;
+        // return activities.filter(activity => activity.createdBy._id === currUser._id)
     }
 
-    uploadPartOfEvents = (activities, currUser) => {
-        if (!activities) return null;
-        var act = [];
-        activities.forEach(activity => {
-            activity.participants.forEach(user => {
-                if (user._id === currUser._id) act.push(activity)
-            })
-        })
-        return act;
+    onUploadPartOfEvents = (activities, currUser) => {
+        return activityService.uploadPartOfEvents(activities, currUser);
+        // if (!activities) return null;
+        // var act = [];
+        // activities.forEach(activity => {
+        //     activity.participants.forEach(user => {
+        //         if (user._id === currUser._id) act.push(activity)
+        //     })
+        // })
+        // return act;
     }
 
 
@@ -40,8 +44,8 @@ export class _UserDetails extends Component {
         if (!Object.keys(activities).length) activities = null;
         const { currUser } = this.state;
         if (!currUser) return <div>loading..</div>
-        let eventsCreatedByUser = this.uploadCreatedEvents(activities, currUser);
-        let partOfEvents = this.uploadPartOfEvents(activities, currUser);
+        let eventsCreatedByUser = this.onUploadCreatedEvents(activities, currUser);
+        let partOfEvents = this.onUploadPartOfEvents(activities, currUser);
         return (
             <div className="main-container">
                 <div className="flex column">
@@ -54,11 +58,11 @@ export class _UserDetails extends Component {
                             <p>Bio:{currUser.bio}</p>
                             <h4>{currUser.email}</h4>
                             <div className="main-info-container">
-                                <h3>Events Im going to:</h3>
+                                <h3>Events I organized:</h3>
                                 {(eventsCreatedByUser)? <UserActivityList activities={eventsCreatedByUser} user={currUser}/>:''}
                             </div>
                             <div className="main-info-container">
-                                <h3>Events I organize:</h3>
+                                <h3>Events Im going to:</h3>
                                {(partOfEvents)? <UserActivityList activities={partOfEvents} user={currUser} />: ''}
                             </div>
                         </div>

@@ -100,7 +100,7 @@ export class _ActivityDetails extends Component {
   };
 
   purchaseActivity(activity, user, creator) {
-    if (user.id === "guest") return;
+    if (user.id === 'guest') return
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);
@@ -252,23 +252,18 @@ export class _ActivityDetails extends Component {
               <div className="center">
                 <h2>Price: ${activity.price}</h2>
               </div>
-              {user._id === "guest" ? (
-                <button
-                  className="sign-btn"
-                  onClick={() => this.props.history.push("/signUp")}
-                >
+              {(user._id === 'guest') ?
+                (<button className="buy-btn"
+                  onClick={() => this.props.history.push('/signUp')}>
                   Join Us NOW!
-                </button>
-              ) : (
-                <button
-                  className="buy-btn"
-                  onClick={() => this.purchaseActivity(activity, user, creator)}
-                >
+                </button>) : ''}
+              {(activity.participants.length < activity.maxCapacity) ?
+                (<button className="buy-btn"
+                  onClick={() => this.purchaseActivity(activity, user, creator)}>
                   Sign me up!
-                </button>
-              )}
+                </button>) :
+                (<button className="sold-out-btn">SOLD OUT!</button>)}
             </div>
-
             <div className="attendings">
               <h3>Attending</h3>
               {activity.participants.map((participant, idx) => (

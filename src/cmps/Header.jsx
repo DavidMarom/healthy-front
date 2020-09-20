@@ -44,7 +44,7 @@ export class _Header extends Component {
               </NavLink>
             </div>
             <div>
-              <NavLink className="nav-override-color" to="/activity">Explore</NavLink>
+              <NavLink className="nav-override-color cp" to="/activity">Explore</NavLink>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ export class _Header extends Component {
                 <div className = "cp" onClick={this.props.logout}>Logout</div>
               </div>
               <div>
-          <NavLink className="nav-override-color" to={`/user`}><img className="attending-img cp" src={user.imgUrl} alt ="#"/></NavLink>
+          <NavLink className="nav-override-color" to={`/user`}><img className="attending-img cursor-pointer" src={user.imgUrl} alt ="#"/></NavLink>
               </div>
             </div>
           }

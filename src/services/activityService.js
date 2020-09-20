@@ -8,7 +8,9 @@ export const activityService = {
   update,
   // add
   save,
-  addRate
+  addRate,
+  uploadCreatedEvents,
+  uploadPartOfEvents
 
 }
 
@@ -70,4 +72,22 @@ function getEmpty() {
     price: ""
   }
 }
+
+
+function uploadCreatedEvents(activities, currUser) {
+  if (!activities) return null;
+  return activities.filter(activity => activity.createdBy._id === currUser._id)
+}
+
+function uploadPartOfEvents(activities, currUser) {
+  if (!activities) return null;
+  var act = [];
+  activities.forEach(activity => {
+    activity.participants.forEach(user => {
+      if (user._id === currUser._id) act.push(activity)
+    })
+  })
+  return act;
+}
+
 

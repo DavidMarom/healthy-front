@@ -138,3 +138,17 @@
   border-radius: 50px;
   padding-right: 4px;
 }
+
+.sold-out-btn{
+  background-color: #fbff00;
+  border-radius: 10px;
+  border: 1px solid #dda938;
+  color: #000000;
+  height: 50px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: x-large;
+  font-family: 'Varela Round', sans-serif;
+  cursor: not-allowed;
+}
