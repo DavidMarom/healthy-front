@@ -72,7 +72,6 @@ export class _ActivityDetails extends Component {
     if (!activity) return <h1>Loading...</h1>;
 
     // activity.imgUrls.map((img, idx) => console.log(img));
-    console.log(activity.imgUrls);
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
@@ -159,12 +158,12 @@ export class _ActivityDetails extends Component {
                 <h2>Price: ${activity.price}</h2>
               </div>
               {(user._id === 'guest') ?
-                (<button className="sign-btn"
-                  onClick={() => this.props.history.push('/signUp')}>Join Us NOW!</button>) :
-                ( <button className="buy-btn"
-                  onClick={() => this.purchaseActivity(activity, user, creator)}>Sign me up!</button>)}
+                (<button className="buy-btn"
+                  onClick={() => this.props.history.push('/signUp')}>Join Us NOW!</button>) : ''}
+                  {(activity.participants.length < activity.maxCapacity)?( <button className="buy-btn"
+                  onClick={() => this.purchaseActivity(activity, user, creator)}>Sign me up!</button>):
+                  ( <button className="sold-out-btn">SOLD OUT!</button>)}
             </div>
-
             <div className="attendings">
               <h3>Attending</h3>
               {activity.participants.map((participant, idx) => (

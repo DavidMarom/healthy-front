@@ -13,7 +13,7 @@ export class _UserDetails extends Component {
     }
 
     componentDidMount() {
-        const currUser = this.props.user;
+        const currUser = (this.props.user)? this.props.user: userService.guestMode();
         this.setState({ currUser }, () => this.props.loadActivities(this.state.currUser._id))
     }
 
@@ -54,11 +54,11 @@ export class _UserDetails extends Component {
                             <p>Bio:{currUser.bio}</p>
                             <h4>{currUser.email}</h4>
                             <div className="main-info-container">
-                                <h3>Events Im going to:</h3>
+                                <h3>Events I organized:</h3>
                                 {(eventsCreatedByUser)? <UserActivityList activities={eventsCreatedByUser} user={currUser}/>:''}
                             </div>
                             <div className="main-info-container">
-                                <h3>Events I organize:</h3>
+                                <h3>Events Im going to:</h3>
                                {(partOfEvents)? <UserActivityList activities={partOfEvents} user={currUser} />: ''}
                             </div>
                         </div>
