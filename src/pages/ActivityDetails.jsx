@@ -71,6 +71,8 @@ export class _ActivityDetails extends Component {
     const { activity, user, creator } = this.state;
     if (!activity) return <h1>Loading...</h1>;
 
+    // activity.imgUrls.map((img, idx) => console.log(img));
+    console.log(activity.imgUrls);
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
