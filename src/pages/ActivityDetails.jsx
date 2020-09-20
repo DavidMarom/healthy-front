@@ -4,6 +4,7 @@ import { saveActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
+import { Reviews } from "../cmps/Reviews";
 import SimpleMap from "../cmps/map2";
 import socketService from "../services/socketService";
 
@@ -152,7 +153,6 @@ export class _ActivityDetails extends Component {
     const { value } = this.state;
     const { activity, user, creator } = this.state;
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
-console.log(this.state.msgs)
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
@@ -233,6 +233,8 @@ console.log(this.state.msgs)
                   />
                 </Box>
               </div>
+              <Reviews activity={activity} />
+
             </div>
           </div>
 

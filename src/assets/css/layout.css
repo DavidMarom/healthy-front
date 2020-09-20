@@ -25,3 +25,15 @@
 .marg-top-50{
     margin-top: 50px;
 }
+
+.text-mid{
+    
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.marg-5{
+    margin: 5px;
+}
