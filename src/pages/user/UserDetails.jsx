@@ -55,11 +55,11 @@ export class _UserDetails extends Component {
                             <h4>{currUser.email}</h4>
                             <div className="main-info-container">
                                 <h3>Events Im going to:</h3>
-                                {(eventsCreatedByUser)? <UserActivityList activities={eventsCreatedByUser} user={null}/>:''}
+                                {(eventsCreatedByUser)? <UserActivityList activities={eventsCreatedByUser} user={currUser}/>:''}
                             </div>
                             <div className="main-info-container">
                                 <h3>Events I organize:</h3>
-                                <UserActivityList activities={partOfEvents} user={currUser} />
+                               {(partOfEvents)? <UserActivityList activities={partOfEvents} user={currUser} />: ''}
                             </div>
                         </div>
                         <div className="flex column tac">

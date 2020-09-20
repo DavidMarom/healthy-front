@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 import React, { Component } from "react";
+import { connect } from 'react-redux'
 
+import {logout} from '../store/actions/userActions.js';
 import { SearchBox } from "./activity/SearchBox.jsx";
 import eventBus from "../services/event-bus-service.js";
 
-export class Header extends Component {
+export class _Header extends Component {
   state = {
     isHomePage: false,
   };
@@ -29,6 +31,7 @@ export class Header extends Component {
 
   render() {
     const { isHomePage } = this.state;
+    const user = this.props.user;
     return (
       <div className="main-header-wrapper">
         <header className="main-header">
@@ -47,18 +50,38 @@ export class Header extends Component {
 
           {!isHomePage && <SearchBox cssClass={"header-search"} />}
 
-          <div className="right-end">
-
-            <div>
-              <NavLink className="nav-override-color" to={`/login`}>Login</NavLink>
-              <NavLink className="nav-override-color" to={`/signUp`}>SignUp</NavLink>
+          {(!user) ? (
+            <div className="right-end">
+              <div>
+                <NavLink className="nav-override-color" to={`/login`}>Login</NavLink>
+                <NavLink className="nav-override-color" to={`/signUp`}>SignUp</NavLink>
+              </div>
+              <div>
+                <NavLink className="nav-override-color" to={`/user`}><i className="far fa-2x fa-user-circle"></i></NavLink>
+              </div>
+            </div>) :
+            <div className="right-end">
+              <div>
+                <div className = "cp" onClick={this.props.logout}>Logout</div>
+              </div>
+              <div>
+          <NavLink className="nav-override-color" to={`/user`}><img className="attending-img cp" src={user.imgUrl} alt ="#"/></NavLink>
+              </div>
             </div>
-            <div>
-              <NavLink className="nav-override-color" to={`/user`}><i class="far fa-2x fa-user-circle"></i></NavLink>
-            </div>
-          </div>
+          }
         </header>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.userReducer.loggedInUser
+  }
+}
+const mapDispatchToProps = {
+  logout
+}
+
+export const Header = connect(mapStateToProps, mapDispatchToProps )(_Header)

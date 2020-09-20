@@ -11,7 +11,6 @@ export function clearCart() {
 
 export function checkout() {
   return (dispatch, getState) => {
-      console.log('state', getState());
       const { cartItems } = getState().userReducer
       const userBalance = getState().userReducer.loggedinUser.balance
       const totalPrice = cartItems.reduce((acc, item) => acc += item.price, 0)

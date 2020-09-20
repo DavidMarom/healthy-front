@@ -28,7 +28,6 @@ class _ActivityEdit extends Component {
         if (activityId) {
             activityService.getById(activityId)
                 .then(activity => {
-                    console.log('activity', activity);
                     this.setState({ activity })
                 })
         } else {
@@ -67,7 +66,6 @@ class _ActivityEdit extends Component {
         const { activity } = this.state;
         const { days } = this.state;
         const { hours } = this.state;
-        console.log('activity', activity);
         if (!Object.keys(activity).length) return <h1>Loading...</h1>
         return (
 
