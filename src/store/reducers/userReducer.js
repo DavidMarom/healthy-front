@@ -1,11 +1,9 @@
-
-
 let localLoggedinUser = null;
 if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
 const initialState = {
     users: [],
-    loggedInUser: localLoggedinUser,
+    loggedInUser: localLoggedinUser ,
     cartItems: []
 }
 

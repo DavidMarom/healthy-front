@@ -3,7 +3,7 @@ import React from 'react'
 
 
 export function UserSchedule({ activities }) {
-
+  console.log(activities);
   let table = []
   for (var i = 0; i < 7; i++) {
     table.push([]);
@@ -13,7 +13,7 @@ export function UserSchedule({ activities }) {
   }
   if (activities) {
     activities.forEach(activity => {
-      var hour = (activity.hour > 12) ? (activity.hour / 2) - 1 : activity.hour - 1;
+      var hour = Math.floor(activity.hour / 2);
       table[activity.dayInWeek - 1][hour] = activity.title;
     })
   }
@@ -32,20 +32,18 @@ export function UserSchedule({ activities }) {
         </tr>
       </thead>
       <tbody className="timeWrapper">
-        <tr>
-        <td>0-2</td>
-        <td>2-4</td>
-        <td>4-6</td>
-        <td>6-8</td>
-        <td>8-10</td>
-        <td>10-12</td>
-        <td>12-14</td>
-        <td>14-16</td>
-        <td>16-18</td>
-        <td>18-20</td>
-        <td>20-22</td>
-        <td>22-24</td>
-      </tr>
+          <tr><td>0-2</td></tr>
+          <tr><td>2-4</td></tr>
+          <tr><td>4-6</td></tr>
+          <tr><td>6-8</td></tr>
+          <tr><td>8-10</td></tr>
+          <tr><td>10-12</td></tr>
+          <tr><td>12-14</td></tr>
+          <tr><td>14-16</td></tr>
+          <tr><td>16-18</td></tr>
+          <tr><td>18-20</td></tr>
+          <tr><td>20-22</td></tr>
+          <tr><td>22-24</td></tr>
       </tbody>
       {table.map((arr, idx) => <tbody key={idx}><tr key={idx} className="main-info-table">{arr.map((title, idx) => <td key={idx} className={(title) ? "yellow" : "whtie"}>{title.charAt(0) || ''}</td>)}</tr></tbody>)}
     </table>
