@@ -24,8 +24,9 @@ class _SignUp extends Component {
 
         onUpdateImg = async(ev) =>{
         const img = await uploadImg(ev)
+        console.log('img-',img);
         let signupCred = this.state.signupCred;
-        signupCred.imgUrl = img.secure_url;
+        signupCred.imgUrl = img;
         this.setState({signupCred})
     }
 
@@ -60,6 +61,7 @@ class _SignUp extends Component {
     doSignup = async ev => {
         ev.preventDefault();
         const { email, password, userName, fullName, prefs, imgUrl } = this.state.signupCred;
+        // console.log('email-',email, 'password-',password, 'userName-', userName, 'fullName-',fullName, 'prefs-',prefs, 'imgUrl-',  imgUrl);
         if (!email || !password || !userName || !fullName || !prefs || !imgUrl) {
             return this.setState({ msg: 'All inputs are required!' });
         }

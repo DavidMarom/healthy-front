@@ -15,8 +15,6 @@ export function UserSchedule({ activities }) {
     activities.forEach(activity => {
       var hour = Math.floor(activity.hour / 2);
       table[activity.dayInWeek - 1][hour] = activity.title;
-      console.log('a-',activity.dayInWeek - 1);
-      console.log('h-',hour);
     })
   }
   return (
