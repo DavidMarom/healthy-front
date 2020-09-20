@@ -99,7 +99,6 @@ p {
     font-family: 'Varela Round', sans-serif;
 } */
 
-
 .center {
     display: flex;
     flex-direction: row;
@@ -117,4 +116,33 @@ p {
 
 .map-container {
     height: 300px;
+}
+
+.chat-container {
+    
+    background-color: #ffffff;
+    height: 300px;
+}
+
+.chat-input {
+    width: 83%;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #909090;
+    margin-top: 40px;
+}
+
+
+.chat-button {
+    background-color: #ffffff00;
+    border: 0px;
+    color: #43c155;
+}
+
+.review-input {
+    width: 83%;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #909090;
+    margin-top: 10px;
 }

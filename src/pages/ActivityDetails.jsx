@@ -4,7 +4,9 @@ import { saveActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
+import { Reviews } from "../cmps/Reviews";
 import SimpleMap from "../cmps/map2";
+import socketService from "../services/socketService";
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
@@ -17,9 +19,25 @@ export class _ActivityDetails extends Component {
     creator: "",
     avgRate: null,
     rateType: "simple-controlled",
+
+    msg: { from: "Me", txt: "" },
+    msgs: ['Dana: Hi, anyone coming from Tel-aviv?','Avi: yes - me'],
+    topic: "Love",
+  };
+
+  calcAvgRate = () => {
+    let tempSum = 0;
+    const arr = this.state.activity.rate;
+    arr.map((rateValue) => (tempSum += rateValue));
+    const tempAvg = tempSum / arr.length;
+    this.setState({ avgRate: tempAvg });
   };
 
   componentDidMount() {
+    socketService.setup();
+    socketService.emit("chat topic", this.state.topic);
+    socketService.on("chat addMsg", this.addMsg);
+
     let userBeforeChange = this.props.user;
     // before we have backend!
     if (userBeforeChange) {
@@ -28,18 +46,41 @@ export class _ActivityDetails extends Component {
         fullName: userBeforeChange.fullName,
         imgUrl: userBeforeChange.imgUrl,
       };
-      console.log("after-", user);
       this.setState({ user });
     }
     this.loadActivity();
   }
 
-  calcAvgRate = () => {
-    let tempSum = 0;
-    const arr = this.state.activity.rate;
-    arr.map((rateValue) => (tempSum += rateValue));
-    const tempAvg = tempSum / arr.length;
-    this.setState({ avgRate: tempAvg });
+  componentWillUnmount() {
+    socketService.off("chat addMsg", this.addMsg);
+    socketService.terminate();
+  }
+
+  addMsg = (newMsg) => {
+    this.setState((prevState) => ({ msgs: [...prevState.msgs, newMsg] }));
+  };
+
+  sendMsg = (ev) => {
+    ev.preventDefault();
+    socketService.emit("chat newMsg", this.state.msg.txt);
+    this.setState({ msg: { from: "Me", txt: "" } });
+  };
+
+  handleChange = (ev) => {
+    const { name, value } = ev.target;
+    this.setState({ [name]: value }, () => this.changeTopic(value));
+  };
+
+  msgHandleChange = (ev) => {
+    const { name, value } = ev.target;
+    this.setState((prevState) => {
+      return {
+        msg: {
+          ...prevState.msg,
+          [name]: value,
+        },
+      };
+    });
   };
 
   loadActivity = () => {
@@ -111,9 +152,7 @@ export class _ActivityDetails extends Component {
   render() {
     const { value } = this.state;
     const { activity, user, creator } = this.state;
-    if (!activity) return <h1>Loading...</h1>;
-
-    // activity.imgUrls.map((img, idx) => console.log(img));
+    if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
@@ -130,7 +169,7 @@ export class _ActivityDetails extends Component {
               className={`img${idx} gallery__img`}
               key={idx}
               src={img}
-              alt="image of"
+              alt=""
             />
           ))}
         </div>
@@ -146,7 +185,11 @@ export class _ActivityDetails extends Component {
               </div>
 
               <div>
-                <img className="creator-img" src={activity.createdBy.imgUrl} />
+                <img
+                  alt=""
+                  className="creator-img"
+                  src={activity.createdBy.imgUrl}
+                />
               </div>
             </div>
             <div className="divider"></div>
@@ -174,19 +217,24 @@ export class _ActivityDetails extends Component {
             </div>
             <div className="divider d-hi"></div>
 
-            <div className=".col-center-middle">
-              <p>Rate</p>
+            <div className=".event-buy">
+              <div className="center">
+                <p>Rate</p>
+              </div>
+              <div className="center">
+                <Box component="fieldset" mb={3} borderColor="transparent">
+                  <Typography component="legend"></Typography>
+                  <Rating
+                    name={this.state.rateType}
+                    value={value}
+                    onChange={(event, newValue) => {
+                      this.onRate(activity, newValue);
+                    }}
+                  />
+                </Box>
+              </div>
+              <Reviews activity={activity} />
 
-              <Box component="fieldset" mb={3} borderColor="transparent">
-                <Typography component="legend"></Typography>
-                <Rating
-                  name={this.state.rateType}
-                  value={value}
-                  onChange={(event, newValue) => {
-                    this.onRate(activity, newValue);
-                  }}
-                />
-              </Box>
             </div>
           </div>
 
@@ -220,6 +268,7 @@ export class _ActivityDetails extends Component {
               <h3>Attending</h3>
               {activity.participants.map((participant, idx) => (
                 <img
+                  alt=""
                   className="attending-img"
                   key={idx}
                   src={participant.imgUrl}
@@ -228,7 +277,25 @@ export class _ActivityDetails extends Component {
             </div>
             <div className="map-container">
               <SimpleMap center={activity.location} />
+            </div>
+            <div className="divider"></div>
+            <div className="chat-container">
+              <div>
+                {this.state.msgs.map((msg, idx) => (
+                  <div key={idx}>{msg}</div>
+                ))}
+              </div>
 
+              <form onSubmit={this.sendMsg}>
+                <input className="chat-input"
+                  type="text"
+                  value={this.state.msg.txt}
+                  onChange={this.msgHandleChange}
+                  name="txt"
+                />
+                <button className="chat-button"><i className="far fa-paper-plane fa-2x"></i></button>
+              </form>
+              
             </div>
           </div>
           {/* END OF RIGHT SIDE */}
