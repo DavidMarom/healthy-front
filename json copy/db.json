@@ -637,8 +637,6 @@
           }
         }
       ]
-<<<<<<< HEAD
-=======
     },
     {
       "_id": "ev106",
@@ -658,21 +656,12 @@
         "address": "Myoga,HATAAS street, Kfar Saba"
       },
       "tags": [
-<<<<<<< HEAD
         "weightLoss",
         "nutrition",
         "diet",
         "intermittentFasting",
         "food",
         "health"
-=======
-        "sports",
-        "Feldenkrais",
-        "Intense",
-        "KfarSaba",
-        "Strength",
-        "Relaxing"
->>>>>>> 8466691d66bc09c4891c785ffeb8cca90b65b5f1
       ],
       "imgUrls": [
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600506830/sprint%204/activitiesEv/sport/Feldenkrais/5d109f4579990581e6b0402d_RutyBar-cover_tis6f7.jpg",
@@ -767,21 +756,15 @@
         "fullName": "Debora faringham",
         "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg"
       },
-<<<<<<< HEAD
-      "dayInWeek": 6,
-      "hour": 9,
-=======
       "avgRate": 4.5,
       "dayInWeek": 4,
       "hour": 12,
->>>>>>> 8466691d66bc09c4891c785ffeb8cca90b65b5f1
       "location": {
         "lat": 32.08227,
         "lng": 34.81065,
         "address": "Elima, Ramat Gan"
       },
       "tags": [
-<<<<<<< HEAD
         "wellBeing",
         "pilates",
         "intense",
@@ -789,14 +772,6 @@
         "workout",
         "healthyLifestyle",
         "sports"
-=======
-        "RamatGan",
-        "Cleanse",
-        "Reset",
-        "Juice",
-        "Wellbeing",
-        "Detox"
->>>>>>> 8466691d66bc09c4891c785ffeb8cca90b65b5f1
       ],
       "imgUrls": [
         "https://res.cloudinary.com/dygtul5wx/image/upload/v1600508705/sprint%204/activitiesEv/nutriotion/Juice%20Cleanse/Healthy-Juice-Cleanse-Recipes-1-1024x660_ianv2l.jpg",
@@ -1105,7 +1080,6 @@
           }
         }
       ]
->>>>>>> 7ae242e641ee0c1879f63fd4d0d026fd9ae2d6e1
     }
   ],
   "orders": [
@@ -1282,24 +1256,6 @@
       ]
     },
     {
-      "_id": "hNCaGEX"
-    },
-    {
-      "_id": "VgAUwk8"
-    },
-    {
-<<<<<<< HEAD
-      "_id": "sXf_Bq8"
-=======
-      "_id": "6GgNj2e"
-    },
-    {
-      "_id": "SX-B5YX"
-    },
-    {
-      "_id": "A-nltAa"
-    },
-    {
       "email": "davidmarom.pro@gmail.com",
       "password": "Yonatan2Tali",
       "userName": "aaa@bbb.com",
@@ -1307,7 +1263,6 @@
       "prefs": [],
       "imgUrl": "https://res.cloudinary.com/dcnijwmki/image/upload/v1600590694/fv0brfhln7kzeerfmt8t.jpg",
       "_id": "WUmSw5x"
->>>>>>> 8466691d66bc09c4891c785ffeb8cca90b65b5f1
     }
   ]
 }
