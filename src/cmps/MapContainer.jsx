@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
-import { MarkunreadSharp } from "@material-ui/icons";
 
 const mapStyles = {
   width: "370px",

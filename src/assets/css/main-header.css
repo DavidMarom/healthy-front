@@ -1,14 +1,18 @@
-.main-header {
-    height: 80px;
+.main-header-wrapper {
+    width: 100%;
     background-color: #ffffff;
+    filter: drop-shadow(0px 0px 10px #f0f0f0);
+}
+
+.main-header {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1170px;
+    height: 80px;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border-bottom: 1px solid #f4f4f4; */
-    filter: drop-shadow(0px 0px 10px #f0f0f0);
-    /* margin-bottom: 30px; */
-
 }
 
 .header-search {
@@ -43,4 +47,14 @@
 
 .left-end :last-child {
     margin: 10px;
+}
+
+.logo-img {
+    width: 150px;
+    height: 65px;
+    object-fit: cover;
+}
+
+.nav-override-color {
+    color: #4f4f4f !important;
 }

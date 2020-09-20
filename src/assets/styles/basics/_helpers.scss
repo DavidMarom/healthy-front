@@ -75,6 +75,19 @@ li{
 }
 
 
+
+.cp{
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover{
+    font-weight: bold;
+    background-color: rgb(226, 213, 213);
+    border-radius: 12px;
+    opacity: 0.8;
+    }
+}
+
 // Media helpers
 
 .square-ratio {
