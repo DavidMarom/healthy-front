@@ -21,3 +21,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.marg-top-50{
+    margin-top: 50px;
+}
