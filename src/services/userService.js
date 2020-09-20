@@ -24,7 +24,6 @@ function remove(userId) {
 }
 
 function update(user) {
-    console.log('user_id-', user);
     return httpService.put(`user/${user._id}`, user)
 }
 
@@ -40,16 +39,13 @@ function guestMode(){
 }
 
 async function login(userCred) {
-    console.log('usercred', userCred.email);
     // const user = await httpService.post('auth/login', userCred)
     const user = await httpService.get(`user/d5tNi2t`)
-    console.log('user-',user);
     return _handleLogin(user)
 }
 async function signup(userCred) {
     // const user = await httpService.post('auth/signup', userCred)
     const user = await httpService.post(`user`, userCred)
-    console.log(user);
     return _handleLogin(user)
 }
 async function logout() { 

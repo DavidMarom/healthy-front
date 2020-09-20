@@ -24,10 +24,9 @@ class _SignUp extends Component {
 
         onUpdateImg = async(ev) =>{
         const img = await uploadImg(ev)
-        console.log(img);
         let signupCred = this.state.signupCred;
         signupCred.imgUrl = img.secure_url;
-        this.setState({signupCred},()=>console.log(this.state.signupCred))
+        this.setState({signupCred})
     }
 
     addToPrefs = (pref) => {
@@ -39,14 +38,13 @@ class _SignUp extends Component {
                 ...prevState.signupCred,
                 prefs: [...this.state.signupCred.prefs, pref.name]
             }
-        }), () => console.log(this.state.signupCred))
+        }))
         //changig the second item in the object suggestions
         let suggestion = this.state.suggestion
         var idx = userService.findIdxToMark(suggestion, pref)
-        console.log('idx-', idx);
         pref.isMarked = !pref.isMarked;
         suggestion.splice(idx, 1, pref)
-        this.setState({ suggestion }, console.log(suggestion))
+        this.setState({ suggestion })
     }
 
     signupHandleChange = ev => {
@@ -61,7 +59,6 @@ class _SignUp extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
-        console.log('inside', this.state.signupCred);
         const { email, password, userName, fullName, prefs, imgUrl } = this.state.signupCred;
         if (!email || !password || !userName || !fullName || !prefs || !imgUrl) {
             return this.setState({ msg: 'All inputs are required!' });
