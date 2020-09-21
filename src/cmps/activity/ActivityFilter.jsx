@@ -20,6 +20,7 @@ export class ActivityFilter extends Component {
                 <button className="filter-btn" value='Nutrition' onClick={(e) => this.setFilterBy(e, 'value')}>Nutrition</button>
                 <button className="filter-btn" value='Tel Aviv' onClick={(e) => this.setFilterBy(e, 'value')}>Tel Aviv</button>
                 <select className="filter-sel" onChange={(e) => this.setFilterBy(e)} >
+                    
                     {days.map((day, idx) => <option key={idx} value={parseInt(Object.keys(day))}>{Object.values(day)}</option>)}
                 </select>
                 <button className="filter-btn" value='' onClick={(e) => this.setFilterBy(e, 'value')}>Clear</button>
