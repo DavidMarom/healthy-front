@@ -152,8 +152,10 @@ export class _ActivityDetails extends Component {
   render() {
     const { value } = this.state;
     const { activity, user, creator } = this.state;
+
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
     return (
+      
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
@@ -233,7 +235,7 @@ export class _ActivityDetails extends Component {
                   />
                 </Box>
               </div>
-              <Reviews activity={activity} />
+              <Reviews activity={activity} user={this.state.user}/>
 
             </div>
           </div>
