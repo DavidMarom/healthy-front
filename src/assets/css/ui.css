@@ -1,0 +1,26 @@
+.bold {
+    font-weight: 500;
+    color: #000000;
+}
+
+.img-fit {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.f-20 {
+    font-size: 18px;
+}
+
+.pad-l-80 {
+    padding-left: 80px;
+}
+.pad-r-10 {
+    padding-right: 40px;
+}
+
+.pad-r-40 {
+    padding-right: 80px;
+}
+
