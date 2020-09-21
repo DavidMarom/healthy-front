@@ -16,8 +16,7 @@ export class Reviews extends Component {
   }
 
   keyPressed = (ev) => {
-    console.log(this.state.txt);
-    if ((this.state.txt != '') && (ev.keyCode === 13)) this.addReview();
+    if ((this.state.txt !== '') && (ev.keyCode === 13)) this.addReview();
   }
 
   addReview = () => {

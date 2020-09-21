@@ -146,3 +146,27 @@ p {
     margin-top: 10px;
     font-size: 14pt;
 }
+
+.pad-r-10 {
+    padding-right: 40px;
+}
+
+.pad-r-40 {
+    padding-right: 80px;
+}
+
+.drop-down {
+    background-color: #ffffff00;
+    border: 0px;
+    color: #43c155;
+    font-size: 14px;
+    border-bottom: 1px solid #42c054;
+}
+
+.f-20 {
+    font-size: 18px;
+}
+
+.pad-l-80 {
+    padding-left: 80px;
+}
