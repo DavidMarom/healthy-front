@@ -10,7 +10,8 @@ export const activityService = {
   save,
   addRate,
   uploadCreatedEvents,
-  uploadPartOfEvents
+  uploadPartOfEvents,
+  findIdxById
 
 }
 
@@ -93,6 +94,10 @@ function uploadPartOfEvents(activities, currUser) {
     })
   })
   return act;
+}
+
+function findIdxById(arr, id){
+    return arr.findIndex(item=> item._id === id)
 }
 
 

@@ -16,21 +16,17 @@ export class Reviews extends Component {
   }
 
   keyPressed = (ev) => {
-    console.log(this.state.txt);
-    if ((this.state.txt != '') && (ev.keyCode === 13)) this.addReview();
+    if ((this.state.txt !== '') && (ev.keyCode === 13)) this.addReview();
   }
 
   addReview = () => {
+    
     var newActivity = this.state.activity;
     const tmpReview={
       "id": Date.now(),
       "txt": this.state.txt,
       "rate": 5,
-      "by": {
-        "_id": "u102",
-        "fullName": "Kuki Levana",
-        "imgUrl": "https://res.cloudinary.com/dygtul5wx/image/upload/ar_1:1,b_rgb:262c35,bo_5px_solid_rgb:000000,c_fill,g_auto,r_max,w_1000/v1600326115/sprint%204/users/koki_sjy2n7.jpg"
-      }
+      "by": this.props.user
     }
     this.setState({txt:''})
     this.setState({activity:newActivity})

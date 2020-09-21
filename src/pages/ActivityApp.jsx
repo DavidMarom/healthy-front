@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { loadActivities, removeActivity } from "../store/actions/activityActions"
-import { ActivityFilter } from '../cmps/activity/ActivityFilter';
-import { ActivityList } from '../cmps/activity/ActivityList';
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {loadActivities,removeActivity} from "../store/actions/activityActions";
+import { ActivityFilter } from "../cmps/activity/ActivityFilter";
+import { ActivityList } from "../cmps/activity/ActivityList";
 
 class _ActivityApp extends Component {
 
@@ -11,21 +10,29 @@ class _ActivityApp extends Component {
         filterBy: '',
         byDay: 0
     }
-
     componentDidMount() {
         this.props.loadActivities(this.state.filterBy);
     }
 
     componentDidUpdate(prevProps) {
-        console.log(prevProps.searchBy);
         if (!prevProps.searchBy) return;
-        if (prevProps.searchBy.title !== this.props.searchBy.title) this.props.loadActivities(this.state.filterBy)
+        if (prevProps.searchBy.title !== this.props.searchBy.title)
+            this.props.loadActivities(this.state.filterBy);
     }
-
 
     onSetFilter = (filterBy = {}) => {
-        this.setState({ filterBy }, () => this.props.loadActivities(this.state.filterBy));
-    }
+        this.setState({ filterBy }, () =>
+            this.props.loadActivities(this.state.filterBy)
+        );
+    };
+
+    dummySetFilter = (filterBy) => {
+        this.setState({ filterBy });
+    };
+
+    onRemove = (_id) => {
+        this.props.removeActivity(_id);
+    };
 
     dummySetFilter = (filterBy) => {
         this.setState({ filterBy }, () => console.log(this.state.filterBy))
@@ -63,16 +70,19 @@ class _ActivityApp extends Component {
         }
 
         if (filterBy === 'Tel Aviv') {
-            filteredActivities = activitiesByDay.filter(activity => activity.tags.includes('telAviv'))
+            filteredActivities = activitiesByDay.filter(activity =>
+                activity.tags.includes('telAviv'))
         }
         if (filterBy === 'Sports') {
-            filteredActivities = activitiesByDay.filter(activity => activity.tags.includes('sports'))
+            filteredActivities = activitiesByDay.filter(activity =>
+                activity.tags.includes('sports'))
         }
         if (filterBy === 'Yoga') {
             filteredActivities = activitiesByDay.filter(activity => { activity.tags.includes('yoga') })
         }
         if (filterBy === 'Nutrition') {
-            filteredActivities = activitiesByDay.filter(activity => activity.tags.includes('nutrition'))
+            filteredActivities = activitiesByDay.filter(activity =>
+                activity.tags.includes('nutrition'))
         }
         if (filterBy === 'Highest Rated') {
             filteredActivities = activitiesByDay.filter(activity => {
@@ -109,15 +119,17 @@ class _ActivityApp extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         activities: state.activityReducer.activities,
-        searchBy: state.activityReducer.searchBy
-    }
-}
+        searchBy: state.activityReducer.searchBy,
+    };
+};
 const mapDispatchToProps = {
     loadActivities,
     removeActivity,
-
-}
-export const ActivityApp = connect(mapStateToProps, mapDispatchToProps)(_ActivityApp)
+};
+export const ActivityApp = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(_ActivityApp);

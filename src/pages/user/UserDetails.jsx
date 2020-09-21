@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { loadActivities } from "../../store/actions/activityActions"
 import { connect } from 'react-redux'
 import { UserActivityList } from '../../cmps/user/UserActivityList'
@@ -11,31 +11,33 @@ export class _UserDetails extends Component {
     state = {
         currUser: null,
         createdAct: {},
-        particiipant: {}
+        participant: {}
     }
 
     componentDidMount() {
-        const currUser = (this.props.user)? this.props.user: userService.guestMode();
+        const currUser = (this.props.user) ? this.props.user : userService.guestMode();
         this.setState({ currUser }, () => this.props.loadActivities(this.state.currUser._id))
+    }
+
+    onRemove = (_id) => {
+        this.props.removeActivity(_id)
+    }
+    onRemoveFromList=(activity, user) =>{
+        // delete from the user list by canceling participant inside the activity object
+        console.log('before-',activity.participants, user._id);
+        let idx = activityService.findIdxById(activity.participants, user._id)
+        console.log('idx-', idx);
+        activity.participants.splice(idx,1);
+        console.log('after-',activity.participants);
     }
 
     onUploadCreatedEvents = (activities, currUser) => {
         let act = activityService.uploadCreatedEvents(activities, currUser)
-        return act; 
-        // if (!activities) return null;
-        // return activities.filter(activity => activity.createdBy._id === currUser._id)
+        return act;
     }
 
     onUploadPartOfEvents = (activities, currUser) => {
         return activityService.uploadPartOfEvents(activities, currUser);
-        // if (!activities) return null;
-        // var act = [];
-        // activities.forEach(activity => {
-        //     activity.participants.forEach(user => {
-        //         if (user._id === currUser._id) act.push(activity)
-        //     })
-        // })
-        // return act;
     }
 
 
@@ -61,11 +63,20 @@ export class _UserDetails extends Component {
                             <Link to='/activity/add'>Add A New Event</Link>
                             <div className="main-info-container">
                                 <h3>Events I organized:</h3>
-                                {(eventsCreatedByUser)? <UserActivityList activities={eventsCreatedByUser} user={currUser}/>:''}
+                                {(eventsCreatedByUser) ? <UserActivityList
+                                    activities={eventsCreatedByUser} user={currUser}
+                                    onRemove={this.onRemove}
+                                    onRemoveFromList={this.onRemoveFromList}
+                                    madeOfOperation={'orgenizer'} /> : ''}
                             </div>
                             <div className="main-info-container">
                                 <h3>Events Im going to:</h3>
-                               {(partOfEvents)? <UserActivityList activities={partOfEvents} user={currUser} />: ''}
+                                {(partOfEvents) ? <UserActivityList
+                                    activities={partOfEvents} user={currUser}
+                                    onRemove={this.onRemove}
+                                    onRemoveFromList={this.onRemoveFromList}
+                                    madeOfOperation={'subscriber'}
+                                /> : ''}
                             </div>
                         </div>
                         <div className="flex column tac">
