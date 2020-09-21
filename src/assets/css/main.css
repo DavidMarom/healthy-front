@@ -5,6 +5,10 @@
 @import "form-edit.css";
 @import "layout.css";
 @import "activity-container.css";
+@import "profile.css";
+@import "ui.css";
+
+
 * {
     box-sizing: border-box;
 }

@@ -186,11 +186,6 @@ class _ActivityEdit extends Component {
     }
 }
 
-{/* <img className={`img-edit img-${idx}`} key={idx} src={img} /> */ }
-
-
-
-
 
 const mapStateToProps = (state) => {
     return {
