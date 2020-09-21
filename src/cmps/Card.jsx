@@ -29,17 +29,23 @@ export class Card extends Component {
               <img className="img-fit" src={activity.imgUrls[0]} alt="" />
             </div>
             <div className="card-text">
-              <div className="rate-display">
-                <div className="green-star">★ </div>                
-                {(Math.round(avg * 100) / 100).toFixed(2)}
-                {` (`}{activity.rate.length}{`)`}
+              <div className="flex sb">
+                <div className="rate-display">
+                  <div className="green-star">★ </div>
+                  {(Math.round(avg * 100) / 100).toFixed(2)}
+                  {` (`}{activity.rate.length}{`)`}
+                </div>
+                <div className="orgenizer">
+                  <img className="attending-img" src={activity.createdBy.imgUrl} />
+                  {/* <div className="bold">{activity.createdBy.fullName}</div> */}
+                </div>
               </div>
               <div>
-                <div className="green">{activity.title}</div>{` - `}
-                {activity.subtitle}
+                <div className="green">{activity.title}{` - `}</div>
+                <div>{activity.subtitle}</div>
               </div>
               <div className="bold">
-              $ {activity.price}
+                $ {activity.price}
               </div>
             </div>
           </div>
