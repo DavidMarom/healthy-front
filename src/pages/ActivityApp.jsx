@@ -8,7 +8,8 @@ import { ActivityList } from '../cmps/activity/ActivityList';
 class _ActivityApp extends Component {
 
     state = {
-        filterBy: ''
+        filterBy: '',
+        byDay: 0
     }
 
     componentDidMount() {
@@ -27,8 +28,11 @@ class _ActivityApp extends Component {
     }
 
     dummySetFilter = (filterBy) => {
-        console.log(filterBy);
         this.setState({ filterBy }, () => console.log(this.state.filterBy))
+    }
+
+    dummySortByDays = (day) => {
+        this.setState({ byDay: day }, () => { console.log(this.state.byDay); })
     }
 
 
@@ -36,28 +40,50 @@ class _ActivityApp extends Component {
         this.props.removeActivity(_id)
     }
 
+    calcAvgRate = (arr) => {
+        let tempSum = 0;
+        arr.map((rateValue) => (tempSum += rateValue));
+        const tempAvg = tempSum / arr.length;
+        return tempAvg;
+    }
+
+
     getActivitiesForDisplay = () => {
         const { filterBy } = this.state
         const activities = this.props.activities
         const searchBy = this.props.searchBy
+        const { byDay } = this.state
         let filteredActivities;
+        let activitiesByDay;
+
+
+        if (byDay === 0) activitiesByDay = activities
+        else {
+            activitiesByDay = activities.filter(activity => activity.dayInWeek === byDay)
+        }
+
         if (filterBy === 'Tel Aviv') {
-            filteredActivities = activities.filter(activity => activity.tags.includes('telAviv'))
+            filteredActivities = activitiesByDay.filter(activity => activity.tags.includes('telAviv'))
         }
         if (filterBy === 'Sports') {
-            filteredActivities = activities.filter(activity => activity.tags.includes('sports'))
+            filteredActivities = activitiesByDay.filter(activity => activity.tags.includes('sports'))
         }
         if (filterBy === 'Yoga') {
-            filteredActivities = activities.filter(activity => activity.tags.includes('yoga'))
+            filteredActivities = activitiesByDay.filter(activity => { activity.tags.includes('yoga') })
         }
         if (filterBy === 'Nutrition') {
-            filteredActivities = activities.filter(activity => activity.tags.includes('nutrition'))
+            filteredActivities = activitiesByDay.filter(activity => activity.tags.includes('nutrition'))
         }
         if (filterBy === 'Highest Rated') {
-            filteredActivities = activities.filter(activity => activity.avgRate>=4)
+            filteredActivities = activitiesByDay.filter(activity => {
+                const avgRate = this.calcAvgRate(activity.rate)
+                return (avgRate >= 4)
+            })
         }
+
         if (filterBy === '') {
-            filteredActivities = activities
+            filteredActivities = activitiesByDay
+
         }
         if (!searchBy) {
             return filteredActivities
@@ -75,7 +101,7 @@ class _ActivityApp extends Component {
 
             <div className="activity-app main-container marg-top-50">
                 <div className="filter">
-                    <ActivityFilter dummySetFilter={this.dummySetFilter} />
+                    <ActivityFilter dummySetFilter={this.dummySetFilter} dummySortByDays={this.dummySortByDays} />
                 </div>
                 <ActivityList activities={activities} onRemove={this.onRemove} />
             </div>
