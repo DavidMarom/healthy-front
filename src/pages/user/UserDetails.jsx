@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { loadActivities } from "../../store/actions/activityActions"
+import { loadActivities, saveActivity } from "../../store/actions/activityActions"
 import { connect } from 'react-redux'
 import { UserActivityList } from '../../cmps/user/UserActivityList'
 import { UserSchedule } from '../../cmps/user/UserSchedule'
 import { userService } from "../../services/userService.js";
 import { activityService } from '../../services/activityService.js';
+import { updateUser } from '../../store/actions/userActions.js';
 
 export class _UserDetails extends Component {
     state = {
@@ -22,13 +23,23 @@ export class _UserDetails extends Component {
     onRemove = (_id) => {
         this.props.removeActivity(_id)
     }
-    onRemoveFromList=(activity, user) =>{
+    onRemoveFromList = (activity, user) => {
         // delete from the user list by canceling participant inside the activity object
-        console.log('before-',activity.participants, user._id);
+        console.log('before-', activity.participants, user._id);
         let idx = activityService.findIdxById(activity.participants, user._id)
         console.log('idx-', idx);
-        activity.participants.splice(idx,1);
-        console.log('after-',activity.participants);
+        activity.participants.splice(idx, 1);
+        console.log('after-', activity.participants);
+
+        // update activity
+        this.props.saveActivity(activity)
+
+        // update the orgenizer income
+        userService.getById(activity.createdBy._id)
+            .then(user => {
+                user.income -= activity.price
+                this.props.updateUser(user)
+            })
     }
 
     onUploadCreatedEvents = (activities, currUser) => {
@@ -102,7 +113,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    loadActivities
+    loadActivities,
+    saveActivity,
+    updateUser
 }
 
 export const UserDetails = connect(mapStateToProps, mapDispatchToProps)(_UserDetails)
