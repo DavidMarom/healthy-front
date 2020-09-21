@@ -31,11 +31,6 @@ class _ActivityApp extends Component {
         this.setState({ filterBy }, () => console.log(this.state.filterBy))
     }
 
-
-    onRemove = (_id) => {
-        this.props.removeActivity(_id)
-    }
-
     getActivitiesForDisplay = () => {
         const { filterBy } = this.state
         const activities = this.props.activities
