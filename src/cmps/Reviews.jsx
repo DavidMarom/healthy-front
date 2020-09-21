@@ -39,7 +39,7 @@ export class Reviews extends Component {
   }
 
   render() {
-    if (!this.state.activity) return <h1>LOADING</h1>;
+    if (!this.state.activity) return <h2>Loading..</h2>;
     const { reviews } = this.state.activity;
     return (
       <section>
