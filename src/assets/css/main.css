@@ -5,9 +5,6 @@
 @import "form-edit.css";
 @import "layout.css";
 @import "activity-container.css";
-
-
-
 * {
     box-sizing: border-box;
 }
@@ -26,6 +23,11 @@ button {
 }
 
 /* helpers */
+
+.green{
+    color:#43c155;
+    display: inline;
+}
 
 /* flex */
 
@@ -60,4 +62,3 @@ button {
     margin: 0;
     padding: 0;
 }
-

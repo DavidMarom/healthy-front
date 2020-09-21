@@ -73,7 +73,7 @@ class _ActivityApp extends Component {
         if (!activities) return <div>Loading....</div>
         return (
 
-            <div className="activity-app main-container">
+            <div className="activity-app main-container marg-top-50">
                 <div className="filter">
                     <ActivityFilter dummySetFilter={this.dummySetFilter} />
                 </div>
