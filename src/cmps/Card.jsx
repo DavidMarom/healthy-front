@@ -41,7 +41,7 @@ export class Card extends Component {
                 </div>
               </div>
               <div>
-                <div className="green">{activity.title}{` - `}</div>
+                <div className="green">{activity.title}</div>
                 <div>{activity.subtitle}</div>
               </div>
               <div className="bold">
