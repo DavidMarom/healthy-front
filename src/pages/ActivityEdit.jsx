@@ -152,8 +152,13 @@ class _ActivityEdit extends Component {
 
                             <div className="edit-description flex column">
                                 <label htmlFor="description" >Detailed Description</label>
-                                <TextField name="description" value={activity.description} size="small" multiline
-                                    variant="outlined" multiline margin="normal"
+                                <TextField
+                                    name="description"
+                                    value={activity.description}
+                                    size="small"
+                                    variant="outlined"
+                                    multiline
+                                    margin="normal"
                                     onChange={this.handleInput}
                                 />
                             </div>
@@ -166,7 +171,7 @@ class _ActivityEdit extends Component {
                                     activity.imgUrls.map((img, idx) => {
                                         return (
                                             <div className="img-container" key={idx}>
-                                                <img className={`img-edit img-${idx}`} key={idx} src={img} alt=""/>
+                                                <img className={`img-edit img-${idx}`} key={idx} src={img} alt="" />
                                                 <button className='img-edit-del-btn' key={idx} onClick={(ev) => this.removeImg(ev, idx)}>remove image</button>
                                             </div>
                                         )
