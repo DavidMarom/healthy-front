@@ -39,19 +39,18 @@ function guestMode(){
 }
 
 async function login(userCred) {
-    // const user = await httpService.post('auth/login', userCred)
-    const user = await httpService.get(`user?password=${userCred.password}`)
-    //remember to clear [0] once we have a bakcend
-    return _handleLogin(user[0])
+    const user = await httpService.post('auth/login', userCred)
+    return _handleLogin(user)
 }
+
 async function signup(userCred) {
-    // const user = await httpService.post('auth/signup', userCred)
-    const user = await httpService.post(`user`, userCred)
+    const user = await httpService.post('auth/signup', userCred)
+    // const user = await httpService.post(`user`, userCred)
     return _handleLogin(user)
 }
 async function logout() { 
-    // await httpService.post('auth/logout');
-    await httpService.post('user')
+    await httpService.post('auth/logout');
+    // await httpService.post('user')
     sessionStorage.clear();
 }
 function _handleLogin(user) {

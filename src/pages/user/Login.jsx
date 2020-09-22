@@ -53,16 +53,16 @@ class _Login extends Component {
     this.setState({ loginCred: { email: '', password: '' } });
   };
 
-  doSignup = async ev => {
-    ev.preventDefault();
-    const { email, password, username } = this.state.signupCred;
-    if (!email || !password || !username) {
-      return this.setState({ msg: 'All inputs are required!' });
-    }
-    const signupCreds = { email, password, username };
-    this.props.signup(signupCreds);
-    this.setState({ signupCred: { email: '', password: '', username: '' } });
-  };
+  // doSignup = async ev => {
+  //   ev.preventDefault();
+  //   const { email, password, username } = this.state.signupCred;
+  //   if (!email || !password || !username) {
+  //     return this.setState({ msg: 'All inputs are required!' });
+  //   }
+  //   const signupCreds = { email, password, username };
+  //   this.props.signup(signupCreds);
+  //   this.setState({ signupCred: { email: '', password: '', username: '' } });
+  // };
 
   removeUser = userId => {
     this.props.removeUser(userId);
