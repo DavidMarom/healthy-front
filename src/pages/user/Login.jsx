@@ -55,7 +55,7 @@ class _Login extends Component {
   doSignup = async ev => {
     ev.preventDefault();
     const { email, password } = this.state.signupCred;
-    if (!email || !password ) {
+    if (!email || !password) {
       return this.setState({ msg: 'All inputs are required!' });
     }
     const signupCreds = { email, password };
@@ -68,7 +68,7 @@ class _Login extends Component {
   };
   render() {
     let loginSection = (
-      <form className= "main-container" onSubmit={this.doLogin}>
+      <form className="main-container" onSubmit={this.doLogin}>
         <input
           type="text"
           name="email"
@@ -92,9 +92,11 @@ class _Login extends Component {
     const { loggedInUser } = this.props;
     return (
       <div className="main-container">
-        <h1>
-         Login
+        <div className="just-row">
+          <h1>
+            Login
         </h1>
+        </div>
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
