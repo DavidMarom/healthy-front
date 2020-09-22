@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {loadActivities,removeActivity} from "../store/actions/activityActions";
+import { loadActivities, removeActivity } from "../store/actions/activityActions";
 import { ActivityFilter } from "../cmps/activity/ActivityFilter";
 import { ActivityList } from "../cmps/activity/ActivityList";
 
@@ -78,7 +78,8 @@ class _ActivityApp extends Component {
                 activity.tags.includes('sports'))
         }
         if (filterBy === 'Yoga') {
-            filteredActivities = activitiesByDay.filter(activity => { activity.tags.includes('yoga') })
+            filteredActivities = activitiesByDay.filter(activity =>
+                activity.tags.includes('yoga'))
         }
         if (filterBy === 'Nutrition') {
             filteredActivities = activitiesByDay.filter(activity =>
