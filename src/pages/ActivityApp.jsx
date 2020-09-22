@@ -35,11 +35,11 @@ class _ActivityApp extends Component {
     };
 
     dummySetFilter = (filterBy) => {
-        this.setState({ filterBy }, () => console.log(this.state.filterBy))
+        this.setState({ filterBy })
     }
 
     dummySortByDays = (day) => {
-        this.setState({ byDay: day }, () => { console.log(this.state.byDay); })
+        this.setState({ byDay: day })
     }
 
 

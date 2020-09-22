@@ -13,5 +13,4 @@ function emit(eventName, data) {
     window.dispatchEvent(new CustomEvent(eventName, { detail: data }));
 }
 
-
 export default { on, emit }

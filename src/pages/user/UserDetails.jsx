@@ -32,11 +32,8 @@ export class _UserDetails extends Component {
   };
   onRemoveFromList = (activity, user) => {
     // delete from the user list by canceling participant inside the activity object
-    console.log("before-", activity.participants, user._id);
     let idx = activityService.findIdxById(activity.participants, user._id);
-    console.log("idx-", idx);
     activity.participants.splice(idx, 1);
-    console.log("after-", activity.participants);
 
     // update activity
     this.props.saveActivity(activity);

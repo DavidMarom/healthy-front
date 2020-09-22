@@ -23,7 +23,7 @@ class _ActivityEdit extends Component {
     componentDidMount() {
         this.loadActivity()
         const currUser = this.props.user;
-        this.setState({ currUser }, () => console.log(this.state.currUser))
+        this.setState({ currUser })
 
     }
 

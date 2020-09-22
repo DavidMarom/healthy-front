@@ -24,7 +24,6 @@ class _SignUp extends Component {
 
         onUpdateImg = async(ev) =>{
         const img = await uploadImg(ev)
-        console.log('img-',img);
         let signupCred = this.state.signupCred;
         signupCred.imgUrl = img;
         this.setState({signupCred})
