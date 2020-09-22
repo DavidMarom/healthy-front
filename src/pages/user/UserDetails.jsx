@@ -71,9 +71,9 @@ export class _UserDetails extends Component {
             <h2>{currUser.fullName}</h2>
             <h4>{currUser.title}</h4>
             <h4>{currUser.email}</h4>
-            <p className="bold">
+            <div className="bold">
               <div className="bold">Bio:{currUser.bio}</div>
-            </p>
+            </div>
 
           </div>
           <div className="profile-bar-right">

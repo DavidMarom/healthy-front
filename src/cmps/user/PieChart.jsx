@@ -48,9 +48,7 @@ class _PieChart extends Component {
         //bild the bar variables:
         let titles = this.onGetTitles(eventsCreatedByUser)
         let incomeFromEvent = this.onGetIncomeFromEvent(eventsCreatedByUser)
-        console.log(incomeFromEvent);
         let income = this.onGetIncome(incomeFromEvent)
-        console.log(income);
         if (income !== user.income) user.income = income;
 
         let bgc = [];
