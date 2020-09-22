@@ -5,38 +5,25 @@ import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
-import SimpleMap from "../cmps/map2";
-import socketService from "../services/socketService";
+import { Chat } from "../cmps/Chat";
+
+import SimpleMap from "../cmps/Map";
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
 export class _ActivityDetails extends Component {
+
   state = {
     activity: null,
     user: userService.guestMode(),
     creator: "",
     avgRate: null,
-    rateType: "simple-controlled",
-
-    msg: { from: "Me", txt: "" },
-    msgs: ['Dana: Hi, anyone coming from Tel-aviv?', 'Avi: yes - me'],
-    topic: "Love",
-  };
-
-  calcAvgRate = () => {
-    let tempSum = 0;
-    const arr = this.state.activity.rate;
-    arr.map((rateValue) => (tempSum += rateValue));
-    const tempAvg = tempSum / arr.length;
-    this.setState({ avgRate: tempAvg });
+    rateType: "simple-controlled"
   };
 
   componentDidMount() {
-    socketService.setup();
-    socketService.emit("chat topic", this.state.topic);
-    socketService.on("chat addMsg", this.addMsg);
 
     let userBeforeChange = this.props.user;
     // before we have backend!
@@ -51,44 +38,22 @@ export class _ActivityDetails extends Component {
     this.loadActivity();
   }
 
-  componentWillUnmount() {
-    socketService.off("chat addMsg", this.addMsg);
-    socketService.terminate();
-  }
-
-  addMsg = (newMsg) => {
-    this.setState((prevState) => ({ msgs: [...prevState.msgs, newMsg] }));
-  };
-
-  sendMsg = (ev) => {
-    ev.preventDefault();
-    socketService.emit("chat newMsg", this.state.msg.txt);
-    this.setState({ msg: { from: "Me", txt: "" } });
-  };
-
-  handleChange = (ev) => {
-    const { name, value } = ev.target;
-    this.setState({ [name]: value }, () => this.changeTopic(value));
-  };
-
-  msgHandleChange = (ev) => {
-    const { name, value } = ev.target;
-    this.setState((prevState) => {
-      return {
-        msg: {
-          ...prevState.msg,
-          [name]: value,
-        },
-      };
-    });
+  calcAvgRate = () => {
+    let tempSum = 0;
+    const arr = this.state.activity.rate;
+    arr.map((rateValue) => (tempSum += rateValue));
+    const tempAvg = tempSum / arr.length;
+    this.setState({ avgRate: tempAvg });
   };
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
+
     activityService.getById(activityId).then((activity) => {
       this.setState({ activity }, () => {
         this.loadCreator(activity.createdBy._id);
         this.calcAvgRate();
+
       });
     });
   };
@@ -289,21 +254,7 @@ export class _ActivityDetails extends Component {
             </div>
             <div className="divider"></div>
             <div className="chat-container">
-              <div>
-                {this.state.msgs.map((msg, idx) => (
-                  <div key={idx}>{msg}</div>
-                ))}
-              </div>
-
-              <form onSubmit={this.sendMsg}>
-                <input className="chat-input"
-                  type="text"
-                  value={this.state.msg.txt}
-                  onChange={this.msgHandleChange}
-                  name="txt"
-                />
-                <button className="chat-button"><i className="far fa-paper-plane fa-2x"></i></button>
-              </form>
+              <Chat topic={activity._id} />
 
             </div>
           </div>
