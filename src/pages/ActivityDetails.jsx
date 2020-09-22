@@ -5,7 +5,7 @@ import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
-import SimpleMap from "../cmps/map2";
+import SimpleMap from "../cmps/Map";
 import socketService from "../services/socketService";
 
 import Rating from "@material-ui/lab/Rating";
@@ -21,8 +21,8 @@ export class _ActivityDetails extends Component {
     rateType: "simple-controlled",
 
     msg: { from: "Me", txt: "" },
-    msgs: ['Dana: Hi, anyone coming from Tel-aviv?','Avi: yes - me'],
-    topic: "Love",
+    msgs: [],
+    topic: 'default'
   };
 
   calcAvgRate = () => {
@@ -34,9 +34,7 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
-    socketService.setup();
-    socketService.emit("chat topic", this.state.topic);
-    socketService.on("chat addMsg", this.addMsg);
+    
 
     let userBeforeChange = this.props.user;
     // before we have backend!
@@ -49,6 +47,9 @@ export class _ActivityDetails extends Component {
       this.setState({ user });
     }
     this.loadActivity();
+    socketService.setup();
+    socketService.emit("chat topic", this.state.topic);
+    socketService.on("chat addMsg", this.addMsg);
   }
 
   componentWillUnmount() {
@@ -85,10 +86,12 @@ export class _ActivityDetails extends Component {
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
+    this.setState({topic: activityId})
     activityService.getById(activityId).then((activity) => {
       this.setState({ activity }, () => {
         this.loadCreator(activity.createdBy._id);
         this.calcAvgRate();
+        
       });
     });
   };
