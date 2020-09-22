@@ -28,10 +28,14 @@ export class _UserDetails extends Component {
     );
   }
 
-  onRemove = (_id) => {
+  onRemove = (ev,_id) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     this.props.removeActivity(_id);
   };
-  onRemoveFromList = (activity, user) => {
+  onRemoveFromList = (ev,activity, user) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     // delete from the user list by canceling participant inside the activity object
     let idx = activityService.findIdxById(activity.participants, user._id);
     activity.participants.splice(idx, 1);
@@ -39,7 +43,7 @@ export class _UserDetails extends Component {
     // update activity
     this.props.saveActivity(activity);
 
-    // update the orgenizer income
+    // update the organizer income
     userService.getById(activity.createdBy._id).then((user) => {
       user.income -= activity.price;
       this.props.updateUser(user);
@@ -97,7 +101,7 @@ export class _UserDetails extends Component {
                     user={currUser}
                     onRemove={this.onRemove}
                     onRemoveFromList={this.onRemoveFromList}
-                    madeOfOperation={"orgenizer"}
+                    madeOfOperation={"organizer"}
                   />
                 ) : (
                     ""
