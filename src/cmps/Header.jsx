@@ -59,9 +59,9 @@ export class _Header extends Component {
               </div>
             </div>) :
             <div className="right-end">
-              <div className="flex sb" onClick={this.props.logout}>
+              <div className="flex sb" >
                 <NavLink className="cp nav-override-color m10" to={"/activity"}>Explore</NavLink>
-                <NavLink className="cp nav-override-color" to={`/`}>Logout</NavLink>
+                <NavLink className="cp nav-override-color" to={`/`} onClick={this.props.logout}>Logout</NavLink>
               </div>
               <div>
                 <NavLink className="nav-override-color" to={`/user`}><img className="attending-img cursor-pointer" src={user.imgUrl} alt="#" /></NavLink>
