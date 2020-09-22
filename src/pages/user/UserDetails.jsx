@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
   loadActivities,
   saveActivity,
+  removeActivity
 } from "../../store/actions/activityActions";
 import { connect } from "react-redux";
 import { UserActivityList } from "../../cmps/user/UserActivityList";
@@ -147,6 +148,7 @@ const mapDispatchToProps = {
   loadActivities,
   saveActivity,
   updateUser,
+  removeActivity
 };
 
 export const UserDetails = connect(
