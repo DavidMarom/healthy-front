@@ -12,7 +12,6 @@ export class UserDashbord extends Component {
 
     componentDidMount() {
         const { user, activities } = this.props;
-        console.log('inside-',user, activities);
         this.setState({ user, activities })
     }
 

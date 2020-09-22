@@ -41,45 +41,45 @@ export function UserActivityPreview({ activity, user, madeOfOperation, onRemove,
         return res;
     }
 
-    function showActivityDetails(ev){
+    function showActivityDetails(ev) {
         ev.preventDefault();
         ev.stopPropagation();
     }
 
     return (
-        <Link to={`activity/${activity._id}`}>
-            <div className="user-activity-preview flex">
+        <div className="user-activity-preview flex ">
+            <Link to={`/activity/${activity._id}`}>
                 <img src={activity.imgUrls[0]} alt="" />
                 <div className="flex column">
                     <h4 className="fs18">{activity.title}</h4>
                     <li className="fs14">{activity.location.address}</li>
                 </div>
-
-                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}>Edit</Link>) : ''}
-                {(madeOfOperation === 'organizer') ? (<button onClick={(ev) => onRemove(ev, activity._id)}>Remove the event</button>) : ''}
-                {(madeOfOperation === 'subscriber') ? (<button onClick={(ev) => onRemoveFromList(ev, activity, user)}>Remove from Your List</button>) : ''}
-                <button onClick={(ev) => showActivityDetails(ev)}>arrow</button>)
-                <section className="activity-info">
-                    <div className="day-time flex">
-                        <div>{`${renderDay(activity.dayInWeek)}-${activity.hour}:00`}</div>
-                        <div>
-                            {(madeOfOperation === 'organizer') && (
-                                activity.participants.map((participant, idx) => {
-                                    return (<div className="participant-info" key={idx}>
-                                        <Link to={`/user/${participant._id}`}>
-                                            <div className="flex">
-                                                <div>{participant.fullName}</div>
-                                                <img src={participant.imgUrl} alt=""/>
-                                            </div>
-                                        </Link>
-                                    </div>)
-                                }))}   
-                        </div>
+            </Link>
+            {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}>Edit</Link>) : ''}
+            {(madeOfOperation === 'organizer') ? (<button onClick={(ev) => onRemove(ev, activity._id)}>Remove the event</button>) : ''}
+            {(madeOfOperation === 'subscriber') ? (<button onClick={(ev) => onRemoveFromList(ev, activity, user)}>Remove from Your List</button>) : ''}
+            <button onClick={(ev) => showActivityDetails(ev)}>arrow</button>
+            <section className="activity-info">
+                <div className="day-time flex">
+                    <div>{`${renderDay(activity.dayInWeek)}-${activity.hour}:00`}</div>
+                    <div>
+                        {(madeOfOperation === 'organizer') && (
+                            activity.participants.map((participant, idx) => {
+                                return (<div className="participant-info" key={idx}>
+                                    <Link to={`/user/${participant._id}`}>
+                                        <div className="flex">
+                                            <div>{participant.fullName}</div>
+                                            <img src={participant.imgUrl} alt="" />
+                                        </div>
+                                    </Link>
+                                </div>)
+                            }))}
                     </div>
+                </div>
 
-                </section>
-            </div>
-        </Link>
+            </section>
+        </div>
+        // </Link>
     )
 }
 

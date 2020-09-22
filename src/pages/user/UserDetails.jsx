@@ -61,7 +61,6 @@ export class _UserDetails extends Component {
 
   render() {
     let { activities } = this.props;
-    console.log(activities);
     if (!Object.keys(activities).length) activities = null;
     const { currUser } = this.state;
     if (!currUser) return <div>loading..</div>;
