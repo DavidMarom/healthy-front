@@ -25,7 +25,7 @@ export class Chat extends Component {
 
     sendMsg = (ev) => {
         ev.preventDefault();
-        socketService.emit("chat newMsg", this.state.msg.txt);
+        socketService.emit("chat newMsg", this.props.name + ': ' + this.state.msg.txt);
         this.setState({ msg: { from: "Me", txt: "" } });
     };
 
@@ -49,10 +49,14 @@ export class Chat extends Component {
     render() {
         return (
             <section>
-                <div>
-                    {this.state.msgs.map((msg, idx) => (
-                        <div key={idx}>{msg}</div>
-                    ))}
+                <h3>Live Chat!</h3>
+                <div className="chat-height">
+
+                    <div>
+                        {this.state.msgs.map((msg, idx) => (
+                            <div key={idx}>{msg}</div>
+                        ))}
+                    </div>
                 </div>
 
                 <form onSubmit={this.sendMsg}>
@@ -64,6 +68,7 @@ export class Chat extends Component {
                     />
                     <button className="chat-button"><i className="far fa-paper-plane fa-2x"></i></button>
                 </form>
+
             </section>
         )
     }

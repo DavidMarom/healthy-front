@@ -120,7 +120,6 @@ export class _ActivityDetails extends Component {
   render() {
     const { value } = this.state;
     const { activity, user, creator } = this.state;
-
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
     return (
 
@@ -254,7 +253,7 @@ export class _ActivityDetails extends Component {
             </div>
             <div className="divider"></div>
             <div className="chat-container">
-              <Chat topic={activity._id} />
+              <Chat topic={activity._id} name={user.fullName} />
 
             </div>
           </div>

@@ -147,7 +147,6 @@ p {
     font-size: 14pt;
 }
 
-
 .drop-down {
     background-color: #ffffff00;
     border: 0px;
@@ -156,3 +155,14 @@ p {
     border-bottom: 1px solid #42c054;
 }
 
+.chat-height {
+    height: 200px;
+    overflow: hidden;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    justify-content: left;
+
+    font-size: 14px;
+}
