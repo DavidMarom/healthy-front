@@ -65,12 +65,14 @@ export class _ActivityDetails extends Component {
   };
 
   purchaseActivity(activity, user, creator) {
-    if (user.id === 'guest') return
-    if (creator.id === user.id) return
-    creator.income += activity.price;
-    this.props.updateUser(creator);
-    activity.participants.push(user);
-    this.props.saveActivity(activity);
+    console.log('act-', activity, 'user-', user, 'creator-', creator);
+    // if (user.id === 'guest') return
+    if (creator._id !== user._id) {
+      creator.income += activity.price;
+      this.props.updateUser(creator);
+      activity.participants.push(user);
+      this.props.saveActivity(activity);
+    }
   }
 
   renderDay(value) {
@@ -121,6 +123,7 @@ export class _ActivityDetails extends Component {
 
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
     return (
+
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">

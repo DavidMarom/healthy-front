@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 
-import { logout } from '../store/actions/userActions.js';
+import { logout, login } from '../store/actions/userActions.js';
 import { SearchBox } from "./activity/SearchBox.jsx";
 import eventBus from "../services/event-bus-service.js";
 
@@ -29,6 +29,16 @@ export class _Header extends Component {
     this.unsubscribeOutOfHome();
   }
 
+  openGuestMode = (ev) => {
+    ev.preventDefault();
+    const guest = {
+      email: 'guestMode@gmail.com',
+      password: '123'
+    }
+    this.props.login(guest);
+    this.setState({ loginCred: { email: '', password: '' } });
+  }
+
   render() {
     const { isHomePage } = this.state;
     const user = this.props.user;
@@ -50,6 +60,7 @@ export class _Header extends Component {
           {(!user) ? (
             <div className="right-end">
               <div>
+                <span className="cp m10 nav-override-color " onClick={this.openGuestMode}>Demo Mode</span>
                 <NavLink className="cp m10 nav-override-color" to="/activity">Explore</NavLink>
                 <NavLink className="cp nav-override-color" to={`/login`}>Login</NavLink>
                 <NavLink className="cp nav-override-color" to={`/signUp`}>SignUp</NavLink>
@@ -80,7 +91,8 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = {
-  logout
+  logout,
+  login
 }
 
 export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)
