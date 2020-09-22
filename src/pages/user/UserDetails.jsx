@@ -77,6 +77,7 @@ export class _UserDetails extends Component {
             <h4>{currUser.email}</h4>
             <div className="bold">
               <div className="bold">Bio:{currUser.bio}</div>
+              {console.log("currUser", currUser)}
             </div>
 
           </div>
