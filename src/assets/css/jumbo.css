@@ -123,34 +123,6 @@
     justify-content: space-between;
 }
 
-.article_a {
-    padding: 50px;
-    color: #ffffff;
-
-    width: 30%;
-    height: 300px;
-    border-radius: 35px;
-    background-color: rgb(196, 218, 238);
-}
-
-.article_b {
-    padding: 50px;
-    color: #ffffff;
-    width: 65%;
-    height: 300px;
-    border-radius: 30px;
-    background-color: rgb(247, 231, 214);
-}
-
-.article_c {
-    padding: 50px;
-    color: #ffffff;
-    width: 65%;
-    height: 300px;
-    border-radius: 30px;
-    background-color: rgb(214, 247, 217);
-}
-
 
 @media(max-width: 1600px) {
     .jumbo {
