@@ -17,11 +17,18 @@
 }
 
 .marked {
-  background-color: seagreen;
+  background-color: #42c054;
   font-weight: 500;
-  color: #222222;
+  color: #ffffff;
+  border-radius: 50px;
+  border: 2px solid #42c054;
+
+
 }
 
 .unmarked {
-  background-color: $clr1;
+  border: 2px solid #42c054;
+  border-radius: 50px;
+  background-color: #ffffff;
+  color: #42c054;
 }

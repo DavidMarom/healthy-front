@@ -57,7 +57,7 @@ class _Login extends Component {
   };
   render() {
     let loginSection = (
-      <form className= "main-container" onSubmit={this.doLogin}>
+      <form className="main-container" onSubmit={this.doLogin}>
         <input
           type="text"
           name="email"
@@ -81,9 +81,11 @@ class _Login extends Component {
     const { loggedInUser } = this.props;
     return (
       <div className="main-container">
-        <h1>
-         Login
+        <div className="just-row">
+          <h1>
+            Login
         </h1>
+        </div>
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>

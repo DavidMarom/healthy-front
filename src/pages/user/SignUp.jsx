@@ -99,7 +99,7 @@ class _SignUp extends Component {
                 <label>Upload Image
                     <input onChange={(ev) => this.onUpdateImg(ev)} type="file" />
                 </label>
-                <h2 className="tac">Please choose are your interests?</h2>
+                <h2 className="tac d-hi">Please choose your interests:</h2>
                 <section className="suggestions fs20 ">
                     {(this.state.suggestion) ? (this.state.suggestion.map((suggest, idx) => (
                         <div key={idx}
