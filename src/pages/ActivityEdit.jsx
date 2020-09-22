@@ -166,7 +166,7 @@ class _ActivityEdit extends Component {
                                     activity.imgUrls.map((img, idx) => {
                                         return (
                                             <div className="img-container" key={idx}>
-                                                <img className={`img-edit img-${idx}`} key={idx} src={img} />
+                                                <img className={`img-edit img-${idx}`} key={idx} src={img} alt=""/>
                                                 <button className='img-edit-del-btn' key={idx} onClick={(ev) => this.removeImg(ev, idx)}>remove image</button>
                                             </div>
                                         )

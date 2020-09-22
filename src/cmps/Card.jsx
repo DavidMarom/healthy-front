@@ -36,12 +36,12 @@ export class Card extends Component {
                   {` (`}{activity.rate.length}{`)`}
                 </div>
                 <div className="orgenizer">
-                  <img className="attending-img" src={activity.createdBy.imgUrl} />
+                  <img className="attending-img" src={activity.createdBy.imgUrl} alt=""/>
                   {/* <div className="bold">{activity.createdBy.fullName}</div> */}
                 </div>
               </div>
               <div>
-                <div className="green">{activity.title}{` - `}</div>
+                <div className="green">{activity.title}</div>
                 <div>{activity.subtitle}</div>
               </div>
               <div className="bold">

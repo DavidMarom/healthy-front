@@ -4,7 +4,7 @@ import { UserActivityPreview } from './UserActivityPreview'
 
 
 export function UserActivityList({ activities, user, madeOfOperation ,onRemove ,onRemoveFromList}) {
-    if (!activities) return <div>you didn't creat any event yet</div>
+    if (!activities) return <div>You have not created any events yet</div>
     return (
         <div className="user-activity-list flex column">
             {

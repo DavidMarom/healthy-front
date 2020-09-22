@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadActivities } from "../store/actions/activityActions";
 
-import { Card } from "./Card";
-
 class _Articles extends Component {
   state = {
     activities: null,

@@ -41,10 +41,10 @@ function update(activity) {
   return httpService.put(`activity/${activity._id}`, activity)
 }
 
-async function add(activity) {
-  const addedActivity = await httpService.post('activity/', activity);
-  return addedActivity
-}
+// async function add(activity) {
+//   const addedActivity = await httpService.post('activity/', activity);
+//   return addedActivity
+// }
 
 async function save(activity) {
   if (activity._id) {

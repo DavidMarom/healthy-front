@@ -19,8 +19,8 @@ export class Reviews extends Component {
     if ((this.state.txt !== '') && (ev.keyCode === 13)) this.addReview();
   }
 
-  addReview = () => {
-    
+  addReview = (ev) => {
+    ev.preventDefault();
     var newActivity = this.state.activity;
     const tmpReview={
       "id": Date.now(),
@@ -42,8 +42,8 @@ export class Reviews extends Component {
         <h2> Reviews</h2>
         {reviews.map((review, idx) => {
           return (
-            <div key={idx} className="text-mid">
-              <img src={review.by.imgUrl} className="attending-img marg-5" />
+            <div key={idx} className="text-mid-left">
+              <img src={review.by.imgUrl} className="attending-img marg-5" alt="" />
               {review.txt}
             </div>
           );

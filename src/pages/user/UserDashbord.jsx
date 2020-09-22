@@ -29,7 +29,7 @@ class _UserDashbord extends Component {
                     <h3>{currUser.fullName}</h3>
                     <h3>Total Sales: ${currUser.income}</h3>
                 </div>
-                <div className="flex no-wrap align-center">
+                <div className="flex no-wrap align-center sb">
                     <div className="bar m10">
                         <BarChart user={currUser} />
                     </div>
