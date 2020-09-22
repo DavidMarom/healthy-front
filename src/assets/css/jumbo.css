@@ -33,7 +33,7 @@
 }
 
 .jumbo-search {
-    margin-top: 80px;
+    /* margin-top: 80px;
     width: 60%;
     height: 65px;
     background-color: #ffffff;
@@ -41,8 +41,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center; */
+    /* margin-top: 80px; */
+    width: 45%;
+    height: 65px;
+    background-color: #ffffff;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    align-self: flex-start;
+    margin-left: 80px;
+    margin-bottom: 160px;
+    transition: 0.3;
 }
+
 
 .search-input {
     width: 100%;
@@ -51,6 +65,13 @@
     outline: none;
     margin-left: 30px;
 }
+
+.search-input::-webkit-input-placeholder { 
+    color: #222222;
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    font-family:'Varela Round', sans-serif;
+  }
 
 .search-btn {
     display: flex;
@@ -81,12 +102,18 @@
 
 .slogan {
     /* margin-top:400px; */
-    padding-left: 80%;
+    /* padding-left: 80%; */
     /* position: absolute; */
     /* right: 100px; */
     /* bottom: 120px; */
+    flex-flow: column;
+    display: flex;
+    align-self: flex-start;
+    margin-left: 80px;
+    font-size: 1.875rem;
     color: #ffffff;
 }
+
 
 .articles-row {
     margin-top: 100px;
@@ -135,16 +162,25 @@
     .jumbo {
         height: 600px;
     }
+    .slogen{
+        font-size: 1.6rem;
+    }
 }
 
 @media(max-width: 1000px) {
     .jumbo {
         height: 450px;
     }
+    .slogen{
+        font-size:1.4rem;
+    }
 }
 
 @media(max-width: 850px) {
     .jumbo {
         height: 300px;
+    }
+    .slogan{
+        font-size: 1.3rem;
     }
 }
