@@ -72,7 +72,7 @@ class _Login extends Component {
         <input
           type="text"
           name="email"
-          value={this.state.loginCred.email}
+          value={this.state.loginCred.email || ''}
           onChange={this.loginHandleChange}
           placeholder="Email"
         />
@@ -80,7 +80,7 @@ class _Login extends Component {
         <input
           type="password"
           name="password"
-          value={this.state.loginCred.password}
+          value={this.state.loginCred.password || ''}
           onChange={this.loginHandleChange}
           placeholder="Password"
         />

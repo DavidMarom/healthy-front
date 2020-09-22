@@ -5,7 +5,6 @@ import { HomeApp } from './pages/HomeApp.jsx'
 import { UserDetails } from './pages/user/UserDetails.jsx'
 import { Login } from './pages/user/Login.jsx'
 import { SignUp } from './pages/user/SignUp.jsx'
-import { UserDashbord } from './pages/user/UserDashbord.jsx'
 // import { Dashboard } from '@material-ui/icons'
 // import { About } from './pages/About.jsx'
 // import { Login } from './pages/Login.jsx'
@@ -31,11 +30,7 @@ export default [
     },
     {
         path: '/user/:userId',
-        component: UserDashbord,
-    },
-    {
-        path: '/user',
-        component: UserDetails
+        component: UserDetails,
     },
     {
         path: '/login',

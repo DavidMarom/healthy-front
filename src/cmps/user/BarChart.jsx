@@ -9,7 +9,10 @@ import { activityService } from '../../services/activityService.js';
 class _BarChart extends Component {
 
     state = {
-        activities: null
+        activities: null,
+        // fakeActivities:{
+            
+        // }
     }
 
     componentDidMount() {

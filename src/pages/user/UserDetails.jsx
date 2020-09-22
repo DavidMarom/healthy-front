@@ -11,6 +11,7 @@ import { UserSchedule } from "../../cmps/user/UserSchedule";
 import { userService } from "../../services/userService.js";
 import { activityService } from "../../services/activityService.js";
 import { updateUser } from "../../store/actions/userActions.js";
+import { UserDashbord } from "./UserDashbord.jsx";
 
 export class _UserDetails extends Component {
   state = {
@@ -20,18 +21,21 @@ export class _UserDetails extends Component {
   };
 
   componentDidMount() {
-    const currUser = this.props.user
-      ? this.props.user
-      : userService.guestMode();
-    this.setState({ currUser }, () =>
-      this.props.loadActivities(this.state.currUser._id)
-    );
+    const { userId } = this.props.match.params;
+    if (userId) {
+      userService.getById(userId)
+        .then(user => this.setState({ currUser: user },()=> this.props.loadActivities(this.state.currUser._id)))
+    }
   }
 
-  onRemove = (_id) => {
+  onRemove = (ev,_id) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     this.props.removeActivity(_id);
   };
-  onRemoveFromList = (activity, user) => {
+  onRemoveFromList = (ev,activity, user) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     // delete from the user list by canceling participant inside the activity object
     let idx = activityService.findIdxById(activity.participants, user._id);
     activity.participants.splice(idx, 1);
@@ -39,7 +43,7 @@ export class _UserDetails extends Component {
     // update activity
     this.props.saveActivity(activity);
 
-    // update the orgenizer income
+    // update the organizer income
     userService.getById(activity.createdBy._id).then((user) => {
       user.income -= activity.price;
       this.props.updateUser(user);
@@ -57,7 +61,7 @@ export class _UserDetails extends Component {
 
   render() {
     let { activities } = this.props;
-
+    console.log(activities);
     if (!Object.keys(activities).length) activities = null;
     const { currUser } = this.state;
     if (!currUser) return <div>loading..</div>;
@@ -78,7 +82,7 @@ export class _UserDetails extends Component {
 
           </div>
           <div className="profile-bar-right">
-            <img className="profile-pic" src={currUser.imgUrl} alt=""/>
+            <img className="profile-pic" src={currUser.imgUrl} alt="" />
             <p>change your photo</p>
           </div>
 
@@ -90,6 +94,9 @@ export class _UserDetails extends Component {
               {/* <p>Location: {currUser.location.address}</p> */}
               <Link to="/activity/add">Add A New Event</Link>
               <div className="main-info-container">
+              {eventsCreatedByUser ? (
+                <UserDashbord user={currUser} activities={eventsCreatedByUser}/>):''
+                }
                 <h3>Events I organized:</h3>
                 {eventsCreatedByUser ? (
                   <UserActivityList
@@ -97,7 +104,7 @@ export class _UserDetails extends Component {
                     user={currUser}
                     onRemove={this.onRemove}
                     onRemoveFromList={this.onRemoveFromList}
-                    madeOfOperation={"orgenizer"}
+                    madeOfOperation={"organizer"}
                   />
                 ) : (
                     ""
