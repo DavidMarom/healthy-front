@@ -62,8 +62,8 @@ export class _Header extends Component {
             </div>) :
             <div className="right-end">
               <div>
-                <div className = "cp" onClick={this.props.logout}>Logout</div>
-              </div>
+                <div className = "cp" onClick={this.props.logout}><NavLink className="nav-override-color" to={`/`}>Logout</NavLink></div>
+              </div>  
               <div>
           <NavLink className="nav-override-color" to={`/user`}><img className="attending-img cursor-pointer" src={user.imgUrl} alt ="#"/></NavLink>
               </div>
