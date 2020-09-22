@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userService } from '../../services/userService.js';
-import {uploadImg} from '../../services/imgUploadService.js';
+import { uploadImg } from '../../services/imgUploadService.js';
 import { signup } from '../../store/actions/userActions.js';
 
 class _SignUp extends Component {
@@ -11,23 +11,21 @@ class _SignUp extends Component {
         signupCred: {
             email: '',
             password: '',
-            userName: '',
             fullName: '',
             prefs: [],
-            imgUrl:''
+            imgUrl: ''
         },
         suggestion: [{ name: 'sport', isMarked: false }, { name: 'yoga', isMarked: false }, { name: 'cardio', isMarked: false },
         { name: 'pilates', isMarked: false }, { name: 'mindfullness', isMarked: false }, { name: 'meditation', isMarked: false },
-        { name: 'well-being', isMarked: false }, { name: 'nutrition', isMarked: false }, { name: 'diet', isMarked: false }, 
+        { name: 'well-being', isMarked: false }, { name: 'nutrition', isMarked: false }, { name: 'diet', isMarked: false },
         { name: 'pshychology', isMarked: false }]
     };
 
-        onUpdateImg = async(ev) =>{
+    onUpdateImg = async (ev) => {
         const img = await uploadImg(ev)
-        console.log('img-',img);
         let signupCred = this.state.signupCred;
         signupCred.imgUrl = img;
-        this.setState({signupCred})
+        this.setState({ signupCred })
     }
 
     addToPrefs = (pref) => {
@@ -60,13 +58,13 @@ class _SignUp extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
-        const { email, password, userName, fullName, prefs, imgUrl } = this.state.signupCred;
-        if (!email || !password || !userName || !fullName || !prefs || !imgUrl) {
+        const { email, password, fullName, prefs, imgUrl } = this.state.signupCred;
+        if (!email || !password || !fullName || !prefs || !imgUrl) {
             return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { email, password, userName, fullName, prefs, imgUrl };
+        const signupCreds = { email, password, fullName, prefs, imgUrl };
         this.props.signup(signupCreds);
-        this.setState({ signupCred: { email: '', password: '', userName: '', fullName: '', prefs: [] } });
+        this.setState({ signupCred: { email: '', password: '', fullName: '', prefs: [] } });
     };
 
 
@@ -96,17 +94,10 @@ class _SignUp extends Component {
                     onChange={this.signupHandleChange}
                     placeholder="full name"
                 />
-                <br />
-                <input
-                    type="text"
-                    name="userName"
-                    value={this.state.signupCred.username}
-                    onChange={this.signupHandleChange}
-                    placeholder="Username"
-                />
+                
                 <br />
                 <label>Upload Image
-                    <input onChange={(ev)=> this.onUpdateImg(ev)} type="file"/>
+                    <input onChange={(ev) => this.onUpdateImg(ev)} type="file" />
                 </label>
                 <h2 className="tac">Please choose are your interests?</h2>
                 <section className="suggestions fs20 ">
@@ -128,7 +119,7 @@ class _SignUp extends Component {
                 <h2>{this.state.msg}</h2>
                 {loggedInUser && (
                     <div>
-                        <h2>Welcome: {loggedInUser.userName} </h2>
+                        <h2>Welcome: {loggedInUser.fullName} </h2>
                         <button onClick={this.props.logout}>Logout</button>
                     </div>
                 )}

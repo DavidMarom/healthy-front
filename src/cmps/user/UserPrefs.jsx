@@ -9,7 +9,7 @@ class _UserPrefs extends Component {
         prefs: []
     }
 
-    updatePrefs(ev){
+    updatePrefs(ev) {
         ev.preventDefault();
     }
 
@@ -19,7 +19,7 @@ class _UserPrefs extends Component {
                 <h2>Please choose are your interests?</h2>
                 <div className="collection">
                     <ul>
-                        <li name="sport" onClick={()=>this.updatePrefs}>Sport</li>
+                        <li name="sport" onClick={() => this.updatePrefs}>Sport</li>
                         <li name="yoga">Yoga</li>
                         <li name="Running">Running</li>
                         <li name="jogging">jogging</li>
@@ -43,8 +43,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-    const mapDispatchToProps = {
-        updateUser
-    };
+const mapDispatchToProps = {
+    updateUser
+};
 
-    export const SignUp = connect(mapStateToProps, mapDispatchToProps)(_SignUp);
+export const SignUp = connect(mapStateToProps, mapDispatchToProps)(_SignUp);

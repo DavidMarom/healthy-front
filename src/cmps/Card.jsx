@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-aaa
+
 export class Card extends Component {
   state = {
     activity: null,
