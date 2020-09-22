@@ -5,36 +5,25 @@ import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
+import { Chat } from "../cmps/Chat";
+
 import SimpleMap from "../cmps/Map";
-import socketService from "../services/socketService";
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
 export class _ActivityDetails extends Component {
+
   state = {
     activity: null,
     user: userService.guestMode(),
     creator: "",
     avgRate: null,
-    rateType: "simple-controlled",
-
-    msg: { from: "Me", txt: "" },
-    msgs: [],
-    topic: 'default'
-  };
-
-  calcAvgRate = () => {
-    let tempSum = 0;
-    const arr = this.state.activity.rate;
-    arr.map((rateValue) => (tempSum += rateValue));
-    const tempAvg = tempSum / arr.length;
-    this.setState({ avgRate: tempAvg });
+    rateType: "simple-controlled"
   };
 
   componentDidMount() {
-    
 
     let userBeforeChange = this.props.user;
     // before we have backend!
@@ -47,51 +36,24 @@ export class _ActivityDetails extends Component {
       this.setState({ user });
     }
     this.loadActivity();
-    socketService.setup();
-    socketService.emit("chat topic", this.state.topic);
-    socketService.on("chat addMsg", this.addMsg);
   }
 
-  componentWillUnmount() {
-    socketService.off("chat addMsg", this.addMsg);
-    socketService.terminate();
-  }
-
-  addMsg = (newMsg) => {
-    this.setState((prevState) => ({ msgs: [...prevState.msgs, newMsg] }));
-  };
-
-  sendMsg = (ev) => {
-    ev.preventDefault();
-    socketService.emit("chat newMsg", this.state.msg.txt);
-    this.setState({ msg: { from: "Me", txt: "" } });
-  };
-
-  handleChange = (ev) => {
-    const { name, value } = ev.target;
-    this.setState({ [name]: value }, () => this.changeTopic(value));
-  };
-
-  msgHandleChange = (ev) => {
-    const { name, value } = ev.target;
-    this.setState((prevState) => {
-      return {
-        msg: {
-          ...prevState.msg,
-          [name]: value,
-        },
-      };
-    });
+  calcAvgRate = () => {
+    let tempSum = 0;
+    const arr = this.state.activity.rate;
+    arr.map((rateValue) => (tempSum += rateValue));
+    const tempAvg = tempSum / arr.length;
+    this.setState({ avgRate: tempAvg });
   };
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
-    this.setState({topic: activityId})
+
     activityService.getById(activityId).then((activity) => {
       this.setState({ activity }, () => {
         this.loadCreator(activity.createdBy._id);
         this.calcAvgRate();
-        
+
       });
     });
   };
@@ -104,7 +66,7 @@ export class _ActivityDetails extends Component {
 
   purchaseActivity(activity, user, creator) {
     if (user.id === 'guest') return
-    if(creator.id===user.id) return
+    if (creator.id === user.id) return
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);
@@ -159,7 +121,6 @@ export class _ActivityDetails extends Component {
 
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
     return (
-      
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
@@ -242,7 +203,7 @@ export class _ActivityDetails extends Component {
 
               {/* <div className="divider d-hi"></div> */}
 
-              <Reviews activity={activity} user={this.state.user}/>
+              <Reviews activity={activity} user={this.state.user} />
 
             </div>
           </div>
@@ -266,7 +227,7 @@ export class _ActivityDetails extends Component {
                   onClick={() => this.props.history.push('/signUp')}>
                   Join Us NOW!
                 </button>) : ''}
-           
+
               {(activity.participants.length < activity.maxCapacity) ?
                 (<button className="buy-btn"
                   onClick={() => this.purchaseActivity(activity, user, creator)}>
@@ -290,22 +251,8 @@ export class _ActivityDetails extends Component {
             </div>
             <div className="divider"></div>
             <div className="chat-container">
-              <div>
-                {this.state.msgs.map((msg, idx) => (
-                  <div key={idx}>{msg}</div>
-                ))}
-              </div>
+              <Chat topic={activity._id} />
 
-              <form onSubmit={this.sendMsg}>
-                <input className="chat-input"
-                  type="text"
-                  value={this.state.msg.txt}
-                  onChange={this.msgHandleChange}
-                  name="txt"
-                />
-                <button className="chat-button"><i className="far fa-paper-plane fa-2x"></i></button>
-              </form>
-              
             </div>
           </div>
           {/* END OF RIGHT SIDE */}
