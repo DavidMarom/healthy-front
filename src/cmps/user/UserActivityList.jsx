@@ -15,7 +15,7 @@ export function UserActivityList({ activities, user, madeOfOperation ,onRemove ,
                     onRemoveFromList = {onRemoveFromList}
                     madeOfOperation={madeOfOperation} />)
             }
-            {(madeOfOperation === 'orgenizer')?<Link to={`/user/${user._id}`}>For More Details</Link>:''}
+            {/* {(madeOfOperation === 'orgenizer')?<Link to={`/user/${user._id}`}>For More Details</Link>:''} */}
         </div>
     )
 }
