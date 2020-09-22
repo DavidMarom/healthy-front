@@ -113,7 +113,7 @@ class _SignUp extends Component {
                     {(this.state.suggestion) ? (this.state.suggestion.map((suggest, idx) => (
                         <div key={idx}
                             className={`${this.state.suggestion[idx].isMarked ? "marked " : "unmarked "}`}
-                            onClick={this.pinCard} onClick={() => this.addToPrefs(suggest)}>{suggest.name}</div>))) : ''}
+                            onClick={() => this.addToPrefs(suggest)}>{suggest.name}</div>))) : ''}
                 </section>
                 <button>Signup</button>
             </form>
