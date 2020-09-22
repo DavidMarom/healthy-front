@@ -21,7 +21,7 @@ export class _ActivityDetails extends Component {
     rateType: "simple-controlled",
 
     msg: { from: "Me", txt: "" },
-    msgs: ['Dana: Hi, anyone coming from Tel-aviv?','Avi: yes - me'],
+    msgs: ['Dana: Hi, anyone coming from Tel-aviv?', 'Avi: yes - me'],
     topic: "Love",
   };
 
@@ -100,12 +100,14 @@ export class _ActivityDetails extends Component {
   };
 
   purchaseActivity(activity, user, creator) {
-    if (user.id === 'guest') return
-    if(creator.id===user.id) return
-    creator.income += activity.price;
-    this.props.updateUser(creator);
-    activity.participants.push(user);
-    this.props.saveActivity(activity);
+    console.log('act-', activity, 'user-', user, 'creator-', creator);
+    // if (user.id === 'guest') return
+    if (creator._id !== user._id) {
+      creator.income += activity.price;
+      this.props.updateUser(creator);
+      activity.participants.push(user);
+      this.props.saveActivity(activity);
+    }
   }
 
   renderDay(value) {
@@ -156,7 +158,7 @@ export class _ActivityDetails extends Component {
 
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
     return (
-      
+
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
@@ -239,7 +241,7 @@ export class _ActivityDetails extends Component {
 
               {/* <div className="divider d-hi"></div> */}
 
-              <Reviews activity={activity} user={this.state.user}/>
+              <Reviews activity={activity} user={this.state.user} />
 
             </div>
           </div>
@@ -263,7 +265,7 @@ export class _ActivityDetails extends Component {
                   onClick={() => this.props.history.push('/signUp')}>
                   Join Us NOW!
                 </button>) : ''}
-           
+
               {(activity.participants.length < activity.maxCapacity) ?
                 (<button className="buy-btn"
                   onClick={() => this.purchaseActivity(activity, user, creator)}>
@@ -302,7 +304,7 @@ export class _ActivityDetails extends Component {
                 />
                 <button className="chat-button"><i className="far fa-paper-plane fa-2x"></i></button>
               </form>
-              
+
             </div>
           </div>
           {/* END OF RIGHT SIDE */}

@@ -17,6 +17,7 @@ export default {
         return ajax(endpoint, 'POST', data)
     },
     put(endpoint, data) {
+        console.log('put-', data, endpoint);
         return ajax(endpoint, 'PUT', data)
     },
     delete(endpoint, data) {
