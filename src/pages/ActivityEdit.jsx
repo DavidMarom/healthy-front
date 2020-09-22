@@ -144,7 +144,7 @@ class _ActivityEdit extends Component {
                                 <div className="edit-capacity flex column">
                                     <label htmlFor="price">Max Capacity</label>
                                     <TextField className="capacity-input" type="number" value={activity.maxCapacity} variant="outlined" size="small"
-                                        name="capacity"
+                                        name="maxCapacity"
                                         onChange={this.handleInput}
                                     />
                                 </div>

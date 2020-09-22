@@ -25,8 +25,6 @@ function query(filterBy = {}) {
   // return httpService.get(`activity`);
 }
 
-
-
 function getById(activityId) {
   return httpService.get(`activity/${activityId}`);
 }
@@ -72,7 +70,7 @@ function getEmpty() {
     imgUrls:[],
     participants:[],
     tags:[],
-    rate:[],
+    rate:[0],
     reviews:[],
     msgs:[]
   }
