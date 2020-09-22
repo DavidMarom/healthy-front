@@ -17,8 +17,7 @@ class _Login extends Component {
     },
     signupCred: {
       // email: '',
-      password: '',
-      username: ''
+      password: ''
     }
   };
 
@@ -53,6 +52,7 @@ class _Login extends Component {
     this.setState({ loginCred: { email: '', password: '' } });
   };
 
+<<<<<<< HEAD
   // doSignup = async ev => {
   //   ev.preventDefault();
   //   const { email, password, username } = this.state.signupCred;
@@ -63,6 +63,18 @@ class _Login extends Component {
   //   this.props.signup(signupCreds);
   //   this.setState({ signupCred: { email: '', password: '', username: '' } });
   // };
+=======
+  doSignup = async ev => {
+    ev.preventDefault();
+    const { email, password } = this.state.signupCred;
+    if (!email || !password ) {
+      return this.setState({ msg: 'All inputs are required!' });
+    }
+    const signupCreds = { email, password };
+    this.props.signup(signupCreds);
+    this.setState({ signupCred: { email: '', password: '' } });
+  };
+>>>>>>> bc8c7a9efa83b7ec660a47023ccb6bad73e5a92f
 
   removeUser = userId => {
     this.props.removeUser(userId);
@@ -99,7 +111,7 @@ class _Login extends Component {
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
-            <h2>Welcome: {loggedInUser.userName} </h2>
+            <h2>Welcome: {loggedInUser.fullName} </h2>
             <button onClick={this.props.logout}>Logout</button>
           </div>
         )}
@@ -116,7 +128,7 @@ class _Login extends Component {
                   this.removeUser(user._id);
                 }}
               >
-                Remove {user.username}
+                Remove {user.fullName}
               </button>
             </li>
           ))}

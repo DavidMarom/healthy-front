@@ -35,7 +35,7 @@ class _PieChart extends Component {
         return chartService.getIncome(incomeFromEvent)
     }
 
-    onGetRandomColor=()=>{
+    onGetRandomColor = () => {
         return chartService.getRandomColor()
     }
 
@@ -48,16 +48,15 @@ class _PieChart extends Component {
         //bild the bar variables:
         let titles = this.onGetTitles(eventsCreatedByUser)
         let incomeFromEvent = this.onGetIncomeFromEvent(eventsCreatedByUser)
-        console.log(incomeFromEvent);
         let income = this.onGetIncome(incomeFromEvent)
-        console.log(income);
         if (income !== user.income) user.income = income;
 
         let bgc = [];
         let bgcHover = [];
-        incomeFromEvent.map(amount=>{
+        incomeFromEvent.map(() => {
             bgc.push(this.onGetRandomColor())
             bgcHover.push(this.onGetRandomColor())
+            return null;
         })
 
         const data = {
@@ -72,11 +71,11 @@ class _PieChart extends Component {
             <div>
                 <h3 className="tac">Income By Events</h3>
                 <Pie
-                 data={data}
-                 options = {{ maintainAspectRatio: false }}
-                 width={400}
-                 height={400}
-                  />
+                    data={data}
+                    options={{ maintainAspectRatio: false }}
+                    width={400}
+                    height={400}
+                />
             </div>
         )
     }

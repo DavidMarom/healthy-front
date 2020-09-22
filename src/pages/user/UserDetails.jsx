@@ -32,11 +32,8 @@ export class _UserDetails extends Component {
   };
   onRemoveFromList = (activity, user) => {
     // delete from the user list by canceling participant inside the activity object
-    console.log("before-", activity.participants, user._id);
     let idx = activityService.findIdxById(activity.participants, user._id);
-    console.log("idx-", idx);
     activity.participants.splice(idx, 1);
-    console.log("after-", activity.participants);
 
     // update activity
     this.props.saveActivity(activity);
@@ -69,17 +66,18 @@ export class _UserDetails extends Component {
       <div className="main-container">
 
         <div className="profile-top-bar">
-          
+
           <div className="profile-bar-left">
             <h2>{currUser.fullName}</h2>
             <h4>{currUser.title}</h4>
-
             <h4>{currUser.email}</h4>
-            <p>Bio:{currUser.bio}</p>
+            <div className="bold">
+              <div className="bold">Bio:{currUser.bio}</div>
+            </div>
 
           </div>
           <div className="profile-bar-right">
-            <img className="profile-pic" src={currUser.imgUrl} />
+            <img className="profile-pic" src={currUser.imgUrl} alt=""/>
             <p>change your photo</p>
           </div>
 
@@ -105,7 +103,7 @@ export class _UserDetails extends Component {
                   )}
               </div>
               <div className="main-info-container">
-                <h3>Events Im going to:</h3>
+                <h3>Events I{`'`}m going to:</h3>
                 {partOfEvents ? (
                   <UserActivityList
                     activities={partOfEvents}

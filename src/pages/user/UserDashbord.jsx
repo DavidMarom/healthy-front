@@ -14,7 +14,6 @@ class _UserDashbord extends Component {
 
     componentDidMount() {
         const { userId } = this.props.match.params;
-        console.log(userId)
         if (userId) {
             userService.getById(userId)
                 .then(user => this.setState({ currUser: user }))

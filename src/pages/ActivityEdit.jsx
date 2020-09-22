@@ -23,7 +23,7 @@ class _ActivityEdit extends Component {
     componentDidMount() {
         this.loadActivity()
         const currUser = this.props.user;
-        this.setState({ currUser }, () => console.log(this.state.currUser))
+        this.setState({ currUser })
 
     }
 
@@ -152,8 +152,13 @@ class _ActivityEdit extends Component {
 
                             <div className="edit-description flex column">
                                 <label htmlFor="description" >Detailed Description</label>
-                                <TextField name="description" value={activity.description} size="small" multiline
-                                    variant="outlined" multiline margin="normal"
+                                <TextField
+                                    name="description"
+                                    value={activity.description}
+                                    size="small"
+                                    variant="outlined"
+                                    multiline
+                                    margin="normal"
                                     onChange={this.handleInput}
                                 />
                             </div>
@@ -166,8 +171,8 @@ class _ActivityEdit extends Component {
                                     activity.imgUrls.map((img, idx) => {
                                         return (
                                             <div className="img-container" key={idx}>
-                                                <img className={`img-edit img-${idx}`} key={idx} src={img} />
-                                                <button className='img-edit-del-btn' key={idx} onClick={(ev) => this.removeImg(ev, idx)}>remove image</button>
+                                                <img className={`img-edit img-${idx}`} key={`img-${idx}`} src={img} alt="" />
+                                                <button className='img-edit-del-btn' key={`btn-${idx}`} onClick={(ev) => this.removeImg(ev, idx)}>x</button>
                                             </div>
                                         )
                                     })

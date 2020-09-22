@@ -6,7 +6,7 @@ import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
 import SimpleMap from "../cmps/map2";
-import socketService from "../services/socketService";
+// import socketService from "../services/socketService";
 
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
@@ -20,9 +20,9 @@ export class _ActivityDetails extends Component {
     avgRate: null,
     rateType: "simple-controlled",
 
-    msg: { from: "Me", txt: "" },
-    msgs: ['Dana: Hi, anyone coming from Tel-aviv?','Avi: yes - me'],
-    topic: "Love",
+    // msg: { from: "Me", txt: "" },
+    // msgs: ['Dana: Hi, anyone coming from Tel-aviv?','Avi: yes - me'],
+    // topic: "Love",
   };
 
   calcAvgRate = () => {
@@ -34,9 +34,9 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
-    socketService.setup();
-    socketService.emit("chat topic", this.state.topic);
-    socketService.on("chat addMsg", this.addMsg);
+    // socketService.setup();
+    // socketService.emit("chat topic", this.state.topic);
+    // socketService.on("chat addMsg", this.addMsg);
 
     let userBeforeChange = this.props.user;
     // before we have backend!
@@ -51,37 +51,37 @@ export class _ActivityDetails extends Component {
     this.loadActivity();
   }
 
-  componentWillUnmount() {
-    socketService.off("chat addMsg", this.addMsg);
-    socketService.terminate();
-  }
+  // componentWillUnmount() {
+  //   socketService.off("chat addMsg", this.addMsg);
+  //   socketService.terminate();
+  // }
 
-  addMsg = (newMsg) => {
-    this.setState((prevState) => ({ msgs: [...prevState.msgs, newMsg] }));
-  };
+  // addMsg = (newMsg) => {
+  //   this.setState((prevState) => ({ msgs: [...prevState.msgs, newMsg] }));
+  // };
 
-  sendMsg = (ev) => {
-    ev.preventDefault();
-    socketService.emit("chat newMsg", this.state.msg.txt);
-    this.setState({ msg: { from: "Me", txt: "" } });
-  };
+  // sendMsg = (ev) => {
+  //   ev.preventDefault();
+  //   socketService.emit("chat newMsg", this.state.msg.txt);
+  //   this.setState({ msg: { from: "Me", txt: "" } });
+  // };
 
-  handleChange = (ev) => {
-    const { name, value } = ev.target;
-    this.setState({ [name]: value }, () => this.changeTopic(value));
-  };
+  // handleChange = (ev) => {
+  //   const { name, value } = ev.target;
+  //   this.setState({ [name]: value }, () => this.changeTopic(value));
+  // };
 
-  msgHandleChange = (ev) => {
-    const { name, value } = ev.target;
-    this.setState((prevState) => {
-      return {
-        msg: {
-          ...prevState.msg,
-          [name]: value,
-        },
-      };
-    });
-  };
+  // msgHandleChange = (ev) => {
+  //   const { name, value } = ev.target;
+  //   this.setState((prevState) => {
+  //     return {
+  //       msg: {
+  //         ...prevState.msg,
+  //         [name]: value,
+  //       },
+  //     };
+  //   });
+  // };
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
@@ -101,6 +101,7 @@ export class _ActivityDetails extends Component {
 
   purchaseActivity(activity, user, creator) {
     if (user.id === 'guest') return
+    if(creator.id===user.id) return
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);
@@ -259,6 +260,7 @@ export class _ActivityDetails extends Component {
                   onClick={() => this.props.history.push('/signUp')}>
                   Join Us NOW!
                 </button>) : ''}
+           
               {(activity.participants.length < activity.maxCapacity) ?
                 (<button className="buy-btn"
                   onClick={() => this.purchaseActivity(activity, user, creator)}>
@@ -281,7 +283,7 @@ export class _ActivityDetails extends Component {
               <SimpleMap center={activity.location} />
             </div>
             <div className="divider"></div>
-            <div className="chat-container">
+            {/* <div className="chat-container">
               <div>
                 {this.state.msgs.map((msg, idx) => (
                   <div key={idx}>{msg}</div>
@@ -298,7 +300,7 @@ export class _ActivityDetails extends Component {
                 <button className="chat-button"><i className="far fa-paper-plane fa-2x"></i></button>
               </form>
               
-            </div>
+            </div> */}
           </div>
           {/* END OF RIGHT SIDE */}
         </div>

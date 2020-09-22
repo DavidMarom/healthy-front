@@ -3,7 +3,6 @@ import React from 'react'
 
 
 export function UserSchedule({ activities }) {
-  console.log(activities);
   let table = []
   for (var i = 0; i < 7; i++) {
     table.push([]);

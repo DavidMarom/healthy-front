@@ -6,8 +6,6 @@ export default {
   remove
 };
 
-
-
 function query(filterBy) {
   var queryStr = `?name=${filterBy.name}&sort=anaAref`;
   return httpService.get(`review${queryStr}`);
