@@ -41,6 +41,7 @@
     flex-direction: column;
     justify-content: space-between;
     line-height: 125%;
+    padding-top: 5px;
 }
 
 .rate-display {

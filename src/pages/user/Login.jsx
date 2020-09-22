@@ -55,6 +55,17 @@ class _Login extends Component {
   removeUser = userId => {
     this.props.removeUser(userId);
   };
+
+  openGuestMode=(ev)=>{
+    ev.preventDefault();
+    const guest = {
+      email : 'guestMode@gmail.com',
+      password : '123'
+  }
+  this.props.login(guest);
+  this.setState({ loginCred: { email: '', password: '' } });
+}
+
   render() {
     let loginSection = (
       <form className="main-container" onSubmit={this.doLogin}>
@@ -95,7 +106,7 @@ class _Login extends Component {
         )}
         {!loggedInUser && loginSection}
         <hr />
-        <button onClick={this.props.loadUsers}>Get All Users</button>
+        {/* <button onClick={this.props.loadUsers}>Get All Users</button> */}
         {this.props.isLoading && 'Loading...'}
         {this.props.users && <ul>
           {this.props.users.map(user => (
@@ -111,6 +122,9 @@ class _Login extends Component {
             </li>
           ))}
         </ul>}
+        <div className="guest-mode">
+          <button onClick={this.openGuestMode}>Demo Mode</button>
+        </div>
       </div>
     );
   }

@@ -23,11 +23,13 @@ export class Card extends Component {
 
     return (
       <section>
-        <Link to={`activity/${activity._id}`}>
           <div className="card">
+
+          <Link to={`activity/${activity._id}`}>
             <div className="card-img">
               <img className="img-fit" src={activity.imgUrls[0]} alt="" />
             </div>
+
             <div className="card-text">
               <div className="flex sb">
                 <div className="rate-display">
@@ -48,8 +50,9 @@ export class Card extends Component {
                 $ {activity.price}
               </div>
             </div>
+            </Link>
+
           </div>
-        </Link>
       </section>
     );
   }

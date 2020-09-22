@@ -31,7 +31,7 @@ export class ActivityFilter extends Component {
                     <option value='6'>Friday</option>
                     <option value='7'>Saturday</option>
                 </select>
-                <button className="chat-button pad-l-80 f-20" value='' onClick={(e) => this.setFilterBy(e, 'value')}>Clear</button>
+                <button className="chat-button pad-l-80 f-20 d-grey" value='' onClick={(e) => this.setFilterBy(e, 'value')}>Clear</button>
             </div >
         )
     }
