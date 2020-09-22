@@ -10,9 +10,9 @@ class _BarChart extends Component {
 
     state = {
         activities: null,
-        fakeActivities:{
+        // fakeActivities:{
             
-        }
+        // }
     }
 
     componentDidMount() {
