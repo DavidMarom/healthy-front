@@ -26,8 +26,8 @@
     margin-top: 50px;
 }
 
-.text-mid {
-    text-align: center;
+.text-mid-left {
+    text-align: left;
     display: flex;
     justify-content: flex-start;
     align-items: center;

@@ -80,7 +80,7 @@ export class _UserDetails extends Component {
 
           </div>
           <div className="profile-bar-right">
-            <img className="profile-pic" src={currUser.imgUrl} />
+            <img className="profile-pic" src={currUser.imgUrl} alt=""/>
             <p>change your photo</p>
           </div>
 

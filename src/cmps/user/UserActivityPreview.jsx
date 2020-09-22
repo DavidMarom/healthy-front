@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { activityService } from '../../services/activityService'
+// import { activityService } from '../../services/activityService'
 
 export function UserActivityPreview({activity, user, madeOfOperation, onRemove, onRemoveFromList}) {
     return (
