@@ -16,18 +16,18 @@ class _Articles extends Component {
       <section>
         <div className="articles-row">
           <div className="article_a">
-            <h2>Hot!</h2>
+            <h2>Sport</h2>
           </div>
           <div className="article_b">
-            <h2>October</h2>
+            <h2>Body {`&`} Mind</h2>
           </div>
         </div>
         <div className="articles-row">
           <div className="article_c">
-            <h2>Article: sport in the modern age</h2>
+            <h2>Nutrition</h2>
           </div>
-          <div className="article_a">
-            <h2>New</h2>
+          <div className="article_d">
+            <h2>Free!</h2>
           </div>
         </div>
       </section>
