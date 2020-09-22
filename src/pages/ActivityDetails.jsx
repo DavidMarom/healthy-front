@@ -101,6 +101,7 @@ export class _ActivityDetails extends Component {
 
   purchaseActivity(activity, user, creator) {
     if (user.id === 'guest') return
+    if(creator.id===user.id) return
     creator.income += activity.price;
     this.props.updateUser(creator);
     activity.participants.push(user);
@@ -259,6 +260,7 @@ export class _ActivityDetails extends Component {
                   onClick={() => this.props.history.push('/signUp')}>
                   Join Us NOW!
                 </button>) : ''}
+           
               {(activity.participants.length < activity.maxCapacity) ?
                 (<button className="buy-btn"
                   onClick={() => this.purchaseActivity(activity, user, creator)}>
