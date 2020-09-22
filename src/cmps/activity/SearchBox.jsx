@@ -13,6 +13,7 @@ export class _SearchBox extends Component {
     }
    
     componentDidMount() {
+        console.log(this.props.location.search);
      const searchBy = new URLSearchParams(this.props.location.search).get('searchBy') || ''
      this.setState({ searchBy:{title:searchBy} }, () => this.props.setSearchBy(this.state.searchBy))
     }
