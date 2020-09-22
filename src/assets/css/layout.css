@@ -26,6 +26,10 @@
     margin-top: 50px;
 }
 
+.marg-top-80 {
+    height: 80px;
+}
+
 .text-mid-left {
     text-align: left;
     display: flex;

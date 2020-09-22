@@ -8,6 +8,8 @@ export function App() {
   return (
     <div className="App">
       <Header />
+      <div className="marg-top-80"></div>
+
       <Switch>
       { routes.map(route => <Route key={ route.path } exact component={ route.component } path={ route.path } />) }
       </Switch>

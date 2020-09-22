@@ -11,10 +11,16 @@ class _Articles extends Component {
     this.props.loadActivities();
   }
 
+  setFilterBy = (e) => {
+    const filterBy = e.target.value
+    this.props.dummySetFilter(filterBy)
+}
+
+
   render() {
     return (
       <section>
-        <div className="articles-row">
+        <div className="articles-row" onClick={(e) => this.setFilterBy(e, 'sport')}>
           <div className="article_a">
             <h2>Sport</h2>
           </div>
