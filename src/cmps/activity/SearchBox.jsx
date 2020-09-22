@@ -13,6 +13,7 @@ export class _SearchBox extends Component {
     }
    
     componentDidMount() {
+        console.log(this.props.location.search);
      const searchBy = new URLSearchParams(this.props.location.search).get('searchBy') || ''
      this.setState({ searchBy:{title:searchBy} }, () => this.props.setSearchBy(this.state.searchBy))
     }
@@ -34,7 +35,8 @@ export class _SearchBox extends Component {
         const cssClass = this.props.cssClass
         return (
             <div className={cssClass}>
-                <input className="search-input" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} />
+                <input className="search-input" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} 
+                placeholder="Go ahed and find some amazing healthEvents! (sports, nutrition, food etc.)" />
                 <div className="search-btn" onClick={this.onClickSearchButton}>
                     <i className="fas fa-search"></i>
                 </div>

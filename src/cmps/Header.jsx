@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 
-import {logout} from '../store/actions/userActions.js';
+import { logout } from '../store/actions/userActions.js';
 import { SearchBox } from "./activity/SearchBox.jsx";
 import eventBus from "../services/event-bus-service.js";
 
@@ -43,9 +43,6 @@ export class _Header extends Component {
                 </div>
               </NavLink>
             </div>
-            <div>
-              <NavLink className="nav-override-color cp" to="/activity">Explore</NavLink>
-            </div>
           </div>
 
           {!isHomePage && <SearchBox cssClass={"header-search"} />}
@@ -53,19 +50,21 @@ export class _Header extends Component {
           {(!user) ? (
             <div className="right-end">
               <div>
-                <NavLink className="nav-override-color" to={`/login`}>Login</NavLink>
-                <NavLink className="nav-override-color" to={`/signUp`}>SignUp</NavLink>
+                <NavLink className="cp m10 nav-override-color" to="/activity">Explore</NavLink>
+                <NavLink className="cp nav-override-color" to={`/login`}>Login</NavLink>
+                <NavLink className="cp nav-override-color" to={`/signUp`}>SignUp</NavLink>
               </div>
               <div>
                 <NavLink className="nav-override-color" to={`/user`}><i className="far fa-2x fa-user-circle"></i></NavLink>
               </div>
             </div>) :
             <div className="right-end">
-              <div>
-                <div className = "cp" onClick={this.props.logout}>Logout</div>
+              <div className="flex sb" onClick={this.props.logout}>
+                <NavLink className="cp nav-override-color m10" to={"/activity"}>Explore</NavLink>
+                <NavLink className="cp nav-override-color" to={`/`}>Logout</NavLink>
               </div>
               <div>
-          <NavLink className="nav-override-color" to={`/user`}><img className="attending-img cursor-pointer" src={user.imgUrl} alt ="#"/></NavLink>
+                <NavLink className="nav-override-color" to={`/user`}><img className="attending-img cursor-pointer" src={user.imgUrl} alt="#" /></NavLink>
               </div>
             </div>
           }
@@ -84,4 +83,4 @@ const mapDispatchToProps = {
   logout
 }
 
-export const Header = connect(mapStateToProps, mapDispatchToProps )(_Header)
+export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)

@@ -11,13 +11,15 @@ class _ActivityApp extends Component {
         byDay: 0
     }
     componentDidMount() {
-        this.props.loadActivities(this.state.filterBy);
+        this.props.loadActivities(this.props.searchBy);
+        // this.props.loadActivities(this.state.filterBy);
     }
 
     componentDidUpdate(prevProps) {
         if (!prevProps.searchBy) return;
         if (prevProps.searchBy.title !== this.props.searchBy.title)
-            this.props.loadActivities(this.state.filterBy);
+            this.props.loadActivities(this.props.searchBy)
+        // this.props.loadActivities(this.state.filterBy);
     }
 
     onSetFilter = (filterBy = {}) => {
@@ -56,56 +58,36 @@ class _ActivityApp extends Component {
 
 
     getActivitiesForDisplay = () => {
-        const { filterBy } = this.state
         const activities = this.props.activities
-        const searchBy = this.props.searchBy
+        const { filterBy } = this.state
         const { byDay } = this.state
         let filteredActivities;
         let activitiesByDay;
-
 
         if (byDay === 0) activitiesByDay = activities
         else {
             activitiesByDay = activities.filter(activity => activity.dayInWeek === byDay)
         }
 
-        if (filterBy === 'Tel Aviv') {
-            filteredActivities = activitiesByDay.filter(activity =>
-                activity.tags.includes('telAviv'))
+        if (filterBy === '') {
+            filteredActivities = activitiesByDay
         }
-        if (filterBy === 'Sports') {
-            filteredActivities = activitiesByDay.filter(activity =>
-                activity.tags.includes('sports'))
-        }
-        if (filterBy === 'Yoga') {
-            filteredActivities = activitiesByDay.filter(activity =>
-                activity.tags.includes('yoga'))
-        }
-        if (filterBy === 'Nutrition') {
-            filteredActivities = activitiesByDay.filter(activity =>
-                activity.tags.includes('nutrition'))
-        }
-        if (filterBy === 'Highest Rated') {
+        else if (filterBy === 'Highest Rated') {
             filteredActivities = activitiesByDay.filter(activity => {
                 const avgRate = this.calcAvgRate(activity.rate)
                 return (avgRate >= 4)
             })
         }
-
-        if (filterBy === '') {
-            filteredActivities = activitiesByDay
-
-        }
-        if (!searchBy) {
-            return filteredActivities
-        }
         else {
-            const filteredAndSearched = filteredActivities.filter(activity => activity.title.toLowerCase().includes(searchBy.title.toLowerCase()))
-            return filteredAndSearched
+            filteredActivities = activitiesByDay.filter(activity =>
+                activity.tags.includes(filterBy.toLowerCase()))
         }
+
+        return filteredActivities
     }
 
     render() {
+        // const activities =this.props.activities
         const activities = this.getActivitiesForDisplay();
         if (!activities) return <div>Loading....</div>
         return (

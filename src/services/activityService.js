@@ -16,14 +16,13 @@ export const activityService = {
 }
 
 function query(filterBy = {}) {
-  // var queryStr
-  // if (!filterBy.name && !filterBy.type) {
-  //   return httpService.get('activity')
-  // }
-  // var queryStr = `?name=${filterBy.name}&type=${filterBy.type}`;
-  // return httpService.get(`activity/${queryStr}`);
+  if (!filterBy.title) {
+    return httpService.get('activity')
+  }
+  const queryStr = `?title=${filterBy.title}`;
+  return httpService.get(`activity/${queryStr}`);
 
-  return httpService.get(`activity`);
+  // return httpService.get(`activity`);
 }
 
 
