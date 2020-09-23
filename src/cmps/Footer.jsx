@@ -3,7 +3,36 @@ import React from 'react'
 export function Footer() {
     return (
         <div className="footer">
-            
+            <div className="footer-container">
+
+                <div className="foot-col">
+                <div className="bold"><p>ABOUT</p></div>
+                    <p>How Health-E works</p>
+                    <p>Newsroom</p>
+                    <p>Health-E Plus</p>
+                    <p>Healthy for Work</p>
+                    <p>Olympics</p>
+                    <p>Careers</p>
+                </div>
+
+                <div className="foot-col">
+                    <div className="bold"><p>OMMUNITY</p></div>
+                    <p>Diversity Belonging</p>
+                    <p>Against Discrimination</p>
+                    <p>Accessibility</p>
+                    <p>Frontline Stays</p>
+                    <p>Invite friends</p>
+                    <p>Gift cards</p>
+                </div>
+                <div className="foot-col">
+                    <div className="bold"><p>SUPPORT</p></div>
+                    <p>Updates for COVID-19</p>
+                    <p>Help Center</p>
+                    <p>Cancellation options</p>
+                    <p>Neighborhood Support</p>
+                    <p>Trust and Safety</p>
+                </div>
+            </div>
         </div>
     )
 }
