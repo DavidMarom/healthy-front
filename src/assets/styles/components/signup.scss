@@ -1,6 +1,6 @@
 .suggestions {
   display: grid;
-  grid-gap:10px;
+  grid-gap: 10px;
   text-align: center;
   align-items: center;
   grid-template-columns: repeat(5, 1fr);
@@ -11,7 +11,7 @@
   color: #222222;
 }
 
-.suggestions >* {
+.suggestions > * {
   cursor: pointer;
   border: 2px solid #222222;
 }
@@ -22,8 +22,6 @@
   color: #ffffff;
   border-radius: 50px;
   border: 2px solid #42c054;
-
-
 }
 
 .unmarked {
@@ -31,4 +29,32 @@
   border-radius: 50px;
   background-color: #ffffff;
   color: #42c054;
+}
+
+// login
+
+.pn {
+  border: 2px solid #42c054;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #42c054;
+
+  &:active {
+    background-color: #42c054;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #222222;
+  }
+  &:hover {
+    background-color: #42c054;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #222222;
+  }
+  &:focus{
+    background-color: #42c054;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #222222;
+  }
 }
