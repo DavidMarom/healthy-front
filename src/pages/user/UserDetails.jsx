@@ -21,6 +21,14 @@ export class _UserDetails extends Component {
   };
 
   componentDidMount() {
+   this.loadUser()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) this.loadUser()
+  }
+
+  loadUser =()=>{
     const { userId } = this.props.match.params;
     if (userId) {
       userService.getById(userId)
@@ -50,22 +58,23 @@ export class _UserDetails extends Component {
     });
   };
 
-  onUploadCreatedEvents = (activities, currUser) => {
-    let act = activityService.uploadCreatedEvents(activities, currUser);
+  onGetCreatedEvents = (activities, currUser) => {
+    let act = activityService.getCreatedEvents(activities, currUser);
     return act;
   };
 
-  onUploadPartOfEvents = (activities, currUser) => {
-    return activityService.uploadPartOfEvents(activities, currUser);
+  onGetPartOfEvents = (activities, currUser) => {
+    return activityService.getPartOfEvents(activities, currUser);
   };
 
   render() {
+    let loggedUser = this.props.user;
     let { activities } = this.props;
     if (!Object.keys(activities).length) activities = null;
     const { currUser } = this.state;
     if (!currUser) return <div>loading..</div>;
-    let eventsCreatedByUser = this.onUploadCreatedEvents(activities, currUser);
-    let partOfEvents = this.onUploadPartOfEvents(activities, currUser);
+    let eventsCreatedByUser = this.onGetCreatedEvents(activities, currUser);
+    let partOfEvents = this.onGetPartOfEvents(activities, currUser);
     return (
       <div className="main-container">
 
@@ -81,7 +90,6 @@ export class _UserDetails extends Component {
           <div className="profile-bar-right">
             <img className="profile-pic" src={currUser.imgUrl} alt="" />
             <p>Change Photo</p>
-
             {/* <div className="calender">
                 <UserSchedule activities={partOfEvents} />
               </div> */}
@@ -105,7 +113,7 @@ export class _UserDetails extends Component {
               {/* <p>Location: {currUser.location.address}</p> */}
               <Link to="/activity/add">Add A New Event</Link>
               <div className="main-info-container">
-                {eventsCreatedByUser ? (<UserDashbord user={currUser} activities={eventsCreatedByUser} />) : ''}
+                {(eventsCreatedByUser && (currUser._id === loggedUser._id)) ? (<UserDashbord user={currUser} activities={eventsCreatedByUser} />) : ''}
 
                 <h3>Events I organized:</h3>
 

@@ -19,8 +19,8 @@ class _PieChart extends Component {
         this.props.loadActivities(user._id)
     }
 
-    onUploadCreatedEvents = (activities, currUser) => {
-        let act = activityService.uploadCreatedEvents(activities, currUser)
+    onGetCreatedEvents = (activities, currUser) => {
+        let act = activityService.getCreatedEvents(activities, currUser)
         return act;
     }
 
@@ -44,13 +44,14 @@ class _PieChart extends Component {
         const { user } = this.props;
         const { activities } = this.props;
         if (!user) return <div>loading</div>
-        let eventsCreatedByUser = this.onUploadCreatedEvents(activities, user);
+        let eventsCreatedByUser = this.onGetCreatedEvents(activities, user);
 
         //bild the bar variables:
         let titles = this.onGetTitles(eventsCreatedByUser)
         let incomeFromEvent = this.onGetIncomeFromEvent(eventsCreatedByUser)
         let income = this.onGetIncome(incomeFromEvent)
         if (income !== user.income) user.income = income;
+        incomeFromEvent.map(income=> '$'+income)
 
         let bgc = [];
         let bgcHover = [];

@@ -61,7 +61,7 @@ export class _Header extends Component {
             <div className="right-end">
               <div>
                 <span className="cp m10 nav-override-color " onClick={this.openGuestMode}>Demo Mode</span>
-                <NavLink className="cp m10 nav-override-color" to="/activity">Explore</NavLink>
+                <NavLink className="explore m10 nav-override-color" to="/activity">Explore</NavLink>
                 <NavLink className="cp nav-override-color" to={`/login`}>Login</NavLink>
                 <NavLink className="cp nav-override-color" to={`/signUp`}>SignUp</NavLink>
               </div>
@@ -71,7 +71,7 @@ export class _Header extends Component {
             </div>) :
             <div className="right-end">
               <div className="flex sb" >
-                <NavLink className="cp nav-override-color m10" to={"/activity"}>Explore</NavLink>
+                <NavLink className="explore nav-override-color m10" to={"/activity"}>Explore</NavLink>
                 <NavLink className="cp nav-override-color" to={`/`} onClick={this.props.logout}>Logout</NavLink>
               </div>
               <div>
