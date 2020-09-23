@@ -18,33 +18,38 @@ export function UserSchedule({ activities }) {
   }
   return (
     <table className="timetable fs14">
-      <thead>
+      {/* <thead>
         <tr className="titleWrapper">
-          <th>Time</th>
-          <th>SUN</th>
-          <th>MON</th>
-          <th>TUE</th>
-          <th>WED</th>
-          <th>THE</th>
-          <th>FRI</th>
-          <th>SAT</th>
+          <th></th>
+          <th>S</th>
+          <th>M</th>
+          <th>T</th>
+          <th>W</th>
+          <th>T</th>
+          <th>F</th>
+          <th>S</th>
         </tr>
-      </thead>
-      <tbody className="timeWrapper">
-          <tr><td>0-2</td></tr>
-          <tr><td>2-4</td></tr>
-          <tr><td>4-6</td></tr>
-          <tr><td>6-8</td></tr>
-          <tr><td>8-10</td></tr>
-          <tr><td>10-12</td></tr>
-          <tr><td>12-14</td></tr>
-          <tr><td>14-16</td></tr>
-          <tr><td>16-18</td></tr>
-          <tr><td>18-20</td></tr>
-          <tr><td>20-22</td></tr>
-          <tr><td>22-24</td></tr>
-      </tbody>
-      {table.map((arr, idx) => <tbody key={idx}><tr key={idx} className="main-info-table">{arr.map((title, idx) => <td key={idx} className={(title) ? "yellow" : "whtie"}>{title.charAt(0) || ''}</td>)}</tr></tbody>)}
+      </thead> */}
+      {/* <tbody className="timeWrapper">
+        <tr><td>00-02</td></tr>
+        <tr><td>02-04</td></tr>
+        <tr><td>04-06</td></tr>
+        <tr><td>06-08</td></tr>
+        <tr><td>08-10</td></tr>
+        <tr><td>10-12</td></tr>
+        <tr><td>12-14</td></tr>
+        <tr><td>14-16</td></tr>
+        <tr><td>16-18</td></tr>
+        <tr><td>18-20</td></tr>
+        <tr><td>20-22</td></tr>
+        <tr><td>22-24</td></tr>
+      </tbody> */}
+      {table.map((arr, idx) =>
+        <tbody
+          key={idx}>
+          <tr key={idx}
+            className="main-info-table">
+            {arr.map((title, idx) => <td key={idx} className={(title) ? "yellow" : "white"}>{'' || ''}</td>)}</tr></tbody>)}
     </table>
   )
 }
