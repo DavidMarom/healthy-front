@@ -45,9 +45,7 @@ class _ActivityApp extends Component {
     }
 
 
-    onRemove = (_id) => {
-        this.props.removeActivity(_id)
-    }
+    
 
     calcAvgRate = (arr) => {
         let tempSum = 0;

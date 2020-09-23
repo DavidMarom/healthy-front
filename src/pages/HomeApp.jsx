@@ -10,7 +10,6 @@ import { setSearchBy } from '../store/actions/activityActions.js'
 
 export class _HomeApp extends Component {
 
-
   componentDidMount() {
     eventBus.emit('homePage')
   }
@@ -31,7 +30,6 @@ export class _HomeApp extends Component {
     );
   }
 }
-
 
 const mapStateToProps = state => {
   return {

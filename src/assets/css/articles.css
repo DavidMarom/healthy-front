@@ -15,7 +15,6 @@
     border-radius: 30px;
     background-color: rgb(247, 231, 214);
     background-image: url(../img/b.jpg);
-
 }
 
 .article_c {
@@ -26,7 +25,6 @@
     border-radius: 30px;
     background-color: rgb(214, 247, 217);
     background-image: url(../img/c.jpg);
-
 }
 
 .article_d {
@@ -36,4 +34,11 @@
     height: 300px;
     border-radius: 35px;
     background-image: url(../img/d.jpg);
+}
+
+.articles-row {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

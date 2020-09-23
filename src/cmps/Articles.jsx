@@ -12,22 +12,22 @@ class _Articles extends Component {
   }
 
   setFilterBy = (e) => {
-    const filterBy = e.target.value
-    this.props.dummySetFilter(filterBy)
+    
 }
-
 
   render() {
     return (
       <section>
-        <div className="articles-row" onClick={(e) => this.setFilterBy(e, 'sport')}>
-          <div className="article_a">
+        <div className="articles-row" >
+          <div className="article_a" onClick={(e) => this.setFilterBy(e, 'sport')}>
             <h2>Sport</h2>
           </div>
+
           <div className="article_b">
             <h2>Body {`&`} Mind</h2>
           </div>
         </div>
+        
         <div className="articles-row">
           <div className="article_c">
             <h2>Nutrition</h2>
