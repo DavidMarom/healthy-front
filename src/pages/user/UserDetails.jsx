@@ -58,13 +58,13 @@ export class _UserDetails extends Component {
     });
   };
 
-  onUploadCreatedEvents = (activities, currUser) => {
-    let act = activityService.uploadCreatedEvents(activities, currUser);
+  onGetCreatedEvents = (activities, currUser) => {
+    let act = activityService.getCreatedEvents(activities, currUser);
     return act;
   };
 
-  onUploadPartOfEvents = (activities, currUser) => {
-    return activityService.uploadPartOfEvents(activities, currUser);
+  onGetPartOfEvents = (activities, currUser) => {
+    return activityService.getPartOfEvents(activities, currUser);
   };
 
   render() {
@@ -73,8 +73,8 @@ export class _UserDetails extends Component {
     if (!Object.keys(activities).length) activities = null;
     const { currUser } = this.state;
     if (!currUser) return <div>loading..</div>;
-    let eventsCreatedByUser = this.onUploadCreatedEvents(activities, currUser);
-    let partOfEvents = this.onUploadPartOfEvents(activities, currUser);
+    let eventsCreatedByUser = this.onGetCreatedEvents(activities, currUser);
+    let partOfEvents = this.onGetPartOfEvents(activities, currUser);
     return (
       <div className="main-container">
 

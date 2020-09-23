@@ -67,3 +67,11 @@
 .nav-btn{
     min-height: 40px;
 }
+
+
+.explore{
+    padding: 5px;
+    background-color: #62cb66;
+    color:#fff !important;
+    border-radius: 3em;
+}

@@ -44,11 +44,6 @@ class _ActivityApp extends Component {
         this.setState({ byDay: day })
     }
 
-
-    onRemove = (_id) => {
-        this.props.removeActivity(_id)
-    }
-
     calcAvgRate = (arr) => {
         let tempSum = 0;
         arr.map((rateValue) => (tempSum += rateValue));

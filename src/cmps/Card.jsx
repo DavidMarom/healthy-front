@@ -9,10 +9,10 @@ export class Card extends Component {
   };
 
   calcAvgRate = (arr) => {
-    let tempSum = 0;
-    arr.map((rateValue) => (tempSum += rateValue));
-    const tempAvg = tempSum / arr.length;
-    return tempAvg;
+    let sum = 0;
+    arr.map((rateValue) => (sum += rateValue));
+    const avg = sum / arr.length;
+    return (Math.round(avg * 100) / 100).toFixed(2);
   };
 
   render() {
@@ -34,7 +34,7 @@ export class Card extends Component {
               <div className="flex sb">
                 <div className="rate-display">
                   <div className="green-star">★ </div>
-                  {(Math.round(avg * 100) / 100).toFixed(2)}
+                  {avg}
                   {` (`}{activity.rate.length}{`)`}
                 </div>
                 <div className="orgenizer">

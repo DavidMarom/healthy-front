@@ -88,14 +88,8 @@ li{
 
 .cp{
     cursor: pointer;
+    padding:5px;
     transition: 0.3s;
-
-    &:hover:first-child{
-        font-weight: bold;
-        background-color: rgba(241, 216, 70, 0.979);
-        border-radius: 12px;
-        opacity: 0.8;
-        }
 
     &:hover:not(:first-child){
     font-weight: bold;

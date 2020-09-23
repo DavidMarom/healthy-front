@@ -9,8 +9,8 @@ export const activityService = {
   // add
   save,
   addRate,
-  uploadCreatedEvents,
-  uploadPartOfEvents,
+  getCreatedEvents,
+  getPartOfEvents,
   findIdxById
 
 }
@@ -77,12 +77,12 @@ function getEmpty() {
 }
 
 
-function uploadCreatedEvents(activities, currUser) {
+function getCreatedEvents(activities, currUser) {
   if (!activities) return null;
   return activities.filter(activity => activity.createdBy._id === currUser._id)
 }
 
-function uploadPartOfEvents(activities, currUser) {
+function getPartOfEvents(activities, currUser) {
   if (!activities) return null;
   var act = [];
   activities.forEach(activity => {
