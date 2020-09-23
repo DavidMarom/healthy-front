@@ -12,6 +12,9 @@ import { userService } from "../../services/userService.js";
 import { activityService } from "../../services/activityService.js";
 import { updateUser } from "../../store/actions/userActions.js";
 import { UserDashbord } from "./UserDashbord.jsx";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 
 export class _UserDetails extends Component {
   state = {
@@ -21,14 +24,14 @@ export class _UserDetails extends Component {
   };
 
   componentDidMount() {
-   this.loadUser()
+    this.loadUser()
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.match.params.userId !== prevProps.match.params.userId) this.loadUser()
   }
 
-  loadUser =()=>{
+  loadUser = () => {
     const { userId } = this.props.match.params;
     if (userId) {
       userService.getById(userId)
@@ -90,6 +93,7 @@ export class _UserDetails extends Component {
           <div className="profile-bar-right">
             <img className="profile-pic" src={currUser.imgUrl} alt="" />
             <p>Change Photo</p>
+            <Link to="/activity/add"><button className="add-btn">Add New Event</button></Link>
             {/* <div className="calender">
                 <UserSchedule activities={partOfEvents} />
               </div> */}
@@ -108,28 +112,26 @@ export class _UserDetails extends Component {
 
 
         <div className="flex column">
-          <div className="flex mt50 sb">
+          <div className="flex sb">
             <div className="flex column">
-              {/* <p>Location: {currUser.location.address}</p> */}
-              <Link to="/activity/add">Add A New Event</Link>
               <div className="main-info-container">
                 {(eventsCreatedByUser && (currUser._id === loggedUser._id)) ? (<UserDashbord user={currUser} activities={eventsCreatedByUser} />) : ''}
 
-                <h3>Events I organized:</h3>
+                <h3 className="mini-title">Events I organized:</h3>
 
                 {eventsCreatedByUser ? (
                   <UserActivityList
-                    activities={eventsCreatedByUser}
-                    user={currUser}
-                    onRemove={this.onRemove}
-                    onRemoveFromList={this.onRemoveFromList}
-                    madeOfOperation={"organizer"}
+                  activities={eventsCreatedByUser}
+                  user={currUser}
+                  onRemove={this.onRemove}
+                  onRemoveFromList={this.onRemoveFromList}
+                  madeOfOperation={"organizer"}
                   />
-                ) : (null)}
+                  ) : (null)}
 
               </div>
               <div className="main-info-container">
-                <h3>Events I{`'`}m going to:</h3>
+                <h3 className="mini-title">Events I{`'`}m going to:</h3>
                 {partOfEvents ? (
                   <UserActivityList
                     activities={partOfEvents}
