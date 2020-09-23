@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadActivities } from "../store/actions/activityActions";
+import { ActivityApp } from '../pages/ActivityApp';
+
+import { Switch, Route, NavLink } from 'react-router-dom';
+// import routes from './routes.js'
 
 class _Articles extends Component {
   state = {
@@ -12,17 +16,27 @@ class _Articles extends Component {
   }
 
   setFilterBy = (e) => {
-    
-}
+
+  }
 
   render() {
     return (
-      
+
       <section>
+        <Switch>
+          <Route exact component={ActivityApp} path='/activity/:filterBy?' />
+        </Switch>
+
+        <NavLink to="/activity/?title=yoga">aaaaaaaa</NavLink>
+
         <div className="articles-row" >
-          <div className="article_a" onClick={(e) => this.setFilterBy(e, 'sport')}>
-            <h2>Sport</h2>
-          </div>
+          <NavLink to="/activity/?title=sport">
+
+            <div className="article_a" >
+              <h2>Sport</h2>
+            </div>
+          
+          </NavLink>
 
           <div className="article_b">
             <h2>Body {`&`} Mind</h2>

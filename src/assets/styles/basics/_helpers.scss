@@ -55,6 +55,9 @@
     &.no-wrap{
         flex-wrap: nowrap;
     }
+    &.end{
+        justify-self: flex-end;
+    }
 }
 
 li{
