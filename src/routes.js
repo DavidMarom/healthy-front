@@ -13,20 +13,20 @@ import { SignUp } from './pages/user/SignUp.jsx'
 export default [
 
     {
-        path: '/activity',
-        component: ActivityApp
-    },
-    {
         path: '/activity/edit/:activityId/',
         component: ActivityEdit,
+    },
+    {
+        path: '/activity/:activityId/',
+        component: ActivityDetails,
     },
     {
         path: '/activity/add',
         component: ActivityEdit,
     },
     {
-        path: '/activity/:activityId/',
-        component: ActivityDetails,
+        path: '/activity/:filterBy?',
+        component: ActivityApp
     },
     {
         path: '/user/:userId',

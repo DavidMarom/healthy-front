@@ -36,7 +36,7 @@ export class _SearchBox extends Component {
         return (
             <div className={cssClass}>
                 <input className="search-input" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} 
-                placeholder="Go ahed and find some amazing healthEvents! (sports, nutrition, food etc.)" />
+                placeholder="Find Activity that you like" />
                 <div className="search-btn" onClick={this.onClickSearchButton}>
                     <i className="fas fa-search"></i>
                 </div>

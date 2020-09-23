@@ -24,21 +24,36 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
-
-    let userBeforeChange = this.props.user;
-    // before we have backend!
-    if (userBeforeChange) {
-      let user = {
-        _id: userBeforeChange._id,
-        fullName: userBeforeChange.fullName,
-        imgUrl: userBeforeChange.imgUrl,
+    let user = this.props.user;
+    if (user) {
+        user = {
+        _id: user._id,
+        fullName: user.fullName,
+        imgUrl: user.imgUrl,
       };
       this.setState({ user });
     }
     this.loadActivity();
   }
 
-  calcAvgRate = () => {
+  
+  loadActivity = () => {
+    const activityId = this.props.match.params.activityId;
+    activityService.getById(activityId).then((activity) => {
+      this.setState({ activity }, () => {
+        this._loadCreator(activity.createdBy._id);
+        this._calcAvgRate();
+      });
+    });
+  };
+  
+  _loadCreator = (id) => {
+    userService.getById(id).then((creator) => {
+      this.setState({ creator });
+    });
+  };
+  
+  _calcAvgRate = () => {
     let tempSum = 0;
     const arr = this.state.activity.rate;
     arr.map((rateValue) => (tempSum += rateValue));
@@ -46,26 +61,7 @@ export class _ActivityDetails extends Component {
     this.setState({ avgRate: tempAvg });
   };
 
-  loadActivity = () => {
-    const activityId = this.props.match.params.activityId;
-
-    activityService.getById(activityId).then((activity) => {
-      this.setState({ activity }, () => {
-        this.loadCreator(activity.createdBy._id);
-        this.calcAvgRate();
-
-      });
-    });
-  };
-
-  loadCreator = (id) => {
-    userService.getById(id).then((creator) => {
-      this.setState({ creator });
-    });
-  };
-
   purchaseActivity(activity, user, creator) {
-    console.log('act-', activity, 'user-', user, 'creator-', creator);
     // if (user.id === 'guest') return
     if (creator._id !== user._id) {
       creator.income += activity.price;
@@ -122,7 +118,6 @@ export class _ActivityDetails extends Component {
     const { activity, user, creator } = this.state;
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>;
     return (
-
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
