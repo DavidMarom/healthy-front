@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { TextField, Select, MenuItem } from '@material-ui/core';
 import {
   loadUsers,
   removeUser,
@@ -56,44 +56,48 @@ class _Login extends Component {
     this.props.removeUser(userId);
   };
 
-  openGuestMode=(ev)=>{
+  openGuestMode = (ev) => {
     ev.preventDefault();
     const guest = {
-      email : 'guestMode@gmail.com',
-      password : '123'
+      email: 'guestMode@gmail.com',
+      password: '123'
+    }
+    this.props.login(guest);
+    this.setState({ loginCred: { email: '', password: '' } });
   }
-  this.props.login(guest);
-  this.setState({ loginCred: { email: '', password: '' } });
-}
 
   render() {
     let loginSection = (
       <form className="main-container" onSubmit={this.doLogin}>
-        <input
-          type="text"
-          name="email"
-          value={this.state.loginCred.email || ''}
-          onChange={this.loginHandleChange}
-          placeholder="Email"
+        <div className="login tac">
+          <input className="fs20 p10 m10 pn"
+            type="text"
+            name="email"
+            autoComplete="off"
+            value={this.state.loginCred.email || ''}
+            onChange={this.loginHandleChange}
+            placeholder="Email"
         />
         <br />
-        <input
-          type="password"
-          name="password"
-          value={this.state.loginCred.password || ''}
-          onChange={this.loginHandleChange}
-          placeholder="Password"
-        />
-        <br />
-        <button>Login</button>
+          <input className="fs20 p10 m10 pn"
+            type="password"
+            name="password"
+            autoComplete="off"
+            value={this.state.loginCred.password || ''}
+            onChange={this.loginHandleChange}
+            placeholder="Password"
+          />
+          <br />
+          <button className="fs20 p10 m10 pn">Login</button>
+        </div>
       </form>
     );
 
     const { loggedInUser } = this.props;
     return (
       <div className="main-container">
-        <div className="just-row">
-          <h1>
+        <div className="just-row flex justify-center">
+          <h1 className="tac">
             Login
         </h1>
         </div>
@@ -122,8 +126,8 @@ class _Login extends Component {
             </li>
           ))}
         </ul>}
-        <div className="guest-mode">
-          <button onClick={this.openGuestMode}>Demo Mode</button>
+        <div className="guest-mode flex justify-center">
+          <button className="fs20 p10 m10 pn tac " onClick={this.openGuestMode}>Demo Mode</button>
         </div>
       </div>
     );

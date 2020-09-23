@@ -23,7 +23,7 @@ class _Suggested extends Component {
         <h3>Suggested for you:</h3>
         <p>Find lectures, trainers and suppliers around you</p>
 
-        <div className="card-row">
+        <div className="card-grid">
           {arr.map((activity) => (
             <Card activity={activity} rate={activity.rate} key={activity._id} />
           ))}
