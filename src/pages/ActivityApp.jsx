@@ -11,22 +11,24 @@ class _ActivityApp extends Component {
         byDay: 0
     }
     componentDidMount() {
-        this.props.loadActivities(this.props.searchBy);
+        const queryParams = this.props.location.search
+        const searchBy = {}
+        searchBy.tag = new URLSearchParams(queryParams).get('tag')
+        searchBy.title = new URLSearchParams(queryParams).get('title')
+        console.log(searchBy);
+        this.props.loadActivities(searchBy);
         // this.props.loadActivities(this.state.filterBy);
     }
 
     componentDidUpdate(prevProps) {
         if (!prevProps.searchBy) return;
-        if (prevProps.searchBy.title !== this.props.searchBy.title)
-            this.props.loadActivities(this.props.searchBy)
-        // this.props.loadActivities(this.state.filterBy);
-    }
+        if (prevProps.searchBy.title !== this.props.searchBy.title) {
 
-    onSetFilter = (filterBy = {}) => {
-        this.setState({ filterBy }, () =>
-            this.props.loadActivities(this.state.filterBy)
-        );
-    };
+            console.log(this.props.searchBy);
+            this.props.loadActivities(this.props.searchBy)
+        }
+            // this.props.loadActivities(this.state.filterBy);
+    }
 
     dummySetFilter = (filterBy) => {
         this.setState({ filterBy });
@@ -35,10 +37,6 @@ class _ActivityApp extends Component {
     onRemove = (_id) => {
         this.props.removeActivity(_id);
     };
-
-    dummySetFilter = (filterBy) => {
-        this.setState({ filterBy })
-    }
 
     dummySortByDays = (day) => {
         this.setState({ byDay: day })
@@ -57,7 +55,8 @@ class _ActivityApp extends Component {
         const { byDay } = this.state
         let filteredActivities;
         let activitiesByDay;
-
+        console.log('activities from props', activities);
+        console.log('searchBy from props', this.props.searchBy);
         if (byDay === 0) activitiesByDay = activities
         else {
             activitiesByDay = activities.filter(activity => activity.dayInWeek === byDay)
