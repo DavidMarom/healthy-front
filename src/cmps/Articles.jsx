@@ -17,6 +17,7 @@ class _Articles extends Component {
 
   render() {
     return (
+      
       <section>
         <div className="articles-row" >
           <div className="article_a" onClick={(e) => this.setFilterBy(e, 'sport')}>
@@ -27,7 +28,7 @@ class _Articles extends Component {
             <h2>Body {`&`} Mind</h2>
           </div>
         </div>
-        
+
         <div className="articles-row">
           <div className="article_c">
             <h2>Nutrition</h2>
