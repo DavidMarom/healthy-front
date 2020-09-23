@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Pie } from 'react-chartjs-2';
+import 'chart.piecelabel.js'
 import { loadActivities } from '../../store/actions/activityActions.js';
 import { chartService } from '../../services/chartService.js';
 import { activityService } from '../../services/activityService.js';
@@ -72,7 +73,16 @@ class _PieChart extends Component {
                 <h3 className="tac">Income By Events</h3>
                 <Pie
                     data={data}
-                    options={{ maintainAspectRatio: false }}
+                    options={{
+                        maintainAspectRatio: false,
+                        pieceLabel: {
+                            render: 'value',
+                            fontSize: 14,
+                            fontStyle: 'bold',
+                            fontColor: '#000'
+                        }
+                    }
+                    }
                     width={400}
                     height={400}
                 />
