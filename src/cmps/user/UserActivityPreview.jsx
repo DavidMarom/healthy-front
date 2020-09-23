@@ -87,11 +87,11 @@ export class UserActivityPreview extends Component {
                                 {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className="fas fa-user-cog nav-override-color"></i></Link>) : ''}
                                 <div className="pad-10"></div>
                                 {(madeOfOperation === 'organizer') ? (<button className="dash-btn" onClick={(ev) => onRemove(ev, activity._id)}><i className="far fa-trash-alt"></i></button>) : ''}
-                            
+
                                 {(madeOfOperation === 'subscriber') ? (<button onClick={(ev) => onRemoveFromList(ev, activity, user)}>Remove from Your List</button>) : ''}
                             </div>
 
-                            
+
 
                             <div className="dash-right">
                                 <button className="dash-btn" onClick={(ev) => this.showActivityDetails(ev)}>{this.state.sign}</button>
@@ -101,14 +101,17 @@ export class UserActivityPreview extends Component {
                         <div className={`${this.state.pin ? "pin-on" : "pin-off"}`}>
                             {(madeOfOperation === 'organizer') && (
                                 activity.participants.map((participant, idx) => {
-                                    return (<div className="participant-info" key={idx}>
-                                        <Link to={`/user/${participant._id}`}>
-                                            <div className="dash-attendie">
-                                                <div className=".nav-override-color">{participant.fullName}</div>
-                                                <img className="attending-img" src={participant.imgUrl} alt="" />
-                                            </div>
-                                        </Link>
-                                    </div>)
+                                    return (
+                                        <div className="participant-info" key={idx}>
+                                            <Link to={`/user/${participant._id}`}>
+                                                <div className="dash-attendie">
+                                                    <div className="attendie-cell">
+                                                        <div><img className="attending-img" src={participant.imgUrl} alt="" /></div>
+                                                        <div className=".nav-override-color">{participant.fullName}</div>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </div>)
                                 }))}
                         </div>
                     </div>
