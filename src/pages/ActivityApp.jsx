@@ -35,15 +35,6 @@ class _ActivityApp extends Component {
         this.setState({ byDay: day })
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
-    
-
->>>>>>> 4444c00074cfe77c5d491d050eed5db1546a0b28
->>>>>>> ee76e1483b9666bb02d978a048c7013499273e31
     calcAvgRate = (arr) => {
         let tempSum = 0;
         arr.map((rateValue) => (tempSum += rateValue));
