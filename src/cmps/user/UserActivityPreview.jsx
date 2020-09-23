@@ -68,7 +68,7 @@ export class UserActivityPreview extends Component {
             <section className="bg-white">
                 <Link to={`activity/${activity._id}`}>
 
-                    <div className="act-strip">
+                    <div className="act-strip nav-override-color">
                         <div className="act-top strip">
 
                             <div className="img-40"><img src={activity.imgUrls[0]} alt="" /></div>
@@ -84,7 +84,7 @@ export class UserActivityPreview extends Component {
                             </div>
 
                             <div className="just-row">
-                                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className="fas fa-user-cog"></i></Link>) : ''}
+                                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className="fas fa-user-cog nav-override-color"></i></Link>) : ''}
                                 <div className="pad-10"></div>
                                 {(madeOfOperation === 'organizer') ? (<button className="dash-btn" onClick={(ev) => onRemove(ev, activity._id)}><i className="far fa-trash-alt"></i></button>) : ''}
                             
@@ -104,7 +104,7 @@ export class UserActivityPreview extends Component {
                                     return (<div className="participant-info" key={idx}>
                                         <Link to={`/user/${participant._id}`}>
                                             <div className="dash-attendie">
-                                                <div className=".nav-override-color fs-10">{participant.fullName}</div>
+                                                <div className=".nav-override-color">{participant.fullName}</div>
                                                 <img className="attending-img" src={participant.imgUrl} alt="" />
                                             </div>
                                         </Link>

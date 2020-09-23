@@ -25,11 +25,12 @@
 }
 
 .dash-attendie {
-    font-size: 10px;
+    font-size: 18px;
+    display: inline;
 }
 
 .fs-10 {
-    font-size: 10px !important;
+    font-size: 14px !important;
 }
 
 .event-title-dash {
