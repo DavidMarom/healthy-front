@@ -61,26 +61,26 @@
 
 
 .timetable {
-  border:1px solid #333333;
+  border:0px solid #333333;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-gap: 4px;
-  grid-template-columns: 60px repeat(7, 40px);
-  grid-template-rows: repeat(12, 30px);
+  grid-gap: 1px;
+  grid-template-columns: 60px repeat(7, 20px);
+  grid-template-rows: repeat(12, 20px);
 }
 
 .titleWrapper {
   font-weight: 600;
-  background-color: $clr3;
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
   display: grid;
   grid-column: 1 / 9;
   grid-gap: 4px;
-  grid-template-columns: 60px repeat(7, 40px);
+  grid-template-columns: 60px repeat(7, 20px);
   margin-bottom: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ffffff00;
   justify-items: center;
 }
 
@@ -90,7 +90,7 @@
   display: grid;
   grid-row: 2 / 14;
   grid-gap: 4px;
-  grid-template-rows: repeat(12, 30px);
+  grid-template-rows: repeat(12, 20px);
 }
 
 .main-info-table{
@@ -99,13 +99,19 @@
   display: grid;
   grid-row: 2 / 14;
   grid-gap: 4px;
-  grid-template-rows: repeat(12, 30px);
+  grid-template-rows: repeat(12, 15px);
 }
 
 .yellow{
-  background-color: rgba(214, 214, 59, 0.712);
+  background-color: #62cb66;
   
 }
+
+.white{
+  background-color: #e9eaeb;
+  
+}
+
 
 // DASHBORD COMPONENT
 
