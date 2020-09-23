@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 // import { activityService } from '../../services/activityService'
 
-export class UserActivityPreview extends Component {
+class _UserActivityPreview extends Component {
 
     state = {
         pin: false,
@@ -13,7 +13,7 @@ export class UserActivityPreview extends Component {
         let { activity, user, madeOfOperation, onRemove, onRemoveFromList } = this.props;
         this.setState({ activity: activity })
     }
-
+    
     renderDay = (value) => {
         let res = "";
         switch (value) {
@@ -66,7 +66,10 @@ export class UserActivityPreview extends Component {
         if (!activity) return <h1>loading</h1>
         return (
             <section className="bg-white">
-                <Link to={`activity/${activity._id}`}>
+                <div onClick={(ev) => {
+                    ev.stopPropagation()
+                    this.props.history.push(`/activity/${activity._id}`)
+                }}>
 
                     <div className="act-strip nav-override-color">
                         <div className="act-top strip">
@@ -103,21 +106,25 @@ export class UserActivityPreview extends Component {
                                 activity.participants.map((participant, idx) => {
                                     return (
                                         <div className="participant-info" key={idx}>
-                                            <Link to={`/user/${participant._id}`}>
+                                            <div onClick={(ev) => {
+                                                ev.stopPropagation()
+                                                this.props.history.push(`/user/${participant._id}`)
+                                            }}>
                                                 <div className="dash-attendie">
                                                     <div className="attendie-cell">
                                                         <div><img className="attending-img" src={participant.imgUrl} alt="" /></div>
                                                         <div className=".nav-override-color">{participant.fullName}</div>
                                                     </div>
                                                 </div>
-                                            </Link>
+                                            </div>
                                         </div>)
                                 }))}
                         </div>
                     </div>
-                </Link>
+                </div>
             </section>
         )
     }
 }
 
+export const UserActivityPreview = withRouter(_UserActivityPreview)

@@ -51,6 +51,7 @@ class _PieChart extends Component {
         let incomeFromEvent = this.onGetIncomeFromEvent(eventsCreatedByUser)
         let income = this.onGetIncome(incomeFromEvent)
         if (income !== user.income) user.income = income;
+        incomeFromEvent.map(income=> '$'+income)
 
         let bgc = [];
         let bgcHover = [];
