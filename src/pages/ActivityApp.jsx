@@ -30,14 +30,25 @@ class _ActivityApp extends Component {
             // this.props.loadActivities(this.state.filterBy);
     }
 
+<<<<<<< HEAD
     dummySetFilter = (filterBy) => {
         this.setState({ filterBy });
     };
 
+=======
+  
+>>>>>>> f36486c331eab1cb6835743c7db3a53145007cdf
     onRemove = (_id) => {
         this.props.removeActivity(_id);
     };
 
+<<<<<<< HEAD
+=======
+    onSetFilter = (filterBy) => {
+        this.setState({ filterBy });
+    };
+
+>>>>>>> f36486c331eab1cb6835743c7db3a53145007cdf
     dummySortByDays = (day) => {
         this.setState({ byDay: day })
     }
@@ -87,7 +98,7 @@ class _ActivityApp extends Component {
 
             <div className="activity-app main-container marg-top-50">
                 <div className="filter">
-                    <ActivityFilter dummySetFilter={this.dummySetFilter} dummySortByDays={this.dummySortByDays} />
+                    <ActivityFilter onSetFilter={this.onSetFilter} dummySortByDays={this.dummySortByDays} />
                 </div>
                 <ActivityList activities={activities} onRemove={this.onRemove} />
             </div>

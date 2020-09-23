@@ -4,7 +4,7 @@ export class ActivityFilter extends Component {
  
     setFilterBy = (e) => {
         const filterBy = e.target.value
-        this.props.dummySetFilter(filterBy)
+        this.props.onSetFilter(filterBy)
     }
 
     sortByDays = (e) => {

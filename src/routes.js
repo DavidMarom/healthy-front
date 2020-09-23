@@ -17,12 +17,12 @@ export default [
         component: ActivityEdit,
     },
     {
-        path: '/activity/:activityId/',
-        component: ActivityDetails,
-    },
-    {
         path: '/activity/add',
         component: ActivityEdit,
+    },
+    {
+        path: '/activity/:activityId/',
+        component: ActivityDetails,
     },
     {
         path: '/activity/:filterBy?',
