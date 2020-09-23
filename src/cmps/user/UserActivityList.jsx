@@ -8,8 +8,8 @@ export function UserActivityList({ activities, user, madeOfOperation ,onRemove ,
     return (
         <div className="user-activity-list flex column">
             {
-                activities.map(activity => <UserActivityPreview activity={activity}
-                    key={activity._id}
+                activities.map((activity,idx) => <UserActivityPreview activity={activity}
+                    key={idx}
                     user={user}
                     onRemove={onRemove}
                     onRemoveFromList = {onRemoveFromList}
