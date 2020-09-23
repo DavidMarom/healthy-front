@@ -45,13 +45,10 @@ class _ActivityApp extends Component {
     }
 
 
-    
-
     calcAvgRate = (arr) => {
-        let tempSum = 0;
-        arr.map((rateValue) => (tempSum += rateValue));
-        const tempAvg = tempSum / arr.length;
-        return tempAvg;
+        let Sum = 0;
+        arr.map((rateValue) => (Sum += rateValue));
+        return Sum / arr.length
     }
 
 

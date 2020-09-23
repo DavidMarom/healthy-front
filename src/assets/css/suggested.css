@@ -17,6 +17,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin-top: 15px;
+    margin-bottom: 30px;
 }
 
 .card:not(:first-of-type) {
