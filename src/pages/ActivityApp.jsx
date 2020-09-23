@@ -22,31 +22,17 @@ class _ActivityApp extends Component {
         // this.props.loadActivities(this.state.filterBy);
     }
 
-    onSetFilter = (filterBy = {}) => {
-        this.setState({ filterBy }, () =>
-            this.props.loadActivities(this.state.filterBy)
-        );
-    };
-
-    dummySetFilter = (filterBy) => {
-        this.setState({ filterBy });
-    };
-
+  
     onRemove = (_id) => {
         this.props.removeActivity(_id);
     };
 
-    dummySetFilter = (filterBy) => {
-        this.setState({ filterBy })
-    }
+    onSetFilter = (filterBy) => {
+        this.setState({ filterBy });
+    };
 
     dummySortByDays = (day) => {
         this.setState({ byDay: day })
-    }
-
-
-    onRemove = (_id) => {
-        this.props.removeActivity(_id)
     }
 
     calcAvgRate = (arr) => {
@@ -94,7 +80,7 @@ class _ActivityApp extends Component {
 
             <div className="activity-app main-container marg-top-50">
                 <div className="filter">
-                    <ActivityFilter dummySetFilter={this.dummySetFilter} dummySortByDays={this.dummySortByDays} />
+                    <ActivityFilter onSetFilter={this.onSetFilter} dummySortByDays={this.dummySortByDays} />
                 </div>
                 <ActivityList activities={activities} onRemove={this.onRemove} />
             </div>
