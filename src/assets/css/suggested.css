@@ -1,20 +1,8 @@
-.sugg-container-wrap {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 20px;
-}
-
-.card-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.card-section{
+.card-section {
     border-bottom: 1px solid #ccc;
-    padding-bottom: 15px;
-    height: 380px;
-    margin-bottom: 12px;
+    padding-bottom: 30px;
+    /* height: 370px; */
+    /* margin-bottom: 12px; */
 }
 
 .card {
@@ -22,15 +10,15 @@
     /* height: 330px; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: flex-start; */
     margin-bottom: 12px;
     /* margin-top: 15px; */
-    /* margin-bottom: 30px; */
+    /* padding-bottom: 30px; */
 }
 
-.card:not(:first-of-type) {
+/* .card:not(:first-of-type) {
     margin-left: 15px;
-}
+} */
 
 .card-img {
     background-color: rgb(179, 179, 179);
@@ -40,7 +28,6 @@
     overflow: hidden;
 }
 
-
 .card-text {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1rem;
@@ -48,7 +35,7 @@
     height: 170px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     /* justify-self: end; */
     line-height: 125%;
     padding-top: 5px;
@@ -58,5 +45,35 @@
     width: 100%;
     box-align: left;
     font-size: 0.8rem;
-    padding-bottom: 8px;
+    /* padding-bottom: 8px; */
+}
+
+.inline {
+    display: inline;
+}
+
+.card-text-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-20 {
+    height: 20px;
+}
+
+.card-grid {
+    /* display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+      grid-gap: 20px; */
+
+      
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    width: 100%;
+    display: grid;
+    object-fit: contain;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
 }

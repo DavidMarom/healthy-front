@@ -56,10 +56,10 @@ class _BarChart extends Component {
             datasets: [
                 {
                     label: 'Participants Per Event',
-                    backgroundColor: 'rgb(149, 191, 143)',
+                    backgroundColor: '#62cb66',
                     borderColor: 'rgb(153,209,123)',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgb(180, 121, 120)',
+                    hoverBackgroundColor: 'rgb(166, 166, 164)',
                     hoverBorderColor: 'rgb(177, 174, 145)',
                     data: memebersNum
                 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 // import { activityService } from '../../services/activityService'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 class _UserActivityPreview extends Component {
 
@@ -87,17 +89,17 @@ class _UserActivityPreview extends Component {
                             </div>
 
                             <div className="just-row">
-                                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className="fas fa-user-cog nav-override-color"></i></Link>) : ''}
+                                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className=" dash-btn fas fa-user-cog nav-override-color"></i></Link>) : ''}
                                 <div className="pad-10"></div>
                                 {(madeOfOperation === 'organizer') ? (<button className="dash-btn" onClick={(ev) => onRemove(ev, activity._id)}><i className="far fa-trash-alt"></i></button>) : ''}
-
-                                {(madeOfOperation === 'subscriber') ? (<button onClick={(ev) => onRemoveFromList(ev, activity, user)}>Remove from Your List</button>) : ''}
+                                {(madeOfOperation === 'subscriber') ?(<Button variant="outlined" onClick={(ev) => onRemoveFromList(ev, activity, user)}>Unsubscribe</Button>) : ''}
                             </div>
 
 
 
                             <div className="dash-right">
-                                <button className="dash-btn" onClick={(ev) => this.showActivityDetails(ev)}>{this.state.sign}</button>
+                                {(madeOfOperation === 'organizer') ? (
+                                <button className="dash-btn" onClick={(ev) => this.showActivityDetails(ev)}>{this.state.sign}</button>):''}
                             </div>
                         </div>
 
@@ -105,7 +107,7 @@ class _UserActivityPreview extends Component {
                             {(madeOfOperation === 'organizer') && (
                                 activity.participants.map((participant, idx) => {
                                     return (
-                                        <div className="participant-info" key={idx}>
+                                        <div className="participant-info cp-unique" key={idx}>
                                             <div onClick={(ev) => {
                                                 ev.stopPropagation()
                                                 this.props.history.push(`/user/${participant._id}`)

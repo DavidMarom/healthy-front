@@ -1,18 +1,47 @@
 .main-user-container {
   display: grid;
-  grid-template-columns: 20px 1fr 20px;
+  grid-template-columns: 5px 1fr 5px;
+
+  > * {
+    grid-column: 2;
+
+    &.full {
+      grid-column: 1 /-1;
+    }
+  }
+
+  @include for-narrow-layout {
+    grid-template-columns:
+      minmax(20px, 1fr)
+      minmax(auto, $mobile-breakpoint)
+      minmax(20px, 1fr);
+  }
   @include for-normal-layout {
     grid-template-columns:
       minmax(20px, 1fr)
       minmax(auto, $narrow-breakpoint)
       minmax(20px, 1fr);
   }
+  @include for-wide-layout {
+    grid-template-columns:
+      minmax(20px, 1fr)
+      minmax(auto, 70%)
+      minmax(20px, 1fr);
+  }
+}
+
+.dash{
+  background-color: rgb(248, 246, 246);
+}
+
+.money{
+  color: #62cb66;
 }
 
 .mt50 {
   margin-top: rem(50px);
   padding-top: rem(20px);
-  border-top: 1px solid #2222;
+  // border-top: 1px solid #2222;
 }
 
 .persinal-info {
@@ -117,7 +146,13 @@
 
 .bar{
   width:rem(500px);
-  height: rem;
+  height: rem(500px);
+}
+
+.pie{
+  width:rem(500px);
+  height: rem(500px);
+  margin-right: 30px;
 }
 
 .dashbord-info{
@@ -125,6 +160,28 @@
   padding-top: rem(20px);
 }
 
-// .activity-info{
-//   display: none;
-// }
+.add-btn {
+  display: flex;
+  padding: 10px;
+  border: 2px solid #42c054;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #42c054;
+
+  &:active {
+    background-color: #42c054;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #222222;
+  }
+}
+
+.cp-unique{
+  cursor: pointer;
+  color:#222222;
+  transition: 0.3s;
+
+  &:hover{
+    background-color:rgb(149, 191, 143);
+  }
+}

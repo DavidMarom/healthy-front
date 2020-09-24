@@ -1,11 +1,13 @@
 // import { func } from "prop-types";
 
+import { blue } from "@material-ui/core/colors";
+
 export const chartService = {
   getMembers,
   getTitles,
   findMaxCapacity,
   getIncomeFromEvent,
-  getIncome,
+  getSum,
   getRandomColor
 }
 
@@ -29,7 +31,7 @@ function findMaxCapacity(activities){
     return max;
 }
 
-function getIncome(incomeFromEvent){
+function getSum(incomeFromEvent){
     return incomeFromEvent.reduce(function(acc,val){
         return acc+val;
     },0)

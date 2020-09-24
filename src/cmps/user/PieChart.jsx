@@ -33,7 +33,7 @@ class _PieChart extends Component {
     }
 
     onGetIncome = (incomeFromEvent) => {
-        return chartService.getIncome(incomeFromEvent)
+        return chartService.getSum(incomeFromEvent)
     }
 
     onGetRandomColor = () => {
@@ -84,8 +84,8 @@ class _PieChart extends Component {
                         }
                     }
                     }
-                    width={400}
-                    height={400}
+                    width={370}
+                    height={370}
                 />
             </div>
         )

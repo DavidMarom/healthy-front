@@ -61,6 +61,7 @@ export class Chat extends Component {
 
                 <form onSubmit={this.sendMsg}>
                     <input className="chat-input"
+                    autoComplete="off"
                         type="text"
                         value={this.state.msg.txt}
                         onChange={this.msgHandleChange}
