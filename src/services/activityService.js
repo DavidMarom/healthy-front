@@ -16,13 +16,11 @@ export const activityService = {
 }
 
 function query(filterBy = {}) {
-  if (!filterBy.title) {
-    return httpService.get('activity')
-  }
-  const queryStr = `?title=${filterBy.title}`;
-  return httpService.get(`activity/${queryStr}`);
-
-  // return httpService.get(`activity`);
+  const queryStr = Object.keys(filterBy).map((key)=>{
+    return `${key}=${filterBy[key]}`
+  }).join('&');
+  console.log(`activity/${queryStr}`);
+  return httpService.get(`activity/?${queryStr}`);
 }
 
 function getById(activityId) {

@@ -11,44 +11,30 @@ class _ActivityApp extends Component {
         byDay: 0
     }
     componentDidMount() {
-        const queryParams = this.props.location.search
         const searchBy = {}
-        searchBy.tag = new URLSearchParams(queryParams).get('tag')
-        searchBy.title = new URLSearchParams(queryParams).get('title')
-        console.log(searchBy);
-        this.props.loadActivities(searchBy);
-        // this.props.loadActivities(this.state.filterBy);
+        const queryParam = new URLSearchParams(this.props.location.search)
+        searchBy.title = queryParam.get('title')
+        searchBy.tags = queryParam.get('tag')
+        console.log(searchBy.tags);
+        this.props.loadActivities(searchBy);    
     }
 
     componentDidUpdate(prevProps) {
         if (!prevProps.searchBy) return;
         if (prevProps.searchBy.title !== this.props.searchBy.title) {
-
-            console.log(this.props.searchBy);
             this.props.loadActivities(this.props.searchBy)
         }
-            // this.props.loadActivities(this.state.filterBy);
+            
     }
-
-<<<<<<< HEAD
-    dummySetFilter = (filterBy) => {
-        this.setState({ filterBy });
-    };
-
-=======
   
->>>>>>> f36486c331eab1cb6835743c7db3a53145007cdf
     onRemove = (_id) => {
         this.props.removeActivity(_id);
     };
 
-<<<<<<< HEAD
-=======
     onSetFilter = (filterBy) => {
         this.setState({ filterBy });
     };
 
->>>>>>> f36486c331eab1cb6835743c7db3a53145007cdf
     dummySortByDays = (day) => {
         this.setState({ byDay: day })
     }
@@ -66,8 +52,6 @@ class _ActivityApp extends Component {
         const { byDay } = this.state
         let filteredActivities;
         let activitiesByDay;
-        console.log('activities from props', activities);
-        console.log('searchBy from props', this.props.searchBy);
         if (byDay === 0) activitiesByDay = activities
         else {
             activitiesByDay = activities.filter(activity => activity.dayInWeek === byDay)
@@ -91,7 +75,6 @@ class _ActivityApp extends Component {
     }
 
     render() {
-        // const activities =this.props.activities
         const activities = this.getActivitiesForDisplay();
         if (!activities) return <div>Loading....</div>
         return (
