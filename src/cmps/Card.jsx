@@ -31,25 +31,27 @@ export class Card extends Component {
             </div>
 
             <div className="card-text ">
-              <div className="flex sb">
+              <div className="card-text-row">
                 <div className="rate-display">
-                  <div className="green-star">★ </div>
-                  {avg}
-                  {` (`}{activity.rate.length}{`)`}
-                  <div>{activity.participants.length}{'/'}{activity.maxCapacity}</div>
+                  <div><div className="green-star">★ </div>{avg}{` (`}{activity.rate.length}{`)`}</div>
                 </div>
-                <div className="orgenizer">
-                  <img className="attending-img" src={activity.createdBy.imgUrl} alt="" />
-                  {/* <div className="bold">{activity.createdBy.fullName}</div> */}
-                </div>
+                <div>{activity.participants.length}{'/'}{activity.maxCapacity}</div>
               </div>
               <div className="flex column">
-                <div className="fw6">{activity.createdBy.fullName}</div>
                 <div className="green">{activity.title}</div>
                 <div>{activity.subtitle}</div>
-                <div className="bold">
-                  $ {activity.price}
+                <div className="add-20"></div>
+              </div>
+
+              <div className="card-text-row">
+                <div className="card-text-row">
+                  <img className="attending-img inline" src={activity.createdBy.imgUrl} alt="" />
+                  <div className="fw6">{activity.createdBy.fullName}</div>
                 </div>
+
+                <div className="bold">$ {activity.price}</div>
+
+
               </div>
             </div>
           </Link>
