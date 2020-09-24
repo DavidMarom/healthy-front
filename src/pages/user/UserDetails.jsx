@@ -79,7 +79,7 @@ export class _UserDetails extends Component {
     let eventsCreatedByUser = this.onGetCreatedEvents(activities, currUser);
     let partOfEvents = this.onGetPartOfEvents(activities, currUser);
     return (
-      <div className="main-container">
+      <div className="main-user-container">
 
         <div className="profile-top-bar">
 
@@ -111,8 +111,7 @@ export class _UserDetails extends Component {
         </div>
 
 
-        <div className="flex column">
-          <div className="flex sb">
+        <div className="flex column sb">
             <div className="flex column">
               <div className="main-info-container">
                 {(eventsCreatedByUser && (currUser._id === loggedUser._id)) ? (<UserDashbord user={currUser} activities={eventsCreatedByUser} />) : ''}
@@ -149,7 +148,6 @@ export class _UserDetails extends Component {
 
 
             </div>
-          </div>
         </div>
       </div>
     );

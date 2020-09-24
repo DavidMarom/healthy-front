@@ -59,7 +59,7 @@ class _BarChart extends Component {
                     backgroundColor: 'rgb(149, 191, 143)',
                     borderColor: 'rgb(153,209,123)',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgb(180, 121, 120)',
+                    hoverBackgroundColor: 'rgb(166, 166, 164)',
                     hoverBorderColor: 'rgb(177, 174, 145)',
                     data: memebersNum
                 }

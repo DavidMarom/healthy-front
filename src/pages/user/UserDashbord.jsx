@@ -18,13 +18,12 @@ export class UserDashbord extends Component {
     render() {
         const { user } = this.state;
         if(!user) return <div>loading</div>
-        return <div className="main-container">
-            <div className="flex mt50 sb column">
+        return (
+            <div className="flex mt50 sb column mb50">
                 <div className="flex dashbord-info fs24 column">
-                    <h3>{user.fullName}</h3>
-                    <h3>Total Sales: ${user.income}</h3>
+                    <h3>Total Sales: <span className="money">${user.income}</span></h3>
                 </div>
-                <div className="flex no-wrap align-center sb">
+                <div className="flex no-wrap align-center sb mb50">
                     <div className="bar m10">
                         <BarChart user={user} />
                     </div>
@@ -33,6 +32,6 @@ export class UserDashbord extends Component {
                     </div>
                 </div>
             </div>
-        </div>
+        )
     }
 }
