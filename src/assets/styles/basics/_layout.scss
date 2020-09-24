@@ -30,18 +30,24 @@
   }
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
-  grid-gap: 20px;
-}
-
 .footer {
-margin-top: 50px;
+  margin-top: 50px;
   background-color: #f7f7f7;
   height: 400px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   border-top: 1px solid #dddddd;
+}
+
+.main-container-home {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+@media (max-width: 1675px) {
+  .main-container-home {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }

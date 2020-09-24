@@ -16,13 +16,13 @@ export class _HomeApp extends Component {
 
   componentWillUnmount() {
     eventBus.emit('out of homePage')
-}
+  }
 
   render() {
     return (
       <section>
         <Jumbo />
-        <div className="sugg-container-wrap">
+        <div className="main-container-home">
           <Suggested />
           <Articles />
         </div>
@@ -33,7 +33,7 @@ export class _HomeApp extends Component {
 
 const mapStateToProps = state => {
   return {
-      searchBy: state.activityReducer.searchBy
+    searchBy: state.activityReducer.searchBy
   }
 }
 
