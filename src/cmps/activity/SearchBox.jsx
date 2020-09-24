@@ -11,6 +11,7 @@ export class _SearchBox extends Component {
             title: ''
         },
     }
+    
    
     componentDidMount() {
         console.log(this.props.location.search);

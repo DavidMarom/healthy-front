@@ -4,9 +4,15 @@ export function loadActivities(filterBy={}) {
   console.log(filterBy);
     return async dispatch => {
         const activities = await activityService.query(filterBy);
-        console.log(activities);
         dispatch({ type: 'SET_ACTIVITIES', activities })
       };
+}
+
+export function loadActivity(activityId){
+  return async dispatch =>{
+    const activity = await activityService.getById(activityId);
+    dispatch({ type: 'SET_ACTIVITY', activity })
+  }
 }
 
 export function removeActivity(activityId) {
