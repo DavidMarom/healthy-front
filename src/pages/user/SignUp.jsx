@@ -70,8 +70,9 @@ class _SignUp extends Component {
 
     render() {
         let signupSection = (
-            <form className="" onSubmit={this.doSignup}>
+            <form onSubmit={this.doSignup}>
                 <input
+                className="fs20 p10 m10 pn"
                     type="text"
                     name="email"
                     value={this.state.signupCred.email}
@@ -80,6 +81,7 @@ class _SignUp extends Component {
                 />
                 <br />
                 <input
+                 className="fs20 p10 m10 pn"
                     name="password"
                     type="password"
                     value={this.state.signupCred.password}
@@ -88,6 +90,7 @@ class _SignUp extends Component {
                 />
                 <br />
                 <input
+                 className="fs20 p10 m10 pn"
                     type="text"
                     name="fullName"
                     value={this.state.signupCred.fullName}
@@ -96,8 +99,9 @@ class _SignUp extends Component {
                 />
                 
                 <br />
-                <label>Upload Image
-                    <input onChange={(ev) => this.onUpdateImg(ev)} type="file" />
+                <label for="file-upload" className="custom-file-upload">
+                    <h3 className="fs20 p10">Upload Image</h3>
+                    <input id= "file-upload" className="pn" onChange={(ev) => this.onUpdateImg(ev)} type="file" />
                 </label>
                 <h2 className="tac d-hi">Please choose your interests:</h2>
                 <section className="suggestions fs20 ">

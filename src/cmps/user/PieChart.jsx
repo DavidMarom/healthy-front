@@ -84,8 +84,8 @@ class _PieChart extends Component {
                         }
                     }
                     }
-                    width={400}
-                    height={400}
+                    width={370}
+                    height={370}
                 />
             </div>
         )
