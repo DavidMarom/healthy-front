@@ -24,6 +24,7 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0,0);
     let user = this.props.user;
     if (user) {
         user = {

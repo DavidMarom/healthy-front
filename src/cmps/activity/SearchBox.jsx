@@ -35,7 +35,7 @@ export class _SearchBox extends Component {
         const cssClass = this.props.cssClass
         return (
             <div className={cssClass}>
-                <input className="search-input" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} 
+                <input className="search-input" autoComplete= "off" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} 
                 placeholder="Find Activity that you like" />
                 <div className="search-btn" onClick={this.onClickSearchButton}>
                     <i className="fas fa-search"></i>
