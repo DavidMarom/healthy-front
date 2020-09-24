@@ -27,16 +27,13 @@ class _Articles extends Component {
           <Route exact component={ActivityApp} path='/activity/:filterBy?' />
         </Switch>
 
-        <NavLink to="/activity/?title=yoga">aaaaaaaa</NavLink>
 
         <div className="articles-row" >
-          <NavLink to="/activity/?title=sport">
 
             <div className="article_a" >
               <h2>Sport</h2>
             </div>
           
-          </NavLink>
 
           <div className="article_b">
             <h2>Body {`&`} Mind</h2>
