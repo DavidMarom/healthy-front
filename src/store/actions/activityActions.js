@@ -1,8 +1,10 @@
 import { activityService } from '../../services/activityService.js'
 
 export function loadActivities(filterBy={}) {
+  console.log(filterBy);
     return async dispatch => {
         const activities = await activityService.query(filterBy);
+        console.log(activities);
         dispatch({ type: 'SET_ACTIVITIES', activities })
       };
 }

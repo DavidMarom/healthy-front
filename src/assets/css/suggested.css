@@ -13,7 +13,7 @@
 .card-section{
     border-bottom: 1px solid #ccc;
     padding-bottom: 15px;
-    height: 380px;
+    height: 370px;
     margin-bottom: 12px;
 }
 
@@ -22,10 +22,10 @@
     /* height: 330px; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: flex-start; */
     margin-bottom: 12px;
     /* margin-top: 15px; */
-    /* margin-bottom: 30px; */
+    /* padding-bottom: 30px; */
 }
 
 .card:not(:first-of-type) {
@@ -48,7 +48,7 @@
     height: 170px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     /* justify-self: end; */
     line-height: 125%;
     padding-top: 5px;
@@ -58,5 +58,23 @@
     width: 100%;
     box-align: left;
     font-size: 0.8rem;
-    padding-bottom: 8px;
+    /* padding-bottom: 8px; */
+}
+
+.inline{
+    display: inline;
+}
+
+.card-text-row{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+
+}
+
+.add-20{
+    height: 20px;
 }
