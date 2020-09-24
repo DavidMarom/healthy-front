@@ -99,11 +99,11 @@ p {
     font-family: 'Varela Round', sans-serif;
 } */
 
-.center {
+/* .center {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
+} */
 
 .text-box {
     margin-top: 30px;
