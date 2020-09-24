@@ -70,14 +70,10 @@ export class _ActivityDetails extends Component {
   };
 
   render() {
-    const { value } = this.state;
-    // console.log('value-', value);
     const { activity, user } = this.props;
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>; //mt50
     let rate = this.calcAvgRate();
-    console.log(typeof rate, '-', rate);
     rate= parseFloat(rate);
-    console.log(typeof rate, '-', rate);
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
