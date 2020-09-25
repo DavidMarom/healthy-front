@@ -45,9 +45,23 @@
   margin-right: 10%;
 }
 
+.main-container-activities {
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
 @media (max-width: 1675px) {
   .main-container-home {
     margin-left: 5%;
     margin-right: 5%;
   }
+  
+}
+
+@media (max-width: 1245px) {
+  .main-container-activities {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
 }
