@@ -10,6 +10,8 @@
 @import "articles.css";
 @import "dashboard.css";
 @import "footer.css";
+@import "card.css";
+
 
 
 * {
@@ -60,6 +62,10 @@ button {
 
 .align-center {
     align-items: center;
+}
+
+.asc{
+    align-self: center;
 }
 
 /* list */

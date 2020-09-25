@@ -16,7 +16,7 @@ class _PieChart extends Component {
 
     componentDidMount() {
         const { user } = this.props;
-        this.props.loadActivities(user._id)
+        this.props.loadActivities()
     }
 
     onGetCreatedEvents = (activities, currUser) => {

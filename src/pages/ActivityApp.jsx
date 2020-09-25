@@ -84,7 +84,7 @@ class _ActivityApp extends Component {
                 <div className="filter">
                     <ActivityFilter onSetFilter={this.onSetFilter} dummySortByDays={this.dummySortByDays} />
                 </div>
-                <ActivityList activities={activities} onRemove={this.onRemove} />
+                <ActivityList bottomBorder={true} activities={activities} onRemove={this.onRemove} />
             </div>
         )
     }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadActivities } from "../store/actions/activityActions";
 
-import { Card } from "../cmps/Card";
+import { ActivityPreview } from "./activity/ActivityPreview";
 
 class _Suggested extends Component {
   state = {
@@ -25,7 +25,7 @@ class _Suggested extends Component {
 
         <div className="card-grid">
           {arr.map((activity) => (
-            <Card activity={activity} rate={activity.rate} key={activity._id} />
+            <ActivityPreview bottomBorder={false} activity={activity} rate={activity.rate} key={activity._id} />
           ))}
         </div>
       </section>
