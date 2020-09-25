@@ -11,7 +11,7 @@ class _ActivityApp extends Component {
         byDay: 0
     }
     componentDidMount() {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         const searchBy = {}
         const queryParam = new URLSearchParams(this.props.location.search)
         searchBy.title = queryParam.get('title')
@@ -24,9 +24,9 @@ class _ActivityApp extends Component {
         if (prevProps.searchBy.title !== this.props.searchBy.title) {
             this.props.loadActivities(this.props.searchBy)
         }
-            
+
     }
-  
+
     onRemove = (_id) => {
         this.props.removeActivity(_id);
     };
@@ -76,7 +76,7 @@ class _ActivityApp extends Component {
 
     render() {
         const activities = this.getActivitiesForDisplay();
-        if (!activities) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
+        if (!activities) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
         return (
 
             <div className="main-container-activities marg-top-50">

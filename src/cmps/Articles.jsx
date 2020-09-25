@@ -15,9 +15,6 @@ class _Articles extends Component {
     this.props.loadActivities();
   }
 
-  setFilterBy = (e) => {
-
-  }
 
   render() {
     return (
@@ -27,27 +24,36 @@ class _Articles extends Component {
           <Route exact component={ActivityApp} path='/activity/:filterBy?' />
         </Switch>
 
-        {/* <NavLink to="/activity/?title=yoga">aaaaaaaa</NavLink> */}
-
         <div className="articles-row" >
 
-            <div className="article_a" >
+          <NavLink to="/activity/?tag=sport" className="article_a" >
+            <div>
               <h2>Sport</h2>
             </div>
-          
+          </NavLink>
 
-          <div className="article_b">
-            <h2>Body {`&`} Mind</h2>
-          </div>
+          <NavLink to="/activity/?tag=yoga" className="article_b" >
+            <div>
+              <h2>Body {`&`} Mind</h2>
+            </div>
+          </NavLink>
+
         </div>
 
         <div className="articles-row">
-          <div className="article_c">
-            <h2>Nutrition</h2>
-          </div>
-          <div className="article_d">
-            <h2>Free!</h2>
-          </div>
+
+          <NavLink to="/activity/?tag=nutrition" className="article_c">
+            <div >
+              <h2>Nutrition</h2>
+            </div>
+          </NavLink>
+
+          <NavLink to="/activity/?tag=Highest Rated" className="article_d">
+            <div>
+              <h2>Popular</h2>
+            </div>
+            </NavLink>
+
         </div>
       </section>
     );
