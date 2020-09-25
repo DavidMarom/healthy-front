@@ -58,3 +58,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.font-small {
+    font-size: 0.8rem;
+}

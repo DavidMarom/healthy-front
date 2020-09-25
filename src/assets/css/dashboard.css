@@ -85,6 +85,12 @@
     width:10px;
 }
 
+.pad-r-10{
+    padding-right:7px;
+    color: #aaaaaa;
+    font-size: 12px;
+}
+
 /* .dash-attendie {
     font-size: 18px;
     display: inline;
