@@ -34,7 +34,9 @@ export class ActivityPreview extends Component {
                 <div className="rate-display">
                   <div><div className="green-star">★ </div>{avg}{` (`}{activity.rate.length}{`)`}</div>
                 </div>
-                <div>{activity.participants.length}{'/'}{activity.maxCapacity}</div>
+
+                <div><div className="just-row"><i className="fas fa-user-friends inline"></i></div> {activity.participants.length}{'/'}{activity.maxCapacity}</div>
+
               </div>
               <div className="flex column">
                 <div className="green">{activity.title}</div>
