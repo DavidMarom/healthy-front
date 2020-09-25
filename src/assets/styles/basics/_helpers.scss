@@ -96,6 +96,7 @@ li{
     cursor: pointer;
     padding:5px;
     transition: 0.3s;
+    align-self: center;
 
     &:hover:not(:first-child){
     font-weight: bold;

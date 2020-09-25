@@ -64,6 +64,10 @@ button {
     align-items: center;
 }
 
+.asc{
+    align-self: center;
+}
+
 /* list */
 
 .clean-list {
