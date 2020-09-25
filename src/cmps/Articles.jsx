@@ -30,13 +30,13 @@ class _Articles extends Component {
         {/* <NavLink to="/activity/?title=yoga">aaaaaaaa</NavLink> */}
 
         <div className="articles-row" >
-          {/* <NavLink to="/activity/?title=sport"> */}
+          <NavLink to="/activity/?tag=sports">
 
             <div className="article_a" >
               <h2>Sport</h2>
             </div>
           
-          {/* </NavLink> */}
+          </NavLink>
 
           <div className="article_b">
             <h2>Body {`&`} Mind</h2>

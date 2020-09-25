@@ -1,5 +1,6 @@
 const initialState = {
     activities: [],
+    currActivity:null,
     searchBy:{
         title:''
     }
@@ -14,9 +15,15 @@ export function activityReducer(state = initialState, action) {
                 ...state,
                 activities: action.activities
             }
+        case 'SET_ACTIVITY':
+            return {
+                ...state,
+                 currActivity: action.activity
+            }
         case 'EDIT_ACTIVITY':
             return {
                 ...state,
+                currActivity: action._activity,
                 activities: state.activities.map(activity => {
                     if (action._activity._id === activity._id) return action._activity
                     return activity;
