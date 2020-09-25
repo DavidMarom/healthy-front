@@ -27,14 +27,8 @@ export class _UserDetails extends Component {
     this.loadUser()
   }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log('inside', prevProps);
-  //   if (this.props.match.params.userId !== prevProps.match.params.userId) this.loadUser()
-  // }
-
   loadUser = () => {
     const { userId } = this.props.match.params;
-    console.log(userId);
     if (userId) {
       userService.getById(userId)
         .then(user => this.setState({ currUser: user }, () => this.props.loadActivities()))
@@ -75,7 +69,6 @@ export class _UserDetails extends Component {
   render() {
     let loggedUser = this.props.user;
     let { activities } = this.props;
-    console.log(this.props);
     if (!Object.keys(activities).length) activities = null;
     const { currUser } = this.state;
     if (!currUser) return <div>loading..</div>;

@@ -11,7 +11,7 @@ export class Reviews extends Component {
     activity: null,
     txt: "",
     rateType: "simple-controlled",
-    rateAddByUser: null
+    
   }
 
   componentDidMount() {
@@ -25,27 +25,15 @@ export class Reviews extends Component {
   keyPressed = (ev) => {
     if ((this.state.txt !== '') && (ev.keyCode === 13)) this.addReview();
   }
-
-  onRate = (activity, rate) => {
-    activityService.addRate(activity, rate);
-    this.setState({ rateType: "read-only", rateAddByUser: rate });
-  };
-
-  // addReview = (ev) => {
-  //   ev.preventDefault();
-  //   var newActivity = this.state.activity;
-  //   const tmpReview = {
-  //     "id": Date.now(),
-  //     "txt": this.state.txt,
-  //     "rate": (this.state.rateAddByUser || 5),
-  //     "by": this.props.user
-  //   }
-  //   this.setState({ txt: '' })
-  //   this.setState({ activity: newActivity })
-  //   newActivity.reviews.push(tmpReview);
-  //   // activityService.update(newActivity);
-  //   this.props.saveActivity(activity);
-  // }
+  
+  getStars = (review)=>{
+    let stars=[];
+    const star ='★';
+    for(let i =0; i< review.rate; i++){
+      stars.push(star)
+    }
+    return stars;
+  }
 
   render() {
     if (!this.state.activity) return <h2>Loading..</h2>;
@@ -61,15 +49,15 @@ export class Reviews extends Component {
                 <Typography component="legend"></Typography>
                 <Rating 
                   name={this.state.rateType}
-                  value={this.state.rateAddByUser || 5}
+                  value={this.props.rateAddByUser || 5}
                   onChange={(event, newValue) => {
-                    this.onRate(this.props.activity, newValue);
+                    this.props.onRate(newValue);
                   }}
                 />
               </Box>
            
           </div>
-          <form onSubmit={()=>this.props.addReview()}>
+          <form onSubmit={()=>this.props.addReview(this.state.txt)}>
             <input
               className="review-input"
               value={this.state.txt}
@@ -85,11 +73,13 @@ export class Reviews extends Component {
         {/* <div className="mb50"></div> */}
 
         {reviews.map((review, idx) => {
+          let stars= this.getStars(review);
           return (
             <div key={idx}>
               <div key={idx} className="text-mid-left">
                 <img src={review.by.imgUrl} className="attending-img marg-5" alt="" />
-                <span className="MuiRating-root">{'★'}</span>{review.rate}
+                {stars.map((star,idx)=> <span key={idx} className="MuiRating-root">{star}</span>)}
+                {<span>{`(${review.rate})`}</span>}       
               </div>
               <div className="rev-txt">
                 {review.txt}
