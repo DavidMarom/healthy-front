@@ -22,7 +22,6 @@ export class Card extends Component {
     const avg = this.calcAvgRate(this.props.rate);
 
     return (
-      <section className="card-section">
         <div className="card">
 
           <Link to={`activity/${activity._id}`}>
@@ -51,13 +50,12 @@ export class Card extends Component {
 
                 <div className="bold">$ {activity.price}</div>
 
-
               </div>
             </div>
           </Link>
 
+                {(this.props.bottomBorder) ? (<div className="card-bottom-border-grey"></div>) : (<div className="card-bottom-border-white"></div>)}
         </div>
-      </section>
     );
   }
 }

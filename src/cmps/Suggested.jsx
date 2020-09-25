@@ -25,7 +25,7 @@ class _Suggested extends Component {
 
         <div className="card-grid">
           {arr.map((activity) => (
-            <Card activity={activity} rate={activity.rate} key={activity._id} />
+            <Card bottomBorder={false} activity={activity} rate={activity.rate} key={activity._id} />
           ))}
         </div>
       </section>
