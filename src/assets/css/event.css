@@ -145,14 +145,6 @@ p {
     border: 0px;
 } */
 
-.review-input {
-    width: 83%;
-    outline: 0;
-    border-width: 0 0 1px;
-    border-color: #909090;
-    margin-top: 10px;
-    font-size: 14pt;
-}
 
 .drop-down {
     background-color: #ffffff00;
