@@ -11,6 +11,7 @@ class _ActivityApp extends Component {
         byDay: 0
     }
     componentDidMount() {
+        window.scrollTo(0,0);
         const queryParams = this.props.location.search
         const searchBy = {}
         searchBy.tag = new URLSearchParams(queryParams).get('tag')

@@ -89,7 +89,7 @@ class _UserActivityPreview extends Component {
                             </div>
 
                             <div className="just-row">
-                                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className="fas fa-user-cog nav-override-color"></i></Link>) : ''}
+                                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className=" dash-btn fas fa-user-cog nav-override-color"></i></Link>) : ''}
                                 <div className="pad-10"></div>
                                 {(madeOfOperation === 'organizer') ? (<button className="dash-btn" onClick={(ev) => onRemove(ev, activity._id)}><i className="far fa-trash-alt"></i></button>) : ''}
                                 {(madeOfOperation === 'subscriber') ?(<Button variant="outlined" onClick={(ev) => onRemoveFromList(ev, activity, user)}>Unsubscribe</Button>) : ''}
