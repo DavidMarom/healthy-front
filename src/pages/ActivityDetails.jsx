@@ -1,95 +1,110 @@
 import React, { Component } from "react";
 import { activityService } from "../services/activityService.js";
-import { saveActivity } from "../store/actions/activityActions";
+import { saveActivity, loadActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
 import { connect } from "react-redux";
+import { Reviews } from "../cmps/Reviews";
+import { Chat } from "../cmps/Chat";
 
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import SimpleMap from "../cmps/Map";
 
-import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
 
-// export default GoogleApiWrapper({
-//   apiKey: 'AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk'
-// })(MapContainer);
 
+
+import { TheatersRounded } from "@material-ui/icons";
 
 export class _ActivityDetails extends Component {
+
   state = {
-    activity: null,
-    user: {
-      _id: "u106",
-      fullName: "Debora faringham",
-      imgUrl:
-        "https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327803/sprint%204/users/74_cludfc.jpg",
-    },
-    creator: "",
-    avgRate: null,
-    rateType : "simple-controlled"
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    user: userService.guestMode(),
+    rateAddByUser: null
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+    let user = this.props.user;
+    if (user) {
+      user = {
+        _id: user._id,
+        fullName: user.fullName,
+        imgUrl: user.imgUrl,
+      };
+      this.setState({ user });
+    }
     this.loadActivity();
   }
 
-  calcAvgRate = () => {
-    let tempSum = 0;
-    const arr = this.state.activity.rate;
-    arr.map((rateValue) => (tempSum += rateValue));
-    const tempAvg = tempSum / arr.length;
-    this.setState({ avgRate: tempAvg });
-  };
-
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
-    activityService.getById(activityId).then((activity) => {
-      this.setState({ activity }, () => {
-        this.loadCreator(activity.createdBy._id);
-        this.calcAvgRate();
-      });
-    });
-  };
-
-  loadCreator = (id) => {
-    userService.getById(id).then((creator) => {
-      this.setState({ creator });
-    });
-  };
-
-  purchaseActivity(activity, user, creator) {
-    creator.income += activity.price;
-    this.props.updateUser(creator);
-    activity.participants.push(user);
-    this.props.saveActivity(activity);
+    if (activityId) this.props.loadActivity(activityId);
   }
 
-  onRate = (activity, value) => {
-    console.log(value);
-    activityService.addRate(activity, value);
-    this.setState({rateType : "read-only"})
+  addReview = (txt) => {
+    var newActivity = this.props.activity;
+    const tmpReview = {
+      "id": Date.now(),
+      "txt": txt,
+      "rate": (this.state.rateAddByUser || 5),
+      "by": this.props.user
+    }
+    this.setState({ txt: '' })
+    this.setState({ activity: newActivity })
+    newActivity.reviews.push(tmpReview);
+    this.props.saveActivity(newActivity);
+  }
+
+  onRate = (rate) => {
+    this.setState({ rateType: "read-only", rateAddByUser: rate });
   };
 
-  render() {
-    const { value, setHover, labels, hover } = this.state;
-    const { activity, user, creator } = this.state;
-    if (!activity) return <h1>Loading...</h1>;
+  calcAvgRate = () => {
+    let tempSum = 0;
+    const rates = this.props.activity.reviews.map(review => review.rate);
+    tempSum = rates.reduce(function (acc, val) {
+      return acc + val
+    }, 0);
+    return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2));
+  }
 
+
+  purchaseActivity() {
+    let { activity, user } = this.props;
+    let creator = activity.createdBy;
+    if (creator._id !== user._id) {
+      creator.income += activity.price;
+      this.props.updateUser(creator);
+      activity.participants.push(user);
+      this.props.saveActivity(activity);
+    }
+  }
+
+
+
+  render() {
+    const { activity, user } = this.props;
+    if (!activity) return<div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
+    let rate = this.calcAvgRate();
+    rate = parseFloat(rate);
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
           <div className="green-star">★</div>
-          <p>({(Math.round(this.state.avgRate * 100) / 100).toFixed(2)}) </p>
-          
+          <p>{rate} </p>
 
           <p className="f20 title l-grey">{activity.subtitle}</p>
         </div>
 
         <div className="image-gallery">
           {activity.imgUrls.map((img, idx) => (
-            <img className={`img${idx} gallery__img`} key={idx} src={img} />
+            <img
+              className={`img${idx} gallery__img`}
+              key={idx}
+              src={img}
+              alt=""
+            />
           ))}
         </div>
         <div className="event-main-container">
@@ -104,7 +119,11 @@ export class _ActivityDetails extends Component {
               </div>
 
               <div>
-                <img className="creator-img" src={activity.createdBy.imgUrl} />
+                <img
+                  alt=""
+                  className="creator-img"
+                  src={activity.createdBy.imgUrl}
+                />
               </div>
             </div>
             <div className="divider"></div>
@@ -114,7 +133,7 @@ export class _ActivityDetails extends Component {
                 <i className="far fa-calendar-alt fa-lg"></i>
               </div>
               <p>
-                {activity.dayInWeek} - {activity.hour}:00
+                {this.state.days[activity.dayInWeek + 1]} - {activity.hour}:00
               </p>
               <h5>{activity.location.address}</h5>
             </div>
@@ -131,23 +150,18 @@ export class _ActivityDetails extends Component {
               ))}
             </div>
             <div className="divider d-hi"></div>
-            
-            <div className=".col-center-middle">
-            <p>Rate</p>
 
-              <Box component="fieldset" mb={3} borderColor="transparent">
-                <Typography component="legend"></Typography>
-                <Rating
-                  name={this.state.rateType}
-                  value={value}
-                  onChange={(event, newValue) => {
-                    this.onRate(activity, newValue);
-                  }}
-                />
-              </Box>
-
-            </div>
+            {(activity._id === this.props.match.params.activityId) ? (
+              <div className=".event-buy">
+                <Reviews activity={activity}
+                  rate={rate}
+                  addReview={this.addReview}
+                  onRate={this.onRate}
+                  rateAddByUser={this.state.rateAddByUser} />
+              </div>
+            ) : ''}
           </div>
+
 
           {/* RIGHT SIDE */}
           <div className="event-right-side">
@@ -157,45 +171,46 @@ export class _ActivityDetails extends Component {
                   <i className="fas fa-money-bill-wave"></i>
                   <p>Money back guarentied</p>
                 </div>
-                {(Math.round(this.state.avgRate * 100) / 100).toFixed(2)}
                 <div className="green-star">★</div>
+                {rate}
               </div>
               <div className="center">
                 <h2>Price: ${activity.price}</h2>
               </div>
+              {(user._id === 'guest') ?
+                (<button className="buy-btn"
+                  onClick={() => this.props.history.push('/signUp')}>
+                  Join Us NOW!
+                </button>) : ''}
 
-              <button
-                className="buy-btn"
-                onClick={() => this.purchaseActivity(activity, user, creator)}
-              >
-                Sign me up!
-              </button>
+              {(activity.participants.length < activity.maxCapacity) ?
+                (<button className="buy-btn"
+                  onClick={() => this.purchaseActivity()}>
+                  Sign me up!
+                </button>) :
+                (<button className="sold-out-btn">SOLD OUT!</button>)}
             </div>
-
             <div className="attendings">
               <h3>Attending</h3>
               {activity.participants.map((participant, idx) => (
                 <img
+                  alt=""
                   className="attending-img"
                   key={idx}
                   src={participant.imgUrl}
                 />
               ))}
             </div>
-            <img src={require("../assets/img/map.jpg")} />
+            <div className="map-container">
+              <SimpleMap center={activity.location} />
+            </div>
+            <div className="divider"></div>
+            <div className="chat-container">
+              <Chat topic={activity._id} name={user.fullName} />
+
+            </div>
           </div>
           {/* END OF RIGHT SIDE */}
-
-
-          {/* <Map
-          google={this.props.google}
-          zoom={8}
-          style={mapStyles}
-          initialCenter={{ lat: 47.444, lng: -122.176}}
-        />
- */}
-
-
         </div>
       </div>
     );
@@ -204,18 +219,17 @@ export class _ActivityDetails extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    activities: state.activityReducer.activities,
+    activity: state.activityReducer.currActivity,
     user: state.userReducer.loggedInUser,
   };
 };
 const mapDispatchToProps = {
   saveActivity,
   updateUser,
+  loadActivity
 };
 
 export const ActivityDetails = connect(
   mapStateToProps,
   mapDispatchToProps
 )(_ActivityDetails);
-
-// AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk

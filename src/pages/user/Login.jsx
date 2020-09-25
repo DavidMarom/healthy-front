@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { TextField, Select, MenuItem } from '@material-ui/core';
 import {
   loadUsers,
   removeUser,
   login,
   logout,
-  signup
 } from '../../store/actions/userActions';
 
 class _Login extends Component {
@@ -18,8 +17,7 @@ class _Login extends Component {
     },
     signupCred: {
       // email: '',
-      password: '',
-      username: ''
+      password: ''
     }
   };
 
@@ -54,98 +52,67 @@ class _Login extends Component {
     this.setState({ loginCred: { email: '', password: '' } });
   };
 
-  doSignup = async ev => {
-    ev.preventDefault();
-    const { email, password, username } = this.state.signupCred;
-    if (!email || !password || !username) {
-      return this.setState({ msg: 'All inputs are required!' });
-    }
-    const signupCreds = { email, password, username };
-    this.props.signup(signupCreds);
-    this.setState({ signupCred: { email: '', password: '', username: '' } });
-  };
-
   removeUser = userId => {
     this.props.removeUser(userId);
   };
+
+  openGuestMode = (ev) => {
+    ev.preventDefault();
+    const guest = {
+      email: 'guestMode@gmail.com',
+      password: '123'
+    }
+    this.props.login(guest);
+    this.setState({ loginCred: { email: '', password: '' } });
+  }
+
   render() {
-    let signupSection = (
-      <form onSubmit={this.doSignup}>
-        <input
-          type="text"
-          name="email"
-          value={this.state.signupCred.email}
-          onChange={this.signupHandleChange}
-          placeholder="Email"
-        />
-        <br />
-        <input
-          name="password"
-          type="password"
-          value={this.state.signupCred.password}
-          onChange={this.signupHandleChange}
-          placeholder="Password"
-        />
-        <br />
-        <input
-          type="text"
-          name="username"
-          value={this.state.signupCred.username}
-          onChange={this.signupHandleChange}
-          placeholder="Username"
-        />
-        <br />
-        <button>Signup</button>
-      </form>
-    );
     let loginSection = (
-      <form onSubmit={this.doLogin}>
-        <input
-          type="text"
-          name="email"
-          value={this.state.loginCred.email}
-          onChange={this.loginHandleChange}
-          placeholder="Email"
+      <form className="main-container" onSubmit={this.doLogin}>
+        <div className="login tac">
+          <input className="fs20 p10 m10 pn"
+            type="text"
+            name="email"
+            autoComplete="off"
+            value={this.state.loginCred.email || ''}
+            onChange={this.loginHandleChange}
+            placeholder="Email"
         />
         <br />
-        <input
-          type="password"
-          name="password"
-          value={this.state.loginCred.password}
-          onChange={this.loginHandleChange}
-          placeholder="Password"
-        />
-        <br />
-        <button>Login</button>
+          <input className="fs20 p10 m10 pn"
+            type="password"
+            name="password"
+            autoComplete="off"
+            value={this.state.loginCred.password || ''}
+            onChange={this.loginHandleChange}
+            placeholder="Password"
+          />
+          <br />
+          <button className="fs20 p10 m10 pn">Login</button>
+        </div>
       </form>
     );
 
     const { loggedInUser } = this.props;
     return (
-      <div className="test">
-        <h1>
-          This is a testing page for working with the Production Ready Server
+      <div className="main-container">
+        <div className="just-row flex justify-center">
+          <h1 className="tac">
+            Login
         </h1>
+        </div>
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
-            <h2>Welcome: {loggedInUser.username} </h2>
+            <h2>Welcome: {loggedInUser.fullName} </h2>
             <button onClick={this.props.logout}>Logout</button>
           </div>
         )}
         {!loggedInUser && loginSection}
-        {!loggedInUser && signupSection}
-        {/* <h2>Login</h2>
-        <form>div</form>
-
-        <h2>Signup</h2>
-        <form></form> */}
-
         <hr />
-        <button onClick={this.props.loadUsers}>Get All Users</button>
+        {/* <button onClick={this.props.loadUsers}>Get All Users</button> */}
         {this.props.isLoading && 'Loading...'}
         {this.props.users && <ul>
-
           {this.props.users.map(user => (
             <li key={user._id}>
               <pre>{JSON.stringify(user, null, 2)}</pre>
@@ -154,11 +121,14 @@ class _Login extends Component {
                   this.removeUser(user._id);
                 }}
               >
-                Remove {user.username}
+                Remove {user.fullName}
               </button>
             </li>
           ))}
         </ul>}
+        <div className="guest-mode flex justify-center">
+          <button className="fs20 p10 m10 pn tac " onClick={this.openGuestMode}>Demo Mode</button>
+        </div>
       </div>
     );
   }
@@ -174,7 +144,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   login,
   logout,
-  signup,
   removeUser,
   loadUsers
 };

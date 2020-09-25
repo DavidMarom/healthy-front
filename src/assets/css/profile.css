@@ -1,0 +1,23 @@
+.profile-top-bar{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-bar-left{
+    width:90%;
+    text-align:start ;
+    padding-right: 50px;
+}
+
+
+.profile-bar-right{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+
+}

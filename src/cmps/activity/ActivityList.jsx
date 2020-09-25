@@ -1,17 +1,16 @@
-import React from 'react'
+import React from "react";
 import { ActivityPreview } from './ActivityPreview'
-import { Card } from '../Card.jsx'
 
-export function ActivityList({ activities , onRemove}) {
-    return (
-        <div className="activity-list flex">
-            {
-                activities.map(activity => <ActivityPreview activity={activity} key={activity._id} onRemove={onRemove} />)
-            }
-
-        </div>
-    )
+export function ActivityList({ activities }) {
+  return (
+    <div className="card-grid marg-top-50">
+      {
+        activities.map((activity) => (
+          
+          <ActivityPreview bottomBorder={true} activity={activity} rate={activity.rate} key={activity._id} />
+        ))
+      }
+    </div>
+  );
 }
 
-
-{/* <ActivityPreview activity={activity} key={activity._id} onRemove={onRemove} */}

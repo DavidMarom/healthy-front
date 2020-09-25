@@ -1,18 +1,47 @@
 .main-user-container {
   display: grid;
-  grid-template-columns: 20px 1fr 20px;
+  grid-template-columns: 5px 1fr 5px;
+
+  > * {
+    grid-column: 2;
+
+    &.full {
+      grid-column: 1 /-1;
+    }
+  }
+
+  @include for-narrow-layout {
+    grid-template-columns:
+      minmax(20px, 1fr)
+      minmax(auto, $mobile-breakpoint)
+      minmax(20px, 1fr);
+  }
   @include for-normal-layout {
     grid-template-columns:
       minmax(20px, 1fr)
       minmax(auto, $narrow-breakpoint)
       minmax(20px, 1fr);
   }
+  @include for-wide-layout {
+    grid-template-columns:
+      minmax(20px, 1fr)
+      minmax(auto, 70%)
+      minmax(20px, 1fr);
+  }
+}
+
+.dash{
+  background-color: rgb(248, 246, 246);
+}
+
+.money{
+  color: #62cb66;
 }
 
 .mt50 {
   margin-top: rem(50px);
   padding-top: rem(20px);
-  border-top: 1px solid #2222;
+  // border-top: 1px solid #2222;
 }
 
 .persinal-info {
@@ -22,8 +51,8 @@
   justify-items: center;
 }
 .profile-pic {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 250px;
+  max-height: 250px;
   border-radius: 50%;
 }
 
@@ -61,26 +90,26 @@
 
 
 .timetable {
-  border:1px solid #333333;
+  border:0px solid #333333;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-gap: 4px;
-  grid-template-columns: 60px repeat(7, 40px);
-  grid-template-rows: repeat(12, 30px);
+  grid-gap: 1px;
+  grid-template-columns: 60px repeat(7, 20px);
+  grid-template-rows: repeat(12, 20px);
 }
 
 .titleWrapper {
   font-weight: 600;
-  background-color: $clr3;
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
   display: grid;
   grid-column: 1 / 9;
   grid-gap: 4px;
-  grid-template-columns: 60px repeat(7, 40px);
+  grid-template-columns: 60px repeat(7, 20px);
   margin-bottom: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ffffff00;
   justify-items: center;
 }
 
@@ -90,7 +119,7 @@
   display: grid;
   grid-row: 2 / 14;
   grid-gap: 4px;
-  grid-template-rows: repeat(12, 30px);
+  grid-template-rows: repeat(12, 20px);
 }
 
 .main-info-table{
@@ -99,10 +128,60 @@
   display: grid;
   grid-row: 2 / 14;
   grid-gap: 4px;
-  grid-template-rows: repeat(12, 30px);
+  grid-template-rows: repeat(12, 15px);
 }
 
 .yellow{
-  background-color: rgba(214, 214, 59, 0.712);
+  background-color: #62cb66;
   
+}
+
+.white{
+  background-color: #e9eaeb;
+  
+}
+
+
+// DASHBORD COMPONENT
+
+.bar{
+  width:rem(500px);
+  height: rem(500px);
+}
+
+.pie{
+  width:rem(500px);
+  height: rem(500px);
+  margin-right: 30px;
+}
+
+.dashbord-info{
+  margin-bottom: rem(50px);
+  padding-top: rem(20px);
+}
+
+.add-btn {
+  display: flex;
+  padding: 10px;
+  border: 2px solid #42c054;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #42c054;
+
+  &:active {
+    background-color: #42c054;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #222222;
+  }
+}
+
+.cp-unique{
+  cursor: pointer;
+  color:#222222;
+  transition: 0.3s;
+
+  &:hover{
+    background-color:rgb(149, 191, 143);
+  }
 }

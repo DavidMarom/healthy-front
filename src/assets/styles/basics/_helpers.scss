@@ -22,7 +22,8 @@
 .clr4{color: $clr4;}
 .clr5{color: $clr5;}
 .clr6{color: $clr6;}
-
+.black{color: #000000;}
+.d-grey{color: #4c4c4c;}
 
 // flex helpers
 
@@ -51,12 +52,21 @@
     &.wrap{
         flex-wrap: wrap;
     }
+    &.no-wrap{
+        flex-wrap: nowrap;
+    }
+    &.end{
+        justify-self: flex-end;
+    }
 }
 
 li{
     list-style: none outside none;
 }
 
+.mb50{
+    margin-bottom: rem(50px);
+}
 
 .tac{
     text-align: center;
@@ -74,6 +84,29 @@ li{
     padding: 0;
 }
 
+.m10{
+    margin: rem(10px);
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.cp{
+    cursor: pointer;
+    padding:5px;
+    transition: 0.3s;
+    align-self: center;
+
+    &:hover:not(:first-child){
+    font-weight: bold;
+    background-color: rgb(226, 213, 213);
+    border-radius: 12px;
+    opacity: 0.8;
+    }
+}
+
+
 
 // Media helpers
 
@@ -86,3 +119,4 @@ li{
 .portrait-ratio {
     @include aspect-ratio(9, 16);
 }
+

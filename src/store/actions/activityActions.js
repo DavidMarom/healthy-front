@@ -7,6 +7,13 @@ export function loadActivities(filterBy={}) {
       };
 }
 
+export function loadActivity(activityId){
+  return async dispatch =>{
+    const activity = await activityService.getById(activityId);
+    dispatch({ type: 'SET_ACTIVITY', activity })
+  }
+}
+
 export function removeActivity(activityId) {
     return async dispatch => {
         await activityService.remove(activityId)

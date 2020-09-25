@@ -8,12 +8,14 @@ import { setSearchBy } from '../../store/actions/activityActions'
 export class _SearchBox extends Component {
     state = {
         searchBy: {
-            title: ''
+            title: '',   
         },
     }
+    
    
     componentDidMount() {
-     const searchBy = new URLSearchParams(this.props.location.search).get('searchBy') || ''
+
+     const searchBy = new URLSearchParams(this.props.location.search).get('title') || ''
      this.setState({ searchBy:{title:searchBy} }, () => this.props.setSearchBy(this.state.searchBy))
     }
 
@@ -26,15 +28,16 @@ export class _SearchBox extends Component {
     }
 
     onClickSearchButton = () => {
-        const searchBy=this.state.searchBy.title
-        this.props.history.push(`/activity?searchBy=${searchBy}`)
+        const title=this.state.searchBy.title
+        this.props.history.push(`/activity?title=${title}`)
     }
 
     render() {
         const cssClass = this.props.cssClass
         return (
             <div className={cssClass}>
-                <input className="search-input" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} />
+                <input className="search-input" autoComplete= "off" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} 
+                placeholder={`Find activity that you like (food${'&'}nutrition, lectures, sports groups atc.)`} />
                 <div className="search-btn" onClick={this.onClickSearchButton}>
                     <i className="fas fa-search"></i>
                 </div>

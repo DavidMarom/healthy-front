@@ -46,12 +46,6 @@
     justify-content: space-between;
 }
 
-.just-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .green-star {
     display: inline;
     color: #42c054;
@@ -75,6 +69,7 @@ p {
     background-color: #dddddd;
 }
 
+
 .d-hi {
     margin-top: 70px;
 }
@@ -92,11 +87,24 @@ p {
     font-family: 'Varela Round', sans-serif;
 }
 
-.center {
+/* .sign-btn{
+    background-color: rgba(255, 0, 0, 0.829);
+    border-radius: 10px;
+    border: 1px solid rgb(5, 2, 2);
+    color: #ffffff;
+    height: 50px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: x-large;
+    font-family: 'Varela Round', sans-serif;
+} */
+
+/* .center {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
+} */
 
 .text-box {
     margin-top: 30px;
@@ -107,6 +115,53 @@ p {
     display: inline;
 }
 
-.in-line {
-    display: inline;
+.map-container {
+    height: 300px;
+}
+
+.chat-container {
+    background-color: #ffffff;
+    height: 300px;
+}
+
+.chat-input {
+    width: 83%;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #909090;
+    margin-top: 40px;
+    font-size: 14pt;
+}
+
+.chat-button {
+    background-color: #ffffff00;
+    border: 0px;
+    color: #43c155;
+}
+
+/* .chat-button:active{
+    background-color: #43c155;
+    color: #222222;
+    border: 0px;
+} */
+
+
+.drop-down {
+    background-color: #ffffff00;
+    border: 0px;
+    color: #43c155;
+    font-size: 14px;
+    border-bottom: 1px solid #42c054;
+}
+
+.chat-height {
+    height: 220px;
+    overflow: hidden;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    justify-content: left;
+
+    font-size: 14px;
 }

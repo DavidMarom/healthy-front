@@ -1,11 +1,9 @@
-
-
 let localLoggedinUser = null;
 if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
 const initialState = {
     users: [],
-    loggedInUser: localLoggedinUser,
+    loggedInUser: localLoggedinUser ,
     cartItems: []
 }
 
@@ -15,7 +13,7 @@ export function userReducer(state = initialState, action = {}) {
             return { ...state, loggedInUser: action.user };
         case 'SET_USERS':
             return { ...state, users: action.users };
-        case 'USER_REMOVE':
+        case 'REMOVE_USER':
             return {
                 ...state,
                 users: state.users.filter(user => user._id !== action.userId)

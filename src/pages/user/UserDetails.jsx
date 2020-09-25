@@ -1,100 +1,168 @@
-import React, { Component } from 'react'
-import { loadActivities } from "../../store/actions/activityActions"
-import { connect } from 'react-redux'
-import { UserActivityList } from '../../cmps/user/UserActivityList'
-import { UserSchedule} from '../../cmps/user/UserSchedule'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import {
+  loadActivities,
+  saveActivity,
+  removeActivity
+} from "../../store/actions/activityActions";
+import { connect } from "react-redux";
+import { UserActivityList } from "../../cmps/user/UserActivityList";
+import { UserSchedule } from "../../cmps/user/UserSchedule";
+import { userService } from "../../services/userService.js";
+import { activityService } from "../../services/activityService.js";
+import { updateUser } from "../../store/actions/userActions.js";
+import { UserDashbord } from "./UserDashbord.jsx";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 
 export class _UserDetails extends Component {
-    state = {
-        currUser: {
-            _id: 'u101',
-            fullName: 'Marckus Smtart',
-            userName: 'Markus',
-            location: {
-                lat: 32.0605,
-                lng: 34.8731,
-                address: 'Ganei Tikva'
-            },
-            email: 'mar.k@gmail.com',
-            bio: ' 29 years old Producer manager with 6 years experiance in software products. Experiance with both the creative and the technical sides of product managment.',
-            imgUrl: 'https://res.cloudinary.com/dygtul5wx/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1600327859/sprint%204/users/80_uimgpd.jpg',
-            password: 'e43asl',
-            income: 329,
-            facebook: 'facebook.com',
-            twitter: 'twitter.com',
-            prefs: ['bascketball', 'intermediat diet', 'mediterian diet', 'samba']
-        },
-        createdAct: {},
-        particiipant: {}
+  state = {
+    currUser: null,
+    createdAct: {},
+    participant: {},
+  };
+
+  componentDidMount() {
+    this.loadUser()
+  }
+
+  loadUser = () => {
+    const { userId } = this.props.match.params;
+    if (userId) {
+      userService.getById(userId)
+        .then(user => this.setState({ currUser: user }, () => this.props.loadActivities()))
     }
+  }
 
-    componentDidMount() {
-        this.props.loadActivities(this.state.currUser._id)
-    }
+  onRemove = (ev, _id) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    this.props.removeActivity(_id);
+  };
+  onRemoveFromList = (ev, activity, user) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    // delete from the user list by canceling participant inside the activity object
+    let idx = activityService.findIdxById(activity.participants, user._id);
+    activity.participants.splice(idx, 1);
 
-    uploadCreatedEvents = (activities, currUser) => {
-        if (!activities) return null;
-        return activities.filter(activity => activity.createdBy._id === currUser._id)
-    }
+    // update activity
+    this.props.saveActivity(activity);
 
-    uploadPartOfEvents = (activities, currUser) => {
-        if (!activities) return null;
-        return activities.filter(activity => activity.participants.map(user => user._id === currUser._id))
-    }
+    // update the organizer income
+    userService.getById(activity.createdBy._id).then((user) => {
+      user.income -= activity.price;
+      this.props.updateUser(user);
+    });
+  };
+
+  onGetCreatedEvents = (activities, currUser) => {
+    let act = activityService.getCreatedEvents(activities, currUser);
+    return act;
+  };
+
+  onGetPartOfEvents = (activities, currUser) => {
+    return activityService.getPartOfEvents(activities, currUser);
+  };
+
+  render() {
+    let loggedUser = this.props.user;
+    let { activities } = this.props;
+    if (!Object.keys(activities).length) activities = null;
+    const { currUser } = this.state;
+    if (!currUser) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
+    let eventsCreatedByUser = this.onGetCreatedEvents(activities, currUser);
+    let partOfEvents = this.onGetPartOfEvents(activities, currUser);
+    return (
+      <div className="main-user-container">
+        <div className="profile-top-bar">
+
+          <div className="profile-bar-left">
+            <h2>{currUser.fullName}</h2>
+            <h4>{currUser.title}</h4>
+            <h4>{currUser.email}</h4>
+            {currUser.bio}
+
+          </div>
+          <div className="profile-bar-right">
+            <img className="profile-pic" src={currUser.imgUrl} alt="" />
+            <p>Change Photo</p>
+            <Link to="/activity/add"><button className="add-btn">Add New Event</button></Link>
+            {/* <div className="calender">
+                <UserSchedule activities={partOfEvents} />
+              </div> */}
+          </div>
+        </div>
+
+        <div className="pref-line">
+          <h4>Preferences: </h4>
+          {currUser.prefs.map((pref, idx) => (
+            <div className="tal inline" key={idx}>
+              {pref}
+              {(idx < currUser.prefs.length - 1) ? (<p> • </p>) : (null)}
+            </div>
+          ))}
+        </div>
 
 
-    render() {
-        let { activities } = this.props;
-        if (!Object.keys(activities).length) activities = null;
-        const { currUser } = this.state;
-        if (!currUser) return <div>loading..</div>
-        let personalActivities = this.uploadCreatedEvents(activities, currUser);
-        let partOfEvents = this.uploadPartOfEvents(activities, currUser);
-        console.log('pp-', partOfEvents);
-        return (
-            <div className="main-container">
-                <div className="flex column">
-                    <img className="profile-pic" src={currUser.imgUrl} />
-                    <p>change your perofile picture</p>
-                    <div className="flex mt50 sb">
-                        <div className="flex column">
-                            <h3>{currUser.fullName}</h3>
-                            <p>Location: {currUser.location.address}</p>
-                            <p>Bio:{currUser.bio}</p>
-                            <h4>{currUser.email}</h4>
-                            <div className="main-info-container">
-                                <h3>Events Im going to:</h3>
-                                <UserActivityList activities={personalActivities} user={null}/>
-                            </div>
-                            <div className="main-info-container">
-                                <h3>Events I organize:</h3>
-                                <UserActivityList activities={partOfEvents}  user={currUser}/>
-                            </div>
-                        </div>
-                        <div className="flex column tac">
-                            <h4>Preferences</h4>
-                            <ul>{currUser.prefs.map((pref, idx) => <li className="tal" key={idx}>{pref}</li>)}</ul>
-                            <div className="calender">
-                                <UserSchedule activities={partOfEvents}/>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+        <div className="flex column sb">
+            <div className="flex column">
+              <div className="main-info-container">
+                {(eventsCreatedByUser && (currUser._id === loggedUser._id)) ? (<UserDashbord user={currUser} activities={eventsCreatedByUser} />) : ''}
+
+                <h3 className="mini-title">Events I organized:</h3>
+
+                {eventsCreatedByUser ? (
+                  <UserActivityList
+                  activities={eventsCreatedByUser}
+                  user={currUser}
+                  onRemove={this.onRemove}
+                  onRemoveFromList={this.onRemoveFromList}
+                  madeOfOperation={"organizer"}
+                  />
+                  ) : (null)}
+
+              </div>
+              <div className="main-info-container">
+                <h3 className="mini-title">Events I{`'`}m going to:</h3>
+                {partOfEvents ? (
+                  <UserActivityList
+                    activities={partOfEvents}
+                    user={currUser}
+                    onRemove={this.onRemove}
+                    onRemoveFromList={this.onRemoveFromList}
+                    madeOfOperation={"subscriber"}
+                  />
+                ) : (
+                    ""
+                  )}
+              </div>
+            </div>
+            <div className="flex column tac">
+
 
             </div>
-        )
-    }
+        </div>
+      </div>
+    );
+  }
 }
-const mapStateToProps = state => {
-
-    return {
-        activities: state.activityReducer.activities,
-        user: state.userReducer.loggedinUser
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    activities: state.activityReducer.activities,
+    user: state.userReducer.loggedInUser,
+  };
+};
 
 const mapDispatchToProps = {
-    loadActivities
-}
+  loadActivities,
+  saveActivity,
+  updateUser,
+  removeActivity
+};
 
-export const UserDetails = connect(mapStateToProps, mapDispatchToProps)(_UserDetails)
+export const UserDetails = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_UserDetails);

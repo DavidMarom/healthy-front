@@ -2,7 +2,16 @@
 @import "suggested.css";
 @import "event.css";
 @import "main-header.css";
+@import "form-edit.css";
 @import "layout.css";
+@import "activity-container.css";
+@import "profile.css";
+@import "ui.css";
+@import "articles.css";
+@import "dashboard.css";
+@import "footer.css";
+@import "card.css";
+
 
 
 * {
@@ -23,6 +32,11 @@ button {
 }
 
 /* helpers */
+
+.green{
+    color:#43c155;
+    display: inline;
+}
 
 /* flex */
 
@@ -50,19 +64,20 @@ button {
     align-items: center;
 }
 
+.asc{
+    align-self: center;
+}
+
+.loader{
+   margin: 50px auto;
+    max-width:100px;
+    max-height: 100px;
+}
+
 /* list */
 
 .clean-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-.img-edit{
-    width: 200px;
-    height: 200px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding:8px;
 }

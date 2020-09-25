@@ -30,18 +30,38 @@
   }
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-}
-
 .footer {
-margin-top: 50px;
+  margin-top: 50px;
   background-color: #f7f7f7;
   height: 400px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   border-top: 1px solid #dddddd;
+}
+
+.main-container-home {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.main-container-activities {
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
+@media (max-width: 1675px) {
+  .main-container-home {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+}
+
+@media (max-width: 1245px) {
+  .main-container-activities {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
 }

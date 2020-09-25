@@ -8,22 +8,19 @@ export const activityService = {
   update,
   // add
   save,
-  addRate
+  addRate,
+  getCreatedEvents,
+  getPartOfEvents,
+  findIdxById
 
 }
 
 function query(filterBy = {}) {
-  // var queryStr
-  // if (!filterBy.name && !filterBy.type) {
-  //   return httpService.get('activity')
-  // }
-  // var queryStr = `?name=${filterBy.name}&type=${filterBy.type}`;
-  // return httpService.get(`activity/${queryStr}`);
-
-  return httpService.get(`activity`);
+  const queryStr = Object.keys(filterBy).map((key)=>{
+    return `${key}=${filterBy[key]}`
+  }).join('&');
+  return httpService.get(`activity/?${queryStr}`);
 }
-
-
 
 function getById(activityId) {
   return httpService.get(`activity/${activityId}`);
@@ -38,10 +35,10 @@ function update(activity) {
   return httpService.put(`activity/${activity._id}`, activity)
 }
 
-async function add(activity) {
-  const addedActivity = await httpService.post('activity/', activity);
-  return addedActivity
-}
+// async function add(activity) {
+//   const addedActivity = await httpService.post('activity/', activity);
+//   return addedActivity
+// }
 
 async function save(activity) {
   if (activity._id) {
@@ -59,15 +56,42 @@ function addRate(activity, rate) {
   }
 }
 
-
 function getEmpty() {
   return {
-    imgUrl: "",
     title: "",
     createdAt: "",
     description: "",
-    address: "",
-    price: ""
+    location:{
+      address: ""
+    },
+    imgUrls:[],
+    participants:[],
+    tags:[],
+    rate:[0],
+    reviews:[],
+    msgs:[]
   }
 }
+
+
+function getCreatedEvents(activities, currUser) {
+  if (!activities) return null;
+  return activities.filter(activity => activity.createdBy._id === currUser._id)
+}
+
+function getPartOfEvents(activities, currUser) {
+  if (!activities) return null;
+  var act = [];
+  activities.forEach(activity => {
+    activity.participants.forEach(user => {
+      if (user._id === currUser._id) act.push(activity)
+    })
+  })
+  return act;
+}
+
+function findIdxById(arr, id){
+    return arr.findIndex(item=> item._id === id)
+}
+
 

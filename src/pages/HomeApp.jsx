@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 
 import { Jumbo } from "../cmps/Jumbo"
 import { Suggested } from "../cmps/Suggested"
+import { Articles } from "../cmps/Articles"
+
 import eventBus from '../services/event-bus-service.js'
 import { setSearchBy } from '../store/actions/activityActions.js'
 
 export class _HomeApp extends Component {
-
 
   componentDidMount() {
     eventBus.emit('homePage')
@@ -15,24 +16,24 @@ export class _HomeApp extends Component {
 
   componentWillUnmount() {
     eventBus.emit('out of homePage')
-}
+  }
 
   render() {
     return (
       <section>
         <Jumbo />
-        <div className="sugg-container-wrap">
+        <div className="main-container-home">
           <Suggested />
+          <Articles />
         </div>
       </section>
     );
   }
 }
 
-
 const mapStateToProps = state => {
   return {
-      searchBy: state.activityReducer.searchBy
+    searchBy: state.activityReducer.searchBy
   }
 }
 

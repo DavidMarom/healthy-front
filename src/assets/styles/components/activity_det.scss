@@ -3,10 +3,9 @@
   flex-direction: column;
   // margin: 1rem 24.5rem auto;
   margin-left: auto;
-  margin-right:auto;
+  margin-right: auto;
   max-width: 1120px;
-  margin-top: 30px;
-
+  margin-top: 85px;
 
   .image-gallery {
     margin: 2rem 0 2rem 0;
@@ -59,7 +58,7 @@
 }
 
 .main-info-container {
-  background-color: $clr1;
+  background-color: #ffffff;
   z-index: 0;
   &hr {
     border: 3px solid black;
@@ -133,8 +132,66 @@
 }
 
 .attending-img {
-  max-width: 40px;
-  max-height: 40px;
+  // height: 100%;
+  // width: 100%;
+  max-width: 35px;
+  max-height: 35px;
   border-radius: 50px;
-  padding-right: 4px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.sold-out-btn {
+  background-color: #fbff00;
+  border-radius: 10px;
+  border: 1px solid #dda938;
+  color: #000000;
+  height: 50px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: x-large;
+  font-family: "Varela Round", sans-serif;
+  cursor: not-allowed;
+}
+
+//Reviews:
+
+.review-container {
+  margin-top: rem(70px);
+  background-color: rgba(255, 255, 255, 0.952);
+  margin-bottom: rem(50px);
+}
+
+.review-add {
+  padding: 10px 7px 20px 15px;
+  margin-bottom: rem(40px);
+  border: 0.3px solid #43c155;
+  border-radius: 4px;
+}
+
+.review-rate {
+  height: rem(45px);
+}
+.MuiBox-root-2 {
+  margin: 0;
+}
+
+.p-rate {
+  margin-top: 6px;
+  font-weight: 500;
+}
+.rev-txt {
+  padding: 0 0 rem(10px) rem(50px);
+  border-bottom: 1px solid #ccc;
+  margin-bottom: rem(10px);
+}
+
+.review-input {
+  width: 93%;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #909090;
+  margin-top: 10px;
+  font-size: 14pt;
 }
