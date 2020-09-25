@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 // import { activityService } from '../../services/activityService'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 class _UserActivityPreview extends Component {
 
     state = {
+        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         pin: false,
         sign: '+'
     }
@@ -14,43 +15,6 @@ class _UserActivityPreview extends Component {
     componentDidMount() {
         let { activity, user, madeOfOperation, onRemove, onRemoveFromList } = this.props;
         this.setState({ activity: activity })
-    }
-    
-    renderDay = (value) => {
-        let res = "";
-        switch (value) {
-            case 1:
-                res = "Sunday";
-                break;
-
-            case 2:
-                res = "Monday";
-                break;
-
-            case 3:
-                res = "Tuesday";
-                break;
-
-            case 4:
-                res = "wednesday";
-                break;
-
-            case 5:
-                res = "Thursday";
-                break;
-
-            case 6:
-                res = "Friday";
-                break;
-
-            case 7:
-                res = "Saturday";
-                break;
-
-            default:
-                break;
-        }
-        return res;
     }
 
     showActivityDetails = (ev) => {
@@ -84,43 +48,46 @@ class _UserActivityPreview extends Component {
 
 
                             <div className="day-time flex column">
-                                <div>{`${this.renderDay(activity.dayInWeek)}`}</div>
-                                <div>{`${activity.hour}:00`}</div>
+                                <p>
+                                    {this.state.days[activity.dayInWeek]} - {activity.hour}:00
+                               </p>
                             </div>
 
                             <div className="just-row">
-                                {(madeOfOperation === 'organizer') ? (<Link to={`/activity/edit/${activity._id}`}><i className=" dash-btn fas fa-user-cog nav-override-color"></i></Link>) : ''}
+                                {(madeOfOperation === 'organizer') ? (<div onClick={()=> this.props.history.push(`/activity/edit/${activity._id}`)}><i className=" dash-btn fas fa-user-cog nav-override-color"></i></div>) : ''}
                                 <div className="pad-10"></div>
                                 {(madeOfOperation === 'organizer') ? (<button className="dash-btn" onClick={(ev) => onRemove(ev, activity._id)}><i className="far fa-trash-alt"></i></button>) : ''}
-                                {(madeOfOperation === 'subscriber') ?(<Button variant="outlined" onClick={(ev) => onRemoveFromList(ev, activity, user)}>Unsubscribe</Button>) : ''}
+                                {(madeOfOperation === 'subscriber') ? (<Button variant="outlined" onClick={(ev) => onRemoveFromList(ev, activity, user)}>Unsubscribe</Button>) : ''}
                             </div>
 
 
 
                             <div className="dash-right">
                                 {(madeOfOperation === 'organizer') ? (
-                                <button className="dash-btn" onClick={(ev) => this.showActivityDetails(ev)}>{this.state.sign}</button>):''}
+                                    <button className="dash-btn" onClick={(ev) => this.showActivityDetails(ev)}>{this.state.sign}</button>) : ''}
                             </div>
                         </div>
 
                         <div className={`${this.state.pin ? "pin-on" : "pin-off"}`}>
-                            {(madeOfOperation === 'organizer') && (
-                                activity.participants.map((participant, idx) => {
-                                    return (
-                                        <div className="participant-info cp-unique" key={idx}>
-                                            <div onClick={(ev) => {
-                                                ev.stopPropagation()
-                                                this.props.history.push(`/user/${participant._id}`)
-                                            }}>
-                                                <div className="dash-attendie">
-                                                    <div className="attendie-cell">
-                                                        <div><img className="attending-img" src={participant.imgUrl} alt="" /></div>
-                                                        <div className=".nav-override-color">{participant.fullName}</div>
+                            <div className="grid-participants-info">
+                                {(madeOfOperation === 'organizer') && (
+                                    activity.participants.map((participant, idx) => {
+                                        return (
+                                            <div className="participant-info cp-unique" key={idx}>
+                                                <div onClick={(ev) => {
+                                                    ev.stopPropagation()
+                                                    this.props.history.push(`/user/${participant._id}`)
+                                                }}>
+                                                    <div className="dash-attendie">
+                                                        <div className="attendie-cell">
+                                                            <div><img className="attending-img" src={participant.imgUrl} alt="" /></div>
+                                                            <div className=".nav-override-color">{participant.fullName}</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>)
-                                }))}
+                                            </div>)
+                                    }))}
+                            </div>
                         </div>
                     </div>
                 </div>

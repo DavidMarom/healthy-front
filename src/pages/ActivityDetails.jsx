@@ -133,7 +133,7 @@ export class _ActivityDetails extends Component {
                 <i className="far fa-calendar-alt fa-lg"></i>
               </div>
               <p>
-                {this.state.days[activity.dayInWeek + 1]} - {activity.hour}:00
+                {this.state.days[activity.dayInWeek]} - {activity.hour}:00
               </p>
               <h5>{activity.location.address}</h5>
             </div>
