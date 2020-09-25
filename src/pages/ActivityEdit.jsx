@@ -92,7 +92,7 @@ class _ActivityEdit extends Component {
         const { activity } = this.state;
         const { days } = this.state;
         const { hours } = this.state;
-        if (!Object.keys(activity).length) return <h1>Loading...</h1>
+        if (!Object.keys(activity).length) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
         return (
 
             <section className="main-container">

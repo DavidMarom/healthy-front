@@ -68,6 +68,12 @@ button {
     align-self: center;
 }
 
+.loader{
+   margin: 50px auto;
+    max-width:100px;
+    max-height: 100px;
+}
+
 /* list */
 
 .clean-list {

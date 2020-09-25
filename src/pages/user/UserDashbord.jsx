@@ -17,7 +17,7 @@ export class UserDashbord extends Component {
 
     render() {
         const { user } = this.state;
-        if(!user) return <div>loading</div>
+        if(!user) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
         return (
             <div className="flex mt50 sb column mb50 dash">
                 <div className="flex dashbord-info fs24 column">

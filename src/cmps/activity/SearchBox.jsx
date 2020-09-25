@@ -14,6 +14,7 @@ export class _SearchBox extends Component {
     
    
     componentDidMount() {
+
      const searchBy = new URLSearchParams(this.props.location.search).get('title') || ''
      this.setState({ searchBy:{title:searchBy} }, () => this.props.setSearchBy(this.state.searchBy))
     }

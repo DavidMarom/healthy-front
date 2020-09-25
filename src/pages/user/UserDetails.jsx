@@ -71,12 +71,11 @@ export class _UserDetails extends Component {
     let { activities } = this.props;
     if (!Object.keys(activities).length) activities = null;
     const { currUser } = this.state;
-    if (!currUser) return <div>loading..</div>;
+    if (!currUser) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
     let eventsCreatedByUser = this.onGetCreatedEvents(activities, currUser);
     let partOfEvents = this.onGetPartOfEvents(activities, currUser);
     return (
       <div className="main-user-container">
-
         <div className="profile-top-bar">
 
           <div className="profile-bar-left">
