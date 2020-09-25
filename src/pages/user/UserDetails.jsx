@@ -24,8 +24,17 @@ export class _UserDetails extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0,0);
     this.loadUser()
   }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.match.params.userId) return;
+    if (prevProps.match.params.userId !== this.props.match.params.userId) {
+      this.loadUser()
+      window.scrollTo(0,0);
+    }    
+}
 
   loadUser = () => {
     const { userId } = this.props.match.params;
