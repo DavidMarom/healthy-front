@@ -9,9 +9,9 @@ import { Chat } from "../cmps/Chat";
 
 import SimpleMap from "../cmps/Map";
 
-import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+
+
+
 import { TheatersRounded } from "@material-ui/icons";
 
 export class _ActivityDetails extends Component {
@@ -21,7 +21,7 @@ export class _ActivityDetails extends Component {
     // activity: null,
     user: userService.guestMode(),
     // avgRate: null,
-    rateType: "simple-controlled"
+    
   };
 
   componentDidMount() {
@@ -64,10 +64,7 @@ export class _ActivityDetails extends Component {
     }
   }
 
-  onRate = (activity, rate) => {
-    activityService.addRate(activity, rate);
-    this.setState({ rateType: "read-only" });
-  };
+ 
 
   render() {
     const { activity, user } = this.props;
@@ -139,25 +136,9 @@ export class _ActivityDetails extends Component {
             <div className="divider d-hi"></div>
 
             <div className=".event-buy">
-              <div className="center">
-                <p>Rate this event:</p>
-              </div>
-              <div className="center">
-                <Box component="fieldset" mb={3} borderColor="transparent">
-                  <Typography component="legend"></Typography>
-                  <Rating
-                    name={this.state.rateType}
-                    value= {rate}
-                    onChange={(event, newValue) => {
-                      this.onRate(activity, newValue);
-                    }}
-                  />
-                </Box>
-              </div>
-
               {/* <div className="divider d-hi"></div> */}
 
-              <Reviews activity={activity} user={this.state.user} />
+              <Reviews activity={activity} user={this.state.user} rate={rate} />
 
             </div>
           </div>
