@@ -51,7 +51,6 @@ class _PieChart extends Component {
         let incomeFromEvent = this.onGetIncomeFromEvent(eventsCreatedByUser)
         let income = this.onGetIncome(incomeFromEvent)
         if (income !== user.income) user.income = income;
-        incomeFromEvent.map(income=> '$'+income)
 
         let bgc = [];
         let bgcHover = [];
@@ -65,22 +64,31 @@ class _PieChart extends Component {
             datasets: [{
                 data: incomeFromEvent,
                 backgroundColor: [...bgc],
-                hoverBackgroundColor: [...bgcHover]
+                hoverBackgroundColor: [...bgcHover],
             }],
             labels: titles
+
         };
         return (
             <div>
-                <h3 className="tac">Income By Events</h3>
+                <h3 className="tac">Events Income (%)</h3>
                 <Pie
                     data={data}
                     options={{
                         maintainAspectRatio: false,
                         pieceLabel: {
-                            render: 'value',
-                            fontSize: 14,
+                            render: '$' + 'value',
+                            fontSize: 18,
                             fontStyle: 'bold',
                             fontColor: '#000'
+                        },
+                        legend: {
+                            label: {
+                                font:{
+                                fontColor: "#024000",
+                                defaultFontSize: 18
+                                }
+                            }
                         }
                     }
                     }

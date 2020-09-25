@@ -4,6 +4,7 @@ import { Bar } from 'react-chartjs-2';
 import { loadActivities } from '../../store/actions/activityActions.js';
 import { chartService } from '../../services/chartService.js';
 import { activityService } from '../../services/activityService.js';
+import { blueGrey } from '@material-ui/core/colors';
 
 
 class _BarChart extends Component {
@@ -66,7 +67,6 @@ class _BarChart extends Component {
             ]
         };
 
-
         return (
             <div>
                 <h3 className="tac">Number of Participants Per Event</h3>
@@ -77,7 +77,13 @@ class _BarChart extends Component {
                     options={{
                         scales: {
                             xAxes: [{
-                                stacked: true
+                                stacked: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Events',
+                                    fontSize: 16,
+                                    fontColor: '#62cb66'
+                                }
                             }],
                             yAxes: [{
                                 ticks: {
@@ -85,10 +91,18 @@ class _BarChart extends Component {
                                     min: 0,
                                     max: maxCapacity
                                 },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Participants in number',
+                                    fontSize: 16,
+                                    fontColor: '#62cb66'
+                                },
                                 stacked: true
-                            }]
-                        }
-                        // maintainAspectRatio: false
+                            }],
+                        },
+                        tooltips: {
+                            "enabled": false
+                          },
                     }}
                 />
             </div>
