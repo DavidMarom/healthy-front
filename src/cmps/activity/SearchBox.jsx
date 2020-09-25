@@ -36,8 +36,16 @@ export class _SearchBox extends Component {
         const cssClass = this.props.cssClass
         return (
             <div className={cssClass}>
-                <input className="search-input" autoComplete= "off" name="title" type="text" value={this.state.searchBy.title} onChange={this.handleChange} 
-                placeholder={`Find activity that you like (food${'&'}nutrition, lectures, sports groups atc.)`} />
+                <input 
+                  className="search-input" 
+                  autoComplete= "off" 
+                  name="title" 
+                  type="text" 
+                  value={this.state.searchBy.title}
+                  onChange={this.handleChange} 
+                  placeholder={`Find activity that you like (food${'&'}nutrition, lectures, sports groups atc.)`}
+                  onKeyDown={e => (e.key === 'Enter') && this.onClickSearchButton() }
+                />
                 <div className="search-btn" onClick={this.onClickSearchButton}>
                     <i className="fas fa-search"></i>
                 </div>
@@ -55,4 +63,5 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     setSearchBy
 }
+
 export const SearchBox = connect(mapStateToProps, mapDispatchToProps)(withRouter(_SearchBox))

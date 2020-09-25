@@ -16,7 +16,7 @@ class _ActivityApp extends Component {
         const queryParam = new URLSearchParams(this.props.location.search)
         searchBy.title = queryParam.get('title')
         searchBy.tags = queryParam.get('tag')
-        this.props.loadActivities(searchBy);    
+        this.props.loadActivities(searchBy);
     }
 
     componentDidUpdate(prevProps) {
