@@ -20,7 +20,7 @@ export class ActivityFilter extends Component {
                 <button className="chat-button pad-r-10 f-20" value='Yoga' onClick={(e) => this.setFilterBy(e, 'value')}>Yoga</button>
                 <button className="chat-button pad-r-10 f-20" value='Nutrition' onClick={(e) => this.setFilterBy(e, 'value')}>Nutrition</button>
                 <button className="chat-button pad-r-10 f-20" value='Advanced' onClick={(e) => this.setFilterBy(e, 'value')}>Advanced</button>
-                <button className="chat-button pad-r-10 f-20" value='Begieners' onClick={(e) => this.setFilterBy(e, 'value')}>Begieners</button>
+                <button className="chat-button pad-r-10 f-20" value='Begieners' onClick={(e) => this.setFilterBy(e, 'value')}>Beginners</button>
                 <button className="chat-button pad-r-10 f-20" value='WellBeing' onClick={(e) => this.setFilterBy(e, 'value')}>Well Being</button>
                 <button className="chat-button pad-r-10 f-20" value='mindfullness' onClick={(e) => this.setFilterBy(e, 'value')}>mindfullness</button>
                 <button className="chat-button pad-r-40 f-20" value='TelAviv' onClick={(e) => this.setFilterBy(e, 'value')}>Tel Aviv</button>

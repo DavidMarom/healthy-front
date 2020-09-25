@@ -41,7 +41,7 @@ export class ActivityPreview extends Component {
                 </div>
 
                 <div className="just-row align-center">
-                  <div className="pad-r-10"><i className="fas fa-user-friends inline"></i></div>
+                  <div className="pad-r-10-card"><i className="fas fa-user-friends inline"></i></div>
                   <div className="font-small">{activity.participants.length}{'/'}{activity.maxCapacity}</div>
                 </div>
 
