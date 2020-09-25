@@ -16,6 +16,7 @@ export const activityService = {
 }
 
 function query(filterBy = {}) {
+  console.log('filterBy-', filterBy);
   const queryStr = Object.keys(filterBy).map((key)=>{
     return `${key}=${filterBy[key]}`
   }).join('&');

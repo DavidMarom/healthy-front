@@ -27,17 +27,17 @@ export class _UserDetails extends Component {
     this.loadUser()
   }
 
-  componentDidUpdate(prevProps) {
-    console.log('inside', prevProps);
-    if (this.props.match.params.userId !== prevProps.match.params.userId) this.loadUser()
-  }
+  // componentDidUpdate(prevProps) {
+  //   console.log('inside', prevProps);
+  //   if (this.props.match.params.userId !== prevProps.match.params.userId) this.loadUser()
+  // }
 
   loadUser = () => {
     const { userId } = this.props.match.params;
     console.log(userId);
     if (userId) {
       userService.getById(userId)
-        .then(user => this.setState({ currUser: user }, () => this.props.loadActivities(this.state.currUser._id)))
+        .then(user => this.setState({ currUser: user }, () => this.props.loadActivities()))
     }
   }
 
