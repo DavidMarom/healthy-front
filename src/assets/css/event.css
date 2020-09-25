@@ -46,9 +46,18 @@
     justify-content: space-between;
 }
 
+
 .green-star {
     display: inline;
     color: #42c054;
+}
+
+.moneyback{
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    align-self: center;
+    justify-content: center;
 }
 
 .moneyback i {
