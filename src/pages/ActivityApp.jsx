@@ -12,7 +12,6 @@ class _ActivityApp extends Component {
     }
     componentDidMount() {
         window.scrollTo(0,0);
-        const queryParams = this.props.location.search
         const searchBy = {}
         const queryParam = new URLSearchParams(this.props.location.search)
         searchBy.title = queryParam.get('title')
