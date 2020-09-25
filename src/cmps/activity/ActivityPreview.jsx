@@ -29,24 +29,31 @@ export class ActivityPreview extends Component {
             <img className="img-fit" src={activity.imgUrls[0]} alt="" />
           </div>
 
-          <div className="card-text ">
-            <div className="card-text-row">
-              <div className="rate-display">
-                <div><div className="green-star">★ </div>{avg}{` (`}{activity.rate.length}{`)`}</div>
-              </div>
+          <div className="card-text">
+            <div className="rate-space-title">
+              <div className="card-text-row">
+                <div className="rate-display">
 
-              
+                  <div>
+                    <div className="green-star">★ </div>
+                    {avg}{` (`}{activity.rate.length}{`)`}
+                  </div>
+                </div>
+
                 <div className="just-row align-center">
                   <div className="pad-r-10"><i className="fas fa-user-friends inline"></i></div>
                   <div className="font-small">{activity.participants.length}{'/'}{activity.maxCapacity}</div>
                 </div>
 
-            </div>
-           
-            <div className="flex column">
-              <div className="green">{activity.title}</div>
-              <div>{activity.subtitle}</div>
-              <div className="add-20"></div>
+
+
+              </div>
+              <div className="v-space2"></div>
+              <div className="flex column">
+                <div className="green">{activity.title}</div>
+                <div>{activity.subtitle}</div>
+                <div className="add-20"></div>
+              </div>
             </div>
 
             <div className="card-text-row">
