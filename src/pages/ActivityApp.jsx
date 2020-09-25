@@ -79,7 +79,7 @@ class _ActivityApp extends Component {
         if (!activities) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
         return (
 
-            <div className="activity-app main-container marg-top-50">
+            <div className="main-container-activities marg-top-50">
                 <div className="filter">
                     <ActivityFilter onSetFilter={this.onSetFilter} dummySortByDays={this.dummySortByDays} />
                 </div>
