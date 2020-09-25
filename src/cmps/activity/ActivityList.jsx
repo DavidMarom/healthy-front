@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from '../Card.jsx'
+import { ActivityPreview } from './ActivityPreview'
 
 export function ActivityList({ activities }) {
   return (
@@ -7,7 +7,7 @@ export function ActivityList({ activities }) {
       {
         activities.map((activity) => (
           
-          <Card activity={activity} rate={activity.rate} key={activity._id} />
+          <ActivityPreview activity={activity} rate={activity.rate} key={activity._id} />
         ))
       }
     </div>
