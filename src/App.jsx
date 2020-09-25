@@ -3,11 +3,15 @@ import { Switch, Route } from 'react-router-dom';
 import routes from './routes.js'
 import {Header} from './cmps/Header.jsx'
 import {Footer} from './cmps/Footer.jsx'
+import {withRouter} from 'react-router'
 
-export function App() {
+const App = (props) => {
+  const isHomepage = props.location.pathname === "/";
+
   return (
+  
     <div className="App">
-      <Header />
+      <Header isHomepage={isHomepage}/>
       <div className="marg-top-80"></div>
 
       <Switch>
@@ -16,4 +20,6 @@ export function App() {
       <Footer />
     </div>
   );
-}
+};
+
+export default withRouter(App);

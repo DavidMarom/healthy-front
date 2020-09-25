@@ -4,8 +4,6 @@ const initialState = {
     searchBy:{
         title:''
     }
-        
-    
 }
 
 export function activityReducer(state = initialState, action) {

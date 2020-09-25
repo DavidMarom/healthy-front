@@ -6,15 +6,15 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 
 import { store } from './store/store';
-import {App} from './App';
+import App from './App';
 
 import './assets/css/main.css'
 import './assets/styles/global.scss'
 
 ReactDOM.render(
   <React.StrictMode>
-     <Provider store={ store }>
-     <Router>
+      <Provider store={ store }>
+      <Router>
     <App />
     </Router>
     </Provider>

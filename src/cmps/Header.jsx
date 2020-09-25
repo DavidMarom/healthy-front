@@ -4,31 +4,8 @@ import { connect } from 'react-redux'
 
 import { logout, login } from '../store/actions/userActions.js';
 import { SearchBox } from "./activity/SearchBox.jsx";
-import eventBus from "../services/event-bus-service.js";
 
 export class _Header extends Component {
-  state = {
-    isHomePage: false,
-  };
-
-  unsubscribeHome;
-  unsubscribeOutOfHome;
-
-  componentDidMount() {
-    this.unsubscribeHome = eventBus.on("homePage", () => {
-      this.setState({ isHomePage: true });
-    });
-
-    this.unsubscribeOutOfHome = eventBus.on("out of homePage", () => {
-      this.setState({ isHomePage: false });
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeHome();
-    this.unsubscribeOutOfHome();
-  }
-
   openGuestMode = (ev) => {
     ev.preventDefault();
     const guest = {
@@ -40,8 +17,8 @@ export class _Header extends Component {
   }
 
   render() {
-    const { isHomePage } = this.state;
-    const user = this.props.user;
+    const { isHomepage, user } = this.props;
+
     return (
       <div className="main-header-wrapper">
         <header className="main-header">
@@ -55,7 +32,7 @@ export class _Header extends Component {
             </div>
           </div>
 
-          {!isHomePage && <SearchBox cssClass={"header-search"} />}
+          {!isHomepage && <SearchBox cssClass={"header-search"} />}
 
           {(!user) ? (
             <div className="right-end">
