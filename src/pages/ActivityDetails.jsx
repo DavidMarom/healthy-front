@@ -43,9 +43,26 @@ export class _ActivityDetails extends Component {
     if (activityId) this.props.loadActivity(activityId);
   }
 
+  addReview = (ev) => {
+    ev.preventDefault();
+    var newActivity = this.state.activity;
+    const tmpReview = {
+      "id": Date.now(),
+      "txt": this.state.txt,
+      "rate": (this.state.rateAddByUser || 5),
+      "by": this.props.user
+    }
+    this.setState({ txt: '' })
+    this.setState({ activity: newActivity })
+    newActivity.reviews.push(tmpReview);
+    // activityService.update(newActivity);
+    this.props.saveActivity(newActivity);
+  }
+
   calcAvgRate = () => {
     let tempSum = 0;
-    const rates = this.props.activity.rate;
+    const rates = this.props.activity.reviews.map(review=> review.rate);
+    console.log(rates);
     tempSum = rates.reduce(function (acc, val) {
       return acc + val
     }, 0);
@@ -138,7 +155,7 @@ export class _ActivityDetails extends Component {
             <div className=".event-buy">
               {/* <div className="divider d-hi"></div> */}
 
-              <Reviews activity={activity} user={this.state.user} rate={rate} />
+              <Reviews activity={activity} user={this.state.user} rate={rate} addReview={this.addReview} />
 
             </div>
           </div>

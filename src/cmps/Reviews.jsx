@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { activityService } from "../services/activityService"
+import { activityService} from "../services/activityService"
+import { saveActivity } from '../store/actions/activityActions.js'
 import Box from "@material-ui/core/Box";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
@@ -30,20 +31,21 @@ export class Reviews extends Component {
     this.setState({ rateType: "read-only", rateAddByUser: rate });
   };
 
-  addReview = (ev) => {
-    ev.preventDefault();
-    var newActivity = this.state.activity;
-    const tmpReview = {
-      "id": Date.now(),
-      "txt": this.state.txt,
-      "rate": (this.state.rateAddByUser || 5),
-      "by": this.props.user
-    }
-    this.setState({ txt: '' })
-    this.setState({ activity: newActivity })
-    newActivity.reviews.push(tmpReview);
-    activityService.update(newActivity);
-  }
+  // addReview = (ev) => {
+  //   ev.preventDefault();
+  //   var newActivity = this.state.activity;
+  //   const tmpReview = {
+  //     "id": Date.now(),
+  //     "txt": this.state.txt,
+  //     "rate": (this.state.rateAddByUser || 5),
+  //     "by": this.props.user
+  //   }
+  //   this.setState({ txt: '' })
+  //   this.setState({ activity: newActivity })
+  //   newActivity.reviews.push(tmpReview);
+  //   // activityService.update(newActivity);
+  //   this.props.saveActivity(activity);
+  // }
 
   render() {
     if (!this.state.activity) return <h2>Loading..</h2>;
@@ -67,7 +69,7 @@ export class Reviews extends Component {
               </Box>
            
           </div>
-          <form onSubmit={this.addReview}>
+          <form onSubmit={()=>this.props.addReview()}>
             <input
               className="review-input"
               value={this.state.txt}
