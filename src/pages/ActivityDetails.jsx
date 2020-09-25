@@ -18,10 +18,8 @@ export class _ActivityDetails extends Component {
 
   state = {
     days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    // activity: null,
     user: userService.guestMode(),
-    // avgRate: null,
-    
+    rateAddByUser: null
   };
 
   componentDidMount() {
@@ -43,30 +41,31 @@ export class _ActivityDetails extends Component {
     if (activityId) this.props.loadActivity(activityId);
   }
 
-  addReview = (ev) => {
-    ev.preventDefault();
-    var newActivity = this.state.activity;
+  addReview = (txt) => {
+    var newActivity = this.props.activity;
     const tmpReview = {
       "id": Date.now(),
-      "txt": this.state.txt,
+      "txt": txt,
       "rate": (this.state.rateAddByUser || 5),
       "by": this.props.user
     }
     this.setState({ txt: '' })
     this.setState({ activity: newActivity })
     newActivity.reviews.push(tmpReview);
-    // activityService.update(newActivity);
     this.props.saveActivity(newActivity);
   }
 
+  onRate = (rate) => {
+    this.setState({ rateType: "read-only", rateAddByUser: rate });
+  };
+
   calcAvgRate = () => {
     let tempSum = 0;
-    const rates = this.props.activity.reviews.map(review=> review.rate);
-    console.log(rates);
+    const rates = this.props.activity.reviews.map(review => review.rate);
     tempSum = rates.reduce(function (acc, val) {
       return acc + val
     }, 0);
-    return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2)); 
+    return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2));
   }
 
 
@@ -81,13 +80,13 @@ export class _ActivityDetails extends Component {
     }
   }
 
- 
+
 
   render() {
     const { activity, user } = this.props;
     if (!activity) return <h2 className="center marg-top-50">Loading...</h2>; //mt50
     let rate = this.calcAvgRate();
-    rate= parseFloat(rate);
+    rate = parseFloat(rate);
     return (
       <div className="main-details-card">
         <h2 className="f20 title">{activity.title}</h2>
@@ -152,13 +151,17 @@ export class _ActivityDetails extends Component {
             </div>
             <div className="divider d-hi"></div>
 
-            <div className=".event-buy">
-              {/* <div className="divider d-hi"></div> */}
-
-              <Reviews activity={activity} user={this.state.user} rate={rate} addReview={this.addReview} />
-
-            </div>
+            {(activity._id === this.props.match.params.activityId) ? (
+              <div className=".event-buy">
+                <Reviews activity={activity}
+                  rate={rate}
+                  addReview={this.addReview}
+                  onRate={this.onRate}
+                  rateAddByUser={this.state.rateAddByUser} />
+              </div>
+            ) : ''}
           </div>
+
 
           {/* RIGHT SIDE */}
           <div className="event-right-side">

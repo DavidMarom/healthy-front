@@ -2,7 +2,6 @@ import {userService} from '../../services/userService';
 import { loading, doneLoading } from './systemActions';
 
 export function updateUser(user) {
-  console.log('user 26-', user);
   return async dispatch => {
      const _user = await userService.update(user);
       dispatch({ type: 'UPDATE_USER', _user })
