@@ -161,18 +161,23 @@
   margin-top: rem(70px);
   background-color: rgba(255, 255, 255, 0.952);
   margin-bottom: rem(50px);
-
- 
 }
 
-.review-add{
-margin-bottom: rem(50px);
+.review-add {
+  padding: 10px 7px 20px 15px;
+  margin-bottom: rem(40px);
+  border: 0.3px solid #43c155;
+  border-radius: 4px;
 }
-.MuiBox-root-2{
+
+.review-rate {
+  height: rem(45px);
+}
+.MuiBox-root-2 {
   margin: 0;
 }
 
-.p-rate{
+.p-rate {
   margin-top: 6px;
   font-weight: 500;
 }
@@ -182,9 +187,8 @@ margin-bottom: rem(50px);
   margin-bottom: rem(10px);
 }
 
-
 .review-input {
-  width: 94%;
+  width: 93%;
   outline: 0;
   border-width: 0 0 1px;
   border-color: #909090;

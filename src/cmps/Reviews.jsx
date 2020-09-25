@@ -52,7 +52,7 @@ export class Reviews extends Component {
       <section className="review-container">
         <h2> Reviews</h2>
         <div className="review-add">
-          <div className="flex">
+          <div className="flex review-rate">
             <p className="p-rate">Rate {'&'}review:</p>
             
               <Box component="fieldset" mb={3} borderColor="transparent">
