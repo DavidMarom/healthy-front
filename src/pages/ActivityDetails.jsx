@@ -24,10 +24,7 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
-     // console.log(this.props);
     window.addEventListener('scroll', (event) => {
-      console.log(window.scrollY);
-      console.log(this.state.isButtom);
       if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true },()=>console.log(this.state.isButtom))
       else if (window.scrollY < 1030 && this.state.isButtom) this.setState({ isButtom: false })
     })
