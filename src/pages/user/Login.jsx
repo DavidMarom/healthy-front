@@ -70,7 +70,7 @@ class _Login extends Component {
     let loginSection = (
       <form className="main-container" onSubmit={this.doLogin}>
         <div className="login tac">
-          <input className="fs20 p10 m10 pn"
+          <input className="login-input"
             type="text"
             name="email"
             autoComplete="off"
@@ -79,7 +79,7 @@ class _Login extends Component {
             placeholder="Email"
         />
         <br />
-          <input className="fs20 p10 m10 pn"
+          <input className="login-input"
             type="password"
             name="password"
             autoComplete="off"
@@ -88,7 +88,7 @@ class _Login extends Component {
             placeholder="Password"
           />
           <br />
-          <button className="fs20 p10 m10 pn">Login</button>
+          <button className="login-btn">Login</button>
         </div>
       </form>
     );
@@ -97,7 +97,7 @@ class _Login extends Component {
     return (
       <div className="main-container">
         <div className="just-row flex justify-center">
-          <h1 className="tac">
+          <h1 className="tac marg-top-50">
             Login
         </h1>
         </div>
@@ -105,7 +105,7 @@ class _Login extends Component {
         {loggedInUser && (
           <div>
             <h2>Welcome: {loggedInUser.fullName} </h2>
-            <button onClick={this.props.logout}>Logout</button>
+            <button className="login-btn-small" onClick={this.props.logout}>Logout</button>
           </div>
         )}
         {!loggedInUser && loginSection}
@@ -127,7 +127,7 @@ class _Login extends Component {
           ))}
         </ul>}
         <div className="guest-mode flex justify-center">
-          <button className="fs20 p10 m10 pn tac " onClick={this.openGuestMode}>Demo Mode</button>
+          <button className="demo-mode-btn" onClick={this.openGuestMode}>Login using a demo user</button>
         </div>
       </div>
     );
