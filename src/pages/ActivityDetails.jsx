@@ -25,16 +25,11 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
-<<<<<<< HEAD
-    window.addEventListener('scroll', (event) => {
-      if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true },()=>console.log(this.state.isButtom))
-=======
     socketService.setup();
     window.addEventListener('scroll', (event) => {
       console.log(window.scrollY);
       console.log(this.state.isButtom);
       if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true }, () => console.log(this.state.isButtom))
->>>>>>> f034c06734fcfb523b97706c799e0a8895f289fb
       else if (window.scrollY < 1030 && this.state.isButtom) this.setState({ isButtom: false })
     })
     window.scrollTo(0, 0);
