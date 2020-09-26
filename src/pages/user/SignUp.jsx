@@ -72,7 +72,7 @@ class _SignUp extends Component {
         let signupSection = (
             <form onSubmit={this.doSignup}>
                 <input
-                className="fs20 p10 m10 pn"
+                    className="login-input"
                     type="text"
                     name="email"
                     value={this.state.signupCred.email}
@@ -81,7 +81,7 @@ class _SignUp extends Component {
                 />
                 <br />
                 <input
-                 className="fs20 p10 m10 pn"
+                    className="login-input"
                     name="password"
                     type="password"
                     value={this.state.signupCred.password}
@@ -90,34 +90,39 @@ class _SignUp extends Component {
                 />
                 <br />
                 <input
-                 className="fs20 p10 m10 pn"
+                    className="login-input"
                     type="text"
                     name="fullName"
                     value={this.state.signupCred.fullName}
                     onChange={this.signupHandleChange}
-                    placeholder="full name"
+                    placeholder="Full Name"
                 />
-                
+
                 <br />
-                <label for="file-upload" className="custom-file-upload">
-                    <h3 className="fs20 p10">Upload Image</h3>
-                    <input id= "file-upload" className="pn" onChange={(ev) => this.onUpdateImg(ev)} type="file" />
-                </label>
-                <h2 className="tac d-hi">Please choose your interests:</h2>
+                {/* <div className="upload-file"> */}
+                        <h3 className="fs20 p10 marg-top-50">Upload Photo</h3>
+                    <label for="file-upload" className="">
+                        <input id="file-upload" className="upload-file" onChange={(ev) => this.onUpdateImg(ev)} type="file" />
+                    </label>
+
+                    {/* style={{ visibility: 'hidden' */}
+
+                {/* </div> */}
+                <h2 className="tac d-hi">Let us know what you're into!</h2>
                 <section className="suggestions fs20 ">
                     {(this.state.suggestion) ? (this.state.suggestion.map((suggest, idx) => (
                         <div key={idx}
                             className={`${this.state.suggestion[idx].isMarked ? "marked " : "unmarked "}`}
                             onClick={() => this.addToPrefs(suggest)}>{suggest.name}</div>))) : ''}
                 </section>
-                <button>Signup</button>
+                <button className="login-btn">Signup</button>
             </form>
         );
 
         const { loggedInUser } = this.props;
         return (
             <div className="main-container tac">
-                <h1>
+                <h1 className="marg-top-50">
                     SignUp Here!
                 </h1>
                 <h2>{this.state.msg}</h2>
