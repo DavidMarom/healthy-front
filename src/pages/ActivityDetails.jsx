@@ -3,6 +3,7 @@ import { activityService } from "../services/activityService.js";
 import { saveActivity, loadActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
+import socketService from '../services/socketService.js'
 import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
 import { Chat } from "../cmps/Chat";
@@ -24,8 +25,16 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
+<<<<<<< HEAD
     window.addEventListener('scroll', (event) => {
       if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true },()=>console.log(this.state.isButtom))
+=======
+    socketService.setup();
+    window.addEventListener('scroll', (event) => {
+      console.log(window.scrollY);
+      console.log(this.state.isButtom);
+      if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true }, () => console.log(this.state.isButtom))
+>>>>>>> f034c06734fcfb523b97706c799e0a8895f289fb
       else if (window.scrollY < 1030 && this.state.isButtom) this.setState({ isButtom: false })
     })
     window.scrollTo(0, 0);
@@ -82,6 +91,8 @@ export class _ActivityDetails extends Component {
       this.props.updateUser(creator);
       activity.participants.push(user);
       this.props.saveActivity(activity);
+      socketService.emit('new purchase', { activityId: activity._id, creatorId: creator._id, customerId: user._id });
+
     }
   }
 
@@ -96,7 +107,7 @@ export class _ActivityDetails extends Component {
     return (
       <div className="main-details-card">
         <div className={(this.state.isButtom) ? "header-buy nav-override-color m10" : ("header-none")}
-         onClick={()=>this.purchaseActivity()}>Sign Me Up!</div>
+          onClick={() => this.purchaseActivity()}>Sign Me Up!</div>
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
           <div className="green-star">★</div>
