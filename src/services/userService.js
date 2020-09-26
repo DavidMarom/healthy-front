@@ -28,12 +28,21 @@ function update(user) {
 }
 
 function guestMode(){
-    return{
-        _id:'guest',
-        fullName:'guest',
-        email:'guest@guest',
-        imgUrl:'https://res.cloudinary.com/dygtul5wx/image/upload/v1600549811/sprint%204/users/guest-user_z4inbq.jpg',
-        prefs:['none']
+    return {
+        _id : 'ObjectId("5f6a0f6c973d861c5d72eac3")',
+        email : "guestMode@gmail.com",
+        password : "$2b$10$39cdn7dy8waF39X3GJGNBOt5TbXXAnyVOFPX9QZyu5PS7ojW3zh5S",
+        fullName : "Guest Mode",
+        imgUrl : [ 
+            'https://res.cloudinary.com/dygtul5wx/image/upload/v1600549811/sprint%204/users/guest-user_z4inbq.jpg'
+        ],
+        prefs : [ 
+            'diet', 
+            'nutrition', 
+            'cardio', 
+            'sport', 
+            'well-being'
+        ]
     }
 }
 
