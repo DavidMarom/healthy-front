@@ -22,24 +22,12 @@ export class _UserDetails extends Component {
     currUser: null,
     createdAct: {},
     participant: {},
-    isNotificationOn:false
   };
 
   componentDidMount() {
     socketService.setup();
     window.scrollTo(0, 0);
     this.loadUser()
-    socketService.on('show purchase notifiction', (purchaseInfo) => {
-      debugger
-      console.log(purchaseInfo);
-      this.setState({ isNotificationOn: true },()=>console.log(this.state))
-      // const notificationInfo = {
-      //   activityId: purchaseInfo.activityId,
-      //   customerId: purchaseInfo.customerId
-      // }
-      // this.ShowNotification(notificationInfo)
-    });
-
   }
 
   componentDidUpdate(prevProps) {
@@ -50,23 +38,11 @@ export class _UserDetails extends Component {
     }
   }
 
-//   componentWillUnmount() {
-//     socketService.off();
-//     socketService.terminate();
-// }
-
-  ShowNotification = (notificationInfo) => {
-    console.log('hiiiiiii');
-    console.log(notificationInfo);
-    this.setState({ ...this.state, isNotificationOn: true, notificationInfo: notificationInfo })
-  }
-
   loadUser = () => {
     const { userId } = this.props.match.params;
     if (userId) {
       userService.getById(userId)
         .then(user => this.setState({ currUser: user }, () => {
-          socketService.emit('creatorId', this.state.currUser._id);
           this.props.loadActivities()
         }))
     }
@@ -104,7 +80,7 @@ export class _UserDetails extends Component {
   };
 
   render() {
-    const { isNotificationOn } = this.state
+    // const { isNotificationOn } = this.state
     let loggedUser = this.props.user;
     let { activities } = this.props;
     if (!Object.keys(activities).length) activities = null;
@@ -125,7 +101,6 @@ export class _UserDetails extends Component {
           </div>
           <div className="profile-bar-right">
             <img className="profile-pic" src={currUser.imgUrl} alt="" />
-            {isNotificationOn && <div> helllloooooo</div>}
             <p>Change Photo</p>
             <Link to="/activity/add"><button className="add-btn">Add New Event</button></Link>
             {/* <div className="calender">

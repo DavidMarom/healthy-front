@@ -48,9 +48,9 @@ class _Articles extends Component {
             </div>
           </NavLink>
 
-          <NavLink to="/activity/?tag=Highest Rated" className="article_d">
+          <NavLink to="/activity/?tag=outdoor" className="article_d">
             <div>
-              <h2>Popular</h2>
+              <h2>Outdoor</h2>
             </div>
             </NavLink>
 
