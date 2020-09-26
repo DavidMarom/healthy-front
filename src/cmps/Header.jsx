@@ -4,11 +4,41 @@ import { connect } from 'react-redux'
 
 import { logout, login } from '../store/actions/userActions.js';
 import { SearchBox } from "./activity/SearchBox.jsx";
+import socketService from '../services/socketService.js'
 
 export class _Header extends Component {
 
   state = {
     // isButtom: false
+    isNotificationOn: false,
+    notificationInfo: {
+      activityTitle: '',
+      customerName: ''
+    }
+  }
+
+  componentDidMount() {
+    const { user } = this.props;
+    if (user) {
+      socketService.setup();
+      socketService.emit('creatorId', user._id);
+      socketService.on('show purchase notifiction', (purchaseInfo) => {
+        const notificationInfo = {
+          activityTitle: purchaseInfo.activityTitle,
+          customerName: purchaseInfo.customerName
+        }
+        this.ShowNotification(notificationInfo)
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    socketService.off('show purchase notifiction');
+    socketService.terminate();
+  }
+
+  ShowNotification = (notificationInfo) => {
+    this.setState({ ...this.state, isNotificationOn: true, notificationInfo: notificationInfo })
   }
 
   openGuestMode = (ev) => {
@@ -24,10 +54,18 @@ export class _Header extends Component {
 
   render() {
     const { isHomepage, user } = this.props;
+    const { isNotificationOn } = this.state;
+    const { activityTitle, customerName } = this.state.notificationInfo;
     return (
       <div className="main-header-wrapper">
         <header className="main-header">
           <div className="left-end">
+            {isNotificationOn && <div className="purchase-notification flex">
+              <div>New Event Purchase:</div>
+              <div> {`Event:${activityTitle}`}</div>
+              <div>{`Purchased By: ${customerName}`}</div>
+              <button className="close-notification" onClick={() => this.setState({ isNotificationOn: false })}>x</button>
+            </div>}
             <div className="logo">
               <NavLink to="/">
                 <div className="logo-img">

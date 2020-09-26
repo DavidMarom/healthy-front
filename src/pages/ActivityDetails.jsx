@@ -86,7 +86,7 @@ export class _ActivityDetails extends Component {
       this.props.updateUser(creator);
       activity.participants.push(user);
       this.props.saveActivity(activity);
-      socketService.emit('new purchase', { activityId: activity._id, creatorId: creator._id, customerId: user._id });
+      socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
 
     }
   }
