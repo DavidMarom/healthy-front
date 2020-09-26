@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { TextField, Select, MenuItem } from '@material-ui/core';
-
-
+import {findLatLng} from '../services/locationService.js'
 import { activityService } from '../services/activityService.js'
 import { uploadImg } from '../services/imgUploadService.js'
 import { saveActivity } from '../store/actions/activityActions.js'
-
 
 
 class _ActivityEdit extends Component {
@@ -18,7 +16,7 @@ class _ActivityEdit extends Component {
         currUser: null,
         days: [{ 1: 'Sunday' }, { 2: 'Monday' }, { 3: 'Tuesday' }, { 4: 'Wednesday' }, { 5: 'Thursday' }, { 6: 'Friday' }, { 7: 'Saturday' }],
         hours: [{ 6: '6' }, { 6: '8' }, { 8: '8' }, { 9: '9' }, { 10: '10' }, { 11: '11' }, { 12: '12' }, { 13: '13' }, { 14: '14' }, { 15: '15' }, { 16: '16' }, { 17: '17' }, { 18: '18' }, { 19: '19' }, { 20: '20' }, { 21: '21' }, { 22: '22' }],
-        locatoin:{lat:null, lng:null, address:''}
+        locatoin: { lat: null, lng: null, address: '' }
     }
 
     componentDidMount() {
@@ -93,7 +91,7 @@ class _ActivityEdit extends Component {
         const { activity } = this.state;
         const { days } = this.state;
         const { hours } = this.state;
-        if (!Object.keys(activity).length) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
+        if (!Object.keys(activity).length) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
         return (
 
             <section className="main-container">
@@ -181,7 +179,7 @@ class _ActivityEdit extends Component {
                             </div>
                             <input type="file" multiple onChange={this.uploadFile} />
                         </section>
-
+                        {/* {findLatLng('Eilat')} */}
                     </section>
 
                     <button className="save-btn" disabled={this.state.isUploading} >Save</button>
