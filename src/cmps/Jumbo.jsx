@@ -8,9 +8,9 @@ export function Jumbo(props) {
       <div className="jumbo">
         <div className="v-space"></div>
         <div className="slogan">
-          <h2>Live Healthy</h2>
-          <h2>Health is a behaviour.</h2>
-          <h2>Find out how.</h2>
+          {/* <h2>Live Healthy</h2> */}
+          <div className="ff1">Health is a behaviour.</div>
+          <div className="ff1">Find out how.</div>
         </div>
         <SearchBox cssClass={'jumbo-search'}/>
       </div>

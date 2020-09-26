@@ -16,7 +16,7 @@ export function Footer() {
                 </div>
 
                 <div className="foot-col">
-                    <div className="bold"><p>OMMUNITY</p></div>
+                    <div className="bold"><p>COMMUNITY</p></div>
                     <p>Diversity Belonging</p>
                     <p>Against Discrimination</p>
                     <p>Accessibility</p>

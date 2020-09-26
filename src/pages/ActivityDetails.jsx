@@ -7,11 +7,7 @@ import socketService from '../services/socketService.js'
 import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
 import { Chat } from "../cmps/Chat";
-
 import SimpleMap from "../cmps/Map";
-
-
-
 
 import { TheatersRounded } from "@material-ui/icons";
 
@@ -27,8 +23,8 @@ export class _ActivityDetails extends Component {
   componentDidMount() {
     socketService.setup();
     window.addEventListener('scroll', (event) => {
-      console.log(window.scrollY);
-      console.log(this.state.isButtom);
+      // console.log(window.scrollY);
+      // console.log(this.state.isButtom);
       if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true }, () => console.log(this.state.isButtom))
       else if (window.scrollY < 1030 && this.state.isButtom) this.setState({ isButtom: false })
     })
@@ -43,12 +39,12 @@ export class _ActivityDetails extends Component {
       this.setState({ user });
     }
     this.loadActivity();
-  }
+  };
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
     if (activityId) this.props.loadActivity(activityId);
-  }
+  };
 
   addReview = (txt) => {
     var newActivity = this.props.activity;
@@ -62,7 +58,7 @@ export class _ActivityDetails extends Component {
     this.setState({ activity: newActivity })
     newActivity.reviews.push(tmpReview);
     this.props.saveActivity(newActivity);
-  }
+  };
 
   onRate = (rate) => {
     this.setState({ rateType: "read-only", rateAddByUser: rate });
@@ -75,8 +71,7 @@ export class _ActivityDetails extends Component {
       return acc + val
     }, 0);
     return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2));
-  }
-
+  };
 
   purchaseActivity() {
     let { activity, user } = this.props;
@@ -89,7 +84,7 @@ export class _ActivityDetails extends Component {
       socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
 
     }
-  }
+  };
 
 
 
@@ -159,9 +154,7 @@ export class _ActivityDetails extends Component {
 
             <div className="just-row">
               <h2>Properties</h2>
-              {activity.tags.map((tag, idx) => (
-                <li key={idx}>{tag}</li>
-              ))}
+              {activity.tags.map((tag, idx) => (<li key={idx}>{tag}</li>))}
             </div>
             <div className="divider d-hi"></div>
 

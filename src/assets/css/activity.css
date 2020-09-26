@@ -46,13 +46,12 @@
     justify-content: space-between;
 }
 
-
 .green-star {
     display: inline;
     color: #42c054;
 }
 
-.moneyback{
+.moneyback {
     display: flex;
     align-items: baseline;
     width: 100%;
@@ -77,7 +76,6 @@ p {
     margin-bottom: 35px;
     background-color: #dddddd;
 }
-
 
 .d-hi {
     margin-top: 70px;
@@ -154,7 +152,6 @@ p {
     border: 0px;
 } */
 
-
 .drop-down {
     background-color: #ffffff00;
     border: 0px;
@@ -166,11 +163,9 @@ p {
 .chat-height {
     height: 220px;
     overflow: hidden;
-    
     display: flex;
     justify-content: center;
     align-items: flex-end;
     justify-content: left;
-
     font-size: 14px;
 }
