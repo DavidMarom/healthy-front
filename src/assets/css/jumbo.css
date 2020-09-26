@@ -81,7 +81,13 @@
     margin-left: 80px;
     font-size: 1.875rem;
     color: #ffffff;
+    margin-bottom: 20px;
 }
+
+.ff1{
+    font-size: 50px;
+}
+
 
 @media(max-width: 1600px) {
     .jumbo {

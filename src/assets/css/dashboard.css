@@ -69,6 +69,7 @@
 
 .dash-btn:hover {
     background-color: rgb(149, 191, 143);
+
     border-radius: 50px;
     /* width: 31px; */
 }
