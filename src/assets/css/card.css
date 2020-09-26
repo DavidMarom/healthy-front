@@ -63,19 +63,25 @@
     font-size: 0.8rem;
 }
 
-.pad-r-10-card{
-    padding-right:7px;
+.pad-r-10-card {
+    padding-right: 7px;
     color: #aaaaaa;
     font-size: 12px;
 }
 
-.rate-space-title{
+.rate-space-title {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
 }
 
-.v-space2{
+.v-space2 {
     height: 2rem;
+}
+
+.rate-display {
+    width: 100%;
+    box-align: left;
+    font-size: 0.8rem;
+    /* padding-bottom: 8px; */
 }

@@ -1,6 +1,5 @@
 @import "jumbo.css";
-@import "suggested.css";
-@import "event.css";
+@import "activity.css";
 @import "main-header.css";
 @import "form-edit.css";
 @import "layout.css";
@@ -10,9 +9,6 @@
 @import "dashboard.css";
 @import "footer.css";
 @import "card.css";
-
-
-
 * {
     box-sizing: border-box;
 }
@@ -32,8 +28,8 @@ button {
 
 /* helpers */
 
-.green{
-    color:#43c155;
+.green {
+    color: #43c155;
     display: inline;
 }
 
@@ -63,13 +59,13 @@ button {
     align-items: center;
 }
 
-.asc{
+.asc {
     align-self: center;
 }
 
-.loader{
-   margin: 50px auto;
-    max-width:100px;
+.loader {
+    margin: 50px auto;
+    max-width: 100px;
     max-height: 100px;
 }
 
