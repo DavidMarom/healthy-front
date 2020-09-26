@@ -62,7 +62,7 @@ class _SignUp extends Component {
         if (!email || !password || !fullName || !prefs || !imgUrl) {
             return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { email, password, fullName, prefs, imgUrl };
+        const signupCreds = { email, password, fullName, prefs, imgUrl, income:0 };
         this.props.signup(signupCreds);
         this.setState({ signupCred: { email: '', password: '', fullName: '', prefs: [] } });
     };
