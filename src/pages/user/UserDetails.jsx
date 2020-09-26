@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { UserActivityList } from "../../cmps/user/UserActivityList";
 import { UserSchedule } from "../../cmps/user/UserSchedule";
 import { userService } from "../../services/userService.js";
+import socketService from '../../services/socketService.js'
 import { activityService } from "../../services/activityService.js";
 import { updateUser } from "../../store/actions/userActions.js";
 import { UserDashbord } from "./UserDashbord.jsx";
@@ -21,26 +22,53 @@ export class _UserDetails extends Component {
     currUser: null,
     createdAct: {},
     participant: {},
+    isNotificationOn:false
   };
 
   componentDidMount() {
-    window.scrollTo(0,0);
+    socketService.setup();
+    window.scrollTo(0, 0);
     this.loadUser()
+    socketService.on('show purchase notifiction', (purchaseInfo) => {
+      debugger
+      console.log(purchaseInfo);
+      this.setState({ isNotificationOn: true },()=>console.log(this.state))
+      // const notificationInfo = {
+      //   activityId: purchaseInfo.activityId,
+      //   customerId: purchaseInfo.customerId
+      // }
+      // this.ShowNotification(notificationInfo)
+    });
+
   }
 
   componentDidUpdate(prevProps) {
     if (!prevProps.match.params.userId) return;
     if (prevProps.match.params.userId !== this.props.match.params.userId) {
       this.loadUser()
-      window.scrollTo(0,0);
-    }    
-}
+      window.scrollTo(0, 0);
+    }
+  }
+
+//   componentWillUnmount() {
+//     socketService.off();
+//     socketService.terminate();
+// }
+
+  ShowNotification = (notificationInfo) => {
+    console.log('hiiiiiii');
+    console.log(notificationInfo);
+    this.setState({ ...this.state, isNotificationOn: true, notificationInfo: notificationInfo })
+  }
 
   loadUser = () => {
     const { userId } = this.props.match.params;
     if (userId) {
       userService.getById(userId)
-        .then(user => this.setState({ currUser: user }, () => this.props.loadActivities()))
+        .then(user => this.setState({ currUser: user }, () => {
+          socketService.emit('creatorId', this.state.currUser._id);
+          this.props.loadActivities()
+        }))
     }
   }
 
@@ -76,11 +104,12 @@ export class _UserDetails extends Component {
   };
 
   render() {
+    const { isNotificationOn } = this.state
     let loggedUser = this.props.user;
     let { activities } = this.props;
     if (!Object.keys(activities).length) activities = null;
     const { currUser } = this.state;
-    if (!currUser) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
+    if (!currUser) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
     let eventsCreatedByUser = this.onGetCreatedEvents(activities, currUser);
     let partOfEvents = this.onGetPartOfEvents(activities, currUser);
     return (
@@ -96,6 +125,7 @@ export class _UserDetails extends Component {
           </div>
           <div className="profile-bar-right">
             <img className="profile-pic" src={currUser.imgUrl} alt="" />
+            {isNotificationOn && <div> helllloooooo</div>}
             <p>Change Photo</p>
             <Link to="/activity/add"><button className="add-btn">Add New Event</button></Link>
             {/* <div className="calender">
@@ -116,42 +146,42 @@ export class _UserDetails extends Component {
 
 
         <div className="flex column sb">
-            <div className="flex column">
-              <div className="main-info-container">
-                {(eventsCreatedByUser && (currUser._id === loggedUser._id)) ? (<UserDashbord user={currUser} activities={eventsCreatedByUser} />) : ''}
+          <div className="flex column">
+            <div className="main-info-container">
+              {(eventsCreatedByUser && (currUser._id === loggedUser._id)) ? (<UserDashbord user={currUser} activities={eventsCreatedByUser} />) : ''}
 
-                <h3 className="mini-title">Events I organized:</h3>
+              <h3 className="mini-title">Events I organized:</h3>
 
-                {eventsCreatedByUser ? (
-                  <UserActivityList
+              {eventsCreatedByUser ? (
+                <UserActivityList
                   activities={eventsCreatedByUser}
                   user={currUser}
                   onRemove={this.onRemove}
                   onRemoveFromList={this.onRemoveFromList}
                   madeOfOperation={"organizer"}
-                  />
-                  ) : (null)}
-
-              </div>
-              <div className="main-info-container">
-                <h3 className="mini-title">Events I{`'`}m going to:</h3>
-                {partOfEvents ? (
-                  <UserActivityList
-                    activities={partOfEvents}
-                    user={currUser}
-                    onRemove={this.onRemove}
-                    onRemoveFromList={this.onRemoveFromList}
-                    madeOfOperation={"subscriber"}
-                  />
-                ) : (
-                    ""
-                  )}
-              </div>
-            </div>
-            <div className="flex column tac">
-
+                />
+              ) : (null)}
 
             </div>
+            <div className="main-info-container">
+              <h3 className="mini-title">Events I{`'`}m going to:</h3>
+              {partOfEvents ? (
+                <UserActivityList
+                  activities={partOfEvents}
+                  user={currUser}
+                  onRemove={this.onRemove}
+                  onRemoveFromList={this.onRemoveFromList}
+                  madeOfOperation={"subscriber"}
+                />
+              ) : (
+                  ""
+                )}
+            </div>
+          </div>
+          <div className="flex column tac">
+
+
+          </div>
         </div>
       </div>
     );
