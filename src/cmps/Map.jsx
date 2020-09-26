@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
+//AIzaSyD48cLvI1UnPBN9VwVQCC7mggtK5SYqxBU
+
 const AnyReactComponent = () => <div><img alt="" src='https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' style={{ height: 40, width: 40 }} /></div>
 
 const API_KEY = 'AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk'
