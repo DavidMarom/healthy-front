@@ -97,15 +97,15 @@ class _Login extends Component {
     return (
       <div className="main-container">
         <div className="just-row flex justify-center">
-          <h1 className="tac marg-top-50">
+          {(!loggedInUser)?<h1 className="tac marg-top-50">
             Login
-        </h1>
+        </h1>:''}
         </div>
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
-          <div>
+          <div className="justify-self">
             <h2>Welcome: {loggedInUser.fullName} </h2>
-            <button className="login-btn-small" onClick={this.props.logout}>Logout</button>
+            <div className="justify-center flex"><button className="login-btn-small" onClick={this.props.logout}>Logout</button></div>
           </div>
         )}
         {!loggedInUser && loginSection}
