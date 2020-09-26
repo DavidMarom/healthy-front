@@ -6,6 +6,11 @@ import { logout, login } from '../store/actions/userActions.js';
 import { SearchBox } from "./activity/SearchBox.jsx";
 
 export class _Header extends Component {
+
+  state = {
+    // isButtom: false
+  }
+
   openGuestMode = (ev) => {
     ev.preventDefault();
     const guest = {
@@ -16,9 +21,9 @@ export class _Header extends Component {
     this.setState({ loginCred: { email: '', password: '' } });
   }
 
+
   render() {
     const { isHomepage, user } = this.props;
-
     return (
       <div className="main-header-wrapper">
         <header className="main-header">

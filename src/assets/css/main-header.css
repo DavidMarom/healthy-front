@@ -71,7 +71,34 @@
 
 .explore{
     padding: 10px 20px 10px;
+    align-self: center;
     background-color: #62cb66;
     color:#fff !important;
     border-radius: 3em;
 }
+
+.header-buy{
+    cursor: pointer;
+    margin-right: 20px; 
+    padding: 10px 30px 10px;
+    background-color: #62cb66;
+    border-radius: 3em;
+    color:#fff !important;
+    border-radius: 10px;
+    font-size: x-large;
+    font-family: 'Varela Round', sans-serif;
+    max-width: 250px;
+    position: fixed;
+    justify-self: flex-end;
+    /* display: flex; */
+    align-self: flex-end;
+    /* justify-self: center; */
+    /* align-content: flex-end; */
+    top: 0;
+    z-index: 3;
+    margin-right: 214px;
+    }
+
+    .header-none{
+        display: none;
+    }

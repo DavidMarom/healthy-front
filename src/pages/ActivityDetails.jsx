@@ -17,12 +17,20 @@ import { TheatersRounded } from "@material-ui/icons";
 export class _ActivityDetails extends Component {
 
   state = {
+    isButtom: false,
     days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     user: userService.guestMode(),
     rateAddByUser: null
   };
 
   componentDidMount() {
+     // console.log(this.props);
+    window.addEventListener('scroll', (event) => {
+      console.log(window.scrollY);
+      console.log(this.state.isButtom);
+      if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true },()=>console.log(this.state.isButtom))
+      else if (window.scrollY < 1030 && this.state.isButtom) this.setState({ isButtom: false })
+    })
     window.scrollTo(0, 0);
     let user = this.props.user;
     if (user) {
@@ -84,11 +92,13 @@ export class _ActivityDetails extends Component {
 
   render() {
     const { activity, user } = this.props;
-    if (!activity) return<div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'}/></div>
+    if (!activity) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
     let rate = this.calcAvgRate();
     rate = parseFloat(rate);
     return (
       <div className="main-details-card">
+        <div className={(this.state.isButtom) ? "header-buy nav-override-color m10" : ("header-none")}
+         onClick={()=>this.purchaseActivity()}>Sign Me Up!</div>
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
           <div className="green-star">★</div>
@@ -169,25 +179,25 @@ export class _ActivityDetails extends Component {
               <div className="just-row">
                 <div className="moneyback">
                   <i className="fas fa-money-bill-wave"></i>
-                  <p>Money back guarentied</p>
+                  <p className="tac">Money back guarentied</p>
                 </div>
-                <div className="green-star">★</div>
-                {rate}
+                {/* <div className="green-star">★</div>
+                {rate} */}
               </div>
               <div className="center">
                 <h2>Price: ${activity.price}</h2>
               </div>
               {(user._id === 'guest') ?
-                (<button className="buy-btn"
+                (<div className="sticky"><button className="buy-btn"
                   onClick={() => this.props.history.push('/signUp')}>
                   Join Us NOW!
-                </button>) : ''}
+                </button></div>) : ''}
 
               {(activity.participants.length < activity.maxCapacity) ?
-                (<button className="buy-btn"
+                (<div className="sticky"><button className="buy-btn"
                   onClick={() => this.purchaseActivity()}>
                   Sign me up!
-                </button>) :
+                </button></div>) :
                 (<button className="sold-out-btn">SOLD OUT!</button>)}
             </div>
             <div className="attendings">
