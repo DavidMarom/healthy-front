@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { BarChart } from '../../cmps/user/BarChart.jsx'
 import { PieChart } from '../../cmps/user/PieChart.jsx'
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { activityService } from "../services/activityService.js";
 import { saveActivity, loadActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
 import { userService } from "../services/userService.js";
@@ -40,6 +39,12 @@ export class _ActivityDetails extends Component {
     }
     this.loadActivity();
   };
+  
+  componentDidUpdate(prevProps, prevState) {
+    if(!prevProps.activityId) return
+    if(prevProps.activityId !== this.props.match.params.activityId) this.loadActivity()
+  }
+  
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
@@ -84,7 +89,6 @@ export class _ActivityDetails extends Component {
       }
       userService.getById(creatorId)
         .then(creator => {
-          console.log(creator);
           creator.income += activity.price
           this.props.updateUser(creator)
           activity.participants.push(currUser);
@@ -102,7 +106,7 @@ export class _ActivityDetails extends Component {
   render() {
     let { activity, user } = this.props;
     if (!user) user = this.state.user
-    if (!activity) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
+    if (!activity || activity._id !== this.props.match.params.activityId) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
     let rate = this.calcAvgRate();
     rate = parseFloat(rate);
     return (

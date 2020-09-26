@@ -7,14 +7,13 @@ import {
 } from "../../store/actions/activityActions";
 import { connect } from "react-redux";
 import { UserActivityList } from "../../cmps/user/UserActivityList";
-import { UserSchedule } from "../../cmps/user/UserSchedule";
 import { userService } from "../../services/userService.js";
-import socketService from '../../services/socketService.js'
+// import socketService from '../../services/socketService.js'
 import { activityService } from "../../services/activityService.js";
 import { updateUser } from "../../store/actions/userActions.js";
 import { UserDashbord } from "./UserDashbord.jsx";
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Button from '@material-ui/core/Button';
 
 
 export class _UserDetails extends Component {
@@ -25,10 +24,11 @@ export class _UserDetails extends Component {
   };
 
   componentDidMount() {
-    socketService.setup();
+    
     window.scrollTo(0, 0);
     this.loadUser()
   }
+
 
   componentDidUpdate(prevProps) {
     if (!prevProps.match.params.userId) return;

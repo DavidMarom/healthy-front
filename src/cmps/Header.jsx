@@ -32,10 +32,10 @@ export class _Header extends Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   socketService.off('show purchase notifiction');
-  //   socketService.terminate();
-  // }
+  componentWillUnmount() {
+    socketService.off('show purchase notifiction');
+    socketService.terminate();
+  }
 
   ShowNotification = (notificationInfo) => {
     this.setState({ ...this.state, isNotificationOn: true, notificationInfo: notificationInfo })
