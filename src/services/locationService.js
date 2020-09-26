@@ -5,7 +5,7 @@ var options = {
 
   // Optionnal depending of the providers
   httpAdapter: 'https', // Default
-  apiKey: 'AIzaSyD48cLvI1UnPBN9VwVQCC7mggtK5SYqxBU', // for Mapquest, OpenCage, Google Premier
+  apiKey: 'AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk', // for Mapquest, OpenCage, Google Premier
   formatter: null         // 'gpx', 'string', ...
 };
 

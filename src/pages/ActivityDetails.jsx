@@ -75,13 +75,24 @@ export class _ActivityDetails extends Component {
 
   purchaseActivity() {
     let { activity, user } = this.props;
-    let creator = activity.createdBy;
-    if (creator._id !== user._id) {
-      creator.income += activity.price;
-      this.props.updateUser(creator);
-      activity.participants.push(user);
-      this.props.saveActivity(activity);
-      socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
+    let creatorId = activity.createdBy._id;
+    if (creatorId !== user._id) {
+      const currUser = {
+        _id: user._id,
+        fullName: user.fullName,
+        imgUrl: user.imgUrl
+      }
+      userService.getById(creatorId)
+        .then(creator => {
+          console.log(creator);
+          creator.income += activity.price
+          this.props.updateUser(creator)
+          activity.participants.push(currUser);
+          this.props.saveActivity(activity);
+          socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
+        })
+      // creator.income += activity.price;
+      // this.props.updateUser(creator);
 
     }
   };
