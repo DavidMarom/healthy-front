@@ -94,7 +94,8 @@ export class _ActivityDetails extends Component {
 
 
   render() {
-    const { activity, user } = this.props;
+    let { activity, user } = this.props;
+    if (!user) user = this.state.user
     if (!activity) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
     let rate = this.calcAvgRate();
     rate = parseFloat(rate);
