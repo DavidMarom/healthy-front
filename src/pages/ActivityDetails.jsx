@@ -9,6 +9,7 @@ import { Chat } from "../cmps/Chat";
 import SimpleMap from "../cmps/Map";
 
 import { TheatersRounded } from "@material-ui/icons";
+import { act } from "react-dom/test-utils";
 
 export class _ActivityDetails extends Component {
 
@@ -22,8 +23,6 @@ export class _ActivityDetails extends Component {
   componentDidMount() {
     socketService.setup();
     window.addEventListener('scroll', (event) => {
-      // console.log(window.scrollY);
-      // console.log(this.state.isButtom);
       if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true }, () => console.log(this.state.isButtom))
       else if (window.scrollY < 1030 && this.state.isButtom) this.setState({ isButtom: false })
     })
@@ -39,12 +38,12 @@ export class _ActivityDetails extends Component {
     }
     this.loadActivity();
   };
-  
+
   componentDidUpdate(prevProps, prevState) {
-    if(!prevProps.activityId) return
-    if(prevProps.activityId !== this.props.match.params.activityId) this.loadActivity()
+    if (!prevProps.activityId) return
+    if (prevProps.activityId !== this.props.match.params.activityId) this.loadActivity()
   }
-  
+
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
@@ -68,6 +67,14 @@ export class _ActivityDetails extends Component {
   onRate = (rate) => {
     this.setState({ rateType: "read-only", rateAddByUser: rate });
   };
+
+  checkIsRegistered= (user, activity)=>{
+    let bool = false
+     activity.participants.forEach(participant=> {
+      if(participant._id === user._id) bool = true;
+    })
+    return bool
+  }
 
   calcAvgRate = () => {
     let tempSum = 0;
@@ -108,11 +115,22 @@ export class _ActivityDetails extends Component {
     if (!user) user = this.state.user
     if (!activity || activity._id !== this.props.match.params.activityId) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
     let rate = this.calcAvgRate();
+    let isRegistered = this.checkIsRegistered(user, activity);
+    console.log('i-',isRegistered);
     rate = parseFloat(rate);
     return (
       <div className="main-details-card">
-        <div className={(this.state.isButtom) ? "header-buy nav-override-color m10" : ("header-none")}
-          onClick={() => this.purchaseActivity()}>Sign Me Up!</div>
+         {(user._id === 'guest') ?
+                (<div className={(this.state.isButtom) ? "header-buy nav-override-color m10" : ("header-none")}
+                  onClick={() => this.props.history.push('/signUp')}>
+                  Join Us NOW!
+                </div>) : (
+                  (isRegistered) ? '': ((activity.participants.length < activity.maxCapacity) ?
+                (<div className={(this.state.isButtom) ? "header-buy nav-override-color m10" : ("header-none")}
+                  onClick={() => this.purchaseActivity()}>
+                  Sign me up!
+               </div>) : '')
+                )}
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
           <div className="green-star">★</div>
@@ -205,12 +223,14 @@ export class _ActivityDetails extends Component {
                   Join Us NOW!
                 </button></div>) : ''}
 
-              {(activity.participants.length < activity.maxCapacity) ?
+              {(isRegistered) ? (<div className="sticky"><button className="buy-btn">
+                Allready Registered</button></div>) : ((activity.participants.length < activity.maxCapacity) ?
                 (<div className="sticky"><button className="buy-btn"
                   onClick={() => this.purchaseActivity()}>
                   Sign me up!
                 </button></div>) :
-                (<button className="sold-out-btn">SOLD OUT!</button>)}
+                (<button className="sold-out-btn">SOLD OUT!</button>))}
+
             </div>
             <div className="attendings">
               <h3>Attending</h3>
