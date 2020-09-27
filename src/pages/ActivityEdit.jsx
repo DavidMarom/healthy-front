@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { TextField, Select, MenuItem } from '@material-ui/core';
-import {findLatLng} from '../services/locationService.js'
 import { activityService } from '../services/activityService.js'
 import { uploadImg } from '../services/imgUploadService.js'
 import { saveActivity } from '../store/actions/activityActions.js'
