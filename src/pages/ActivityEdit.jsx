@@ -4,7 +4,7 @@ import { TextField, Select, MenuItem } from '@material-ui/core';
 import { activityService } from '../services/activityService.js'
 import { uploadImg } from '../services/imgUploadService.js'
 import { saveActivity } from '../store/actions/activityActions.js'
-import { utilService} from '../services/utilService.js'
+import { utilService } from '../services/utilService.js'
 
 class _ActivityEdit extends Component {
 
@@ -42,28 +42,32 @@ class _ActivityEdit extends Component {
         ev.preventDefault();
         let activity = this.state.activity
         utilService.getLocation(activity.location)
-        .then(res=>{
-            console.log(res);
-            // const location = res
-            const { createdBy } = activity
-            // activity={
-            //     ...activity,
-            //       location
-            // }
-            if (!createdBy) {
-                const { _id } = this.state.currUser
-                const { fullName } = this.state.currUser
-                const { imgUrl } = this.state.currUser
+            .then(res => {
+                console.log(res);
                 activity = {
                     ...activity,
-                    createdBy: {
-                        _id,
-                        fullName,
-                        imgUrl
+                    location: res
+                }
+                // })
+                const { createdBy } = activity
+                if (!createdBy) {
+                    const { _id } = this.state.currUser
+                    const { fullName } = this.state.currUser
+                    const { imgUrl } = this.state.currUser
+                    activity = {
+                        ...activity,
+                        createdBy: {
+                            _id,
+                            fullName,
+                            imgUrl
+                        }
                     }
                 }
-            }
-        })
+                this._saveActivity(activity)
+            })
+    }
+
+    _saveActivity = async (activity)=>{
         await this.props.saveActivity(activity);
         this.props.history.push('/user');
     }
@@ -170,15 +174,15 @@ class _ActivityEdit extends Component {
                             </div>
                         </section>
                         <section>
-                        <TextField
-                                    name="location"
-                                    value={activity.location.address}
-                                    size="small"
-                                    variant="outlined"
-                                    multiline
-                                    margin="normal"
-                                    onChange={this.handleInput}
-                                />
+                            <TextField
+                                name="location"
+                                value={activity.location.address}
+                                size="small"
+                                variant="outlined"
+                                multiline
+                                margin="normal"
+                                onChange={this.handleInput}
+                            />
                         </section>
 
                         <section className="edit-imgs">
