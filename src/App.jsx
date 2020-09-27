@@ -15,13 +15,11 @@ class _App extends Component {
       <div className="App">
         <Header isHomepage={isHomepage}/>
         <div className="marg-top-80"></div>
-  
-        <Switch>
-          <ScrollToTop>
+          <Switch>
             { routes.map(route => <Route key={ route.path } exact component={ route.component } path={ route.path } />) }
-          </ScrollToTop>
-        </Switch>
+          </Switch>
         <Footer />
+        <ScrollToTop />
       </div>
     );
   };
