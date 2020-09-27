@@ -1,51 +1,49 @@
 import React, { Component } from "react";
 import { saveActivity, loadActivity } from "../store/actions/activityActions";
 import { updateUser } from "../store/actions/userActions";
-import { userService } from "../services/userService.js";
+import { userService, guestUser } from "../services/userService.js";
 import socketService from '../services/socketService.js'
 import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
 import { Chat } from "../cmps/Chat";
 import SimpleMap from "../cmps/Map";
 
+const loadingImgUrl = 'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif';
+
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const belowFoldListener = (callback) => {
   window.addEventListener('scroll', (event) => {
     callback(window.scrollY > 1030);
-    
   })
 }
 
-export class _ActivityDetails extends Component {
+const checkIsRegistered = (user, activity) => 
+  activity.participants.some(participant => participant._id === user._id);
 
+const calcAvgRate = (activity) => {
+  let tempSum = 0;
+  const rates = activity.reviews.map(review => review.rate);
+  tempSum = rates.reduce(function (acc, val) {
+    return acc + val
+  }, 0);
+  return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2));
+};
+
+export class _ActivityDetails extends Component {
   state = {
     isBottom: false,
-    user: userService.guestMode(),
+    user: guestUser,
     rateAddByUser: null
   };
 
   componentDidMount() {
     socketService.setup();
     belowFoldListener((isBelowFold) => { if (this.state.isBottom !== isBelowFold ) this.setState({ isBottom: isBelowFold }) });
-    window.scrollTo(0, 0);
-    let user = this.props.user;
-    if (user) {
-      user = {
-        _id: user._id,
-        fullName: user.fullName,
-        imgUrl: user.imgUrl,
-      };
-      this.setState({ user });
-    }
+
+    this.props.user && this.setState({ user: { ...this.props.user } });
     this.loadActivity();
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (!prevProps.activityId) return
-    if (prevProps.activityId !== this.props.match.params.activityId) this.loadActivity()
-  }
-
 
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
@@ -67,59 +65,54 @@ export class _ActivityDetails extends Component {
   };
 
   onRate = (rate) => {
-    this.setState({ rateType: "read-only", rateAddByUser: rate });
-  };
-
-  checkIsRegistered = (user, activity) => {
-    let bool = false
-    activity.participants.forEach(participant => {
-      if (participant._id === user._id) bool = true;
-    })
-    return bool
-  }
-
-  calcAvgRate = () => {
-    let tempSum = 0;
-    const rates = this.props.activity.reviews.map(review => review.rate);
-    tempSum = rates.reduce(function (acc, val) {
-      return acc + val
-    }, 0);
-    return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2));
+    this.setState({ rateAddByUser: rate });
   };
 
   purchaseActivity() {
     let { activity, user } = this.props;
     let creatorId = activity.createdBy._id;
-    if (creatorId !== user._id) {
-      const currUser = {
-        _id: user._id,
-        fullName: user.fullName,
-        imgUrl: user.imgUrl
-      }
-      userService.getById(creatorId)
-        .then(creator => {
-          creator.income += activity.price
-          this.props.updateUser(creator)
-          activity.participants.push(currUser);
-          this.props.saveActivity(activity);
-          socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
-        })
-      // creator.income += activity.price;
-      // this.props.updateUser(creator);
 
-    }
+    if (creatorId === user._id) return;
+
+    const currUser = { ...user }
+
+    /*
+    this.props.addActivityParticipant(activityId, participantId);
+
+    on server:
+    - creator.income += activity.price
+    - add the participant
+    - - load the activity with the activityId
+    - - update participants
+    - emit to sockets from the server
+    */
+
+    userService.getById(creatorId)
+      .then(creator => {
+        creator.income += activity.price
+        this.props.updateUser(creator)
+        activity.participants.push(currUser);
+        this.props.saveActivity(activity);
+        socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
+      });
   };
 
 
-
   render() {
-    let { activity, user } = this.props;
-    if (!user) user = this.state.user
-    if (!activity || activity._id !== this.props.match.params.activityId) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
-    let rate = this.calcAvgRate();
-    let isRegistered = this.checkIsRegistered(user, activity);
-    console.log('i-', isRegistered);
-    rate = parseFloat(rate);
+    let { activity } = this.props;
+    const user = this.props.user || guestUser;
+
+    if (!activity || activity._id !== this.props.match.params.activityId) {
+      return (
+        <div className="loader">
+          <img src={loadingImgUrl} alt="Loading..."/>
+        </div>
+      );
+    }
+
+    let rate = calcAvgRate(activity);
+    let isRegistered = checkIsRegistered(user, activity);
+    
     return (
       <div className="main-details-card">
         {(user._id === 'guest') ?
@@ -211,7 +204,7 @@ export class _ActivityDetails extends Component {
               <div className="just-row">
                 <div className="moneyback">
                   <i className="fas fa-money-bill-wave"></i>
-                  <p className="tac">Money back guarentied</p>
+                  <p className="tac">Money back guaranteed</p>
                 </div>
                 {/* <div className="green-star">★</div>
                 {rate} */}
@@ -223,9 +216,9 @@ export class _ActivityDetails extends Component {
                 (<div className="sticky"><button className="buy-btn"
                   onClick={() => this.props.history.push('/signUp')}>
                   Join Us NOW!
-                </button></div>) : ''}
+                </button></div>) :
 
-              {(isRegistered) ? (<div className="sticky"><button className="buy-btn">
+                (isRegistered) ? (<div className="sticky"><button className="buy-btn">
                 Allready Registered</button></div>) : ((activity.participants.length < activity.maxCapacity) ?
                   (<div className="sticky"><button className="buy-btn"
                     onClick={() => this.purchaseActivity()}>
