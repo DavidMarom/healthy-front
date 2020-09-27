@@ -8,24 +8,26 @@ import { Reviews } from "../cmps/Reviews";
 import { Chat } from "../cmps/Chat";
 import SimpleMap from "../cmps/Map";
 
-import { TheatersRounded } from "@material-ui/icons";
-import { act } from "react-dom/test-utils";
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+const belowFoldListener = (callback) => {
+  window.addEventListener('scroll', (event) => {
+    callback(window.scrollY > 1030);
+    
+  })
+}
 
 export class _ActivityDetails extends Component {
 
   state = {
-    isButtom: false,
-    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    isBottom: false,
     user: userService.guestMode(),
     rateAddByUser: null
   };
 
   componentDidMount() {
     socketService.setup();
-    window.addEventListener('scroll', (event) => {
-      if (window.scrollY > 1030 && !this.state.isButtom) this.setState({ isButtom: true }, () => console.log(this.state.isButtom))
-      else if (window.scrollY < 1030 && this.state.isButtom) this.setState({ isButtom: false })
-    })
+    belowFoldListener((isBelowFold) => { if (this.state.isBottom !== isBelowFold ) this.setState({ isBottom: isBelowFold }) });
     window.scrollTo(0, 0);
     let user = this.props.user;
     if (user) {
@@ -39,17 +41,10 @@ export class _ActivityDetails extends Component {
     this.loadActivity();
   };
 
-<<<<<<< HEAD
-componentWillUnmount() {
-  socketService.terminate();
-  
-}
-=======
   componentDidUpdate(prevProps, prevState) {
     if (!prevProps.activityId) return
     if (prevProps.activityId !== this.props.match.params.activityId) this.loadActivity()
   }
->>>>>>> bad1e01bdba6755472c570db6d4e958f79f34c46
 
 
   loadActivity = () => {
@@ -75,10 +70,10 @@ componentWillUnmount() {
     this.setState({ rateType: "read-only", rateAddByUser: rate });
   };
 
-  checkIsRegistered= (user, activity)=>{
+  checkIsRegistered = (user, activity) => {
     let bool = false
-     activity.participants.forEach(participant=> {
-      if(participant._id === user._id) bool = true;
+    activity.participants.forEach(participant => {
+      if (participant._id === user._id) bool = true;
     })
     return bool
   }
@@ -123,21 +118,21 @@ componentWillUnmount() {
     if (!activity || activity._id !== this.props.match.params.activityId) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
     let rate = this.calcAvgRate();
     let isRegistered = this.checkIsRegistered(user, activity);
-    console.log('i-',isRegistered);
+    console.log('i-', isRegistered);
     rate = parseFloat(rate);
     return (
       <div className="main-details-card">
-         {(user._id === 'guest') ?
-                (<div className={(this.state.isButtom) ? "header-buy nav-override-color m10" : ("header-none")}
-                  onClick={() => this.props.history.push('/signUp')}>
-                  Join Us NOW!
-                </div>) : (
-                  (isRegistered) ? '': ((activity.participants.length < activity.maxCapacity) ?
-                (<div className={(this.state.isButtom) ? "header-buy nav-override-color m10" : ("header-none")}
-                  onClick={() => this.purchaseActivity()}>
-                  Sign me up!
-               </div>) : '')
-                )}
+        {(user._id === 'guest') ?
+          (<div className={(this.state.isBottom) ? "header-buy nav-override-color m10" : ("header-none")}
+            onClick={() => this.props.history.push('/signUp')}>
+            Join Us NOW!
+          </div>) : (
+            (isRegistered) ? '' : ((activity.participants.length < activity.maxCapacity) ?
+              (<div className={(this.state.isBottom) ? "header-buy nav-override-color m10" : "header-none"}
+                onClick={() => this.purchaseActivity()}>
+                Sign me up!
+              </div>) : '')
+          )}
         <h2 className="f20 title">{activity.title}</h2>
         <div className="in-line">
           <div className="green-star">★</div>
@@ -182,7 +177,7 @@ componentWillUnmount() {
                 <i className="far fa-calendar-alt fa-lg"></i>
               </div>
               <p>
-                {this.state.days[activity.dayInWeek]} - {activity.hour}:00
+                {days[activity.dayInWeek]} - {activity.hour}:00
               </p>
               <h5>{activity.location.address}</h5>
             </div>
@@ -232,11 +227,11 @@ componentWillUnmount() {
 
               {(isRegistered) ? (<div className="sticky"><button className="buy-btn">
                 Allready Registered</button></div>) : ((activity.participants.length < activity.maxCapacity) ?
-                (<div className="sticky"><button className="buy-btn"
-                  onClick={() => this.purchaseActivity()}>
-                  Sign me up!
+                  (<div className="sticky"><button className="buy-btn"
+                    onClick={() => this.purchaseActivity()}>
+                    Sign me up!
                 </button></div>) :
-                (<button className="sold-out-btn">SOLD OUT!</button>))}
+                  (<button className="sold-out-btn">SOLD OUT!</button>))}
 
             </div>
             <div className="attendings">
