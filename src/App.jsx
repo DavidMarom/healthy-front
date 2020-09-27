@@ -16,7 +16,7 @@ class _App extends Component {
         <Header isHomepage={isHomepage}/>
         <div className="marg-top-80"></div>
           <Switch>
-              { routes.map(route => <Route key={ route.path } exact component={ route.component } path={ route.path } />) }
+            { routes.map(route => <Route key={ route.path } exact component={ route.component } path={ route.path } />) }
           </Switch>
         <Footer />
         <ScrollToTop />
