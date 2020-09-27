@@ -43,26 +43,27 @@ class _ActivityEdit extends Component {
         let activity = this.state.activity
         utilService.getLocation(activity.location)
         .then(res=>{
-            const location = res
-            activity={
-                ...activity,
-                location
-            }
-        })
-        const { createdBy } = activity
-        if (!createdBy) {
-            const { _id } = this.state.currUser
-            const { fullName } = this.state.currUser
-            const { imgUrl } = this.state.currUser
-            activity = {
-                ...activity,
-                createdBy: {
-                    _id,
-                    fullName,
-                    imgUrl
+            console.log(res);
+            // const location = res
+            const { createdBy } = activity
+            // activity={
+            //     ...activity,
+            //       location
+            // }
+            if (!createdBy) {
+                const { _id } = this.state.currUser
+                const { fullName } = this.state.currUser
+                const { imgUrl } = this.state.currUser
+                activity = {
+                    ...activity,
+                    createdBy: {
+                        _id,
+                        fullName,
+                        imgUrl
+                    }
                 }
             }
-        }
+        })
         await this.props.saveActivity(activity);
         this.props.history.push('/user');
     }
@@ -100,7 +101,6 @@ class _ActivityEdit extends Component {
         const { hours } = this.state;
         if (!Object.keys(activity).length) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
         return (
-
             <section className="main-container">
                 <h2>Edit Activity</h2>
                 <form className="form-edit" onSubmit={this.onSaveActivity} >
