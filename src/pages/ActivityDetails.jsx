@@ -41,6 +41,7 @@ export class _ActivityDetails extends Component {
     this.loadActivity();
   };
 
+
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
     if (activityId) this.props.loadActivity(activityId);

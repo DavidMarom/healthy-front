@@ -25,7 +25,6 @@ export class _UserDetails extends Component {
   };
 
   componentDidMount() {
-    socketService.setup();
     window.scrollTo(0, 0);
     this.loadUser()
   }

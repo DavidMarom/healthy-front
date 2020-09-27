@@ -23,6 +23,7 @@ export class _Header extends Component {
       socketService.setup();
       socketService.emit('creatorId', user._id);
       socketService.on('show purchase notifiction', (purchaseInfo) => {
+        console.log(purchaseInfo);
         const notificationInfo = {
           activityTitle: purchaseInfo.activityTitle,
           customerName: purchaseInfo.customerName
@@ -32,10 +33,10 @@ export class _Header extends Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   socketService.off('show purchase notifiction');
-  //   socketService.terminate();
-  // }
+  componentWillUnmount() {
+    socketService.off('show purchase notifiction');
+    socketService.terminate();
+  }
 
   ShowNotification = (notificationInfo) => {
     this.setState({ ...this.state, isNotificationOn: true, notificationInfo: notificationInfo })
