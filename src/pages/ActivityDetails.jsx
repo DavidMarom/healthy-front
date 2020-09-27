@@ -41,6 +41,12 @@ export class _ActivityDetails extends Component {
     this.loadActivity();
   };
 
+componentWillUnmount() {
+  socketService.terminate();
+  
+}
+
+
   loadActivity = () => {
     const activityId = this.props.match.params.activityId;
     if (activityId) this.props.loadActivity(activityId);
