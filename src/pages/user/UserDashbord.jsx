@@ -22,7 +22,7 @@ export class UserDashbord extends Component {
                 <div className="flex dashbord-info fs24 column">
                     <h3 className="tac">Total Sales: <span className="money">${user.income}</span></h3>
                 </div>
-                <div className="flex  align-center sb mb50">
+                <div className="flex dash-charts align-center sb mb50">
                     <div className="bar m10">
                         <BarChart user={user} />
                     </div>

@@ -121,3 +121,58 @@
     border-bottom: 1px solid #ccc;
     width: fit-content;
 }
+
+@media(max-width: 1000px) {
+    .profile-top-bar{
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .pref-line{
+        font-size: 16px;
+    }
+
+    .main-info-container{
+        font-size: 16px;
+    }
+
+    .dash-charts{
+       flex-direction: column;
+   }
+   .act-top{
+       font-size: 14px;
+   }
+   .just-row button{
+    padding: 5px;
+    font-size: 11px;
+}
+}
+
+/*MEDIA*/
+
+@media(max-width: 850px) {
+    .strip {
+        align-items: center;
+        justify-content: space-between;
+        grid-template-columns: 15% 45% 15% 15% 5%   
+    }
+
+    .just-row button{
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    .img-40{
+        max-height: inherit;
+    }
+}
+
+@media(max-width: 700px) {
+    .strip {
+        align-items: center;
+        justify-content: space-between;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+
+    .just-row button{ font-size: 8px;}
+}
