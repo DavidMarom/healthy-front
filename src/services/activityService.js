@@ -51,6 +51,10 @@ function addRate(activity, rate) {
   }
 }
 
+function addParticipant(activity, participant) {
+  httpService.post(`activity/${activity._id}/addParticipant`, participant._id)
+}
+
 function getEmpty() {
   return {
     title: "",

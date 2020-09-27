@@ -1,17 +1,5 @@
 import httpService from './httpService'
 
-export const userService = {
-    login,
-    logout,
-    signup,
-    getUsers,
-    getById,
-    remove,
-    update,
-    guestMode,
-    findIdxToMark
-}
-
 function getUsers() {
     return httpService.get('user')
 }
@@ -27,23 +15,21 @@ function update(user) {
     return httpService.put(`user/${user._id}`, user)
 }
 
-function guestMode(){
-    return {
-        _id : 'ObjectId("5f6a0f6c973d861c5d72eac3")',
-        email : "guestMode@gmail.com",
-        password : "$2b$10$39cdn7dy8waF39X3GJGNBOt5TbXXAnyVOFPX9QZyu5PS7ojW3zh5S",
-        fullName : "Guest Mode",
-        imgUrl : [ 
-            'https://res.cloudinary.com/dygtul5wx/image/upload/v1600549811/sprint%204/users/guest-user_z4inbq.jpg'
-        ],
-        prefs : [ 
-            'diet', 
-            'nutrition', 
-            'cardio', 
-            'sport', 
-            'well-being'
-        ]
-    }
+export const guestUser = {
+  _id : 'guest',
+  email : "guestMode@gmail.com",
+  password : "$2b$10$39cdn7dy8waF39X3GJGNBOt5TbXXAnyVOFPX9QZyu5PS7ojW3zh5S",
+  fullName : "Guest Mode",
+  imgUrl : [ 
+      'https://res.cloudinary.com/dygtul5wx/image/upload/v1600549811/sprint%204/users/guest-user_z4inbq.jpg'
+  ],
+  prefs : [ 
+      'diet', 
+      'nutrition', 
+      'cardio', 
+      'sport', 
+      'well-being'
+  ]
 }
 
 async function login(userCred) {
@@ -70,3 +56,14 @@ function _handleLogin(user) {
 function findIdxToMark(suggestions, object){
     return suggestions.findIndex(suggest=> suggest.name === object.name);
 }
+
+export const userService = {
+  login,
+  logout,
+  signup,
+  getUsers,
+  getById,
+  remove,
+  update,
+  findIdxToMark
+};
