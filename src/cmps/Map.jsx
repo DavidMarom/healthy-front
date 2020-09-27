@@ -47,3 +47,5 @@ class SimpleMap extends Component {
 }
 
 export default SimpleMap;
+
+//AIzaSyCum5NI2ztcUbwjAyhLH98jAJHBK0gbugc

@@ -4,6 +4,7 @@ import { loadActivities, removeActivity } from "../store/actions/activityActions
 import { ActivityFilter } from "../cmps/activity/ActivityFilter";
 import { ActivityList } from "../cmps/activity/ActivityList";
 
+
 class _ActivityApp extends Component {
 
     state = {

@@ -4,7 +4,7 @@ import { TextField, Select, MenuItem } from '@material-ui/core';
 import { activityService } from '../services/activityService.js'
 import { uploadImg } from '../services/imgUploadService.js'
 import { saveActivity } from '../store/actions/activityActions.js'
-
+import { utilService} from '../services/utilService.js'
 
 class _ActivityEdit extends Component {
 
@@ -41,6 +41,14 @@ class _ActivityEdit extends Component {
     onSaveActivity = async (ev) => {
         ev.preventDefault();
         let activity = this.state.activity
+        utilService.getLocation(activity.location)
+        .then(res=>{
+            const location = res
+            activity={
+                ...activity,
+                location
+            }
+        })
         const { createdBy } = activity
         if (!createdBy) {
             const { _id } = this.state.currUser
@@ -161,6 +169,17 @@ class _ActivityEdit extends Component {
                                 />
                             </div>
                         </section>
+                        <section>
+                        <TextField
+                                    name="location"
+                                    value={activity.location.address}
+                                    size="small"
+                                    variant="outlined"
+                                    multiline
+                                    margin="normal"
+                                    onChange={this.handleInput}
+                                />
+                        </section>
 
                         <section className="edit-imgs">
                             <label htmlFor="images" >Images</label>
@@ -178,7 +197,6 @@ class _ActivityEdit extends Component {
                             </div>
                             <input type="file" multiple onChange={this.uploadFile} />
                         </section>
-                        {/* {findLatLng('Eilat')} */}
                     </section>
 
                     <button className="save-btn" disabled={this.state.isUploading} >Save</button>
