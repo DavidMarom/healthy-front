@@ -4,7 +4,7 @@ import { TextField, Select, MenuItem } from '@material-ui/core';
 import { activityService } from '../services/activityService.js'
 import { uploadImg } from '../services/imgUploadService.js'
 import { saveActivity } from '../store/actions/activityActions.js'
-
+import { utilService } from '../services/utilService.js'
 
 class _ActivityEdit extends Component {
 
@@ -41,20 +41,33 @@ class _ActivityEdit extends Component {
     onSaveActivity = async (ev) => {
         ev.preventDefault();
         let activity = this.state.activity
-        const { createdBy } = activity
-        if (!createdBy) {
-            const { _id } = this.state.currUser
-            const { fullName } = this.state.currUser
-            const { imgUrl } = this.state.currUser
-            activity = {
-                ...activity,
-                createdBy: {
-                    _id,
-                    fullName,
-                    imgUrl
+        utilService.getLocation(activity.location)
+            .then(res => {
+                console.log(res);
+                activity = {
+                    ...activity,
+                    location: res
                 }
-            }
-        }
+                // })
+                const { createdBy } = activity
+                if (!createdBy) {
+                    const { _id } = this.state.currUser
+                    const { fullName } = this.state.currUser
+                    const { imgUrl } = this.state.currUser
+                    activity = {
+                        ...activity,
+                        createdBy: {
+                            _id,
+                            fullName,
+                            imgUrl
+                        }
+                    }
+                }
+                this._saveActivity(activity)
+            })
+    }
+
+    _saveActivity = async (activity)=>{
         await this.props.saveActivity(activity);
         this.props.history.push('/user');
     }
@@ -92,7 +105,6 @@ class _ActivityEdit extends Component {
         const { hours } = this.state;
         if (!Object.keys(activity).length) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
         return (
-
             <section className="main-container">
                 <h2>Edit Activity</h2>
                 <form className="form-edit" onSubmit={this.onSaveActivity} >
@@ -161,6 +173,17 @@ class _ActivityEdit extends Component {
                                 />
                             </div>
                         </section>
+                        <section>
+                            <TextField
+                                name="location"
+                                value={activity.location.address}
+                                size="small"
+                                variant="outlined"
+                                multiline
+                                margin="normal"
+                                onChange={this.handleInput}
+                            />
+                        </section>
 
                         <section className="edit-imgs">
                             <label htmlFor="images" >Images</label>
@@ -178,7 +201,6 @@ class _ActivityEdit extends Component {
                             </div>
                             <input type="file" multiple onChange={this.uploadFile} />
                         </section>
-                        {/* {findLatLng('Eilat')} */}
                     </section>
 
                     <button className="save-btn" disabled={this.state.isUploading} >Save</button>

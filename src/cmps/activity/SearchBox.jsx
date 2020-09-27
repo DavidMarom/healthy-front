@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { setSearchBy } from '../../store/actions/activityActions'
 
+// var debounce = require('lodash.debounce');
 
 export class _SearchBox extends Component {
     state = {

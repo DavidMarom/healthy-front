@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import httpService from './httpService';
 
 export const activityService = {
@@ -12,7 +13,6 @@ export const activityService = {
   getCreatedEvents,
   getPartOfEvents,
   findIdxById
-
 }
 
 function query(filterBy = {}) {
@@ -34,11 +34,6 @@ function remove(activityId) {
 function update(activity) {
   return httpService.put(`activity/${activity._id}`, activity)
 }
-
-// async function add(activity) {
-//   const addedActivity = await httpService.post('activity/', activity);
-//   return addedActivity
-// }
 
 async function save(activity) {
   if (activity._id) {
@@ -66,6 +61,8 @@ function getEmpty() {
     createdAt: "",
     description: "",
     location:{
+      lat:0,
+      lng:0,
       address: ""
     },
     imgUrls:[],
