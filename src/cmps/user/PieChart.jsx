@@ -70,30 +70,40 @@ class _PieChart extends Component {
 
         };
         return (
-            <div>
+            <div className="flex column align-center">
                 <h3 className="tac">Events Income (%)</h3>
                 <Pie
                     data={data}
+                    width={390}
+                    height={390}
                     options={{
+                        responsive: false,
                         maintainAspectRatio: false,
                         pieceLabel: {
                             render: '$' + 'value',
                             fontSize: 18,
                             fontStyle: 'bold',
-                            fontColor: '#000'
+                            fontColor: '#000',
                         },
                         legend: {
+                            display:true,
+                            position: 'bottom',
+                            margin:0,
+                            fullWidth: true,
+                            align: 'center',
                             label: {
                                 font:{
                                 fontColor: "#024000",
                                 defaultFontSize: 18
                                 }
+                            },
+                            layout: {
+                                padding:{
+                                    right: 0
+                                }
                             }
-                        }
-                    }
-                    }
-                    width={370}
-                    height={370}
+                        },
+                    }}
                 />
             </div>
         )
