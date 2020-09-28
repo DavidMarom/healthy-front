@@ -70,11 +70,14 @@ export class _ActivityDetails extends Component {
 
   purchaseActivity() {
     let { activity, user } = this.props;
+    const currUser ={
+      _id: user._id,
+      fullName: user.fullName,
+      imgUrl: user.imgUrl
+    }
     let creatorId = activity.createdBy._id;
 
     if (creatorId === user._id) return;
-
-    const currUser = { ...user }
 
     /*
     this.props.addActivityParticipant(activityId, participantId);
