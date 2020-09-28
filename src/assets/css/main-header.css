@@ -10,7 +10,6 @@
 .main-header {
     margin-left: auto;
     margin-right: auto;
-    /* width: 1170px; */
     height: 80px;
     text-align: center;
     display: flex;
@@ -62,25 +61,22 @@
     color: #4f4f4f !important;
 }
 
-
-
-.nav-btn{
+.nav-btn {
     min-height: 40px;
 }
 
-
-.explore{
+.explore {
     padding: 10px 20px 10px;
     align-self: center;
     background-color: #62cb66;
-    color:#fff !important;
+    color: #fff !important;
     border-radius: 3em;
 }
 
-.header-buy{
+.header-buy {
     cursor: pointer;
     padding: 10px 30px 10px;
-    background-color: #62cb66;  
+    background-color: #62cb66;
     color: #fff !important;
     border-radius: 10px;
     font-size: x-large;
@@ -91,8 +87,10 @@
     align-self: flex-end;
     top: 70px;
     z-index: 3;
-    }
+}
 
-    .header-none{
-        display: none;
-    }
+.header-none {
+    display: none;
+}
+
+@media(max-width: 510px) {}
