@@ -144,3 +144,26 @@ p {
     justify-content: left;
     font-size: 14px;
 }
+
+@media(max-width: 1140px) {
+    .event-main-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        width: 90%;
+
+    }
+    
+
+    .event-left-side {
+        width: 100%;
+    }
+    
+    .event-right-side {
+        width: 100%;
+    }
+    
+
+}
