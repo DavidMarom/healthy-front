@@ -7,7 +7,6 @@ export const activityService = {
   remove,
   getEmpty,
   update,
-  // add
   save,
   addRate,
   getCreatedEvents,
