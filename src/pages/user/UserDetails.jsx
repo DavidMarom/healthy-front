@@ -23,8 +23,7 @@ export class _UserDetails extends Component {
     participant: {},
   };
 
-  componentDidMount() {
-    
+  componentDidMount() { 
     window.scrollTo(0, 0);
     this.loadUser()
   }

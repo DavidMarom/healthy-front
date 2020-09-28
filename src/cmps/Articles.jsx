@@ -26,13 +26,13 @@ class _Articles extends Component {
 
         <div className="articles-row" >
 
-          <NavLink to="/activity/?tag=sport" className="article_a" >
+          <NavLink to="/activity?tag=sport" className="article_a" >
             <div>
               <h2>Sport</h2>
             </div>
           </NavLink>
 
-          <NavLink to="/activity/?tag=yoga" className="article_b" >
+          <NavLink to="/activity?tag=yoga" className="article_b" >
             <div>
               <h2>Body {`&`} Mind</h2>
             </div>
@@ -42,13 +42,13 @@ class _Articles extends Component {
 
         <div className="articles-row">
 
-          <NavLink to="/activity/?tag=nutrition" className="article_c">
+          <NavLink to="/activity?tag=nutrition" className="article_c">
             <div >
               <h2>Nutrition</h2>
             </div>
           </NavLink>
 
-          <NavLink to="/activity/?tag=outdoor" className="article_d">
+          <NavLink to="/activity?tag=outdoor" className="article_d">
             <div>
               <h2>Outdoor</h2>
             </div>
