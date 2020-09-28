@@ -79,7 +79,7 @@
     display: flex;
     align-self: flex-start;
     margin-left: 80px;
-    font-size: 5vw;
+    font-size: 4vw;
     color: #ffffff;
     margin-bottom: 20px;
 }
@@ -99,18 +99,14 @@
     .jumbo {
         height: 600px;
     }
-    .slogen {
-        font-size: 1.6rem;
-    }
+    
 }
 
 @media(max-width: 1000px) {
     .jumbo {
         height: 450px;
     }
-    .slogen {
-        font-size: 1.4rem;
-    }
+   
     .jumbo-search {
         width: 40%;
         height: 45px;
@@ -132,7 +128,7 @@
         padding: 0;
         margin-left: 10px;
         margin-top: 12%;
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
     .jumbo-search {
         margin-left: 10px;
@@ -141,3 +137,9 @@
         font-size: 0.8rem;
     }
 }
+
+@media screen and (min-width: 1600px) {
+    .slogan {
+       font-size: 50px;
+    }
+  }
