@@ -68,6 +68,7 @@ class _ActivityApp extends Component {
             })
         }
         else {
+            console.log(filterBy);
             filteredActivities = activitiesByDay.filter(activity =>
                 activity.tags.includes(filterBy.toLowerCase()))
         }
