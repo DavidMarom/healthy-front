@@ -15,12 +15,26 @@
     width: 370px;
 }
 
-.filter-bar{
-    display: flex;
+.filter-bar {
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    width: 70%;
+    display: grid;
+    object-fit: contain;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    grid-gap: 20px;
+    justify-items: start;
+    
+    text-align: start;
+
+    /* display: flex;
     flex-direction: row;
     justify-content: center;
-
-    margin-top: 40px;
+    margin-top: 40px; */
 }
 
 .event-creator-container {
@@ -161,17 +175,11 @@ p {
         align-content: center;
         align-items: center;
         width: 90%;
-
     }
-    
-
     .event-left-side {
         width: 100%;
     }
-    
     .event-right-side {
         width: 100%;
     }
-    
-
 }
