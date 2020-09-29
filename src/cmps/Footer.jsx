@@ -27,7 +27,7 @@ export function Footer() {
                 </div>
                 <div className="foot-col">
                     <div className="bold"><p>SUPPORT</p></div>
-                    <Link to ="/about">About us</Link>
+                    {/* <Link to ="/about">About us</Link> */}
                     <p>Updates for COVID-19</p>
                     <p>Help Center</p>
                     <p>Cancellation options</p>
