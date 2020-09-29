@@ -85,6 +85,11 @@ p {
     background-color: #dddddd;
 }
 
+.tags{
+    display: flex;
+    justify-content: space-between;
+}
+
 .d-hi {
     margin-top: 70px;
 }
@@ -174,4 +179,15 @@ p {
     }
     
 
+}
+
+@media(max-width: 650px){
+    .main-details-card .image-gallery{
+       display: flex !important;
+       flex-direction: column;
+}
+
+.tags{
+    flex-direction: column;
+}
 }

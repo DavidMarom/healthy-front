@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { Reviews } from "../cmps/Reviews";
 import { Chat } from "../cmps/Chat";
 import SimpleMap from "../cmps/Map";
-
+import { utilService } from '../services/utilService.js';
 const loadingImgUrl = 'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -21,14 +21,7 @@ const belowFoldListener = (callback) => {
 const checkIsRegistered = (user, activity) =>
   activity.participants.some(participant => participant._id === user._id);
 
-const calcAvgRate = (activity) => {
-  let tempSum = 0;
-  const rates = activity.reviews.map(review => review.rate);
-  tempSum = rates.reduce(function (acc, val) {
-    return acc + val
-  }, 0);
-  return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2));
-};
+
 
 export class _ActivityDetails extends Component {
   state = {
@@ -68,6 +61,7 @@ export class _ActivityDetails extends Component {
     this.setState({ rateAddByUser: rate });
   };
 
+  
   purchaseActivity() {
     let { activity, user } = this.props;
     const currUser = {
@@ -80,28 +74,31 @@ export class _ActivityDetails extends Component {
 
     if (creatorId === user._id) return;
 
-    /*
-    this.props.addActivityParticipant(activityId, participantId);
-
-    on server:
-    - creator.income += activity.price
-    - add the participant
-    - - load the activity with the activityId
-    - - update participants
-    - emit to sockets from the server
-    */
-
+    
     userService.getById(creatorId)
-      .then(creator => {
-        creator.income += activity.price
-        this.props.updateUser(creator)
-        newActivity.participants.push(currUser);
-        this.props.saveActivity(newActivity);
-        socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
-      });
+    .then(creator => {
+      creator.income += activity.price
+      this.props.updateUser(creator)
+      newActivity.participants.push(currUser);
+      this.props.saveActivity(newActivity);
+      socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
+    });
   };
+  
+  onCalcAvgRate = (activity) => {
+    return utilService.calcAvgRate(activity)
+  }
+  
+  /*
+  this.props.addActivityParticipant(activityId, participantId);
 
-
+  on server:
+  - creator.income += activity.price
+  - add the participant
+  - - load the activity with the activityId
+  - - update participants
+  - emit to sockets from the server
+  */
   render() {
     let { activity } = this.props;
     const user = this.props.user || guestUser;
@@ -114,7 +111,7 @@ export class _ActivityDetails extends Component {
       );
     }
 
-    let rate = calcAvgRate(activity);
+    let rate = this.onCalcAvgRate(activity);
     let isRegistered = checkIsRegistered(user, activity);
 
     return (
@@ -184,7 +181,7 @@ export class _ActivityDetails extends Component {
 
             <div className="divider d-hi"></div>
 
-            <div className="just-row">
+            <div className="tags">
               <h2>Properties</h2>
               {activity.tags.map((tag, idx) => (<li key={idx}>{tag}</li>))}
             </div>

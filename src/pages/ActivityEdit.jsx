@@ -43,7 +43,6 @@ class _ActivityEdit extends Component {
         let activity = this.state.activity
         utilService.getLocation(activity.location)
             .then(res => {
-                console.log(res);
                 activity = {
                     ...activity,
                     location: res
