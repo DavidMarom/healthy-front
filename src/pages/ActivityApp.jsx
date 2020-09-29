@@ -79,12 +79,14 @@ class _ActivityApp extends Component {
         const activities = this.getActivitiesForDisplay();
         if (!activities) return <div className="loader"><img src={'https://res.cloudinary.com/dygtul5wx/image/upload/v1601042370/sprint%204/users/75_2_cf1ozr.gif'} /></div>
         return (
+            <div>
+                <ActivityFilter onSetFilter={this.onSetFilter} dummySortByDays={this.dummySortByDays} />
 
-            <div className="main-container-activities marg-top-50">
-                <div className="filter">
-                    <ActivityFilter onSetFilter={this.onSetFilter} dummySortByDays={this.dummySortByDays} />
+                <div className="main-container-activities marg-top-50">
+                    <div className="filter">
+                    </div>
+                    <ActivityList bottomBorder={true} activities={activities} onRemove={this.onRemove} />
                 </div>
-                <ActivityList bottomBorder={true} activities={activities} onRemove={this.onRemove} />
             </div>
         )
     }
