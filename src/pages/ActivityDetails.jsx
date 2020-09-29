@@ -38,7 +38,7 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
-    socketService.setup();
+    // socketService.setup();
     belowFoldListener((isBelowFold) => { if (this.state.isBottom !== isBelowFold) this.setState({ isBottom: isBelowFold }) });
 
     this.props.user && this.setState({ user: { ...this.props.user } });
@@ -76,6 +76,7 @@ export class _ActivityDetails extends Component {
       imgUrl: user.imgUrl
     }
     let creatorId = activity.createdBy._id;
+    let newActivity = {...activity}
 
     if (creatorId === user._id) return;
 
@@ -94,8 +95,8 @@ export class _ActivityDetails extends Component {
       .then(creator => {
         creator.income += activity.price
         this.props.updateUser(creator)
-        activity.participants.push(currUser);
-        this.props.saveActivity(activity);
+        newActivity.participants.push(currUser);
+        this.props.saveActivity(newActivity);
         socketService.emit('new purchase', { creatorId: creator._id, activityTitle: activity.title, customerName: user.fullName });
       });
   };
