@@ -1,0 +1,26 @@
+.team{
+    margin-top: 16px;
+    text-align: center;
+}
+
+.section-about{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.img-about{
+    border: 8px solid #ccc;
+    border-radius: 60px;
+    margin-bottom: 20px;
+}
+
+.info{
+padding-left: 10px;
+font-weight: 500;
+line-height: 1.6;
+
+}
+.info p{
+    padding-left: 10px;
+}

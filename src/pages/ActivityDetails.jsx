@@ -18,7 +18,7 @@ const belowFoldListener = (callback) => {
   })
 }
 
-const checkIsRegistered = (user, activity) => 
+const checkIsRegistered = (user, activity) =>
   activity.participants.some(participant => participant._id === user._id);
 
 const calcAvgRate = (activity) => {
@@ -39,7 +39,7 @@ export class _ActivityDetails extends Component {
 
   componentDidMount() {
     socketService.setup();
-    belowFoldListener((isBelowFold) => { if (this.state.isBottom !== isBelowFold ) this.setState({ isBottom: isBelowFold }) });
+    belowFoldListener((isBelowFold) => { if (this.state.isBottom !== isBelowFold) this.setState({ isBottom: isBelowFold }) });
 
     this.props.user && this.setState({ user: { ...this.props.user } });
     this.loadActivity();
@@ -70,11 +70,14 @@ export class _ActivityDetails extends Component {
 
   purchaseActivity() {
     let { activity, user } = this.props;
+    const currUser = {
+      _id: user._id,
+      fullName: user.fullName,
+      imgUrl: user.imgUrl
+    }
     let creatorId = activity.createdBy._id;
 
     if (creatorId === user._id) return;
-
-    const currUser = { ...user }
 
     /*
     this.props.addActivityParticipant(activityId, participantId);
@@ -105,14 +108,14 @@ export class _ActivityDetails extends Component {
     if (!activity || activity._id !== this.props.match.params.activityId) {
       return (
         <div className="loader">
-          <img src={loadingImgUrl} alt="Loading..."/>
+          <img src={loadingImgUrl} alt="Loading..." />
         </div>
       );
     }
 
     let rate = calcAvgRate(activity);
     let isRegistered = checkIsRegistered(user, activity);
-    
+
     return (
       <div className="main-details-card">
         {(user._id === 'guest') ?
@@ -212,19 +215,20 @@ export class _ActivityDetails extends Component {
               <div className="center">
                 <h2>Price: ${activity.price}</h2>
               </div>
-              {(user._id === 'guest') ?
-                (<div className="sticky"><button className="buy-btn"
-                  onClick={() => this.props.history.push('/signUp')}>
-                  Join Us NOW!
+
+                {(user._id === 'guest') ?
+                  (<div className="sticky"><button className="buy-btn"
+                    onClick={() => this.props.history.push('/signUp')}>
+                    Join Us NOW!
                 </button></div>) :
 
-                (isRegistered) ? (<div className="sticky"><button className="buy-btn">
-                Allready Registered</button></div>) : ((activity.participants.length < activity.maxCapacity) ?
-                  (<div className="sticky"><button className="buy-btn"
-                    onClick={() => this.purchaseActivity()}>
-                    Sign me up!
+                  (isRegistered) ? (<div className="sticky"><button className="buy-btn">
+                    Allready Registered</button></div>) : ((activity.participants.length < activity.maxCapacity) ?
+                      (<div className="sticky"><button className="buy-btn"
+                        onClick={() => this.purchaseActivity()}>
+                        Sign me up!
                 </button></div>) :
-                  (<button className="sold-out-btn">SOLD OUT!</button>))}
+                      (<button className="sold-out-btn">SOLD OUT!</button>))}
 
             </div>
             <div className="attendings">
