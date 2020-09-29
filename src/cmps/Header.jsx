@@ -24,16 +24,13 @@ export class _Header extends Component {
 
   componentDidUpdate(prevProps){
     const { user } = this.props;
-    console.log('before-', this.props, 'prev-', prevProps);
     if( this.props.user && prevProps.user?._id !== this.props.user._id){
-      console.log('sssss-',prevProps.user);
       this.openSocket()
     }
   }
 
   openSocket= ()=>{
     const { user } = this.props;
-    console.log('openning socket');
     socketService.setup();
     socketService.emit('creatorId', user._id);
     socketService.on('show purchase notifiction', (purchaseInfo) => {

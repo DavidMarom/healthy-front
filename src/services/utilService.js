@@ -1,7 +1,8 @@
 const axios = require ('axios')
 
 export const utilService = {
-    getLocation
+    getLocation,
+    calcAvgRate
   }
   
 
@@ -9,7 +10,6 @@ export const utilService = {
 
 async function getLocation(address){
   //  let newAddress = addreess.split(' ').join('+')
-   console.log(address);
     const API_KEY= 'AIzaSyCum5NI2ztcUbwjAyhLH98jAJHBK0gbugc';
     return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`)
     .then(res=> {
@@ -23,3 +23,12 @@ async function getLocation(address){
     .catch(()=> console.log('NOTHING TO RETURN'))
   }
   
+
+  function calcAvgRate(activity){
+    let tempSum = 0;
+    const rates = activity.reviews.map(review => review.rate);
+    tempSum = rates.reduce(function (acc, val) {
+      return acc + val
+    }, 0);
+    return ((Math.round((tempSum / rates.length) * 100) / 100).toFixed(2));
+  }
