@@ -74,7 +74,7 @@ export class _Header extends Component {
           <div className="left-end">
             {isNotificationOn && <div className="purchase-notification flex">
               <div className="ml15">New Purchase!</div>
-              <div> {`Event:${activityTitle}`}</div>
+              <div> {`Event: ${activityTitle}`}</div>
               <div>{`From: ${customerName}`}</div>
               <button className="close-notification" onClick={() => this.setState({ isNotificationOn: false })}>x</button>
             </div>}
