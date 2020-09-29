@@ -19,24 +19,35 @@ export class _Header extends Component {
 
   componentDidMount() {
     const { user } = this.props;
-    if (user) {
-      socketService.setup();
-      socketService.emit('creatorId', user._id);
-      socketService.on('show purchase notifiction', (purchaseInfo) => {
-        console.log(purchaseInfo);
-        const notificationInfo = {
-          activityTitle: purchaseInfo.activityTitle,
-          customerName: purchaseInfo.customerName
-        }
-        this.ShowNotification(notificationInfo)
-      });
+    if(user) this.openSocket()
+  }
+
+  componentDidUpdate(prevProps){
+    const { user } = this.props;
+    console.log('before-', this.props, 'prev-', prevProps);
+    if( this.props.user && prevProps.user?._id !== this.props.user._id){
+      console.log('sssss-',prevProps.user);
+      this.openSocket()
     }
   }
 
-  componentWillUnmount() {
-    socketService.off('show purchase notifiction');
-    socketService.terminate();
+  openSocket= ()=>{
+    const { user } = this.props;
+    console.log('openning socket');
+    socketService.setup();
+    socketService.emit('creatorId', user._id);
+    socketService.on('show purchase notifiction', (purchaseInfo) => {
+      const notificationInfo = {
+        activityTitle: purchaseInfo.activityTitle,
+        customerName: purchaseInfo.customerName
+      }
+      this.ShowNotification(notificationInfo)
+    });
   }
+  // componentWillUnmount() {
+  //   socketService.off('show purchase notifiction');
+  //   socketService.terminate();
+  // }
 
   ShowNotification = (notificationInfo) => {
     this.setState({ ...this.state, isNotificationOn: true, notificationInfo: notificationInfo })

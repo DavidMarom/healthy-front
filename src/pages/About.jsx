@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+
 export class About extends Component {
 
     render() {
@@ -15,6 +18,8 @@ export class About extends Component {
                             and I'm a reggistered dietitian. I'm also a junior Full Stack developer- specialized in Node JS. and React
                             </p>
                         </div>
+                        <a href="https://www.facebook.com/chen.edri.3" target="_blank"><FacebookIcon style={{ fontSize: 40, margin: '10px', color:'#3b5998' }}/></a>
+                        <a href="https://www.instagram.com/chenedri22/?hl=en" target="_blank"><InstagramIcon style={{ fontSize: 40, margin: '10px', color:'#E1306C', }}/></a>
                     </div>
                     <div className="about-1">
                         <div>
@@ -23,6 +28,8 @@ export class About extends Component {
                         <div class="info">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident fuga alias deleniti ducimus expedita odit magnam dolor eius placeat quidem numquam atque omnis voluptate iste amet, quas modi libero deserunt?</p>
                         </div>
+                        <a href="https://www.facebook.com/chen.edri.3" target="_blank"><FacebookIcon style={{ fontSize: 40, margin: '10px', color:'#3b5998' }}/></a>
+                        <a href="https://www.instagram.com/chenedri22/?hl=en" target="_blank"><InstagramIcon style={{ fontSize: 40, margin: '10px', color:'#E1306C', }}/></a>
                     </div>
                     <div className="about-1">
                         <div >
@@ -31,6 +38,8 @@ export class About extends Component {
                         <div class="info">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam fuga illum ipsam nisi qui laboriosam, a consequuntur vero expedita, consectetur repellendus vel harum perspiciatis. Sed eveniet possimus voluptatibus dolorem rem.</p>
                         </div>
+                        <a href="https://www.facebook.com/chen.edri.3" target="_blank"><FacebookIcon style={{ fontSize: 40, margin: '10px', color:'#3b5998' }}/></a>
+                        <a href="https://www.instagram.com/chenedri22/?hl=en" target="_blank"><InstagramIcon style={{ fontSize: 40, margin: '10px', color:'#E1306C', }}/></a>
                     </div>
                 </div>
             </div>
