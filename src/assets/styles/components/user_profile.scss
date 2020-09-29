@@ -35,10 +35,12 @@
   @include  for-mobile-layout{  
     grid-template-columns:
     minmax(10px, 1fr)
-    minmax(auto, 95%)
+    minmax(auto, 90%)
     minmax(10px, 1fr);
    
-   
+   .main-info-container{
+     font-size: 13px;
+   }
     .profile-pic{
       max-width: 200px !important;
       max-height: 200px !important;
@@ -80,7 +82,7 @@
   }
 
   .strip{
-    grid-template-columns: 0% 55% 20% 13% 12%;
+    grid-template-columns: 0% 55% 20% 12% 12%;
        }
 
   .event-title-dash >*{

@@ -44,7 +44,7 @@ export class _SearchBox extends Component {
                   type="text" 
                   value={this.state.searchBy.title}
                   onChange={this.handleChange} 
-                  placeholder={`Find activity that you like (food${'&'}nutrition, lectures, sports groups atc.)`}
+                  placeholder={`look for nutrition, lectures, sports etc...`}
                   onKeyDown={e => (e.key === 'Enter') && this.onClickSearchButton() }
                 />
                 <div className="search-btn" onClick={this.onClickSearchButton}>
