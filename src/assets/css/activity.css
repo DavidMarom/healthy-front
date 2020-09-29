@@ -15,6 +15,14 @@
     width: 370px;
 }
 
+.filter-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-top: 40px;
+}
+
 .event-creator-container {
     width: 100%;
     display: flex;
