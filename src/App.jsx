@@ -14,7 +14,7 @@ class _App extends Component {
     
       <div className="App">
         <Header isHomepage={isHomepage}/>
-        <div className="marg-top-80"></div>
+        <div className="mt80"></div>
           <Switch>
             { routes.map(route => <Route key={ route.path } exact component={ route.component } path={ route.path } />) }
           </Switch>

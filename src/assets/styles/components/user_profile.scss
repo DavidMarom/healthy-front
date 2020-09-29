@@ -32,11 +32,23 @@
       minmax(auto, 70%)
       minmax(20px, 1fr);
   }
-  @include  for-mobile-layout{
+  @include  for-mobile-layout{  
     grid-template-columns:
-    minmax(20px, 1fr)
-    minmax(auto, 70%)
-    minmax(20px, 1fr);
+    minmax(10px, 1fr)
+    minmax(auto, 95%)
+    minmax(10px, 1fr);
+   
+   
+    .profile-pic{
+      max-width: 200px !important;
+      max-height: 200px !important;
+      margin-top: 10px;
+    }
+
+    .profile-top-bar{
+      flex-direction: column-reverse !important;
+      padding-top: 5px;
+    }
 
     .add-btn {
       padding: 0;
@@ -45,16 +57,40 @@
     width:100%;
     padding-right: 30px;
   }
+
+  .profile-bar-right{
+    margin-bottom: 23px;
+  }
   
   .dash{
     background-color: white !important;
+  }
+
+  .dashbord-btn{
+    font-size: 14px;
+  }
+
+  .just-row button{
+    font-size: 14px;
   }
 
   canvas{
     max-width: 360px !important;
     height: 350px !important;
   }
+
+  .strip{
+    grid-template-columns: 0% 55% 20% 13% 12%;
+       }
+
+  .event-title-dash >*{
+    width:20ch;
+  }
+
+   }
+  
 }
+
 
 
 
@@ -210,5 +246,4 @@ canvas {
   &:hover {
     background-color: rgb(149, 191, 143);
   }
-}
 }

@@ -131,6 +131,10 @@
        height: auto;
     }
 
+    .mt80{
+        display: none !important;
+      }
+
     .logo{
         height: 100px;
     }

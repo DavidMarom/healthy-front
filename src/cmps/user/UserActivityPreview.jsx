@@ -57,7 +57,7 @@ class _UserActivityPreview extends Component {
                                 {(madeOfOperation === 'organizer') ? (<div onClick={()=> this.props.history.push(`/activity/edit/${activity._id}`)}><i className=" dash-btn fas fa-user-cog nav-override-color"></i></div>) : ''}
                                 <div className="pad-10"></div>
                                 {(madeOfOperation === 'organizer') ? (<button className="dash-btn" onClick={(ev) => onRemove(ev, activity._id)}><i className="far fa-trash-alt"></i></button>) : ''}
-                                {(madeOfOperation === 'subscriber') ? (<Button variant="outlined" onClick={(ev) => onRemoveFromList(ev, activity, user)}>Unsubscribe</Button>) : ''}
+                                {(madeOfOperation === 'subscriber') ? (<button className="dash-btn" onClick={(ev) => onRemoveFromList(ev, activity, user)}><i className="far fa-trash-alt"></i></button>) : ''}
                             </div>
 
 
