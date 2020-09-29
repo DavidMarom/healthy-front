@@ -10,6 +10,10 @@
     }
   }
 
+  .dash {
+    background-color: rgb(248, 246, 246);
+  }
+
   @include for-narrow-layout {
     grid-template-columns:
       minmax(20px, 1fr)
@@ -28,11 +32,31 @@
       minmax(auto, 70%)
       minmax(20px, 1fr);
   }
+  @include  for-mobile-layout{
+    grid-template-columns:
+    minmax(20px, 1fr)
+    minmax(auto, 70%)
+    minmax(20px, 1fr);
+
+    .add-btn {
+      padding: 0;
+  }
+  .profile-bar-left{
+    width:100%;
+    padding-right: 30px;
+  }
+  
+  .dash{
+    background-color: white !important;
+  }
+
+  canvas{
+    max-width: 360px !important;
+    height: 350px !important;
+  }
 }
 
-.dash {
-  background-color: rgb(248, 246, 246);
-}
+
 
 .money {
   color: #62cb66;
@@ -140,16 +164,16 @@
 
 // DASHBORD COMPONENT
 
-.bar {
-  width: rem(500px);
-  height: rem(500px);
-}
+// .bar {
+//   // width: rem(500px);
+//   height: rem(500px);
+// }
 
-.pie {
-  width: rem(500px);
-  height: rem(500px);
-  // margin-right: 30px;
-}
+// .pie {
+//   // width: rem(500px);
+//   height: rem(500px);
+//   // margin-right: 30px;
+// }
 
 canvas {
   display: inline !important;
@@ -186,4 +210,5 @@ canvas {
   &:hover {
     background-color: rgb(149, 191, 143);
   }
+}
 }

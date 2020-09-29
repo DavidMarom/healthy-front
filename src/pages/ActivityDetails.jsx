@@ -242,7 +242,7 @@ export class _ActivityDetails extends Component {
             <div className="map-container">
               <SimpleMap center={activity.location} />
             </div>
-            <div className="divider"></div>
+            <div className="divider"></div> 
             <div className="chat-container">
               <Chat topic={activity._id} name={user.fullName} />
 
