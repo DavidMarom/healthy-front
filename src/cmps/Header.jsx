@@ -88,7 +88,7 @@ export class _Header extends Component {
 
           {(!user) ? (
             <div className="right-end">
-              <div>
+              <div className="flex wrap space-around">
                 <span className="cp m10 nav-override-color " onClick={this.openGuestMode}>Demo</span>
                 <NavLink className="explore m10 nav-override-color" to="/activity">Explore</NavLink>
                 <NavLink className="cp nav-override-color" to={`/login`}>Login</NavLink>

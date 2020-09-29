@@ -8,13 +8,6 @@ const AnyReactComponent = () => <div><img alt="" src='https://developers.google.
 const API_KEY = 'AIzaSyCTwmmUbksAqfSEKLn9fR4oSVbBimBrXvk'
 
 class SimpleMap extends Component {
-  // static defaultProps = {
-  //   center: {
-  //     lat: 59.95,
-  //     lng: 30.33
-  //   },
-  //   zoom: 11
-  // };
 
   render() {
     let defaultCenter = {
@@ -27,7 +20,7 @@ class SimpleMap extends Component {
     return (
 
       // Important! Always set the container height explicitly
-      <div style={{ height: '300px', width: '370px' }}>
+      <div style={{ height: '290px', width: '100%', margin:0 }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: API_KEY }}
           defaultCenter={this.props.center || defaultCenter}

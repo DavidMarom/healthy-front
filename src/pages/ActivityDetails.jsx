@@ -31,7 +31,6 @@ export class _ActivityDetails extends Component {
   };
 
   componentDidMount() {
-    // socketService.setup();
     belowFoldListener((isBelowFold) => { if (this.state.isBottom !== isBelowFold) this.setState({ isBottom: isBelowFold }) });
 
     this.props.user && this.setState({ user: { ...this.props.user } });
